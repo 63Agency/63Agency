@@ -1,6 +1,10 @@
 import { locales } from '@/i18n/config';
 import HeroSection from '@/components/sections/HeroSection';
 import PartnersSection from '@/components/sections/PartnersSection';
+import OurSystemSection from '@/components/sections/OurSystemSection';
+import ResultsSection from '@/components/sections/ResultsSection';
+import IndustriesSection from '@/components/sections/IndustriesSection';
+import CTASection from '@/components/sections/CTASection';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -11,6 +15,10 @@ export default function Home() {
     <main className="bg-black">
       <HeroSection />
       <PartnersSection />
+      <OurSystemSection />
+      <ResultsSection />
+      <IndustriesSection />
+      <CTASection />
     </main>
   );
 }

@@ -27,5 +27,79 @@
   "partners": {
     "titleLine1": "They",
     "titleLine2": "Trust Us"
+  },
+  "system": {
+    "title": "Our System",
+    "subtitle": "We build systems, not campaigns. Here's how we turn your business into a lead generation engine.",
+    "step1": {
+      "title": "Content That Builds Authority",
+      "description": "Performance-driven content that positions you as the expert and attracts your ideal clients."
+    },
+    "step2": {
+      "title": "Paid Ads That Drive Targeted Traffic",
+      "description": "Strategic advertising on Meta, Google, and LinkedIn that brings qualified prospects to your funnel."
+    },
+    "step3": {
+      "title": "Funnel That Qualifies Serious Leads",
+      "description": "Smart qualification systems that filter out tire-kickers and identify ready-to-buy prospects."
+    },
+    "step4": {
+      "title": "CRM & Automation That Increases Closing Rate",
+      "description": "Automated follow-up systems that nurture leads and convert them into customers while you sleep."
+    },
+    "bottomMessage": "We build systems, not campaigns."
+  },
+  "results": {
+    "title": "Real Results, Real Revenue",
+    "subtitle": "See how we've helped businesses generate predictable lead flow and revenue growth.",
+    "metric1": {
+      "value": "500+",
+      "label": "Leads Generated Monthly",
+      "description": "Average across all clients"
+    },
+    "metric2": {
+      "value": "45%",
+      "label": "Cost Per Lead Reduction",
+      "description": "Through system optimization"
+    },
+    "metric3": {
+      "value": "3.2x",
+      "label": "Revenue Growth",
+      "description": "Average client ROI"
+    },
+    "metric4": {
+      "value": "85%",
+      "label": "Automation Rate",
+      "description": "Of follow-up processes"
+    }
+  },
+  "industries": {
+    "title": "Industries We Serve",
+    "subtitle": "Specialized lead generation systems for businesses that need predictable growth.",
+    "privateSchools": {
+      "name": "Private Schools",
+      "description": "Student enrollment systems that fill classrooms consistently."
+    },
+    "trainingCenters": {
+      "name": "Training Centers",
+      "description": "Course registration funnels that convert prospects into students."
+    },
+    "realEstate": {
+      "name": "Real Estate",
+      "description": "Property lead generation systems for agents and developers."
+    },
+    "hospitality": {
+      "name": "Hospitality",
+      "description": "Booking and reservation systems that maximize occupancy rates."
+    },
+    "b2bServices": {
+      "name": "B2B Service Businesses",
+      "description": "High-value lead generation for professional service providers."
+    }
+  },
+  "cta": {
+    "title": "Ready to Generate Predictable Revenue?",
+    "description": "Book a strategy call and discover how we can turn your business into a lead generation engine.",
+    "button": "Book Your Strategy Call"
   }
 }

@@ -27,5 +27,79 @@
   "partners": {
     "titleLine1": "Ils nous font",
     "titleLine2": "confiance"
+  },
+  "system": {
+    "title": "Notre Système",
+    "subtitle": "Nous construisons des systèmes, pas des campagnes. Voici comment nous transformons votre entreprise en machine à générer des leads.",
+    "step1": {
+      "title": "Contenu Qui Construit l'Autorité",
+      "description": "Contenu axé sur la performance qui vous positionne comme expert et attire vos clients idéaux."
+    },
+    "step2": {
+      "title": "Publicités Payantes Qui Génèrent du Trafic Ciblé",
+      "description": "Publicité stratégique sur Meta, Google et LinkedIn qui amène des prospects qualifiés vers votre entonnoir."
+    },
+    "step3": {
+      "title": "Entonnoir Qui Qualifie les Leads Sérieux",
+      "description": "Systèmes de qualification intelligents qui filtrent les curieux et identifient les prospects prêts à acheter."
+    },
+    "step4": {
+      "title": "CRM & Automatisation Qui Augmente le Taux de Conversion",
+      "description": "Systèmes de suivi automatisés qui nourrissent les leads et les convertissent en clients pendant que vous dormez."
+    },
+    "bottomMessage": "Nous construisons des systèmes, pas des campagnes."
+  },
+  "results": {
+    "title": "Résultats Réels, Revenus Réels",
+    "subtitle": "Découvrez comment nous avons aidé des entreprises à générer un flux de leads prévisible et une croissance des revenus.",
+    "metric1": {
+      "value": "500+",
+      "label": "Leads Générés Mensuellement",
+      "description": "Moyenne sur tous les clients"
+    },
+    "metric2": {
+      "value": "45%",
+      "label": "Réduction du Coût par Lead",
+      "description": "Grâce à l'optimisation du système"
+    },
+    "metric3": {
+      "value": "3.2x",
+      "label": "Croissance des Revenus",
+      "description": "ROI client moyen"
+    },
+    "metric4": {
+      "value": "85%",
+      "label": "Taux d'Automatisation",
+      "description": "Des processus de suivi"
+    }
+  },
+  "industries": {
+    "title": "Secteurs Que Nous Servons",
+    "subtitle": "Systèmes de génération de leads spécialisés pour les entreprises qui ont besoin d'une croissance prévisible.",
+    "privateSchools": {
+      "name": "Écoles Privées",
+      "description": "Systèmes d'inscription d'étudiants qui remplissent les classes de manière constante."
+    },
+    "trainingCenters": {
+      "name": "Centres de Formation",
+      "description": "Entonnoirs d'inscription aux cours qui convertissent les prospects en étudiants."
+    },
+    "realEstate": {
+      "name": "Immobilier",
+      "description": "Systèmes de génération de leads immobiliers pour agents et promoteurs."
+    },
+    "hospitality": {
+      "name": "Hôtellerie",
+      "description": "Systèmes de réservation qui maximisent les taux d'occupation."
+    },
+    "b2bServices": {
+      "name": "Entreprises de Services B2B",
+      "description": "Génération de leads à haute valeur pour les prestataires de services professionnels."
+    }
+  },
+  "cta": {
+    "title": "Prêt à Générer des Revenus Prévisibles ?",
+    "description": "Réservez un appel stratégique et découvrez comment nous pouvons transformer votre entreprise en machine à générer des leads.",
+    "button": "Réservez Votre Appel Stratégique"
   }
 }

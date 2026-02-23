@@ -8,6 +8,10 @@ import Header from "../components/Header";
 export const metadata: Metadata = {
   title: "63 Agency | Turning Marketing Into Predictable Revenue",
   description: "We build systems that generate qualified leads consistently. Performance-driven lead generation agency in Morocco and Europe.",
+  icons: {
+    icon: '/images/logo/6.jpg',
+    apple: '/images/logo/6.jpg',
+  },
 };
 
 export default async function LocaleLayout({
