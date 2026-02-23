@@ -11,6 +11,23 @@
 /* Remove underline from navigation links */
 .nav-link {
   text-decoration: none !important;
+  position: relative;
+}
+
+/* Animated underline on hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 /* Cool Beans Button Effect */
@@ -50,6 +67,26 @@
 .coolBeans:hover {
   border: 2px solid transparent;
   color: black;
+}
+
+/* Partners Section Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  display: flex;
+  width: fit-content;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
 
 
