@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact",
+    "getQuote": "GET A QUOTE"
+  },
+  "services": {
+    "webDesign": "Web Design",
+    "moroccoSeo": "Morocco SEO expert",
+    "graphicDesign": "Graphic Design",
+    "socialMedia": "Social Media Management",
+    "advertising": "Advertising",
+    "copywriting": "SEO - Copywriting",
+    "photography": "Photography",
+    "b2bSeo": "B2B SEO services"
+  },
+  "hero": {
+    "primaryHeadline": "The Digital Marketing Agency that boosts your revenue while you sleep soundly.",
+    "secondaryHeadlineStart": "#1 Agency for Digital Marketing success,",
+    "secondaryHeadlineEnd": "in California, Morocco and soon in Dubai.",
+    "description": "Boost your business with our **leading digital marketing services**. Our expert team delivers tailored digital marketing solutions, seamlessly integrating innovative strategies.",
+    "trustIndicators": "Trusted by over **1,200 clients** and **1,600+ successful projects worldwide**.",
+    "ctaButton": "Get a Free Consultation Now!"
+  }
+}

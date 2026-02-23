@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "about": "À propos",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact",
+    "getQuote": "OBTENIR UN DEVIS"
+  },
+  "services": {
+    "webDesign": "Conception Web",
+    "moroccoSeo": "Expert SEO Maroc",
+    "graphicDesign": "Design Graphique",
+    "socialMedia": "Gestion des Réseaux Sociaux",
+    "advertising": "Publicité",
+    "copywriting": "SEO - Rédaction",
+    "photography": "Photographie",
+    "b2bSeo": "Services SEO B2B"
+  },
+  "hero": {
+    "primaryHeadline": "L'agence de marketing digital qui booste vos revenus pendant que vous dormez paisiblement.",
+    "secondaryHeadlineStart": "#1 Agence pour le succès du Marketing Digital,",
+    "secondaryHeadlineEnd": "en Californie, au Maroc et bientôt à Dubaï.",
+    "description": "Boostez votre entreprise avec nos **services de marketing digital de premier plan**. Notre équipe d'experts fournit des solutions de marketing digital sur mesure, intégrant de manière transparente des stratégies innovantes.",
+    "trustIndicators": "Approuvé par plus de **1 200 clients** et **1 600+ projets réussis dans le monde entier**.",
+    "ctaButton": "Obtenez une consultation gratuite maintenant !"
+  }
+}
