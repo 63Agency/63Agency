@@ -29,32 +29,32 @@ export default function PartnersSection() {
         }}></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="flex items-center gap-12 flex-wrap lg:flex-nowrap">
-          {/* Title - Left Side */}
-          <div className="flex-shrink-0 ml-16 lg:ml-24">
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-12">
+          {/* Title - Top on mobile, Left on desktop */}
+          <div className="flex-shrink-0 w-full lg:w-auto lg:ml-16 lg:ml-24">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
               <span className="block">{t('titleLine1')}</span>
               <span className="block">{t('titleLine2')}</span>
             </h2>
           </div>
 
-          {/* Logos - Right Side with Loop Animation */}
-          <div className="flex-1 overflow-hidden">
-            <div className="flex animate-scroll gap-8 lg:gap-12 items-center">
+          {/* Logos - Bottom on mobile, Right on desktop with Loop Animation */}
+          <div className="flex-1 w-full lg:w-auto overflow-hidden">
+            <div className="flex animate-scroll gap-6 sm:gap-8 lg:gap-12 items-center">
               {duplicatedPartners.map((partner, index) => (
                 <div
                   key={index}
                   className="flex-shrink-0 flex items-center justify-center"
-                  style={{ width: '150px', height: '80px' }}
+                  style={{ width: '120px', height: '60px' }}
                 >
                   <Image
                     src={partner.logo}
                     alt={partner.name}
-                    width={150}
-                    height={80}
+                    width={120}
+                    height={60}
                     className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    style={{ maxWidth: '150px', maxHeight: '80px' }}
+                    style={{ maxWidth: '120px', maxHeight: '60px' }}
                   />
                 </div>
               ))}
