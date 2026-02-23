@@ -10,6 +10,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesHovered, setIsServicesHovered] = useState(false);
   const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
@@ -62,24 +63,41 @@ export default function Header() {
           : "bg-black"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between relative">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <Link href={`/${locale}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity z-50">
             <Image
               src="/images/hero/image.png"
               alt="63"
               width={60}
               height={60}
-              className="object-contain"
+              className="object-contain w-10 h-10 sm:w-[60px] sm:h-[60px]"
             />
-            <span className="text-2xl font-light text-white tracking-[0.2em] uppercase italic">
+            <span className="text-lg sm:text-2xl font-light text-white tracking-[0.2em] uppercase italic">
               AGENCY
             </span>
           </Link>
 
-          {/* Navigation Links - Centered */}
-          <nav className="flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden z-50 text-white p-2"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+
+          {/* Navigation Links - Desktop (Hidden on mobile) */}
+          <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
             {navLinks.map((link) => (
               <div
                 key={link.href}
@@ -186,8 +204,8 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Language Switcher & CTA Button */}
-          <div className="flex items-center gap-4">
+          {/* Language Switcher & CTA Button - Desktop */}
+          <div className="hidden lg:flex items-center gap-4">
             {/* Language Switcher with Flags */}
             <div className="flex items-center gap-1">
               <button
@@ -220,6 +238,7 @@ export default function Header() {
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection("#contact");
+                setIsMobileMenuOpen(false);
               }}
               className="coolBeans px-6 py-2.5 font-semibold"
               style={{ textDecoration: 'none' }}
@@ -228,6 +247,133 @@ export default function Header() {
             </Link>
           </div>
         </div>
+
+        {/* Mobile Menu Sidebar */}
+        {isMobileMenuOpen && (
+          <>
+            {/* Overlay */}
+            <div
+              className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            {/* Sidebar */}
+            <div className="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black bg-opacity-95 backdrop-blur-sm border-l border-gray-800 z-50 transform transition-transform duration-300 ease-in-out">
+              <nav className="flex flex-col py-6 px-4 h-full overflow-y-auto">
+                {/* Close Button */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="self-end text-white p-2 mb-4 hover:bg-gray-800 rounded transition-colors"
+                  aria-label="Close menu"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              {navLinks.map((link) => (
+                <div key={link.href} className="relative">
+                  <div className="relative">
+                    <button
+                      onClick={() => {
+                        if (!link.hasDropdown) {
+                          if (link.href.startsWith("#")) {
+                            scrollToSection(link.href);
+                          }
+                          setIsMobileMenuOpen(false);
+                        } else {
+                          setIsServicesHovered(!isServicesHovered);
+                        }
+                      }}
+                      className="w-full text-left nav-link block py-3 px-4 text-white hover:text-gray-300 transition-colors duration-200 flex items-center justify-between"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <span>{link.label}</span>
+                      {link.hasDropdown && (
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            isServicesHovered ? "rotate-180" : ""
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      )}
+                    </button>
+
+                    {/* Mobile Dropdown for Services */}
+                    {link.hasDropdown && isServicesHovered && (
+                      <div className="pl-4">
+                        {services.map((service) => (
+                          <Link
+                            key={service.href}
+                            href={service.href}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              scrollToSection(service.href);
+                              setIsMobileMenuOpen(false);
+                              setIsServicesHovered(false);
+                            }}
+                            className="block py-2 px-4 text-white hover:bg-white hover:text-black transition-colors duration-200"
+                            style={{ textDecoration: 'none' }}
+                          >
+                            {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+
+              {/* Language Switcher - Mobile */}
+              <div className="flex items-center gap-2 py-3 px-4 border-t border-gray-800 mt-2">
+                <button
+                  onClick={() => switchLocale('en')}
+                  className={`p-2 rounded transition-all duration-200 ${
+                    locale === 'en'
+                      ? 'bg-white text-black'
+                      : 'bg-gray-800 text-white'
+                  }`}
+                  title="English"
+                >
+                  <span className="text-sm">🇬🇧</span>
+                </button>
+                <button
+                  onClick={() => switchLocale('fr')}
+                  className={`p-2 rounded transition-all duration-200 ${
+                    locale === 'fr'
+                      ? 'bg-white text-black'
+                      : 'bg-gray-800 text-white'
+                  }`}
+                  title="Français"
+                >
+                  <span className="text-sm">🇫🇷</span>
+                </button>
+              </div>
+
+              {/* CTA Button - Mobile */}
+              <Link
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("#contact");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="coolBeans mx-4 mt-2 px-6 py-3 font-semibold text-center block"
+                style={{ textDecoration: 'none' }}
+              >
+                {t('nav.getQuote')}
+              </Link>
+            </nav>
+          </div>
+          </>
+        )}
       </div>
     </header>
   );

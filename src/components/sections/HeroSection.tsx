@@ -24,14 +24,14 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-32 text-center">
         {/* Primary Headline - White */}
-        <h2 className="text-base md:text-lg lg:text-xl font-light mb-4 text-white">
+        <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-light mb-3 sm:mb-4 text-white">
           {t('primaryHeadline')}
         </h2>
 
         {/* Secondary Headline - Large */}
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 leading-tight">
           <span className="text-white">
             {(() => {
               const text = t('secondaryHeadlineStart');
@@ -58,7 +58,7 @@ export default function HeroSection() {
         </h1>
 
         {/* Descriptive Text */}
-        <p className="text-base md:text-lg text-white mb-6 max-w-4xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-white mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed px-4">
           {t('description').split('**').map((part, index) => 
             index % 2 === 1 ? (
               <strong key={index} className="font-bold">{part}</strong>
@@ -69,7 +69,7 @@ export default function HeroSection() {
         </p>
 
         {/* Trust Indicators */}
-        <div className="text-white mb-8 text-base md:text-lg">
+        <div className="text-white mb-6 sm:mb-8 text-sm sm:text-base md:text-lg px-4">
           {t('trustIndicators').split('**').map((part, index) => 
             index % 2 === 1 ? (
               <strong key={index} className="font-bold underline">{part}</strong>
@@ -86,7 +86,7 @@ export default function HeroSection() {
             e.preventDefault();
             scrollToSection("#contact");
           }}
-          className="coolBeans inline-block px-6 py-3 text-lg font-bold"
+          className="coolBeans inline-block px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold"
           style={{ textDecoration: 'none' }}
         >
           {t('ctaButton')}
@@ -98,11 +98,11 @@ export default function HeroSection() {
         href="https://wa.me/your-number"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 rounded-full p-4 shadow-2xl z-20 transition-all duration-200 transform hover:scale-110"
+        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-green-500 hover:bg-green-600 rounded-full p-3 sm:p-4 shadow-2xl z-20 transition-all duration-200 transform hover:scale-110"
         aria-label="WhatsApp"
       >
         <svg
-          className="w-8 h-8 text-white"
+          className="w-6 h-6 sm:w-8 sm:h-8 text-white"
           fill="currentColor"
           viewBox="0 0 24 24"
         >
