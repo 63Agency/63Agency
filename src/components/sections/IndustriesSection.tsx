@@ -63,12 +63,18 @@ export default function IndustriesSection() {
               className="group relative overflow-hidden rounded-lg border border-white border-opacity-10 hover:border-opacity-30 transition-all duration-300 bg-black bg-opacity-30"
             >
               {/* Image */}
-              <div className="relative h-48 sm:h-64 overflow-hidden">
+              <div className="relative h-48 sm:h-64 overflow-hidden bg-gray-900">
                 <Image
                   src={industry.image}
                   alt={industry.name}
                   fill
                   className="object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-300"
+                  unoptimized
+                  onError={(e) => {
+                    // Hide image on error
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
               </div>

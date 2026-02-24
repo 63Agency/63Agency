@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
+import Ballpit from '@/components/Ballpit';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -15,12 +16,13 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}></div>
+      {/* Ballpit Background Animation */}
+      <div className="absolute inset-0 w-full h-full opacity-30">
+        <Ballpit 
+          followCursor={true} 
+          colors={[0x000000, 0xffffff]}
+          gravity={0}
+        />
       </div>
 
       {/* Content */}
