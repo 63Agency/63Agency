@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/config';
 import Header from "../components/Header";
+import ScrollToTop from "../components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "63 Agency | Turning Marketing Into Predictable Revenue",
@@ -40,6 +41,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="pt-20">{children}</main>
+          <ScrollToTop />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
-import Ballpit from '@/components/Ballpit';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -16,13 +15,12 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Ballpit Background Animation */}
-      <div className="absolute inset-0 w-full h-full opacity-30">
-        <Ballpit 
-          followCursor={true} 
-          colors={[0x000000, 0xffffff]}
-          gravity={0}
-        />
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}></div>
       </div>
 
       {/* Content */}
@@ -100,11 +98,11 @@ export default function HeroSection() {
         href="https://wa.me/your-number"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-green-500 hover:bg-green-600 rounded-full p-3 sm:p-4 shadow-2xl z-20 transition-all duration-200 transform hover:scale-110"
+        className="fixed bottom-20 right-4 sm:bottom-24 sm:right-8 flex h-12 w-12 items-center justify-center bg-green-500 hover:bg-green-600 rounded-full shadow-lg z-20 transition-all duration-200 transform hover:scale-110"
         aria-label="WhatsApp"
       >
         <svg
-          className="w-6 h-6 sm:w-8 sm:h-8 text-white"
+          className="w-6 h-6 text-white"
           fill="currentColor"
           viewBox="0 0 24 24"
         >

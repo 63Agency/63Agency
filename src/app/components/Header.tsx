@@ -3,12 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useTranslations, useLocale } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations, useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+
+const GREEN_ACCENT = "#22c55e";
+const EXPERTISES_IMAGE_SRC = "/images/hero/expertigelogo.png";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isServicesHovered, setIsServicesHovered] = useState(false);
+  const [isExpertisesOpen, setIsExpertisesOpen] = useState(false);
   const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = useTranslations();
@@ -17,21 +20,30 @@ export default function Header() {
   const router = useRouter();
 
   const navLinks = [
-    { href: "/", label: t('nav.about') },
-    { href: "#services", label: t('nav.services'), hasDropdown: true },
-    { href: "#blog", label: t('nav.blog') },
-    { href: "#contact", label: t('nav.contact') },
+    { href: `/${locale}`, label: t("nav.home"), highlight: true },
+    { href: "#services", label: t("nav.expertises"), hasDropdown: true },
+    { href: "#system", label: t("nav.innovations") },
+    { href: "#services", label: t("nav.solutions") },
+    { href: "#contact", label: t("nav.joinUs") },
   ];
 
   const services = [
-    { label: t('services.webDesign'), href: "#web-design" },
-    { label: t('services.moroccoSeo'), href: "#seo-expert" },
-    { label: t('services.graphicDesign'), href: "#graphic-design" },
-    { label: t('services.socialMedia'), href: "#social-media" },
-    { label: t('services.advertising'), href: "#advertising" },
-    { label: t('services.copywriting'), href: "#copywriting" },
-    { label: t('services.photography'), href: "#photography" },
-    { label: t('services.b2bSeo'), href: "#b2b-seo" },
+    { label: t("services.webDesign"), href: "#services" },
+    { label: t("services.moroccoSeo"), href: "#services" },
+    { label: t("services.graphicDesign"), href: "#services" },
+    { label: t("services.socialMedia"), href: "#services" },
+    { label: t("services.advertising"), href: "#services" },
+    { label: t("services.copywriting"), href: "#services" },
+    { label: t("services.photography"), href: "#services" },
+    { label: t("services.b2bSeo"), href: "#services" },
+  ];
+
+  const expertisesT = useTranslations("expertisesMenu");
+  const expertisesColumns = [
+    { title: expertisesT("col1Title"), links: [expertisesT("col1_1"), expertisesT("col1_2"), expertisesT("col1_3"), expertisesT("col1_4")] },
+    { title: expertisesT("col2Title"), links: [expertisesT("col2_1"), expertisesT("col2_2"), expertisesT("col2_3"), expertisesT("col2_4")] },
+    { title: expertisesT("col3Title"), links: [expertisesT("col3_1"), expertisesT("col3_2"), expertisesT("col3_3"), expertisesT("col3_4")] },
+    { title: expertisesT("col4Title"), links: [expertisesT("col4_1"), expertisesT("col4_2"), expertisesT("col4_3"), expertisesT("col4_4")] },
   ];
 
   const switchLocale = (newLocale: string) => {
@@ -40,49 +52,56 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.replace("#", ""));
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    const id = sectionId.replace("#", "");
+    const element = document.getElementById(id);
+    if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith("#")) {
+      scrollToSection(href);
     }
+    setIsMobileMenuOpen(false);
+    setIsExpertisesOpen(false);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
-          ? "bg-black bg-opacity-95 backdrop-blur-sm"
-          : "bg-black"
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 relative ${
+        isScrolled ? "bg-white shadow-sm" : "bg-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-        <div className="flex items-center justify-between relative">
-          {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity z-50">
-            <Image
-              src="/images/hero/image.png"
-              alt="63"
-              width={60}
-              height={60}
-              className="object-contain w-10 h-10 sm:w-[60px] sm:h-[60px]"
-            />
-            <span className="text-lg sm:text-2xl font-light text-white tracking-[0.2em] uppercase italic">
-              AGENCY
-            </span>
-          </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Left: Logo + ISO badge */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Link
+              href={`/${locale}`}
+              className="flex items-center gap-2 hover:opacity-85 transition-opacity"
+            >
+              <Image
+                src="/images/logo/6.jpg"
+                alt="63 Agency"
+                width={44}
+                height={44}
+                className="object-contain w-9 h-9 sm:w-11 sm:h-11 rounded"
+              />
+              <span className="text-lg sm:text-xl font-semibold text-black tracking-tight hidden sm:inline">
+                63 AGENCY
+              </span>
+            </Link>
+          </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden z-50 text-white p-2"
+            className="lg:hidden p-2 text-black"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
@@ -96,11 +115,12 @@ export default function Header() {
             )}
           </button>
 
-          {/* Navigation Links - Desktop (Hidden on mobile) */}
-          <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+          {/* Center: Nav links - Desktop */}
+          <nav className="hidden lg:flex items-center gap-0">
+            <div className="h-6 w-px bg-gray-200 mx-2" />
             {navLinks.map((link) => (
               <div
-                key={link.href}
+                key={link.label}
                 className="relative"
                 onMouseEnter={() => {
                   if (link.hasDropdown) {
@@ -108,15 +128,13 @@ export default function Header() {
                       clearTimeout(closeTimeout);
                       setCloseTimeout(null);
                     }
-                    setIsServicesHovered(true);
+                    setIsExpertisesOpen(true);
                   }
                 }}
                 onMouseLeave={() => {
                   if (link.hasDropdown) {
-                    const timeout = setTimeout(() => {
-                      setIsServicesHovered(false);
-                    }, 300);
-                    setCloseTimeout(timeout);
+                    const timeoutId = setTimeout(() => setIsExpertisesOpen(false), 200);
+                    setCloseTimeout(timeoutId);
                   }
                 }}
               >
@@ -125,256 +143,212 @@ export default function Header() {
                   onClick={(e) => {
                     if (link.href.startsWith("#")) {
                       e.preventDefault();
-                      scrollToSection(link.href);
-                    }
-                    if (!link.hasDropdown) {
-                      // Only close if not a dropdown link
-                      setIsServicesHovered(false);
+                      handleNavClick(link.href);
                     }
                   }}
-                  className={`nav-link font-medium transition-colors duration-200 flex items-center gap-1 ${
-                    link.hasDropdown && isServicesHovered
-                      ? "text-white"
-                      : "text-white hover:text-gray-300"
-                  }`}
-                  style={{ textDecoration: 'none' }}
+                  className="flex items-center gap-1 px-4 py-2 font-medium text-sm transition-colors hover:opacity-80"
+                  style={{
+                    color: link.highlight ? GREEN_ACCENT : "black",
+                    textDecoration: "none",
+                  }}
                 >
                   {link.label}
                   {link.hasDropdown && (
                     <svg
-                      className={`w-3 h-3 transition-transform duration-200 ${
-                        isServicesHovered ? "text-white" : ""
-                      }`}
+                      className={`w-3.5 h-3.5 text-black transition-transform ${isExpertisesOpen ? "rotate-180" : ""}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   )}
                 </Link>
-
-                {/* Dropdown Menu for Services */}
-                {link.hasDropdown && isServicesHovered && (
-                  <div 
-                    className="absolute top-full left-0 mt-2 w-56 bg-black bg-opacity-95 backdrop-blur-md py-2 z-50"
-                    onMouseEnter={() => {
-                      if (closeTimeout) {
-                        clearTimeout(closeTimeout);
-                        setCloseTimeout(null);
-                      }
-                      setIsServicesHovered(true);
-                    }}
-                    onMouseLeave={() => {
-                      const timeout = setTimeout(() => {
-                        setIsServicesHovered(false);
-                      }, 300);
-                      setCloseTimeout(timeout);
-                    }}
-                  >
-                    {services.map((service) => (
-                      <Link
-                        key={service.href}
-                        href={service.href}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          scrollToSection(service.href);
-                          // Keep dropdown open after click
-                        }}
-                        onMouseEnter={() => {
-                          if (closeTimeout) {
-                            clearTimeout(closeTimeout);
-                            setCloseTimeout(null);
-                          }
-                        }}
-                        className="block px-4 py-2.5 text-white hover:bg-white hover:text-black transition-colors duration-200"
-                        style={{ textDecoration: 'none' }}
-                      >
-                        {service.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
+            <div className="h-6 w-px bg-gray-200 mx-2" />
           </nav>
 
-          {/* Language Switcher & CTA Button - Desktop */}
-          <div className="hidden lg:flex items-center gap-4">
-            {/* Language Switcher with Flags */}
+          {/* Right: Lang + CTA - Desktop */}
+          <div className="hidden lg:flex items-center gap-3">
             <div className="flex items-center gap-1">
               <button
-                onClick={() => switchLocale('en')}
-                className={`p-1.5 rounded transition-all duration-200 flex items-center justify-center ${
-                  locale === 'en'
-                    ? 'bg-white text-black'
-                    : 'hover:bg-gray-800 opacity-70 hover:opacity-100'
+                onClick={() => switchLocale("en")}
+                className={`p-1.5 rounded text-sm transition-colors ${
+                  locale === "en" ? "bg-black text-white" : "text-black hover:bg-gray-100"
                 }`}
                 title="English"
               >
-                <span className="text-sm">🇬🇧</span>
+                EN
               </button>
               <button
-                onClick={() => switchLocale('fr')}
-                className={`p-1.5 rounded transition-all duration-200 flex items-center justify-center ${
-                  locale === 'fr'
-                    ? 'bg-white text-black'
-                    : 'hover:bg-gray-800 opacity-70 hover:opacity-100'
+                onClick={() => switchLocale("fr")}
+                className={`p-1.5 rounded text-sm transition-colors ${
+                  locale === "fr" ? "bg-black text-white" : "text-black hover:bg-gray-100"
                 }`}
                 title="Français"
               >
-                <span className="text-sm">🇫🇷</span>
+                FR
               </button>
             </div>
-
-            {/* CTA Button */}
             <Link
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection("#contact");
-                setIsMobileMenuOpen(false);
               }}
-              className="coolBeans px-6 py-2.5 font-semibold"
-              style={{ textDecoration: 'none' }}
+              className="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-colors"
+              style={{ textDecoration: "none" }}
             >
-              {t('nav.getQuote')}
+              {t("nav.contactButton")}
             </Link>
           </div>
         </div>
 
-        {/* Mobile Menu Sidebar */}
-        {isMobileMenuOpen && (
-          <>
-            {/* Overlay */}
-            <div
-              className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            {/* Sidebar */}
-            <div className="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black bg-opacity-95 backdrop-blur-sm border-l border-gray-800 z-50 transform transition-transform duration-300 ease-in-out">
-              <nav className="flex flex-col py-6 px-4 h-full overflow-y-auto">
-                {/* Close Button */}
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="self-end text-white p-2 mb-4 hover:bg-gray-800 rounded transition-colors"
-                  aria-label="Close menu"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              {navLinks.map((link) => (
-                <div key={link.href} className="relative">
-                  <div className="relative">
-                    <button
-                      onClick={() => {
-                        if (!link.hasDropdown) {
-                          if (link.href.startsWith("#")) {
-                            scrollToSection(link.href);
-                          }
-                          setIsMobileMenuOpen(false);
-                        } else {
-                          setIsServicesHovered(!isServicesHovered);
-                        }
-                      }}
-                      className="w-full text-left nav-link block py-3 px-4 text-white hover:text-gray-300 transition-colors duration-200 flex items-center justify-between"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <span>{link.label}</span>
-                      {link.hasDropdown && (
-                        <svg
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            isServicesHovered ? "rotate-180" : ""
-                          }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      )}
-                    </button>
+        {/* Bottom border */}
+        <div className="absolute left-0 right-0 bottom-0 h-px bg-gray-200" />
+      </div>
 
-                    {/* Mobile Dropdown for Services */}
-                    {link.hasDropdown && isServicesHovered && (
-                      <div className="pl-4">
-                        {services.map((service) => (
+      {/* Expertises mega menu - desktop */}
+      {isExpertisesOpen && (
+        <div
+          className="absolute left-0 right-0 top-full bg-white border-t border-gray-200 shadow-xl z-40 hidden lg:block"
+          onMouseEnter={() => {
+            if (closeTimeout) {
+              clearTimeout(closeTimeout);
+              setCloseTimeout(null);
+            }
+            setIsExpertisesOpen(true);
+          }}
+          onMouseLeave={() => setCloseTimeout(setTimeout(() => setIsExpertisesOpen(false), 150))}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+            <div className="flex gap-8">
+              {/* Left: Image + caption - expertigelogo.png (63 AGENCY) */}
+              <div className="w-[280px] shrink-0">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  {/* Native img so the logo loads reliably in the dropdown */}
+                  <img
+                    src={EXPERTISES_IMAGE_SRC}
+                    alt="63 Agency"
+                    className="absolute inset-0 h-full w-full object-contain object-center"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              {/* Right: 4 columns */}
+              <div className="grid grid-cols-4 gap-6 flex-1 min-w-0">
+                {expertisesColumns.map((col) => (
+                  <div key={col.title}>
+                    <h4 className="font-bold text-black text-sm mb-3">{col.title}</h4>
+                    <ul className="space-y-2">
+                      {col.links.map((label) => (
+                        <li key={label}>
                           <Link
-                            key={service.href}
-                            href={service.href}
+                            href="#services"
                             onClick={(e) => {
                               e.preventDefault();
-                              scrollToSection(service.href);
-                              setIsMobileMenuOpen(false);
-                              setIsServicesHovered(false);
+                              handleNavClick("#services");
                             }}
-                            className="block py-2 px-4 text-white hover:bg-white hover:text-black transition-colors duration-200"
-                            style={{ textDecoration: 'none' }}
+                            className="text-sm text-gray-700 hover:text-black transition-colors"
+                            style={{ textDecoration: "none" }}
                           >
-                            {service.label}
+                            {label}
                           </Link>
-                        ))}
-                      </div>
-                    )}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <>
+          <div
+            className="lg:hidden fixed inset-0 bg-black/20 z-40"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="lg:hidden fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-white border-l border-gray-200 shadow-xl z-50">
+            <nav className="flex flex-col py-6 px-4">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="self-end p-2 text-black hover:bg-gray-100 rounded"
+                aria-label="Close"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              {navLinks.map((link) => (
+                <div key={link.label}>
+                  <Link
+                    href={link.href}
+                    onClick={(e) => {
+                      if (link.href.startsWith("#")) {
+                        e.preventDefault();
+                        handleNavClick(link.href);
+                      }
+                    }}
+                    className="flex items-center gap-2 py-3 px-4 font-medium text-black hover:bg-gray-100 rounded-lg"
+                    style={{
+                      color: link.highlight ? GREEN_ACCENT : undefined,
+                      textDecoration: "none",
+                    }}
+                  >
+                    {link.label}
+                    </Link>
+                  {link.hasDropdown &&
+                    services.map((s) => (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavClick(s.href);
+                        }}
+                        className="block py-2 pl-8 pr-4 text-sm text-black hover:bg-gray-50"
+                        style={{ textDecoration: "none" }}
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
                 </div>
               ))}
-
-              {/* Language Switcher - Mobile */}
-              <div className="flex items-center gap-2 py-3 px-4 border-t border-gray-800 mt-2">
+              <div className="border-t border-gray-200 mt-4 pt-4 flex gap-2">
                 <button
-                  onClick={() => switchLocale('en')}
-                  className={`p-2 rounded transition-all duration-200 ${
-                    locale === 'en'
-                      ? 'bg-white text-black'
-                      : 'bg-gray-800 text-white'
-                  }`}
-                  title="English"
+                  onClick={() => switchLocale("en")}
+                  className={`flex-1 py-2 rounded text-sm font-medium ${locale === "en" ? "bg-black text-white" : "bg-gray-100 text-black"}`}
                 >
-                  <span className="text-sm">🇬🇧</span>
+                  EN
                 </button>
                 <button
-                  onClick={() => switchLocale('fr')}
-                  className={`p-2 rounded transition-all duration-200 ${
-                    locale === 'fr'
-                      ? 'bg-white text-black'
-                      : 'bg-gray-800 text-white'
-                  }`}
-                  title="Français"
+                  onClick={() => switchLocale("fr")}
+                  className={`flex-1 py-2 rounded text-sm font-medium ${locale === "fr" ? "bg-black text-white" : "bg-gray-100 text-black"}`}
                 >
-                  <span className="text-sm">🇫🇷</span>
+                  FR
                 </button>
               </div>
-
-              {/* CTA Button - Mobile */}
               <Link
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("#contact");
-                  setIsMobileMenuOpen(false);
+                  handleNavClick("#contact");
                 }}
-                className="coolBeans mx-4 mt-2 px-6 py-3 font-semibold text-center block"
-                style={{ textDecoration: 'none' }}
+                className="mt-4 bg-black text-white py-3 rounded-lg font-semibold text-center block"
+                style={{ textDecoration: "none" }}
               >
-                {t('nav.getQuote')}
+                {t("nav.contactButton")}
               </Link>
             </nav>
           </div>
-          </>
-        )}
-      </div>
+        </>
+      )}
     </header>
   );
 }
