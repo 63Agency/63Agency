@@ -192,12 +192,8 @@ export default function Header() {
               </button>
             </div>
             <Link
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#contact");
-              }}
-              className="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-colors"
+              href={`/${locale}/contact`}
+              className="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-colors shadow-sm hover:shadow-md"
               style={{ textDecoration: "none" }}
             >
               {t("nav.contactButton")}
@@ -335,13 +331,10 @@ export default function Header() {
                 </button>
               </div>
               <Link
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick("#contact");
-                }}
-                className="mt-4 bg-black text-white py-3 rounded-lg font-semibold text-center block"
+                href={`/${locale}/contact`}
+                className="mt-4 bg-black text-white py-3 rounded-lg font-semibold text-center block shadow-sm hover:bg-gray-800 transition-colors"
                 style={{ textDecoration: "none" }}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t("nav.contactButton")}
               </Link>
