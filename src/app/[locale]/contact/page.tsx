@@ -122,7 +122,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full sm:w-auto min-w-[200px] px-8 py-4 rounded-xl bg-black text-white font-semibold hover:bg-gray-800 disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+                className="coolBeans w-full sm:w-auto min-w-[200px] px-8 py-4 bg-black text-white font-semibold border-2 border-white disabled:opacity-60 disabled:cursor-not-allowed disabled:pointer-events-none"
               >
                 {status === "sending" ? t("sending") : t("sendMessage")}
               </button>

@@ -7,7 +7,7 @@
     "getQuote": "GET A QUOTE",
     "home": "Home",
     "expertises": "Expertises",
-    "innovations": "Innovations",
+    "innovations": "63 Agency",
     "solutions": "Our solutions",
     "joinUs": "Join us",
     "contactButton": "Contact us",
@@ -59,23 +59,41 @@
     "titleLine2": "Trust Us"
   },
   "system": {
+    "tagline": "Systems that perform.",
     "title": "Our System",
+    "intro": "We align Content, Paid Media, Funnels and Automation in a 360° approach, to generate qualified leads and predictable revenue.",
     "subtitle": "We build systems, not campaigns. Here's how we turn your business into a lead generation engine.",
     "step1": {
       "title": "Content That Builds Authority",
-      "description": "Performance-driven content that positions you as the expert and attracts your ideal clients."
+      "description": "Content-driven foundations to position you as the expert and attract your ideal clients.",
+      "item1": "Content strategy",
+      "item2": "Articles & SEO",
+      "item3": "Video & thought leadership",
+      "item4": "Editorial production"
     },
     "step2": {
-      "title": "Paid Ads That Drive Targeted Traffic",
-      "description": "Strategic advertising on Meta, Google, and LinkedIn that brings qualified prospects to your funnel."
+      "title": "Paid Media & Targeted Traffic",
+      "description": "Data-driven campaigns that bring qualified prospects into your funnel.",
+      "item1": "Meta & Instagram",
+      "item2": "Google Ads",
+      "item3": "LinkedIn Ads",
+      "item4": "Remarketing & programmatic"
     },
     "step3": {
-      "title": "Funnel That Qualifies Serious Leads",
-      "description": "Smart qualification systems that filter out tire-kickers and identify ready-to-buy prospects."
+      "title": "Funnel That Qualifies Leads",
+      "description": "Journeys that filter tire-kickers and identify ready-to-buy prospects.",
+      "item1": "High-converting landing pages",
+      "item2": "Qualifying forms",
+      "item3": "Lead scoring",
+      "item4": "CRM integration"
     },
     "step4": {
-      "title": "CRM & Automation That Increases Closing Rate",
-      "description": "Automated follow-up systems that nurture leads and convert them into customers while you sleep."
+      "title": "CRM & Automation",
+      "description": "Automated follow-up that nurtures leads and converts while you sleep.",
+      "item1": "Automated follow-up",
+      "item2": "Email sequences",
+      "item3": "Chatbot & WhatsApp",
+      "item4": "Reporting & ROI"
     },
     "bottomMessage": "We build systems, not campaigns."
   },
@@ -198,6 +216,44 @@
     "phone": "+212 606-676710",
     "linkedInLabel": "LinkedIn profile"
   },
+  "aboutIntro": {
+    "whoWeAreTitle": "Who are we?",
+    "whoWeAreBody": "Founded in 2013, 63 Agency stands out as more than a typical digital marketing agency. Based in Casablanca, Morocco, we are a leading full service digital marketing agency. We are committed to personalized and cutting-edge solutions and are renowned experts in the field. Our services are trusted by over 150 companies across four continents, positioning us as one of the top 10 full service digital marketing agencies to watch in 2025 / 2026.",
+    "visionTitle": "Vision",
+    "visionBody": "To leverage technology's potential for businesses, transforming their approach to digital marketing, whether it's through advanced social media tactics or inventive strategies, as a leading full service digital marketing agency.",
+    "missionTitle": "Mission",
+    "missionBody": "In the face of the marketing industry's constantly evolving landscape, the focus of our digital marketing experts at our full service digital marketing agency remains steadfast. Our dedicated marketing specialists are unwavering in their commitment to deliver top-notch quality, consistently on time.",
+    "tagline": "63 Agency full service digital marketing agency",
+    "taglineItalic": "Digital Marketing Experts"
+  },
+  "shapeFuture": {
+    "headline": "Shape your future with our full service digital marketing agency",
+    "subtitle": "63 Agency : Where Digital Marketing Expertise Leads the Way!",
+    "subtitleUnderline": "Digital Marketing Expertise",
+    "subtitleItalic": "Leads the Way!",
+    "paragraph": "63 Agency is the preferred full service digital marketing agency for B2B and B2C in 2025 / 2026. We deliver innovative solutions and high-performing advertising campaigns, aligned with the latest trends.",
+    "col1Title": "We stand out",
+    "col1Body": "As a full service digital marketing agency, we offer more than just promises; our strategies are backed by concrete results that set us apart.",
+    "col2Title": "Our key strength",
+    "col2Body": "As a full service digital marketing agency with global experience, we excel at bringing visions to life. Renowned for our adeptness in digital marketing agency services, we constantly innovate and lead in the marketing sector.",
+    "col3Title": "What matters most",
+    "col3Body": "Sustainably and effectively boosting your revenue. As a full service digital marketing agency, we trust in the power of content marketing, email marketing, and influencer strategies to deliver results."
+  },
+  "faq": {
+    "title": "FAQs",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "q1": "What is a digital agency?",
+    "a1": "A digital agency designs and deploys digital marketing strategies (SEO, social media, advertising, content) to grow your online visibility and revenue.",
+    "q2": "What digital transformation services do you offer as a digital marketing agency?",
+    "a2": "We offer a 360° approach: brand strategy, content, paid media, lead generation, customer experience and automation (CRM, chatbot, AI) for predictable growth.",
+    "q3": "What is digital marketing?",
+    "a3": "Digital marketing covers all online promotion and acquisition activities (websites, social media, advertising, email, SEO) to attract and convert prospects into customers.",
+    "q4": "How do you generate qualified leads?",
+    "a4": "We build systems (content, targeted campaigns, funnels, qualification) that attract qualified prospects and turn them into sales opportunities.",
+    "q5": "What is your process for a new client?",
+    "a5": "Audit, goal setting, tailored strategy, deployment and continuous optimization, with regular reporting to measure ROI."
+  },
   "cta": {
     "title": "Ready to Generate Predictable Revenue?",
     "description": "Book a strategy call and discover how we can turn your business into a lead generation engine.",
@@ -248,6 +304,17 @@
     "links": "Links",
     "contact": "Contact",
     "followUs": "Follow us",
+    "followUsTitle": "FOLLOW US",
+    "socialShort": "Ins. / In. / Fb. / YT.",
+    "addressUaeTitle": "United Arab Emirates - Dubai",
+    "addressUaeValue": "Building A1, Digital Park, Dubai Silicon Oasis, Dubai.",
+    "addressMoroccoTitle": "Morocco - Casablanca",
+    "addressMoroccoValue": "179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250.",
+    "resources": "Resources",
+    "resource1": "Academy",
+    "resource2": "White papers",
+    "resource3": "Blog",
+    "resource4": "Our innovations",
     "copyright": "© {year} 63 Agency. All rights reserved.",
     "phone": "+212 606-676710",
     "email": "contact@63agency.com"

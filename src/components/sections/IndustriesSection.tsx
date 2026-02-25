@@ -35,11 +35,11 @@ export default function IndustriesSection() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-32 bg-black overflow-hidden">
+    <section className="relative py-20 sm:py-32 bg-white overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(0,0,0,0.06) 1px, transparent 0)`,
           backgroundSize: '40px 40px'
         }}></div>
       </div>
@@ -47,10 +47,10 @@ export default function IndustriesSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4">
             {t('title')}
           </h2>
-          <p className="text-lg sm:text-xl text-white opacity-80 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             {t('subtitle')}
           </p>
         </div>
@@ -60,23 +60,22 @@ export default function IndustriesSection() {
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-lg border border-white border-opacity-10 hover:border-opacity-30 transition-all duration-300 bg-black bg-opacity-30"
+              className="group relative overflow-hidden rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
             >
               {/* Image */}
-              <div className="relative h-48 sm:h-64 overflow-hidden bg-gray-900">
+              <div className="relative h-48 sm:h-64 overflow-hidden bg-gray-100">
                 <Image
                   src={industry.image}
                   alt={industry.name}
                   fill
-                  className="object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-300"
+                  className="object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
                   unoptimized
                   onError={(e) => {
-                    // Hide image on error
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               </div>
 
               {/* Content */}
@@ -84,7 +83,7 @@ export default function IndustriesSection() {
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                   {industry.name}
                 </h3>
-                <p className="text-sm sm:text-base text-white opacity-80">
+                <p className="text-sm sm:text-base text-white/90">
                   {industry.description}
                 </p>
               </div>

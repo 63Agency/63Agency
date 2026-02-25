@@ -169,7 +169,7 @@ export default function ServicesSection() {
             <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">{t("ctaTitle")}</p>
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-colors"
+              className="coolBeans inline-flex items-center justify-center px-8 py-4 bg-black text-white font-semibold border-2 border-white"
             >
               {t("ctaButton")}
             </Link>

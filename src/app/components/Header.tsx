@@ -21,11 +21,15 @@ export default function Header() {
 
   const navLinks = [
     { href: `/${locale}`, label: t("nav.home"), highlight: true },
+    { href: `/${locale}/about`, label: t("nav.innovations") },
     { href: "#services", label: t("nav.expertises"), hasDropdown: true },
-    { href: "#system", label: t("nav.innovations") },
     { href: "#services", label: t("nav.solutions") },
     { href: "#contact", label: t("nav.joinUs") },
   ];
+
+  const getNavHref = (href: string) =>
+    href.startsWith("#") ? `/${locale}${href}` : href;
+  const isOnHome = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const services = [
     { label: t("services.webDesign"), href: "#services" },
@@ -83,18 +87,15 @@ export default function Header() {
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href={`/${locale}`}
-              className="flex items-center gap-2 hover:opacity-85 transition-opacity"
+              className="flex items-center hover:opacity-85 transition-opacity"
             >
               <Image
-                src="/images/logo/6.jpg"
+                src="/images/hero/63agency.png"
                 alt="63 Agency"
-                width={44}
+                width={140}
                 height={44}
-                className="object-contain w-9 h-9 sm:w-11 sm:h-11 rounded"
+                className="object-contain h-9 sm:h-11 w-auto"
               />
-              <span className="text-lg sm:text-xl font-semibold text-black tracking-tight hidden sm:inline">
-                63 AGENCY
-              </span>
             </Link>
           </div>
 
@@ -139,11 +140,13 @@ export default function Header() {
                 }}
               >
                 <Link
-                  href={link.href}
+                  href={getNavHref(link.href)}
                   onClick={(e) => {
                     if (link.href.startsWith("#")) {
-                      e.preventDefault();
-                      handleNavClick(link.href);
+                      if (isOnHome) {
+                        e.preventDefault();
+                        handleNavClick(link.href);
+                      }
                     }
                   }}
                   className="flex items-center gap-1 px-4 py-2 font-medium text-sm transition-colors hover:opacity-80"
@@ -193,7 +196,7 @@ export default function Header() {
             </div>
             <Link
               href={`/${locale}/contact`}
-              className="bg-black text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-colors shadow-sm hover:shadow-md"
+              className="coolBeans bg-black text-white px-5 py-2.5 font-semibold text-sm border-2 border-white inline-block"
               style={{ textDecoration: "none" }}
             >
               {t("nav.contactButton")}
@@ -242,10 +245,12 @@ export default function Header() {
                       {col.links.map((label) => (
                         <li key={label}>
                           <Link
-                            href="#services"
+                            href={getNavHref("#services")}
                             onClick={(e) => {
-                              e.preventDefault();
-                              handleNavClick("#services");
+                              if (isOnHome) {
+                                e.preventDefault();
+                                handleNavClick("#services");
+                              }
                             }}
                             className="text-sm text-gray-700 hover:text-black transition-colors"
                             style={{ textDecoration: "none" }}
@@ -284,9 +289,9 @@ export default function Header() {
               {navLinks.map((link) => (
                 <div key={link.label}>
                   <Link
-                    href={link.href}
+                    href={getNavHref(link.href)}
                     onClick={(e) => {
-                      if (link.href.startsWith("#")) {
+                      if (link.href.startsWith("#") && isOnHome) {
                         e.preventDefault();
                         handleNavClick(link.href);
                       }
@@ -303,10 +308,12 @@ export default function Header() {
                     services.map((s) => (
                       <Link
                         key={s.href}
-                        href={s.href}
+                        href={getNavHref(s.href)}
                         onClick={(e) => {
-                          e.preventDefault();
-                          handleNavClick(s.href);
+                          if (isOnHome) {
+                            e.preventDefault();
+                            handleNavClick(s.href);
+                          }
                         }}
                         className="block py-2 pl-8 pr-4 text-sm text-black hover:bg-gray-50"
                         style={{ textDecoration: "none" }}
@@ -332,7 +339,7 @@ export default function Header() {
               </div>
               <Link
                 href={`/${locale}/contact`}
-                className="mt-4 bg-black text-white py-3 rounded-lg font-semibold text-center block shadow-sm hover:bg-gray-800 transition-colors"
+                className="coolBeans mt-4 bg-black text-white py-3 font-semibold text-center block border-2 border-white"
                 style={{ textDecoration: "none" }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >

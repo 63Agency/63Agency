@@ -38,6 +38,14 @@ export default async function LocaleLayout({
   
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+      </head>
       <body className="bg-black text-white m-0 p-0">
         <NextIntlClientProvider messages={messages}>
           <Header />

@@ -7,7 +7,7 @@
     "getQuote": "OBTENIR UN DEVIS",
     "home": "Accueil",
     "expertises": "Expertises",
-    "innovations": "Innovations",
+    "innovations": "63 Agency",
     "solutions": "Nos solutions",
     "joinUs": "Rejoignez-nous",
     "contactButton": "Contactez-nous",
@@ -20,7 +20,7 @@
     "col1_2": "Brand Content",
     "col1_3": "Campagnes Créatives 360°",
     "col1_4": "Design & Production Vidéo",
-    "col2Title": "Social Media",
+    "col2Title": "Réseaux sociaux",
     "col2_1": "Contenu Social & Vidéos Courtes",
     "col2_2": "Community Management",
     "col2_3": "Veille & E-réputation",
@@ -59,23 +59,41 @@
     "titleLine2": "confiance"
   },
   "system": {
+    "tagline": "Des systèmes pour mieux performer.",
     "title": "Notre Système",
+    "intro": "Nous alignons Contenu, Médias payants, Entonnoirs et Automatisation dans une approche 360°, pour générer des leads qualifiés et un revenu prévisible.",
     "subtitle": "Nous construisons des systèmes, pas des campagnes. Voici comment nous transformons votre entreprise en machine à générer des leads.",
     "step1": {
       "title": "Contenu Qui Construit l'Autorité",
-      "description": "Contenu axé sur la performance qui vous positionne comme expert et attire vos clients idéaux."
+      "description": "Des fondations content-driven pour vous positionner comme expert et attirer vos clients idéaux.",
+      "item1": "Stratégie de contenu",
+      "item2": "Articles & SEO",
+      "item3": "Vidéos & thought leadership",
+      "item4": "Production éditoriale"
     },
     "step2": {
-      "title": "Publicités Payantes Qui Génèrent du Trafic Ciblé",
-      "description": "Publicité stratégique sur Meta, Google et LinkedIn qui amène des prospects qualifiés vers votre entonnoir."
+      "title": "Médias Payants & Trafic Ciblé",
+      "description": "Des campagnes data-driven qui amènent des prospects qualifiés vers votre entonnoir.",
+      "item1": "Meta & Instagram",
+      "item2": "Google Ads",
+      "item3": "LinkedIn Ads",
+      "item4": "Remarketing & programmatique"
     },
     "step3": {
-      "title": "Entonnoir Qui Qualifie les Leads Sérieux",
-      "description": "Systèmes de qualification intelligents qui filtrent les curieux et identifient les prospects prêts à acheter."
+      "title": "Entonnoir Qui Qualifie les Leads",
+      "description": "Des parcours qui filtrent les curieux et identifient les prospects prêts à acheter.",
+      "item1": "Landing pages performantes",
+      "item2": "Formulaires qualifiants",
+      "item3": "Lead scoring",
+      "item4": "Intégration CRM"
     },
     "step4": {
-      "title": "CRM & Automatisation Qui Augmente le Taux de Conversion",
-      "description": "Systèmes de suivi automatisés qui nourrissent les leads et les convertissent en clients pendant que vous dormez."
+      "title": "CRM & Automatisation",
+      "description": "Des suivis automatisés qui nourrissent les leads et convertissent pendant que vous dormez.",
+      "item1": "Suivi automatisé",
+      "item2": "Séquences email",
+      "item3": "Chatbot & WhatsApp",
+      "item4": "Reporting & ROI"
     },
     "bottomMessage": "Nous construisons des systèmes, pas des campagnes."
   },
@@ -198,6 +216,44 @@
     "phone": "+212 606-676710",
     "linkedInLabel": "Profil LinkedIn"
   },
+  "aboutIntro": {
+    "whoWeAreTitle": "Qui sommes-nous ?",
+    "whoWeAreBody": "Fondée en 2013, 63 Agency se démarque comme bien plus qu'une agence de marketing digital classique. Basée à Casablanca, au Maroc, nous sommes une agence de marketing digital full service de premier plan. Nous nous engageons pour des solutions personnalisées et à la pointe, et sommes reconnus comme experts dans le domaine. Nos services sont plébiscités par plus de 150 entreprises sur quatre continents, ce qui nous place parmi les 10 agences de marketing digital full service à suivre en 2025 / 2026.",
+    "visionTitle": "Vision",
+    "visionBody": "Exploiter le potentiel de la technologie au service des entreprises, en transformant leur approche du marketing digital, que ce soit par des tactiques avancées sur les réseaux sociaux ou des stratégies inventives, en tant qu'agence de marketing digital full service leader.",
+    "missionTitle": "Mission",
+    "missionBody": "Face à un paysage du marketing en constante évolution, nos experts en marketing digital restent focalisés. Nos spécialistes dédiés s'engagent à livrer une qualité irréprochable, toujours dans les délais.",
+    "tagline": "63 Agency, agence de marketing digital full service",
+    "taglineItalic": "Experts en marketing digital"
+  },
+  "shapeFuture": {
+    "headline": "Donnez forme à votre avenir avec notre agence de marketing digital full service",
+    "subtitle": "63 Agency : là où l'expertise en marketing digital montre la voie !",
+    "subtitleUnderline": "l'expertise en marketing digital",
+    "subtitleItalic": "montre la voie !",
+    "paragraph": "63 Agency est l'agence de marketing digital full service de référence pour le B2B et le B2C en 2025 / 2026. Nous proposons des solutions innovantes et des campagnes publicitaires performantes, en phase avec les dernières tendances.",
+    "col1Title": "Nous nous démarquons",
+    "col1Body": "En tant qu'agence de marketing digital full service, nous offrons bien plus que des promesses : nos stratégies sont soutenues par des résultats concrets qui nous distinguent.",
+    "col2Title": "Notre force",
+    "col2Body": "Avec une expérience globale, nous excellons à donner vie aux visions. Reconnus pour notre maîtrise des services d'agence de marketing digital, nous innovons et menons dans le secteur.",
+    "col3Title": "Ce qui compte le plus",
+    "col3Body": "Augmenter vos revenus de façon durable et efficace. Nous croyons en la force du content marketing, de l'email marketing et des stratégies d'influence pour livrer des résultats."
+  },
+  "faq": {
+    "title": "FAQS",
+    "showMore": "Voir plus",
+    "showLess": "Voir moins",
+    "q1": "Qu'est-ce qu'une agence digitale ?",
+    "a1": "Une agence digitale conçoit et déploie des stratégies de marketing digital (SEO, réseaux sociaux, publicité, contenu) pour développer votre visibilité et vos revenus en ligne.",
+    "q2": "Quels services de transformation digitale proposez-vous en tant qu'agence de marketing ?",
+    "a2": "Nous proposons une approche 360° : stratégie de marque, contenu, médias payants, génération de leads, expérience client et automatisation (CRM, chatbot, IA) pour une croissance prévisible.",
+    "q3": "Qu'est-ce que le marketing digital ?",
+    "a3": "Le marketing digital regroupe toutes les actions de promotion et d'acquisition réalisées en ligne (sites, réseaux sociaux, publicité, email, SEO) pour attirer et convertir des prospects en clients.",
+    "q4": "Comment générez-vous des leads qualifiés ?",
+    "a4": "Nous mettons en place des systèmes (contenu, campagnes ciblées, entonnoirs, qualification) qui attirent des prospects qualifiés et les transforment en opportunités commerciales.",
+    "q5": "Quel est votre processus pour un nouveau client ?",
+    "a5": "Audit, définition d'objectifs, stratégie sur mesure, déploiement et optimisation continue, avec reporting régulier pour mesurer le ROI."
+  },
   "cta": {
     "title": "Prêt à Générer des Revenus Prévisibles ?",
     "description": "Réservez un appel stratégique et découvrez comment nous pouvons transformer votre entreprise en machine à générer des leads.",
@@ -248,6 +304,17 @@
     "links": "Liens",
     "contact": "Contact",
     "followUs": "Suivez-nous",
+    "followUsTitle": "NOUS SUIVRE",
+    "socialShort": "Ins. / In. / Fb. / YT.",
+    "addressUaeTitle": "Émirats Arabes Unis - Dubaï",
+    "addressUaeValue": "Building A1, Digital Park, Dubai Silicon Oasis, Dubai.",
+    "addressMoroccoTitle": "Maroc - Casablanca",
+    "addressMoroccoValue": "179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250.",
+    "resources": "Ressources",
+    "resource1": "Academy",
+    "resource2": "Livres blancs",
+    "resource3": "Blog",
+    "resource4": "Nos innovations",
     "copyright": "© {year} 63 Agency. Tous droits réservés.",
     "phone": "+212 606-676710",
     "email": "contact@63agency.com"
