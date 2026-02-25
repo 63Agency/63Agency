@@ -226,6 +226,18 @@
     "tagline": "63 Agency full service digital marketing agency",
     "taglineItalic": "Digital Marketing Experts"
   },
+  "aboutServices": {
+    "label": "Services",
+    "title": "Growing sales through exceptional services process",
+    "titleHighlight": "services",
+    "titleHighlight1": "servi",
+    "titleHighlight2": "ces",
+    "description": "We immerse ourselves in your challenges and put our knowledge and expertise at your service.",
+    "item1Name": "SEO Marketing",
+    "item2Name": "Social Marketing",
+    "item3Name": "Content Marketing",
+    "item4Name": "Email Marketing"
+  },
   "shapeFuture": {
     "headline": "Shape your future with our full service digital marketing agency",
     "subtitle": "63 Agency : Where Digital Marketing Expertise Leads the Way!",
@@ -253,6 +265,27 @@
     "a4": "We build systems (content, targeted campaigns, funnels, qualification) that attract qualified prospects and turn them into sales opportunities.",
     "q5": "What is your process for a new client?",
     "a5": "Audit, goal setting, tailored strategy, deployment and continuous optimization, with regular reporting to measure ROI."
+  },
+  "aboutFaq": {
+    "title": "FAQs",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "q1": "What are your company's values?",
+    "a1": "Transparency, measurable performance and client commitment are at the heart of 63 Agency. We focus on concrete results, predictable ROI and lasting trust with our partners.",
+    "q2": "What is your expertise in your field of activity?",
+    "a2": "Since 2013 we have been supporting businesses in B2B and B2C lead generation, performance advertising (Meta, Google, LinkedIn), website and landing page creation, content and video, qualification funnels and conversion-oriented design. Over 150 companies trust us across four continents.",
+    "q3": "How do you ensure the quality of your services?",
+    "a3": "Through a structured process: audit, clear objectives, tailored strategy, deployment and continuous optimization. Regular reporting and metrics (CPL, ROI, conversion rate) allow us to measure and adjust at all times.",
+    "q4": "What distinctive and competitive advantages does your marketing team offer?",
+    "a4": "We build profitable acquisition systems, not just campaigns. Our 360° approach integrates content, paid media, funnels and automation for a flow of qualified leads and predictable revenue.",
+    "q5": "How does 63 Agency tailor its services to different industries?",
+    "a5": "Each industry (education, real estate, hospitality, B2B, etc.) has its own challenges. We adapt strategy, channels and messaging to maximize relevance and conversion rate for your market.",
+    "q6": "Can 63 Agency's services support international market expansion?",
+    "a6": "Yes. We already operate in Morocco, Europe and soon in Dubai. We adapt campaigns, targeting and assets to local markets for a controlled expansion.",
+    "q7": "What makes 63 Agency's approach to SEO and SEM unique as a full service agency?",
+    "a7": "We align SEO, paid search and content in a lead generation logic: organic and paid visibility serving qualified traffic and measurable revenue, with continuous monitoring and optimization.",
+    "q8": "How does 63 Agency ensure a high ROI from its digital marketing services?",
+    "a8": "By focusing on measurable objectives (leads, cost per lead, revenue), building systems rather than one-off campaigns, and optimizing continuously based on data. Regular reporting helps drive ROI."
   },
   "cta": {
     "title": "Ready to Generate Predictable Revenue?",

@@ -226,6 +226,18 @@
     "tagline": "63 Agency, agence de marketing digital full service",
     "taglineItalic": "Experts en marketing digital"
   },
+  "aboutServices": {
+    "label": "Services",
+    "title": "Faire croître vos ventes grâce à un processus de services exceptionnel",
+    "titleHighlight": "services",
+    "titleHighlight1": "servi",
+    "titleHighlight2": "ces",
+    "description": "Nous nous immergeons dans vos enjeux et mettons nos connaissances et notre expertise à votre service.",
+    "item1Name": "SEO Marketing",
+    "item2Name": "Social Marketing",
+    "item3Name": "Content Marketing",
+    "item4Name": "Email Marketing"
+  },
   "shapeFuture": {
     "headline": "Donnez forme à votre avenir avec notre agence de marketing digital full service",
     "subtitle": "63 Agency : là où l'expertise en marketing digital montre la voie !",
@@ -253,6 +265,27 @@
     "a4": "Nous mettons en place des systèmes (contenu, campagnes ciblées, entonnoirs, qualification) qui attirent des prospects qualifiés et les transforment en opportunités commerciales.",
     "q5": "Quel est votre processus pour un nouveau client ?",
     "a5": "Audit, définition d'objectifs, stratégie sur mesure, déploiement et optimisation continue, avec reporting régulier pour mesurer le ROI."
+  },
+  "aboutFaq": {
+    "title": "FAQS",
+    "showMore": "Afficher plus",
+    "showLess": "Voir moins",
+    "q1": "Quelles sont les valeurs de votre entreprise ?",
+    "a1": "La transparence, la performance mesurable et l'engagement client sont au cœur de 63 Agency. Nous privilégions des résultats concrets, un ROI prévisible et une relation de confiance durable avec nos partenaires.",
+    "q2": "Quelle est votre expertise dans votre domaine d'activité ?",
+    "a2": "Depuis 2013, nous accompagnons les entreprises en génération de leads B2B et B2C, publicité performance (Meta, Google, LinkedIn), création de sites et landing pages, contenu et vidéo, entonnoirs de qualification et design orienté conversion. Plus de 150 entreprises nous font confiance sur quatre continents.",
+    "q3": "Comment assurez-vous la qualité de vos services ?",
+    "a3": "Par un processus structuré : audit, objectifs clairs, stratégie sur mesure, déploiement et optimisation continue. Un reporting régulier et des indicateurs (CPL, ROI, taux de conversion) permettent de mesurer et d'ajuster en permanence.",
+    "q4": "Quels avantages distinctifs et compétitifs offre votre équipe marketing ?",
+    "a4": "Nous construisons des systèmes d'acquisition rentables, pas seulement des campagnes. Notre approche 360° intègre contenu, médias payants, entonnoirs et automatisation pour un flux de leads qualifiés et un revenu prévisible.",
+    "q5": "Comment 63 Agency adapte-t-elle ses services à différents secteurs ?",
+    "a5": "Chaque secteur (éducation, immobilier, hôtellerie, B2B, etc.) a ses enjeux. Nous adaptons la stratégie, les canaux et les messages pour maximiser la pertinence et le taux de conversion selon votre marché.",
+    "q6": "Les services de 63 Agency peuvent-ils accompagner une expansion à l'international ?",
+    "a6": "Oui. Nous intervenons déjà au Maroc, en Europe et bientôt à Dubaï. Nous adaptons les campagnes, le ciblage et les supports aux marchés locaux pour une expansion maîtrisée.",
+    "q7": "Qu'est-ce qui distingue l'approche SEO et SEM de 63 Agency en tant qu'agence full service ?",
+    "a7": "Nous alignons SEO, SEA et contenu dans une logique de génération de leads : visibilité organique et payante au service du trafic qualifié et du chiffre d'affaires mesurable, avec suivi et optimisation continus.",
+    "q8": "Comment 63 Agency garantit-elle un ROI élevé de ses services de marketing digital ?",
+    "a8": "En priorisant des objectifs mesurables (leads, coût par lead, revenus), en mettant en place des systèmes plutôt que des one-shots, et en optimisant en continu sur la base des données. Le reporting régulier permet de piloter le ROI."
   },
   "cta": {
     "title": "Prêt à Générer des Revenus Prévisibles ?",

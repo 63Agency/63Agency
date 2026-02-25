@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import StaggeredMenu from "@/components/StaggeredMenu";
 
 const GREEN_ACCENT = "#22c55e";
 const EXPERTISES_IMAGE_SRC = "/images/hero/expertigelogo.png";
@@ -75,15 +76,29 @@ export default function Header() {
     setIsExpertisesOpen(false);
   };
 
+  const staggeredMenuItems = useMemo(
+    () => [
+      { label: t("nav.home"), ariaLabel: t("nav.home"), link: `/${locale}` },
+      { label: t("nav.innovations"), ariaLabel: t("nav.innovations"), link: `/${locale}/about` },
+      { label: t("nav.expertises"), ariaLabel: t("nav.expertises"), link: getNavHref("#services") },
+      { label: t("nav.solutions"), ariaLabel: t("nav.solutions"), link: getNavHref("#services") },
+      { label: t("nav.joinUs"), ariaLabel: t("nav.joinUs"), link: getNavHref("#contact") },
+      { label: t("nav.contactButton"), ariaLabel: t("nav.contactButton"), link: `/${locale}/contact` },
+    ],
+    [t, locale]
+  );
+
   return (
+    <>
+      {/* Desktop header */}
     <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+      className={`hidden lg:block fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         isScrolled ? "bg-white shadow-sm" : "bg-white"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Left: Logo + ISO badge */}
+          {/* Left: Logo */}
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href={`/${locale}`}
@@ -98,23 +113,6 @@ export default function Header() {
               />
             </Link>
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-black"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
 
           {/* Center: Nav links - Desktop */}
           <nav className="hidden lg:flex items-center gap-0">
@@ -268,87 +266,25 @@ export default function Header() {
         </div>
       )}
 
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <>
-          <div
-            className="lg:hidden fixed inset-0 bg-black/20 z-40"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-          <div className="lg:hidden fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-white border-l border-gray-200 shadow-xl z-50">
-            <nav className="flex flex-col py-6 px-4">
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="self-end p-2 text-black hover:bg-gray-100 rounded"
-                aria-label="Close"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              {navLinks.map((link) => (
-                <div key={link.label}>
-                  <Link
-                    href={getNavHref(link.href)}
-                    onClick={(e) => {
-                      if (link.href.startsWith("#") && isOnHome) {
-                        e.preventDefault();
-                        handleNavClick(link.href);
-                      }
-                    }}
-                    className="flex items-center gap-2 py-3 px-4 font-medium text-black hover:bg-gray-100 rounded-lg"
-                    style={{
-                      color: link.highlight ? GREEN_ACCENT : undefined,
-                      textDecoration: "none",
-                    }}
-                  >
-                    {link.label}
-                    </Link>
-                  {link.hasDropdown &&
-                    services.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={getNavHref(s.href)}
-                        onClick={(e) => {
-                          if (isOnHome) {
-                            e.preventDefault();
-                            handleNavClick(s.href);
-                          }
-                        }}
-                        className="block py-2 pl-8 pr-4 text-sm text-black hover:bg-gray-50"
-                        style={{ textDecoration: "none" }}
-                      >
-                        {s.label}
-                      </Link>
-                    ))}
-                </div>
-              ))}
-              <div className="border-t border-gray-200 mt-4 pt-4 flex gap-2">
-                <button
-                  onClick={() => switchLocale("en")}
-                  className={`flex-1 py-2 rounded text-sm font-medium ${locale === "en" ? "bg-black text-white" : "bg-gray-100 text-black"}`}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => switchLocale("fr")}
-                  className={`flex-1 py-2 rounded text-sm font-medium ${locale === "fr" ? "bg-black text-white" : "bg-gray-100 text-black"}`}
-                >
-                  FR
-                </button>
-              </div>
-              <Link
-                href={`/${locale}/contact`}
-                className="coolBeans mt-4 bg-black text-white py-3 font-semibold text-center block border-2 border-white"
-                style={{ textDecoration: "none" }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t("nav.contactButton")}
-              </Link>
-            </nav>
-          </div>
-        </>
-      )}
-    </header>
+</header>
+
+      {/* Mobile: StaggeredMenu (remplace le menu responsive) */}
+      <div className="lg:hidden">
+        <StaggeredMenu
+          isFixed={true}
+          position="right"
+          items={staggeredMenuItems}
+          logoUrl="/images/hero/63agency.png"
+          colors={["#ffffff", "#f5f5f5"]}
+          menuButtonColor="#000"
+          openMenuButtonColor="#000"
+          accentColor={GREEN_ACCENT}
+          displaySocials={false}
+          displayItemNumbering={false}
+          changeMenuColorOnOpen={false}
+          closeOnClickAway={true}
+        />
+      </div>
+    </>
   );
 }

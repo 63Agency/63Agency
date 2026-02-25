@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 
@@ -150,12 +152,12 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   return (
     <div
-      className="flex-1 relative overflow-hidden text-center"
+      className="flex-1 relative overflow-hidden text-center flex flex-col min-h-[18vh]"
       ref={itemRef}
       style={{ borderTop: isFirst ? 'none' : `1px solid ${borderColor}` }}
     >
       <a
-        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-[4vh]"
+        className="flex items-center justify-center flex-1 min-h-[14vh] py-10 sm:py-14 md:py-16 relative cursor-pointer uppercase no-underline font-semibold text-[3.5vh] sm:text-[4vh] leading-tight"
         href={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
