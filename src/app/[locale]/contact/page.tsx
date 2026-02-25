@@ -2,8 +2,16 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26590.729979015396!2d-7.6489544!3d33.5834709!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd84d09ffbb5%3A0x69653c6f96ae98ad!2sCommons%20Zerktouni!5e0!3m2!1sfr!2sma!4v1771980097793!5m2!1sfr!2sma";
+
+const SOCIAL_LINKS = [
+  { label: "Instagram", href: "https://instagram.com/63agency", icon: "fa-brands fa-instagram" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/63agency", icon: "fa-brands fa-linkedin-in" },
+  { label: "Facebook", href: "https://facebook.com/63agency", icon: "fa-brands fa-facebook-f" },
+  { label: "YouTube", href: "https://youtube.com/@63agency", icon: "fa-brands fa-youtube" },
+];
 
 export default function ContactPage() {
   const t = useTranslations("contactPage");
@@ -58,9 +66,65 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Form */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 flex justify-end">
-        <div className="max-w-xl w-full">
+      {/* Hero image en fin du haut de page */}
+      <div className="relative w-full aspect-[21/9] min-h-[200px] sm:min-h-[260px] overflow-hidden bg-gray-200">
+        <Image
+          src="/images/contact/contactimage.jpg"
+          alt="Contact 63 Agency"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={95}
+          priority
+        />
+      </div>
+
+      {/* Contact info + Form */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+          {/* Infos agence */}
+          <div className="lg:col-span-5 space-y-6">
+            <h2 className="text-lg font-bold text-black uppercase tracking-wider">{t("infoTitle")}</h2>
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm font-medium text-gray-500 mb-1">{t("phone")}</p>
+                <a href={`tel:${t("phoneValue").replace(/\s/g, "")}`} className="text-black font-medium hover:underline">
+                  {t("phoneValue")}
+                </a>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-500 mb-1">{t("email")}</p>
+                <a href={`mailto:${t("emailValue")}`} className="text-black font-medium hover:underline">
+                  {t("emailValue")}
+                </a>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-500 mb-1">{t("address")}</p>
+                <p className="text-black">{t("addressValue")}</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-bold text-black uppercase tracking-wider mb-3">{t("followUs")}</p>
+              <div className="flex gap-2">
+                {SOCIAL_LINKS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center bg-black text-white rounded hover:bg-gray-800 transition-colors"
+                    aria-label={s.label}
+                  >
+                    <i className={`${s.icon} text-lg`} aria-hidden />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Formulaire */}
+          <div className="lg:col-span-7">
+            <div className="max-w-xl lg:max-w-none w-full">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-black mb-1.5">
@@ -127,6 +191,8 @@ export default function ContactPage() {
                 {status === "sending" ? t("sending") : t("sendMessage")}
               </button>
             </form>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -1,9 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useState, useEffect } from "react";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+
+// Images par solution (public/images/services)
+const SOLUTION_IMAGES: Record<number, string> = {
+  1: "/images/services/leadgeneration.jpg",
+  2: "/images/services/Media.png",
+  3: "/images/services/CreationSiteWeb.jpg",
+  4: "/images/services/Media.png",
+  5: "/images/services/leadgeneration.jpg",
+  6: "/images/services/Graphiquedesigne.jpg",
+};
 
 const SOLUTION_ICONS = [
   <svg key="1" className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,9 +47,29 @@ function getBullets(t: ReturnType<typeof useTranslations>, solutionNum: number):
   return bullets;
 }
 
+const AUTO_ROTATE_INTERVAL_MS = 4000;
+
 export default function ServicesSection() {
   const t = useTranslations("servicesSection");
+  const locale = useLocale();
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [autoImageId, setAutoImageId] = useState(1);
+  const [imageLoaded, setImageLoaded] = useState(true);
+
+  const displayedId = expandedId ?? autoImageId;
+
+  // Rotation automatique des images quand l'utilisateur ne clique sur rien
+  useEffect(() => {
+    if (expandedId !== null) return;
+    const timer = setInterval(() => {
+      setAutoImageId((prev) => (prev >= 6 ? 1 : prev + 1));
+    }, AUTO_ROTATE_INTERVAL_MS);
+    return () => clearInterval(timer);
+  }, [expandedId]);
+
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [displayedId]);
 
   return (
     <section id="services" className="py-16 sm:py-24 bg-white">
@@ -106,31 +136,34 @@ export default function ServicesSection() {
             </div>
           </div>
 
-          {/* Right: Tablet mockup + metrics */}
-          <div className="relative flex items-center justify-center">
-            <div className="relative w-full max-w-lg">
-              <div className="relative bg-gray-900 rounded-lg p-2 sm:p-3 shadow-2xl transform rotate-[-2deg]">
-                <div className="relative aspect-[4/3] bg-gray-800 rounded overflow-hidden">
+          {/* Right: Tablet mockup avec image de la solution sélectionnée */}
+          <div className="relative flex items-center justify-center pt-14 lg:pt-24">
+            <div className="relative w-full max-w-2xl">
+              <div className="relative bg-gray-900 rounded-xl p-2 sm:p-4 shadow-2xl transform rotate-[-2deg]">
+                <div className="relative aspect-[4/3] min-h-[280px] sm:min-h-[340px] lg:min-h-[400px] bg-gray-800 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/services/branding-design.jpg"
-                    alt="Branding Design"
+                    key={displayedId}
+                    src={SOLUTION_IMAGES[displayedId] ?? SOLUTION_IMAGES[1]}
+                    alt={t(`solution${displayedId}Title` as "solution1Title")}
                     fill
-                    className="object-cover"
-                    unoptimized
+                    className={`object-cover transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+                    sizes="(max-width: 1024px) 100vw, 672px"
+                    onLoad={() => setImageLoaded(true)}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = "none";
+                      setImageLoaded(true);
                     }}
                   />
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
-                    <div className="text-white">
-                      <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 text-blue-300">BRANDING</h3>
-                      <h3 className="text-5xl sm:text-6xl md:text-7xl font-bold">DESIGN</h3>
-                    </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 pointer-events-none">
+                    <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold text-white drop-shadow-lg transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}>
+                      {t(`solution${displayedId}Title` as "solution1Title")}
+                    </h3>
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-8 sm:-bottom-12 left-0 right-0 flex gap-4 sm:gap-6 justify-center">
+              <div className="absolute -bottom-6 sm:-bottom-10 left-0 right-0 flex gap-4 sm:gap-6 justify-center">
                 <div className="bg-gray-900 px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg">
                   <p className="text-xs sm:text-sm text-red-400 opacity-90 mb-1">ORGANIC TRAFFIC</p>
                   <p className="text-2xl sm:text-3xl font-bold text-blue-500">+77%</p>
@@ -168,7 +201,7 @@ export default function ServicesSection() {
           <div className="text-center">
             <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">{t("ctaTitle")}</p>
             <Link
-              href="#contact"
+              href={`/${locale}#contact`}
               className="coolBeans inline-flex items-center justify-center px-8 py-4 bg-black text-white font-semibold border-2 border-white"
             >
               {t("ctaButton")}

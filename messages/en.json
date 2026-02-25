@@ -327,10 +327,13 @@
     "error": "Something went wrong. Please try again or contact us by phone.",
     "infoTitle": "Other ways to reach us",
     "phone": "Phone",
+    "phoneValue": "+212 606-676710",
     "whatsapp": "WhatsApp",
     "email": "Email",
-    "address": "Address",
-    "addressValue": "Morocco · California · Dubai (coming soon)"
+    "emailValue": "contact@63agency.com",
+    "address": "Our address",
+    "addressValue": "Commons Zerktouni, 179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250",
+    "followUs": "Follow us"
   },
   "footer": {
     "tagline": "The agency that turns marketing into predictable revenue.",
@@ -342,7 +345,7 @@
     "addressUaeTitle": "United Arab Emirates - Dubai",
     "addressUaeValue": "Building A1, Digital Park, Dubai Silicon Oasis, Dubai.",
     "addressMoroccoTitle": "Morocco - Casablanca",
-    "addressMoroccoValue": "179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250.",
+    "addressMoroccoValue": "Commons Zerktouni, 179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250.",
     "resources": "Resources",
     "resource1": "Academy",
     "resource2": "White papers",
