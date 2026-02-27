@@ -177,28 +177,56 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* Our approach - full width below */}
+        {/* Notre approche — design professionnel */}
         <div className="mt-24 sm:mt-32">
-          <div className="bg-gray-900 rounded-2xl p-8 sm:p-10 text-white mb-16">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
-              {t("approachTitle")}
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-6">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <span
-                  key={i}
-                  className="inline-flex items-center px-4 py-2 rounded-lg bg-white/10 text-sm sm:text-base font-medium"
-                >
-                  {t(`approachItem${i}` as "approachItem1")}
-                </span>
+          <div className="relative rounded-2xl border-2 border-gray-200 bg-white p-8 sm:p-10 lg:p-12 shadow-sm">
+            <div className="text-center mb-10">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                {t("approachTitle")}
+              </h3>
+              <p className="text-base text-gray-600 max-w-2xl mx-auto">
+                {t("approachIntro")}
+              </p>
+            </div>
+
+            {/* 4 étapes avec flèches */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 sm:gap-4">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="flex flex-1 items-center gap-2 sm:gap-4 min-w-0">
+                  <div className="flex flex-col sm:flex-row items-center flex-1 gap-3 sm:gap-2">
+                    <div
+                      className="flex-shrink-0 w-12 h-12 rounded-full bg-black text-white font-bold text-lg flex items-center justify-center"
+                      aria-hidden
+                    >
+                      {i}
+                    </div>
+                    <p className="text-sm sm:text-base font-semibold text-gray-900 text-center sm:text-left">
+                      {t(`approachItem${i}` as "approachItem1")}
+                    </p>
+                  </div>
+                  {i < 4 && (
+                    <div className="hidden sm:flex flex-shrink-0 items-center justify-center w-6 lg:w-10 text-gray-300" aria-hidden>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
-            <p className="text-center text-lg sm:text-xl font-semibold text-white/95">
-              = {t("approachFormula")}
-            </p>
+
+            {/* Résultat / formule */}
+            <div className="mt-10 pt-8 border-t border-gray-200">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-2 sm:gap-3 pl-4 sm:pl-6 border-l-4 border-[#22c55e]">
+                <span className="text-gray-500 font-medium text-sm sm:text-base">=</span>
+                <p className="text-lg sm:text-xl font-bold text-gray-900 text-center sm:text-left">
+                  {t("approachFormula")}
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-16">
             <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">{t("ctaTitle")}</p>
             <Link
               href={`/${locale}#contact`}

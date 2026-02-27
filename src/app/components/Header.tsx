@@ -43,12 +43,15 @@ export default function Header() {
     { label: t("services.b2bSeo"), href: "#services" },
   ];
 
+  const servicesT = useTranslations("servicesSection");
   const expertisesT = useTranslations("expertisesMenu");
-  const expertisesColumns = [
-    { title: expertisesT("col1Title"), links: [expertisesT("col1_1"), expertisesT("col1_2"), expertisesT("col1_3"), expertisesT("col1_4")] },
-    { title: expertisesT("col2Title"), links: [expertisesT("col2_1"), expertisesT("col2_2"), expertisesT("col2_3"), expertisesT("col2_4")] },
-    { title: expertisesT("col3Title"), links: [expertisesT("col3_1"), expertisesT("col3_2"), expertisesT("col3_3"), expertisesT("col3_4")] },
-    { title: expertisesT("col4Title"), links: [expertisesT("col4_1"), expertisesT("col4_2"), expertisesT("col4_3"), expertisesT("col4_4")] },
+  // 5 sections : chaque section a un titre + sous-titres (solutions de "Nos solutions de marketing digital")
+  const expertisesSections = [
+    { title: expertisesT("section1Title"), subs: [servicesT("solution4Title"), servicesT("solution6Title")] },
+    { title: expertisesT("section2Title"), subs: [servicesT("solution2Title")] },
+    { title: expertisesT("section3Title"), subs: [servicesT("solution1Title"), servicesT("solution5Title")] },
+    { title: expertisesT("section4Title"), subs: [] },
+    { title: expertisesT("section5Title"), subs: [servicesT("solution3Title")] },
   ];
 
   const switchLocale = (newLocale: string) => {
@@ -234,14 +237,40 @@ export default function Header() {
                   />
                 </div>
               </div>
-              {/* Right: 4 columns */}
-              <div className="grid grid-cols-4 gap-6 flex-1 min-w-0">
-                {expertisesColumns.map((col) => (
-                  <div key={col.title}>
-                    <h4 className="font-bold text-black text-sm mb-3">{col.title}</h4>
-                    <ul className="space-y-2">
-                      {col.links.map((label) => (
-                        <li key={label}>
+              {/* Right: 5 sections — titres sur une ligne, sous-titres sur une ligne */}
+              <div className="flex-1 min-w-0">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-0">
+                  {/* Ligne 1 : tous les titres */}
+                  {expertisesSections.map((section) => (
+                    <h5 key={section.title} className="font-bold text-black text-sm mb-3">
+                      {section.title}
+                    </h5>
+                  ))}
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-0 mt-1">
+                  {/* Ligne 2 : tous les sous-titres (alignés sous chaque titre) */}
+                  {expertisesSections.map((section) => (
+                    <ul key={section.title} className="space-y-1">
+                      {section.subs.length > 0 ? (
+                        section.subs.map((sub) => (
+                          <li key={sub}>
+                            <Link
+                              href={getNavHref("#services")}
+                              onClick={(e) => {
+                                if (isOnHome) {
+                                  e.preventDefault();
+                                  handleNavClick("#services");
+                                }
+                              }}
+                              className="text-sm text-gray-600 hover:text-black transition-colors"
+                              style={{ textDecoration: "none" }}
+                            >
+                              {sub}
+                            </Link>
+                          </li>
+                        ))
+                      ) : (
+                        <li>
                           <Link
                             href={getNavHref("#services")}
                             onClick={(e) => {
@@ -250,16 +279,16 @@ export default function Header() {
                                 handleNavClick("#services");
                               }
                             }}
-                            className="text-sm text-gray-700 hover:text-black transition-colors"
+                            className="text-sm text-gray-600 hover:text-black transition-colors"
                             style={{ textDecoration: "none" }}
                           >
-                            {label}
+                            {section.title}
                           </Link>
                         </li>
-                      ))}
+                      )}
                     </ul>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>

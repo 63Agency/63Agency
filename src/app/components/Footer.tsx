@@ -16,27 +16,18 @@ const SOCIAL_LINKS = [
 export default function Footer() {
   const t = useTranslations();
   const tFooter = useTranslations("footer");
-  const tExp = useTranslations("expertisesMenu");
+  const tServices = useTranslations("servicesSection");
   const locale = useLocale();
   const year = new Date().getFullYear();
 
+  // Les 6 solutions (Nos solutions de marketing digital) - aligné avec la page d'accueil et la navbar
   const expertiseColumns = [
-    {
-      title: tExp("col1Title"),
-      items: [tExp("col1_1"), tExp("col1_2"), tExp("col1_3"), tExp("col1_4")],
-    },
-    {
-      title: tExp("col2Title"),
-      items: [tExp("col2_1"), tExp("col2_2"), tExp("col2_3"), tExp("col2_4")],
-    },
-    {
-      title: tExp("col3Title"),
-      items: [tExp("col3_1"), tExp("col3_2"), tExp("col3_3"), tExp("col3_4")],
-    },
-    {
-      title: tExp("col4Title"),
-      items: [tExp("col4_1"), tExp("col4_2"), tExp("col4_3"), tExp("col4_4")],
-    },
+    { title: tServices("solution1Title"), items: [tServices("solution1Title")] },
+    { title: tServices("solution2Title"), items: [tServices("solution2Title")] },
+    { title: tServices("solution3Title"), items: [tServices("solution3Title")] },
+    { title: tServices("solution4Title"), items: [tServices("solution4Title")] },
+    { title: tServices("solution5Title"), items: [tServices("solution5Title")] },
+    { title: tServices("solution6Title"), items: [tServices("solution6Title")] },
   ];
 
   const resourceLinks = [
@@ -73,8 +64,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Middle: 4 expertise columns */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-6 sm:gap-8">
+          {/* Middle: 6 solutions (Nos solutions de marketing digital) */}
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8">
             {expertiseColumns.map((col, i) => (
               <div key={i}>
                 <h3 className="font-bold text-white text-sm mb-3">{col.title}</h3>

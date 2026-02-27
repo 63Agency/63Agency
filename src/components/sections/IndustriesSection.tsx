@@ -13,9 +13,9 @@ export default function IndustriesSection() {
       image: "/images/industries/private-schools.jpg",
     },
     {
-      name: t('trainingCenters.name'),
-      description: t('trainingCenters.description'),
-      image: "/images/industries/training-centers.jpg",
+      name: t('b2bServices.name'),
+      description: t('b2bServices.description'),
+      image: "/images/industries/b2b-services.jpg",
     },
     {
       name: t('realEstate.name'),
@@ -26,11 +26,6 @@ export default function IndustriesSection() {
       name: t('hospitality.name'),
       description: t('hospitality.description'),
       image: "/images/industries/hospitality.jpg",
-    },
-    {
-      name: t('b2bServices.name'),
-      description: t('b2bServices.description'),
-      image: "/images/industries/b2b-services.jpg",
     },
   ];
 

@@ -6,7 +6,6 @@ import FounderSection from '@/components/sections/FounderSection';
 import OurSystemSection from '@/components/sections/OurSystemSection';
 import ResultsSection from '@/components/sections/ResultsSection';
 import IndustriesSection from '@/components/sections/IndustriesSection';
-import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 
 export async function generateStaticParams() {
@@ -23,7 +22,6 @@ export default function Home() {
       <FounderSection />
       <ResultsSection />
       <IndustriesSection />
-      <FAQSection />
       <CTASection />
     </main>
   );

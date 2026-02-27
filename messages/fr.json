@@ -15,6 +15,11 @@
   },
   "expertisesMenu": {
     "caption": "Plus de 4,2 Milliards de Dirhams générés pour nos clients depuis 2013.",
+    "section1Title": "Création content et graphique design",
+    "section2Title": "Management ads",
+    "section3Title": "Tunnel de vente",
+    "section4Title": "Automations & CRM",
+    "section5Title": "Création du site et landing pages",
     "col1Title": "Stratégie & Branding",
     "col1_1": "Stratégie de Marque",
     "col1_2": "Brand Content",
@@ -125,7 +130,7 @@
     "title": "Secteurs Que Nous Servons",
     "subtitle": "Systèmes de génération de leads spécialisés pour les entreprises qui ont besoin d'une croissance prévisible.",
     "privateSchools": {
-      "name": "Écoles Privées",
+      "name": "École Prévert / Academy",
       "description": "Systèmes d'inscription d'étudiants qui remplissent les classes de manière constante."
     },
     "trainingCenters": {
@@ -141,7 +146,7 @@
       "description": "Systèmes de réservation qui maximisent les taux d'occupation."
     },
     "b2bServices": {
-      "name": "Entreprises de Services B2B",
+      "name": "Entreprise",
       "description": "Génération de leads à haute valeur pour les prestataires de services professionnels."
     }
   },
@@ -194,11 +199,11 @@
     "solution6Bullet4": "Branding premium",
     "solution6Tagline": "Un design qui renforce la confiance et augmente le taux de conversion.",
     "approachTitle": "Notre approche",
+    "approachIntro": "Quatre piliers interconnectés pour une acquisition client prévisible.",
     "approachItem1": "Contenu stratégique",
     "approachItem2": "Publicité ciblée",
     "approachItem3": "Funnel intelligent",
-    "approachItem4": "Site web optimisé",
-    "approachItem5": "Automatisation CRM",
+    "approachItem4": "Automatisation CRM",
     "approachFormula": "Un système d'acquisition complet et scalable.",
     "ctaTitle": "Prêt à transformer votre marketing en revenu prévisible ?",
     "ctaButton": "Réservez votre appel stratégique"
@@ -332,7 +337,7 @@
     "email": "Email",
     "emailValue": "contact@63agency.com",
     "address": "Notre adresse",
-    "addressValue": "Commons Zerktouni, 179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250",
+    "addressValue": "18 Rue Baht, Agdal Rabat 10090",
     "followUs": "Suivez-nous"
   },
   "footer": {
@@ -344,8 +349,8 @@
     "socialShort": "Ins. / In. / Fb. / YT.",
     "addressUaeTitle": "Émirats Arabes Unis - Dubaï",
     "addressUaeValue": "Building A1, Digital Park, Dubai Silicon Oasis, Dubai.",
-    "addressMoroccoTitle": "Maroc - Casablanca",
-    "addressMoroccoValue": "Commons Zerktouni, 179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250.",
+    "addressMoroccoTitle": "Maroc - Rabat",
+    "addressMoroccoValue": "18 Rue Baht, Agdal Rabat 10090.",
     "resources": "Ressources",
     "resource1": "Academy",
     "resource2": "Livres blancs",

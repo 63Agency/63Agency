@@ -15,6 +15,11 @@
   },
   "expertisesMenu": {
     "caption": "Over 4.2 Billion Dirhams generated for our clients since 2013.",
+    "section1Title": "Content creation & graphic design",
+    "section2Title": "Ads management",
+    "section3Title": "Sales funnel",
+    "section4Title": "Automations & CRM",
+    "section5Title": "Website & landing pages creation",
     "col1Title": "Strategy & Branding",
     "col1_1": "Brand Strategy",
     "col1_2": "Brand Content",
@@ -125,7 +130,7 @@
     "title": "Industries We Serve",
     "subtitle": "Specialized lead generation systems for businesses that need predictable growth.",
     "privateSchools": {
-      "name": "Private Schools",
+      "name": "Prévert School / Academy",
       "description": "Student enrollment systems that fill classrooms consistently."
     },
     "trainingCenters": {
@@ -141,7 +146,7 @@
       "description": "Booking and reservation systems that maximize occupancy rates."
     },
     "b2bServices": {
-      "name": "B2B Service Businesses",
+      "name": "Enterprise",
       "description": "High-value lead generation for professional service providers."
     }
   },
@@ -194,11 +199,11 @@
     "solution6Bullet4": "Premium branding",
     "solution6Tagline": "Design that builds trust and increases conversion rate.",
     "approachTitle": "Our Approach",
+    "approachIntro": "Four interconnected pillars for predictable customer acquisition.",
     "approachItem1": "Strategic content",
     "approachItem2": "Targeted advertising",
     "approachItem3": "Smart funnel",
-    "approachItem4": "Optimized website",
-    "approachItem5": "CRM automation",
+    "approachItem4": "CRM automation",
     "approachFormula": "A complete, scalable acquisition system.",
     "ctaTitle": "Ready to turn your marketing into predictable revenue?",
     "ctaButton": "Book your strategy call"
@@ -332,7 +337,7 @@
     "email": "Email",
     "emailValue": "contact@63agency.com",
     "address": "Our address",
-    "addressValue": "Commons Zerktouni, 179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250",
+    "addressValue": "18 Rue Baht, Agdal Rabat 10090",
     "followUs": "Follow us"
   },
   "footer": {
@@ -344,8 +349,8 @@
     "socialShort": "Ins. / In. / Fb. / YT.",
     "addressUaeTitle": "United Arab Emirates - Dubai",
     "addressUaeValue": "Building A1, Digital Park, Dubai Silicon Oasis, Dubai.",
-    "addressMoroccoTitle": "Morocco - Casablanca",
-    "addressMoroccoValue": "Commons Zerktouni, 179, Angle des Boulevards de Londres et de la Résistance, Quartier, Av. Mers Sultan, Casablanca 20250.",
+    "addressMoroccoTitle": "Morocco - Rabat",
+    "addressMoroccoValue": "18 Rue Baht, Agdal Rabat 10090.",
     "resources": "Resources",
     "resource1": "Academy",
     "resource2": "White papers",

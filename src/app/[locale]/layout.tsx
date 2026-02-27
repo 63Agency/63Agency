@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/config';
-import Header from "../components/Header";
+import CardNavHeader from "@/components/CardNavHeader";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 
@@ -48,8 +48,10 @@ export default async function LocaleLayout({
       </head>
       <body className="bg-black text-white m-0 p-0">
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main className="pt-20">{children}</main>
+          <main>
+            <CardNavHeader />
+            <div className="pt-4">{children}</div>
+          </main>
           <Footer />
           <ScrollToTop />
         </NextIntlClientProvider>
