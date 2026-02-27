@@ -2,7 +2,12 @@
 
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { GoArrowUpRight } from 'react-icons/go';
+
+const ArrowUpRightIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M7 17L17 7M17 7h-6M17 7v6" />
+  </svg>
+);
 
 type CardNavLink = {
   label: string;
@@ -237,7 +242,7 @@ const CardNav: React.FC<CardNavProps> = ({
                     href={lnk.href}
                     aria-label={lnk.ariaLabel}
                   >
-                    <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />
+                    <ArrowUpRightIcon className="nav-card-link-icon shrink-0 w-4 h-4" />
                     {lnk.label}
                   </a>
                 ))}
