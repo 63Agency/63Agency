@@ -202,7 +202,7 @@ const CardNav: React.FC<CardNavProps> = ({
           {ctaHref ? (
             <a
               href={ctaHref}
-              className="coolBeans card-nav-cta-button hidden md:inline-flex rounded-[3rem] px-4 items-center h-full font-medium cursor-pointer no-underline border-2"
+              className="coolBeansNav card-nav-cta-button hidden md:inline-flex rounded-[3rem] px-4 items-center h-full font-medium cursor-pointer no-underline border-2"
               style={{ backgroundColor: 'transparent', color: buttonTextColor, borderColor: 'currentColor' }}
             >
               {ctaLabel}
@@ -210,7 +210,7 @@ const CardNav: React.FC<CardNavProps> = ({
           ) : (
             <button
               type="button"
-              className="coolBeans card-nav-cta-button hidden md:inline-flex rounded-[3rem] px-4 items-center h-full font-medium cursor-pointer border-2"
+              className="coolBeansNav card-nav-cta-button hidden md:inline-flex rounded-[3rem] px-4 items-center h-full font-medium cursor-pointer border-2"
               style={{ backgroundColor: 'transparent', color: buttonTextColor, borderColor: 'currentColor' }}
             >
               {ctaLabel}

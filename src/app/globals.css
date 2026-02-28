@@ -69,6 +69,44 @@
   color: black;
 }
 
+/* Cool Beans variant for navbar (light background): hover = black fill, white text */
+.coolBeansNav {
+  border: 2px solid currentColor;
+  border-radius: 3rem;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  transition: 0.2s border-color ease-in-out, 0.2s color ease-in-out;
+  will-change: transform;
+  z-index: 0;
+}
+
+.coolBeansNav::after {
+  background-color: #000;
+  border-radius: 3rem;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-100%, 0) rotate(10deg);
+  transform-origin: top left;
+  transition: 0.2s transform ease-out;
+  will-change: transform;
+  z-index: -1;
+}
+
+.coolBeansNav:hover::after {
+  transform: translate(0, 0);
+}
+
+.coolBeansNav:hover {
+  border: 2px solid transparent;
+  color: #fff !important;
+}
+
 /* Partners Section Animation */
 @keyframes scroll {
   0% {
