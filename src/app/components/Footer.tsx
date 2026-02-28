@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const GREEN_ACCENT = "#22c55e";
 
@@ -123,8 +124,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-white/60">
-          {tFooter("copyright", { year })}
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-white/60">
+          <LanguageSwitcher variant="footer" />
+          <span>{tFooter("copyright", { year })}</span>
         </div>
       </div>
     </footer>

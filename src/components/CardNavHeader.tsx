@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import CardNav, { type CardNavItem } from "@/components/CardNav";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const GREEN_ACCENT = "#22c55e";
 const SCROLL_THRESHOLD = 180;
@@ -58,7 +59,7 @@ export default function CardNavHeader() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 transition-transform duration-300 ease-out"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center items-center gap-4 pt-4 transition-transform duration-300 ease-out"
       style={{ transform: showNav ? "translateY(0)" : "translateY(-100%)" }}
       aria-hidden={!showNav}
     >
@@ -66,13 +67,14 @@ export default function CardNavHeader() {
         logo="/images/hero/63agency.png"
         logoAlt="63 Agency"
         items={navItems}
-        baseColor="rgba(80,80,80,0.9)"
-        menuColor="#fff"
+        baseColor="rgba(255,255,255,0.85)"
+        menuColor="#000"
         buttonBgColor="transparent"
-        buttonTextColor="#fff"
+        buttonTextColor="#000"
         ctaLabel={tNav("contactButton")}
         ctaHref={`${prefix}/contact`}
       />
+      <LanguageSwitcher className="text-black shrink-0" />
     </div>
   );
 }

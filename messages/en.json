@@ -11,7 +11,9 @@
     "solutions": "Our solutions",
     "joinUs": "Join us",
     "contactButton": "Contact us",
-    "newBadge": "NEW"
+    "newBadge": "NEW",
+    "languageEn": "English",
+    "languageFr": "Français"
   },
   "expertisesMenu": {
     "caption": "4.2B+ MAD generated for clients since 2013.",
