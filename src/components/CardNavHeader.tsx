@@ -63,7 +63,7 @@ export default function CardNavHeader() {
       aria-hidden={!showNav}
     >
       <CardNav
-        logo="/images/hero/63agency.png"
+        logo="/images/logo/6.jpg"
         logoAlt="63 Agency"
         items={navItems}
         baseColor="#fff"

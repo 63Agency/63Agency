@@ -90,8 +90,8 @@
 }
 
 /* Logo: always display in original colors (no grayscale/invert) */
-.card-nav-container img.logo,
-.card-nav img.logo,
+.card-nav-container img,
+.card-nav img,
 .card-nav .logo-container img,
 .sm-scope .sm-logo-img {
   filter: none !important;
