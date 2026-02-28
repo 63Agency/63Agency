@@ -68,8 +68,8 @@ export default function CardNavHeader() {
         items={navItems}
         baseColor="#fff"
         menuColor="#000"
-        buttonBgColor="#000"
-        buttonTextColor="#fff"
+        buttonBgColor="transparent"
+        buttonTextColor="#000"
         ctaLabel={tNav("contactButton")}
         ctaHref={`${prefix}/contact`}
       />
