@@ -55,7 +55,7 @@ export default function IndustriesSection() {
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
+              className="group relative overflow-hidden rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 bg-white shadow-sm hover:shadow-md min-w-0"
             >
               {/* Image */}
               <div className="relative h-48 sm:h-64 overflow-hidden bg-gray-100">
@@ -74,11 +74,11 @@ export default function IndustriesSection() {
               </div>
 
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 min-w-0">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 whitespace-nowrap overflow-hidden text-ellipsis block">
                   {industry.name}
                 </h3>
-                <p className="text-sm sm:text-base text-white/90">
+                <p className="text-sm sm:text-base text-white/90 whitespace-nowrap overflow-hidden text-ellipsis block">
                   {industry.description}
                 </p>
               </div>

@@ -132,7 +132,7 @@
     "title": "Industries We Serve",
     "subtitle": "Lead generation systems for predictable growth.",
     "privateSchools": {
-      "name": "Schools & Academies",
+      "name": "École Prévert / Academy",
       "description": "Enrollment systems. Full classrooms."
     },
     "trainingCenters": {
@@ -221,7 +221,8 @@
     "showLess": "Show less",
     "contactUs": "Contact Us",
     "phone": "07 20 007 007",
-    "linkedInLabel": "LinkedIn profile"
+    "linkedInLabel": "LinkedIn profile",
+    "talkToStrategist": "Talk to a strategist"
   },
   "aboutIntro": {
     "whoWeAreTitle": "Who are we?",

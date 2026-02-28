@@ -132,7 +132,7 @@
     "title": "Secteurs Que Nous Servons",
     "subtitle": "Systèmes de leads pour une croissance prévisible.",
     "privateSchools": {
-      "name": "Écoles & Académies",
+      "name": "École Prévert / Académie",
       "description": "Systèmes d'inscription. Classes remplies."
     },
     "trainingCenters": {
@@ -221,7 +221,8 @@
     "showLess": "Voir moins",
     "contactUs": "Nous contacter",
     "phone": "07 20 007 007",
-    "linkedInLabel": "Profil LinkedIn"
+    "linkedInLabel": "Profil LinkedIn",
+    "talkToStrategist": "Parler à un stratège"
   },
   "aboutIntro": {
     "whoWeAreTitle": "Qui sommes-nous ?",

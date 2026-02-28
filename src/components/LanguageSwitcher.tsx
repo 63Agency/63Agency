@@ -36,7 +36,7 @@ export default function LanguageSwitcher({
   variant = "default",
 }: {
   className?: string;
-  variant?: "default" | "footer";
+  variant?: "default" | "footer" | "footerLight";
 }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -51,12 +51,15 @@ export default function LanguageSwitcher({
 
   const isActive = (l: Locale) => l === locale;
   const isFooter = variant === "footer";
+  const isFooterLight = variant === "footerLight";
   const btnBase =
     "inline-flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 overflow-hidden";
-  const btnActive = isFooter
+  const btnActive = isFooterLight
+    ? "ring-2 ring-black/30 ring-offset-2 ring-offset-neutral-100 bg-black/5"
+    : isFooter
     ? "ring-2 ring-white/60 ring-offset-2 ring-offset-black bg-white/5"
     : "ring-2 ring-gray-400 ring-offset-2 ring-offset-transparent bg-gray-100/50";
-  const btnInactive = isFooter ? "opacity-70 hover:opacity-100" : "opacity-60 hover:opacity-100";
+  const btnInactive = isFooter || isFooterLight ? "opacity-70 hover:opacity-100" : "opacity-60 hover:opacity-100";
 
   return (
     <div className={`flex items-center gap-1.5 ${className}`} role="group" aria-label="Switch language">

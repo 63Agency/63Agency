@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/ayoub-rhillane";
 
 export default function FounderSection() {
   const t = useTranslations("founder");
+  const locale = useLocale();
   const [showMore, setShowMore] = useState(false);
   const [imgError, setImgError] = useState(false);
 
@@ -74,6 +76,12 @@ export default function FounderSection() {
               </button>
 
               <div className="border-t border-gray-200 pt-5 flex flex-wrap items-center gap-4">
+                <Link
+                  href={`/${locale}/contact`}
+                  className="coolBeans inline-flex items-center justify-center px-5 py-2.5 bg-black text-white font-semibold text-sm rounded-[3rem] border-2 border-black no-underline hover:bg-white hover:text-black hover:border-black transition-colors"
+                >
+                  {t("talkToStrategist")}
+                </Link>
                 <div>
                   <p className="text-xs font-bold text-black/60 uppercase tracking-wider mb-1">{t("contactUs")}</p>
                   <a

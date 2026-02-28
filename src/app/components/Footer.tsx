@@ -5,8 +5,6 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-const GREEN_ACCENT = "#22c55e";
-
 const SOCIAL_LINKS = [
   { label: "Instagram", href: "#", icon: "fa-brands fa-instagram" },
   { label: "LinkedIn", href: "#", icon: "fa-brands fa-linkedin-in" },
@@ -14,20 +12,16 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
-  const t = useTranslations();
   const tFooter = useTranslations("footer");
-  const tServices = useTranslations("servicesSection");
+  const tExp = useTranslations("expertisesMenu");
   const locale = useLocale();
   const year = new Date().getFullYear();
 
-  // Les 6 solutions (Nos solutions de marketing digital) - aligné avec la page d'accueil et la navbar
-  const expertiseColumns = [
-    { title: tServices("solution1Title"), items: [tServices("solution1Title")] },
-    { title: tServices("solution2Title"), items: [tServices("solution2Title")] },
-    { title: tServices("solution3Title"), items: [tServices("solution3Title")] },
-    { title: tServices("solution4Title"), items: [tServices("solution4Title")] },
-    { title: tServices("solution5Title"), items: [tServices("solution5Title")] },
-    { title: tServices("solution6Title"), items: [tServices("solution6Title")] },
+  const expertiseCols = [
+    { title: tExp("col1Title"), items: [tExp("col1_1"), tExp("col1_2"), tExp("col1_3"), tExp("col1_4")] },
+    { title: tExp("col2Title"), items: [tExp("col2_1"), tExp("col2_2"), tExp("col2_3"), tExp("col2_4")] },
+    { title: tExp("col3Title"), items: [tExp("col3_1"), tExp("col3_2"), tExp("col3_3"), tExp("col3_4")] },
+    { title: tExp("col4Title"), items: [tExp("col4_1"), tExp("col4_2"), tExp("col4_3"), tExp("col4_4")] },
   ];
 
   const resourceLinks = [
@@ -38,34 +32,34 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-white border-t border-white/10">
+    <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-          {/* Left: Logo + green dots + social text + addresses */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-white shrink-0" />
-              <span className="w-2 h-2 rounded-full border border-white shrink-0" />
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 lg:gap-x-10">
+          {/* Column 1: Logo + social text + addresses */}
+          <div className="space-y-5 min-w-0">
             <Link href={`/${locale}`} className="inline-block">
               <Image
-                src="/images/hero/image copy 2.png"
+                src="/images/hero/63.png"
                 alt="63 Agency"
-                width={400}
-                height={125}
-                className="object-contain h-36 sm:h-40 md:h-44 lg:h-48 w-auto"
+                width={280}
+                height={90}
+                className="object-contain h-24 sm:h-28 w-auto max-w-full"
               />
             </Link>
-            <div className="space-y-4 pt-2">
+            <div className="space-y-4">
+              <div>
+                <p className="font-bold text-white text-sm mb-1">{tFooter("addressUaeTitle")}</p>
+                <p className="text-sm text-white/70 leading-snug">{tFooter("addressUaeValue")}</p>
+              </div>
               <div>
                 <p className="font-bold text-white text-sm mb-1">{tFooter("addressMoroccoTitle")}</p>
-                <p className="text-sm text-white/70">{tFooter("addressMoroccoValue")}</p>
+                <p className="text-sm text-white/70 leading-snug">{tFooter("addressMoroccoValue")}</p>
               </div>
               <div>
                 <p className="font-bold text-white text-sm mb-1">{tFooter("contact")}</p>
                 <a
                   href={`tel:${tFooter("phone").replace(/\s/g, "")}`}
-                  className="text-sm text-white/70 hover:text-white transition-colors"
+                  className="text-sm text-white/70 hover:text-white"
                 >
                   {tFooter("phone")}
                 </a>
@@ -73,17 +67,17 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Middle: 6 solutions (Nos solutions de marketing digital) */}
-          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8">
-            {expertiseColumns.map((col, i) => (
-              <div key={i}>
+          {/* Column 2: Strategy & Branding + Social Media */}
+          <div className="flex flex-col gap-8 min-w-0">
+            {expertiseCols.slice(0, 2).map((col, i) => (
+              <div key={i} className="min-w-0">
                 <h3 className="font-bold text-white text-sm mb-3">{col.title}</h3>
                 <ul className="space-y-2">
                   {col.items.map((item, j) => (
                     <li key={j}>
                       <Link
                         href={`/${locale}#services`}
-                        className="text-sm text-white/70 hover:text-white transition-colors"
+                        className="text-sm text-white/70 hover:text-white block break-words"
                       >
                         {item}
                       </Link>
@@ -94,8 +88,29 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Right: Resources + Follow us icons */}
-          <div className="lg:col-span-3 space-y-6">
+          {/* Column 3: Media & Performance + Customer Experience & AI */}
+          <div className="flex flex-col gap-8 min-w-0">
+            {expertiseCols.slice(2, 4).map((col, i) => (
+              <div key={i} className="min-w-0">
+                <h3 className="font-bold text-white text-sm mb-3">{col.title}</h3>
+                <ul className="space-y-2">
+                  {col.items.map((item, j) => (
+                    <li key={j}>
+                      <Link
+                        href={`/${locale}#services`}
+                        className="text-sm text-white/70 hover:text-white block break-words"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Column 4: Resources + Follow us icons */}
+          <div className="space-y-8 min-w-0">
             <div>
               <h3 className="font-bold text-white text-sm mb-3">{tFooter("resources")}</h3>
               <ul className="space-y-2">
@@ -103,7 +118,7 @@ export default function Footer() {
                   <li key={r.label}>
                     <Link
                       href={r.href}
-                      className="text-sm text-white/70 hover:text-white transition-colors"
+                      className="text-sm text-white/70 hover:text-white block"
                     >
                       {r.label}
                     </Link>
@@ -115,14 +130,14 @@ export default function Footer() {
               <h3 className="font-bold text-white text-sm mb-3 uppercase tracking-wider">
                 {tFooter("followUsTitle")}
               </h3>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {SOCIAL_LINKS.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 flex items-center justify-center bg-black border border-white/30 text-white rounded hover:bg-white hover:text-black transition-colors"
+                    className="w-10 h-10 flex items-center justify-center bg-white text-black rounded hover:bg-white/90 transition-opacity shrink-0"
                     aria-label={s.label}
                   >
                     <i className={`${s.icon} text-lg`} aria-hidden />
