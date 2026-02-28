@@ -61,6 +61,15 @@ export default function Footer() {
                 <p className="font-bold text-white text-sm mb-1">{tFooter("addressMoroccoTitle")}</p>
                 <p className="text-sm text-white/70">{tFooter("addressMoroccoValue")}</p>
               </div>
+              <div>
+                <p className="font-bold text-white text-sm mb-1">{tFooter("contact")}</p>
+                <a
+                  href={`tel:${tFooter("phone").replace(/\s/g, "")}`}
+                  className="text-sm text-white/70 hover:text-white transition-colors"
+                >
+                  {tFooter("phone")}
+                </a>
+              </div>
             </div>
           </div>
 

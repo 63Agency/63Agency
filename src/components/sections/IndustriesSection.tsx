@@ -50,8 +50,8 @@ export default function IndustriesSection() {
           </p>
         </div>
 
-        {/* Industries Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Industries Grid - 4 cards on same line from md up */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {industries.map((industry, index) => (
             <div
               key={index}

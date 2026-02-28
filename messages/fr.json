@@ -220,7 +220,7 @@
     "showMore": "Voir plus",
     "showLess": "Voir moins",
     "contactUs": "Nous contacter",
-    "phone": "+212 606-676710",
+    "phone": "07 20 007 007",
     "linkedInLabel": "Profil LinkedIn"
   },
   "aboutIntro": {
@@ -334,7 +334,7 @@
     "error": "Une erreur est survenue. Réessayez ou contactez-nous par téléphone.",
     "infoTitle": "Autres moyens de nous joindre",
     "phone": "Téléphone",
-    "phoneValue": "+212 606-676710",
+    "phoneValue": "07 20 007 007",
     "whatsapp": "WhatsApp",
     "email": "Email",
     "emailValue": "contact@63agency.com",
@@ -359,7 +359,7 @@
     "resource3": "Blog",
     "resource4": "Nos innovations",
     "copyright": "© {year} 63 Agency. Tous droits réservés.",
-    "phone": "+212 606-676710",
+    "phone": "07 20 007 007",
     "email": "contact@63agency.com"
   }
 }

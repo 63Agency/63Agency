@@ -165,10 +165,6 @@ export default function ServicesSection() {
               </div>
               <div className="absolute -bottom-6 sm:-bottom-10 left-0 right-0 flex gap-4 sm:gap-6 justify-center">
                 <div className="bg-gray-900 px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg">
-                  <p className="text-xs sm:text-sm text-red-400 opacity-90 mb-1">ORGANIC TRAFFIC</p>
-                  <p className="text-2xl sm:text-3xl font-bold text-blue-500">+77%</p>
-                </div>
-                <div className="bg-gray-900 px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg">
                   <p className="text-xs sm:text-sm text-red-400 opacity-90 mb-1">ROI REVOLUTION</p>
                   <p className="text-2xl sm:text-3xl font-bold text-blue-500">+241%</p>
                 </div>
