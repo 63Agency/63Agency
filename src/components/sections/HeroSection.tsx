@@ -68,17 +68,6 @@ export default function HeroSection() {
           )}
         </p>
 
-        {/* Trust Indicators */}
-        <div className="text-white mb-6 sm:mb-8 text-sm sm:text-base md:text-lg px-4">
-          {t('trustIndicators').split('**').map((part, index) => 
-            index % 2 === 1 ? (
-              <strong key={index} className="font-bold underline">{part}</strong>
-            ) : (
-              part
-            )
-          )}
-        </div>
-
         {/* Main CTA Button */}
         <Link
           href="#contact"

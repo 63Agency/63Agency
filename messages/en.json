@@ -14,7 +14,7 @@
     "newBadge": "NEW"
   },
   "expertisesMenu": {
-    "caption": "Over 4.2 Billion Dirhams generated for our clients since 2013.",
+    "caption": "4.2B+ MAD generated for clients since 2013.",
     "section1Title": "Content creation & graphic design",
     "section2Title": "Ads management",
     "section3Title": "Sales funnel",
@@ -52,12 +52,12 @@
     "b2bSeo": "B2B SEO services"
   },
   "hero": {
-    "primaryHeadline": "The Digital Marketing Agency that boosts your revenue while you sleep soundly.",
-    "secondaryHeadlineStart": "#1 Agency for Digital Marketing success,",
-    "secondaryHeadlineEnd": "in California, Morocco and soon in Dubai.",
-    "description": "Boost your business with our **leading digital marketing services**. Our expert team delivers tailored digital marketing solutions, seamlessly integrating innovative strategies.",
+    "primaryHeadline": "Digital marketing agency that drives revenue.",
+    "secondaryHeadlineStart": "#1 in Digital Marketing,",
+    "secondaryHeadlineEnd": "Morocco · California · Dubai.",
+    "description": "**Results-driven** solutions. Expert team. **Measurable ROI**.",
     "trustIndicators": "Trusted by over **1,200 clients** and **1,600+ successful projects worldwide**.",
-    "ctaButton": "Get a Free Consultation Now!"
+    "ctaButton": "Get a Free Consultation"
   },
   "partners": {
     "titleLine1": "They",
@@ -66,11 +66,11 @@
   "system": {
     "tagline": "Systems that perform.",
     "title": "Our System",
-    "intro": "We align Content, Paid Media, Funnels and Automation in a 360° approach, to generate qualified leads and predictable revenue.",
-    "subtitle": "We build systems, not campaigns. Here's how we turn your business into a lead generation engine.",
+    "intro": "Content, paid media, funnels and automation—aligned for qualified leads and predictable revenue.",
+    "subtitle": "We build systems, not campaigns.",
     "step1": {
       "title": "Content That Builds Authority",
-      "description": "Content-driven foundations to position you as the expert and attract your ideal clients.",
+      "description": "Position you as the expert. Attract ideal clients.",
       "item1": "Content strategy",
       "item2": "Articles & SEO",
       "item3": "Video & thought leadership",
@@ -78,7 +78,7 @@
     },
     "step2": {
       "title": "Paid Media & Targeted Traffic",
-      "description": "Data-driven campaigns that bring qualified prospects into your funnel.",
+      "description": "Data-driven campaigns. Qualified prospects into your funnel.",
       "item1": "Meta & Instagram",
       "item2": "Google Ads",
       "item3": "LinkedIn Ads",
@@ -86,7 +86,7 @@
     },
     "step3": {
       "title": "Funnel That Qualifies Leads",
-      "description": "Journeys that filter tire-kickers and identify ready-to-buy prospects.",
+      "description": "Filter and identify ready-to-buy prospects.",
       "item1": "High-converting landing pages",
       "item2": "Qualifying forms",
       "item3": "Lead scoring",
@@ -94,7 +94,7 @@
     },
     "step4": {
       "title": "CRM & Automation",
-      "description": "Automated follow-up that nurtures leads and converts while you sleep.",
+      "description": "Automated follow-up. Nurture leads and convert.",
       "item1": "Automated follow-up",
       "item2": "Email sequences",
       "item3": "Chatbot & WhatsApp",
@@ -104,117 +104,117 @@
   },
   "results": {
     "title": "Real Results, Real Revenue",
-    "subtitle": "See how we've helped businesses generate predictable lead flow and revenue growth.",
+    "subtitle": "Predictable lead flow and revenue growth.",
     "metric1": {
       "value": "500+",
-      "label": "Leads Generated Monthly",
-      "description": "Average across all clients"
+      "label": "Leads / Month",
+      "description": "Avg. across clients"
     },
     "metric2": {
       "value": "45%",
-      "label": "Cost Per Lead Reduction",
-      "description": "Through system optimization"
+      "label": "CPL Reduction",
+      "description": "System optimization"
     },
     "metric3": {
       "value": "3.2x",
       "label": "Revenue Growth",
-      "description": "Average client ROI"
+      "description": "Avg. client ROI"
     },
     "metric4": {
       "value": "85%",
-      "label": "Automation Rate",
-      "description": "Of follow-up processes"
+      "label": "Automation",
+      "description": "Follow-up processes"
     }
   },
   "industries": {
     "title": "Industries We Serve",
-    "subtitle": "Specialized lead generation systems for businesses that need predictable growth.",
+    "subtitle": "Lead generation systems for predictable growth.",
     "privateSchools": {
-      "name": "Prévert School / Academy",
-      "description": "Student enrollment systems that fill classrooms consistently."
+      "name": "Schools & Academies",
+      "description": "Enrollment systems. Full classrooms."
     },
     "trainingCenters": {
       "name": "Training Centers",
-      "description": "Course registration funnels that convert prospects into students."
+      "description": "Registration funnels. Prospects to students."
     },
     "realEstate": {
       "name": "Real Estate",
-      "description": "Property lead generation systems for agents and developers."
+      "description": "Lead generation for agents and developers."
     },
     "hospitality": {
       "name": "Hospitality",
-      "description": "Booking and reservation systems that maximize occupancy rates."
+      "description": "Booking systems. Maximize occupancy."
     },
     "b2bServices": {
       "name": "Enterprise",
-      "description": "High-value lead generation for professional service providers."
+      "description": "High-value leads for B2B."
     }
   },
   "servicesSection": {
-    "title": "Our Digital Marketing Solutions",
+    "title": "Our Solutions",
     "tagline1": "We don't do marketing.",
-    "tagline2": "We build profitable acquisition systems.",
-    "intro": "At 63 Agency, every solution is designed to generate qualified leads, reduce your cost per acquisition, and turn traffic into measurable revenue.",
+    "tagline2": "We build acquisition systems.",
+    "intro": "Qualified leads. Lower cost per acquisition. Measurable revenue.",
     "solution1Title": "Lead Generation B2B & B2C",
-    "solution1Subtitle": "We implement complete systems to generate qualified prospects predictably.",
+    "solution1Subtitle": "Complete systems for qualified prospects.",
     "solution1Bullet1": "Targeted acquisition strategy",
     "solution1Bullet2": "Smart segmentation",
     "solution1Bullet3": "Advanced lead qualification",
     "solution1Bullet4": "Continuous CPL optimization",
-    "solution1Goal": "Goal: feed your sales pipeline every month.",
-    "solution2Title": "Advertising Performance (Meta, Google, LinkedIn)",
-    "solution2Subtitle": "We launch and optimize ROI-driven advertising campaigns.",
+    "solution1Goal": "Feed your pipeline every month.",
+    "solution2Title": "Advertising (Meta, Google, LinkedIn)",
+    "solution2Subtitle": "ROI-driven campaigns. Continuous optimization.",
     "solution2Bullet1": "Meta Ads",
     "solution2Bullet2": "Google Ads",
     "solution2Bullet3": "LinkedIn Ads",
     "solution2Bullet4": "Data-driven continuous optimization",
-    "solution2Tagline": "We're not after clicks. We're after results.",
-    "solution3Title": "Website & Landing Page Creation",
-    "solution3Subtitle": "We design strategic websites built to convert.",
+    "solution2Tagline": "Results, not clicks.",
+    "solution3Title": "Websites & Landing Pages",
+    "solution3Subtitle": "Strategic sites built to convert.",
     "solution3Bullet1": "Professional showcase sites",
     "solution3Bullet2": "High-conversion landing pages",
     "solution3Bullet3": "Performance-oriented UX/UI",
     "solution3Bullet4": "Technical SEO optimization",
     "solution3Bullet5": "CRM & tracking integration (Meta Pixel, GA, GTM)",
-    "solution3Tagline": "A website isn't a business card. It's a revenue generation tool.",
-    "solution4Title": "Content Creation & Videography",
-    "solution4Subtitle": "Strategic content designed to convert.",
+    "solution3Tagline": "Your site as a revenue tool.",
+    "solution4Title": "Content & Video",
+    "solution4Subtitle": "Strategic content that converts.",
     "solution4Bullet1": "Ad videos",
     "solution4Bullet2": "Performance-oriented scripts",
     "solution4Bullet3": "Premium visual production",
     "solution4Bullet4": "Ad-optimized creatives",
-    "solution4Tagline": "Every piece of content serves one clear goal: generating a lead.",
+    "solution4Tagline": "Content that generates leads.",
     "solution5Title": "Qualification Funnel",
-    "solution5Subtitle": "We design smart conversion tunnels.",
+    "solution5Subtitle": "Smart conversion tunnels.",
     "solution5Bullet1": "Optimized landing pages",
     "solution5Bullet2": "Filtering forms",
     "solution5Bullet3": "Automation & CRM",
     "solution5Bullet4": "Follow-up sequences",
-    "solution5Result": "Result: only qualified prospects for your team.",
-    "solution6Title": "Conversion-oriented Graphic Design",
-    "solution6Subtitle": "Strategic design at the service of performance.",
+    "solution5Result": "Only qualified prospects for your team.",
+    "solution6Title": "Graphic Design",
+    "solution6Subtitle": "Design for performance.",
     "solution6Bullet1": "Ad creatives",
     "solution6Bullet2": "Visual identity",
     "solution6Bullet3": "Clear, impactful UI",
     "solution6Bullet4": "Premium branding",
-    "solution6Tagline": "Design that builds trust and increases conversion rate.",
+    "solution6Tagline": "Trust and conversion.",
     "approachTitle": "Our Approach",
-    "approachIntro": "Four interconnected pillars for predictable customer acquisition.",
+    "approachIntro": "Four pillars for predictable acquisition.",
     "approachItem1": "Strategic content",
     "approachItem2": "Targeted advertising",
     "approachItem3": "Smart funnel",
     "approachItem4": "CRM automation",
-    "approachFormula": "A complete, scalable acquisition system.",
-    "ctaTitle": "Ready to turn your marketing into predictable revenue?",
-    "ctaButton": "Book your strategy call"
+    "approachFormula": "Complete, scalable acquisition.",
+    "ctaTitle": "Turn marketing into predictable revenue.",
+    "ctaButton": "Book a strategy call"
   },
   "founder": {
-    "title": "With our expertise: turn your vision into tangible reality!",
+    "title": "Expertise that turns vision into reality.",
     "name": "Saad Chahoubi",
     "role": "CEO & FOUNDER",
     "company": "63 Agency",
-    "description": "Our ambition is to harmonize the art of marketing with the science of finance, creating a solid foundation for campaigns that not only capture attention but also convert and retain. We build lasting relationships with our clients, offering them transparency, accountability, and measurable return on investment.",
-    "extendedDescription": "At 63 Agency, we believe that performance marketing rests on data and a clear strategy. Every campaign is designed to deliver measurable results and predictable ROI, while building trust with our partners.",
+    "description": "We blend marketing and data to build campaigns that convert and retain. Lasting client relationships. Transparency. Measurable ROI.",
+    "extendedDescription": "Performance marketing rests on data and strategy. Measurable results. Predictable ROI. Trust with partners.",
     "showMore": "Show more",
     "showLess": "Show less",
     "contactUs": "Contact Us",
@@ -223,88 +223,88 @@
   },
   "aboutIntro": {
     "whoWeAreTitle": "Who are we?",
-    "whoWeAreBody": "Founded in 2013, 63 Agency stands out as more than a typical digital marketing agency. Based in Casablanca, Morocco, we are a leading full service digital marketing agency. We are committed to personalized and cutting-edge solutions and are renowned experts in the field. Our services are trusted by over 150 companies across four continents, positioning us as one of the top 10 full service digital marketing agencies to watch in 2025 / 2026.",
+    "whoWeAreBody": "Founded in 2013 in Casablanca. Full service digital marketing agency. 150+ companies across four continents. Top 10 agencies to watch.",
     "visionTitle": "Vision",
-    "visionBody": "To leverage technology's potential for businesses, transforming their approach to digital marketing, whether it's through advanced social media tactics or inventive strategies, as a leading full service digital marketing agency.",
+    "visionBody": "Leverage technology for businesses. Transform digital marketing with advanced tactics and strategy.",
     "missionTitle": "Mission",
-    "missionBody": "In the face of the marketing industry's constantly evolving landscape, the focus of our digital marketing experts at our full service digital marketing agency remains steadfast. Our dedicated marketing specialists are unwavering in their commitment to deliver top-notch quality, consistently on time.",
-    "tagline": "63 Agency full service digital marketing agency",
+    "missionBody": "Our experts deliver top quality, on time. Focused on results in an evolving industry.",
+    "tagline": "63 Agency",
     "taglineItalic": "Digital Marketing Experts"
   },
   "aboutServices": {
     "label": "Services",
-    "title": "Growing sales through exceptional services process",
+    "title": "Growing sales through exceptional services",
     "titleHighlight": "services",
     "titleHighlight1": "servi",
     "titleHighlight2": "ces",
-    "description": "We immerse ourselves in your challenges and put our knowledge and expertise at your service.",
+    "description": "We put our expertise at your service.",
     "item1Name": "SEO Marketing",
     "item2Name": "Social Marketing",
     "item3Name": "Content Marketing",
     "item4Name": "Email Marketing"
   },
   "shapeFuture": {
-    "headline": "Shape your future with our full service digital marketing agency",
-    "subtitle": "63 Agency : Where Digital Marketing Expertise Leads the Way!",
+    "headline": "Shape your future with 63 Agency",
+    "subtitle": "63 Agency : Digital Marketing Expertise",
     "subtitleUnderline": "Digital Marketing Expertise",
-    "subtitleItalic": "Leads the Way!",
-    "paragraph": "63 Agency is the preferred full service digital marketing agency for B2B and B2C in 2025 / 2026. We deliver innovative solutions and high-performing advertising campaigns, aligned with the latest trends.",
+    "subtitleItalic": "Leads the Way.",
+    "paragraph": "Preferred agency for B2B and B2C. Innovative solutions. High-performing campaigns.",
     "col1Title": "We stand out",
-    "col1Body": "As a full service digital marketing agency, we offer more than just promises; our strategies are backed by concrete results that set us apart.",
-    "col2Title": "Our key strength",
-    "col2Body": "As a full service digital marketing agency with global experience, we excel at bringing visions to life. Renowned for our adeptness in digital marketing agency services, we constantly innovate and lead in the marketing sector.",
-    "col3Title": "What matters most",
-    "col3Body": "Sustainably and effectively boosting your revenue. As a full service digital marketing agency, we trust in the power of content marketing, email marketing, and influencer strategies to deliver results."
+    "col1Body": "Strategies backed by concrete results.",
+    "col2Title": "Our strength",
+    "col2Body": "Global experience. We bring visions to life. We innovate and lead.",
+    "col3Title": "What matters",
+    "col3Body": "Boost revenue. Content, email and influence strategies that deliver."
   },
   "faq": {
     "title": "FAQs",
     "showMore": "Show more",
     "showLess": "Show less",
     "q1": "What is a digital agency?",
-    "a1": "A digital agency designs and deploys digital marketing strategies (SEO, social media, advertising, content) to grow your online visibility and revenue.",
-    "q2": "What digital transformation services do you offer as a digital marketing agency?",
-    "a2": "We offer a 360° approach: brand strategy, content, paid media, lead generation, customer experience and automation (CRM, chatbot, AI) for predictable growth.",
+    "a1": "We design and deploy strategies (SEO, social, ads, content) to grow visibility and revenue.",
+    "q2": "What services do you offer?",
+    "a2": "360° approach: brand, content, paid media, lead gen, CRM and automation (chatbot, AI).",
     "q3": "What is digital marketing?",
-    "a3": "Digital marketing covers all online promotion and acquisition activities (websites, social media, advertising, email, SEO) to attract and convert prospects into customers.",
+    "a3": "All online promotion (web, social, ads, email, SEO) to attract and convert prospects.",
     "q4": "How do you generate qualified leads?",
-    "a4": "We build systems (content, targeted campaigns, funnels, qualification) that attract qualified prospects and turn them into sales opportunities.",
-    "q5": "What is your process for a new client?",
-    "a5": "Audit, goal setting, tailored strategy, deployment and continuous optimization, with regular reporting to measure ROI."
+    "a4": "Systems: content, campaigns, funnels and qualification. Prospects become opportunities.",
+    "q5": "What is your process?",
+    "a5": "Audit, goals, strategy, deployment, optimization. Regular reporting for ROI."
   },
   "aboutFaq": {
     "title": "FAQs",
     "showMore": "Show more",
     "showLess": "Show less",
-    "q1": "What are your company's values?",
-    "a1": "Transparency, measurable performance and client commitment are at the heart of 63 Agency. We focus on concrete results, predictable ROI and lasting trust with our partners.",
-    "q2": "What is your expertise in your field of activity?",
-    "a2": "Since 2013 we have been supporting businesses in B2B and B2C lead generation, performance advertising (Meta, Google, LinkedIn), website and landing page creation, content and video, qualification funnels and conversion-oriented design. Over 150 companies trust us across four continents.",
-    "q3": "How do you ensure the quality of your services?",
-    "a3": "Through a structured process: audit, clear objectives, tailored strategy, deployment and continuous optimization. Regular reporting and metrics (CPL, ROI, conversion rate) allow us to measure and adjust at all times.",
-    "q4": "What distinctive and competitive advantages does your marketing team offer?",
-    "a4": "We build profitable acquisition systems, not just campaigns. Our 360° approach integrates content, paid media, funnels and automation for a flow of qualified leads and predictable revenue.",
-    "q5": "How does 63 Agency tailor its services to different industries?",
-    "a5": "Each industry (education, real estate, hospitality, B2B, etc.) has its own challenges. We adapt strategy, channels and messaging to maximize relevance and conversion rate for your market.",
-    "q6": "Can 63 Agency's services support international market expansion?",
-    "a6": "Yes. We already operate in Morocco, Europe and soon in Dubai. We adapt campaigns, targeting and assets to local markets for a controlled expansion.",
-    "q7": "What makes 63 Agency's approach to SEO and SEM unique as a full service agency?",
-    "a7": "We align SEO, paid search and content in a lead generation logic: organic and paid visibility serving qualified traffic and measurable revenue, with continuous monitoring and optimization.",
-    "q8": "How does 63 Agency ensure a high ROI from its digital marketing services?",
-    "a8": "By focusing on measurable objectives (leads, cost per lead, revenue), building systems rather than one-off campaigns, and optimizing continuously based on data. Regular reporting helps drive ROI."
+    "q1": "What are your values?",
+    "a1": "Transparency. Measurable performance. Concrete results. Predictable ROI. Trust.",
+    "q2": "What is your expertise?",
+    "a2": "Since 2013: B2B/B2C lead gen, Meta/Google/LinkedIn ads, sites, content, funnels. 150+ companies, four continents.",
+    "q3": "How do you ensure quality?",
+    "a3": "Structured process: audit, objectives, strategy, deployment, optimization. Reporting and metrics (CPL, ROI).",
+    "q4": "What advantages do you offer?",
+    "a4": "Profitable acquisition systems, not just campaigns. 360°: content, media, funnels, automation.",
+    "q5": "How do you adapt to industries?",
+    "a5": "We adapt strategy, channels and messaging per sector (education, real estate, B2B, etc.).",
+    "q6": "Do you support international expansion?",
+    "a6": "Yes. Morocco, Europe, soon Dubai. Campaigns and targeting adapted to local markets.",
+    "q7": "What is unique about your SEO/SEM?",
+    "a7": "SEO, paid search and content aligned for lead gen. Organic + paid. Continuous optimization.",
+    "q8": "How do you ensure high ROI?",
+    "a8": "Measurable goals. Systems over one-off campaigns. Data-driven optimization. Regular reporting."
   },
   "cta": {
-    "title": "Ready to Generate Predictable Revenue?",
-    "description": "Book a strategy call and discover how we can turn your business into a lead generation engine.",
-    "button": "Book Your Strategy Call"
+    "title": "Generate Predictable Revenue.",
+    "description": "Book a strategy call. We turn your business into a lead engine.",
+    "button": "Book a Strategy Call"
   },
   "contactPage": {
     "title": "Contact Us",
-    "contactTag": "CONTACT US",
-    "heroHeadline1": "Need a creative",
+    "contactTag": "CONTACT",
+    "heroHeadline1": "Need a",
     "heroHeadline2": "solution?",
-    "heroHeadline3": "Let's talk about your project.",
-    "headline": "Let's bring your vision to life together.",
-    "subtitle": "Ready to turn your marketing into predictable revenue? Let's talk about your project.",
+    "heroHeadline3": "Let's talk.",
+    "headline": "Bring your vision to life.",
+    "subtitle": "Let's talk about your project.",
     "formTitle": "Send us a message",
     "fullNameLabel": "Full name",
     "nameLabel": "Full name",
@@ -325,7 +325,7 @@
     "subjectLabel": "Subject",
     "subjectPlaceholder": "How can we help you?",
     "messageLabel": "Message",
-    "messagePlaceholder": "Describe your project or goal...",
+    "messagePlaceholder": "Your project or goal...",
     "submit": "Send message",
     "sending": "Sending...",
     "success": "Message sent! We'll get back to you soon.",
@@ -341,7 +341,7 @@
     "followUs": "Follow us"
   },
   "footer": {
-    "tagline": "The agency that turns marketing into predictable revenue.",
+    "tagline": "Marketing into predictable revenue.",
     "links": "Links",
     "contact": "Contact",
     "followUs": "Follow us",

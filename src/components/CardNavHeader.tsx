@@ -66,10 +66,10 @@ export default function CardNavHeader() {
         logo="/images/hero/63agency.png"
         logoAlt="63 Agency"
         items={navItems}
-        baseColor="#fff"
-        menuColor="#000"
+        baseColor="rgba(80,80,80,0.9)"
+        menuColor="#fff"
         buttonBgColor="transparent"
-        buttonTextColor="#000"
+        buttonTextColor="#fff"
         ctaLabel={tNav("contactButton")}
         ctaHref={`${prefix}/contact`}
       />
