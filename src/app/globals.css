@@ -89,7 +89,14 @@
   animation-play-state: paused;
 }
 
-
+/* Logo: always display in original colors (no grayscale/invert) */
+.card-nav-container img.logo,
+.card-nav img.logo,
+.card-nav .logo-container img,
+.sm-scope .sm-logo-img {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
 
 @layer base {
   :root {
