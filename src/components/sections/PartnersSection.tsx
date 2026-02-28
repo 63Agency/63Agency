@@ -53,7 +53,7 @@ export default function PartnersSection() {
                     alt={partner.name}
                     width={120}
                     height={60}
-                    className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                     style={{ maxWidth: '120px', maxHeight: '60px' }}
                   />
                 </div>
