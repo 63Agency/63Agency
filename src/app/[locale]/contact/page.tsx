@@ -10,7 +10,6 @@ const SOCIAL_LINKS = [
   { label: "Instagram", href: "https://instagram.com/63agency", icon: "fa-brands fa-instagram" },
   { label: "LinkedIn", href: "https://linkedin.com/company/63agency", icon: "fa-brands fa-linkedin-in" },
   { label: "Facebook", href: "https://facebook.com/63agency", icon: "fa-brands fa-facebook-f" },
-  { label: "YouTube", href: "https://youtube.com/@63agency", icon: "fa-brands fa-youtube" },
 ];
 
 export default function ContactPage() {

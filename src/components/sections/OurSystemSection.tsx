@@ -115,7 +115,7 @@ export default function OurSystemSection() {
           className="text-xs uppercase tracking-widest text-white/40 whitespace-nowrap"
           style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)" }}
         >
-          {tFooter("followUs")} — Ig. / Lk. / Fb. / Yt.
+          {tFooter("followUs")} — Ig. / Lk. / Fb.
         </p>
       </div>
     </section>

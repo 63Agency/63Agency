@@ -10,7 +10,6 @@ const SOCIAL_LINKS = [
   { label: "Instagram", href: "#", icon: "fa-brands fa-instagram" },
   { label: "LinkedIn", href: "#", icon: "fa-brands fa-linkedin-in" },
   { label: "Facebook", href: "#", icon: "fa-brands fa-facebook-f" },
-  { label: "YouTube", href: "#", icon: "fa-brands fa-youtube" },
 ];
 
 export default function Footer() {
