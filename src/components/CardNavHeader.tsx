@@ -59,7 +59,7 @@ export default function CardNavHeader() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center items-center gap-4 pt-4 transition-transform duration-300 ease-out"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 transition-transform duration-300 ease-out"
       style={{ transform: showNav ? "translateY(0)" : "translateY(-100%)" }}
       aria-hidden={!showNav}
     >
@@ -73,8 +73,8 @@ export default function CardNavHeader() {
         buttonTextColor="#000"
         ctaLabel={tNav("contactButton")}
         ctaHref={`${prefix}/contact`}
+        trailingSlot={<LanguageSwitcher className="shrink-0" />}
       />
-      <LanguageSwitcher className="text-black shrink-0" />
     </div>
   );
 }

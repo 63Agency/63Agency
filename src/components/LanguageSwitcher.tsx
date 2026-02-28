@@ -4,9 +4,31 @@ import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { locales, type Locale } from "@/i18n/config";
 
-const LABELS: Record<Locale, string> = {
-  en: "GB",
-  fr: "FR",
+function FlagGB({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 30" className={className} aria-hidden preserveAspectRatio="xMidYMid slice">
+      <rect width="60" height="30" fill="#012169" />
+      <path fill="none" stroke="#fff" strokeWidth="7" d="M0 0 L60 30 M60 0 L0 30" />
+      <path fill="none" stroke="#C8102E" strokeWidth="4" d="M0 0 L60 30 M60 0 L0 30" />
+      <path fill="none" stroke="#fff" strokeWidth="5" d="M30 0 L30 30 M0 15 L60 15" />
+      <path fill="none" stroke="#C8102E" strokeWidth="2.5" d="M30 0 L30 30 M0 15 L60 15" />
+    </svg>
+  );
+}
+
+function FlagFR({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 40" className={className} aria-hidden>
+      <rect width="20" height="40" x="0" fill="#002395" />
+      <rect width="20" height="40" x="20" fill="#fff" />
+      <rect width="20" height="40" x="40" fill="#ED2939" />
+    </svg>
+  );
+}
+
+const FLAG_SVG: Record<Locale, React.FC<{ className?: string }>> = {
+  en: FlagGB,
+  fr: FlagFR,
 };
 
 export default function LanguageSwitcher({
@@ -30,29 +52,30 @@ export default function LanguageSwitcher({
   const isActive = (l: Locale) => l === locale;
   const isFooter = variant === "footer";
   const btnBase =
-    "inline-flex items-center justify-center min-w-[2.25rem] h-9 px-2 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1";
+    "inline-flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 overflow-hidden";
   const btnActive = isFooter
-    ? "bg-white/10 border-2 border-white/50 text-white"
-    : "border-2 border-gray-400 bg-transparent text-black";
-  const btnInactive = isFooter
-    ? "text-white/60 hover:text-white border border-transparent"
-    : "text-gray-500 hover:text-gray-700 border border-transparent";
+    ? "ring-2 ring-white/60 ring-offset-2 ring-offset-black bg-white/5"
+    : "ring-2 ring-gray-400 ring-offset-2 ring-offset-transparent bg-gray-100/50";
+  const btnInactive = isFooter ? "opacity-70 hover:opacity-100" : "opacity-60 hover:opacity-100";
 
   return (
-    <div className={`flex items-center gap-2 ${className}`} role="group" aria-label="Switch language">
-      {locales.map((l) => (
-        <button
-          key={l}
-          type="button"
-          onClick={() => switchLocale(l)}
-          className={`${btnBase} ${isActive(l) ? btnActive : btnInactive}`}
-          aria-label={l === "en" ? t("languageEn") : t("languageFr")}
-          aria-current={isActive(l) ? "true" : undefined}
-          title={l === "en" ? t("languageEn") : t("languageFr")}
-        >
-          {LABELS[l]}
-        </button>
-      ))}
+    <div className={`flex items-center gap-1.5 ${className}`} role="group" aria-label="Switch language">
+      {locales.map((l) => {
+        const FlagIcon = FLAG_SVG[l];
+        return (
+          <button
+            key={l}
+            type="button"
+            onClick={() => switchLocale(l)}
+            className={`${btnBase} ${isActive(l) ? btnActive : btnInactive}`}
+            aria-label={l === "en" ? t("languageEn") : t("languageFr")}
+            aria-current={isActive(l) ? "true" : undefined}
+            title={l === "en" ? t("languageEn") : t("languageFr")}
+          >
+            <FlagIcon className="w-6 h-4 object-cover rounded-sm" />
+          </button>
+        );
+      })}
     </div>
   );
 }

@@ -34,6 +34,7 @@ export interface CardNavProps {
   buttonTextColor?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  trailingSlot?: React.ReactNode;
 }
 
 const CardNav: React.FC<CardNavProps> = ({
@@ -47,7 +48,8 @@ const CardNav: React.FC<CardNavProps> = ({
   buttonBgColor,
   buttonTextColor,
   ctaLabel = 'Get Started',
-  ctaHref
+  ctaHref,
+  trailingSlot
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -199,23 +201,26 @@ const CardNav: React.FC<CardNavProps> = ({
             <img src={logo} alt={logoAlt} className="logo h-[28px]" style={{ filter: 'none' }} />
           </div>
 
-          {ctaHref ? (
-            <a
-              href={ctaHref}
-              className="coolBeansNav card-nav-cta-button hidden md:inline-flex rounded-[3rem] px-4 items-center h-full font-medium cursor-pointer no-underline border-2"
-              style={{ backgroundColor: 'transparent', color: buttonTextColor, borderColor: 'currentColor' }}
-            >
-              {ctaLabel}
-            </a>
-          ) : (
-            <button
-              type="button"
-              className="coolBeansNav card-nav-cta-button hidden md:inline-flex rounded-[3rem] px-4 items-center h-full font-medium cursor-pointer border-2"
-              style={{ backgroundColor: 'transparent', color: buttonTextColor, borderColor: 'currentColor' }}
-            >
-              {ctaLabel}
-            </button>
-          )}
+          <div className="hidden md:flex items-center gap-3 flex-shrink-0">
+            {trailingSlot}
+            {ctaHref ? (
+              <a
+                href={ctaHref}
+                className="coolBeansNav card-nav-cta-button inline-flex rounded-[3rem] px-5 py-2.5 min-h-[40px] items-center justify-center h-full font-semibold text-[15px] cursor-pointer no-underline border-2 whitespace-nowrap flex-shrink-0"
+                style={{ backgroundColor: 'transparent', color: buttonTextColor, borderColor: 'currentColor' }}
+              >
+                {ctaLabel}
+              </a>
+            ) : (
+              <button
+                type="button"
+                className="coolBeansNav card-nav-cta-button inline-flex rounded-[3rem] px-5 py-2.5 min-h-[40px] items-center justify-center h-full font-semibold text-[15px] border-2 whitespace-nowrap flex-shrink-0"
+                style={{ backgroundColor: 'transparent', color: buttonTextColor, borderColor: 'currentColor' }}
+              >
+                {ctaLabel}
+              </button>
+            )}
+          </div>
         </div>
 
         <div
