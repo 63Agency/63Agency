@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { sendContactEmails, isEmailJSConfigured } from "@/lib/emailjs";
 
 const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26590.729979015396!2d-7.6489544!3d33.5834709!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd84d09ffbb5%3A0x69653c6f96ae98ad!2sCommons%20Zerktouni!5e0!3m2!1sfr!2sma!4v1771980097793!5m2!1sfr!2sma";
 
@@ -36,23 +37,43 @@ export default function ContactPage() {
     setStatus("sending");
     const form = e.currentTarget;
     const data = new FormData(form);
+    const name = (data.get("name") as string) ?? "";
+    const email = (data.get("email") as string) ?? "";
+    const phone = (data.get("phone") as string) ?? "";
+    const city = (data.get("city") as string) ?? "";
+    const address = (data.get("address") as string) ?? "";
+    const company = (data.get("company") as string) ?? "";
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...Object.fromEntries(data),
-          ...qualification,
-        }),
-      });
-      if (res.ok) {
-        setStatus("success");
-        form.reset();
-        setQualification({ role: "", objective: "", timing: "", campaigns: "", sector: "", establishment: "" });
-        setStep(1);
+      if (!isEmailJSConfigured()) {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...Object.fromEntries(data),
+            ...qualification,
+          }),
+        });
+        if (!res.ok) throw new Error("API error");
       } else {
-        setStatus("error");
+        await sendContactEmails({
+          name,
+          email,
+          phone,
+          city,
+          address,
+          company,
+          role: qualification.role,
+          objective: qualification.objective,
+          timing: qualification.timing,
+          campaigns: qualification.campaigns,
+          sector: qualification.sector,
+          establishment: qualification.establishment,
+        });
       }
+      setStatus("success");
+      form.reset();
+      setQualification({ role: "", objective: "", timing: "", campaigns: "", sector: "", establishment: "" });
+      setStep(1);
     } catch {
       setStatus("error");
     }

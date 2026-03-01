@@ -54,55 +54,63 @@
     "b2bSeo": "B2B SEO services"
   },
   "hero": {
-    "primaryHeadline": "Digital marketing agency that drives revenue.",
-    "secondaryHeadlineStart": "#1 in Digital Marketing,",
-    "secondaryHeadlineEnd": "Morocco · California · Dubai.",
-    "description": "**Results-driven** solutions. Expert team. **Measurable ROI**.",
+    "primaryHeadline": "According to your institution's capacity and goals.",
+    "secondaryHeadlineStart": "Generate 50 to 450 qualified prospects",
+    "secondaryHeadlineEnd": "every month.",
+    "description": "We build a complete acquisition system designed to deliver enrollment requests and admissions appointments predictably. Dedicated exclusively to educational institutions and high-value businesses.",
     "trustIndicators": "Trusted by over **1,200 clients** and **1,600+ successful projects worldwide**.",
-    "ctaButton": "Get a Free Consultation"
+    "ctaButton": "Book a strategy call"
   },
   "partners": {
     "titleLine1": "They",
     "titleLine2": "Trust Us"
   },
   "system": {
-    "tagline": "Systems that perform.",
-    "title": "Our System",
-    "intro": "Content, paid media, funnels and automation—aligned for qualified leads and predictable revenue.",
+    "tagline": "A 5-step acquisition system",
+    "title": "The System",
+    "intro": "From strategy to scaling: a proven process to generate enrollments and admissions appointments predictably.",
     "subtitle": "We build systems, not campaigns.",
     "step1": {
-      "title": "Content That Builds Authority",
-      "description": "Position you as the expert. Attract ideal clients.",
-      "item1": "Content strategy",
-      "item2": "Articles & SEO",
-      "item3": "Video & thought leadership",
-      "item4": "Editorial production"
+      "title": "Benchmark, strategy & content creation",
+      "description": "Positioning analysis, competitive study and high-value content production to strengthen appeal.",
+      "item1": "Benchmark & positioning",
+      "item2": "Competitive study",
+      "item3": "High-value content",
+      "item4": "Brand appeal"
     },
     "step2": {
-      "title": "Paid Media & Targeted Traffic",
-      "description": "Data-driven campaigns. Qualified prospects into your funnel.",
+      "title": "Advertising campaign deployment",
+      "description": "Meta & Google campaigns optimized to generate qualified prospects.",
       "item1": "Meta & Instagram",
       "item2": "Google Ads",
-      "item3": "LinkedIn Ads",
-      "item4": "Remarketing & programmatic"
+      "item3": "Targeting & optimization",
+      "item4": "Qualified prospects"
     },
     "step3": {
-      "title": "Funnel That Qualifies Leads",
-      "description": "Filter and identify ready-to-buy prospects.",
-      "item1": "High-converting landing pages",
-      "item2": "Qualifying forms",
-      "item3": "Lead scoring",
-      "item4": "CRM integration"
+      "title": "Qualification tunnel",
+      "description": "Structured system to filter and route prospects to admissions appointments.",
+      "item1": "Lead filtering",
+      "item2": "Admissions routing",
+      "item3": "Structured appointments",
+      "item4": "Qualification"
     },
     "step4": {
-      "title": "CRM & Automation",
-      "description": "Automated follow-up. Nurture leads and convert.",
-      "item1": "Automated follow-up",
-      "item2": "Email sequences",
-      "item3": "Chatbot & WhatsApp",
-      "item4": "Reporting & ROI"
+      "title": "CRM & automation",
+      "description": "Smart lead follow-up, nurturing and enrollment pipeline structure.",
+      "item1": "Lead follow-up",
+      "item2": "Automated nurturing",
+      "item3": "Enrollment pipeline",
+      "item4": "Dedicated CRM"
     },
-    "bottomMessage": "We build systems, not campaigns."
+    "step5": {
+      "title": "Analysis, optimization & scaling",
+      "description": "Continuous performance improvement and volume scaling to match your goals.",
+      "item1": "Ongoing analysis",
+      "item2": "Optimization",
+      "item3": "Scaling",
+      "item4": "Goals"
+    },
+    "bottomMessage": "A 5-step acquisition system."
   },
   "results": {
     "title": "Real Results, Real Revenue",
@@ -222,7 +230,38 @@
     "contactUs": "Contact Us",
     "phone": "07 20 007 007",
     "linkedInLabel": "LinkedIn profile",
-    "talkToStrategist": "Talk to a strategist"
+    "talkToStrategist": "Talk to a strategist",
+    "quote": "Our promise is simple: Measurable results. Predictable performance.",
+    "quoteAuthor": "Saad CHAHOUBI — Founder, 63"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "sectionSubtitle": "Concrete results in communication & digital marketing",
+    "sectionTitle": "Behind every result, a story: the concrete impact of our agency specialized in communication, marketing and digital performance.",
+    "t1": {
+      "name": "Tarik El Adraoui",
+      "role": "CEO",
+      "company": "Oum Palace & New Hotel",
+      "quote": "I've been working with Saad and 63 agency for over 4 years. He's serious, reliable and consistent in performance. We've generated great results together and the relationship is built on trust."
+    },
+    "t2": {
+      "name": "Kenza Noumane",
+      "role": "Founder",
+      "company": "ETC Academy",
+      "quote": "The content produced by 63 Agency is really top quality. Creative, professional and perfectly aligned with our positioning."
+    },
+    "t3": {
+      "name": "Samir Benmakhlouf",
+      "role": "Founder",
+      "company": "London Academy",
+      "quote": "This is clearly the best experience we've had with an agency. Nothing like our previous collaborations. Serious, high-performing work."
+    },
+    "t4": {
+      "name": "Leila",
+      "role": "Sales Manager",
+      "company": "Madariss Achbal Al Atlas",
+      "quote": "I'm proud to work with Saad. A serious partner committed to performance."
+    }
   },
   "aboutIntro": {
     "whoWeAreTitle": "Who are we?",

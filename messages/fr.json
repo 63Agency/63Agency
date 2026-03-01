@@ -54,55 +54,63 @@
     "b2bSeo": "Services SEO B2B"
   },
   "hero": {
-    "primaryHeadline": "L'agence qui booste vos revenus.",
-    "secondaryHeadlineStart": "#1 en Marketing Digital,",
-    "secondaryHeadlineEnd": "Maroc · Californie · Dubaï.",
-    "description": "**Résultats concrets.** Équipe d'experts. **ROI mesurable**.",
+    "primaryHeadline": "Selon la capacité et les objectifs de votre établissement.",
+    "secondaryHeadlineStart": "Générez entre 50 et 450 prospects qualifiés",
+    "secondaryHeadlineEnd": "chaque mois.",
+    "description": "Nous structurons un système d'acquisition complet conçu pour produire des demandes d'inscription et des rendez-vous admissions de manière prévisible. Système dédié exclusivement aux établissements éducatifs et entreprises à forte valeur.",
     "trustIndicators": "Approuvé par plus de **1 200 clients** et **1 600+ projets réussis**.",
-    "ctaButton": "Consultation gratuite"
+    "ctaButton": "Réserver un appel stratégique"
   },
   "partners": {
     "titleLine1": "Ils nous font",
     "titleLine2": "confiance"
   },
   "system": {
-    "tagline": "Des systèmes qui performent.",
-    "title": "Notre Système",
-    "intro": "Contenu, médias payants, entonnoirs et automatisation—alignés pour des leads qualifiés et un revenu prévisible.",
+    "tagline": "Un système d'acquisition structuré en 5 étapes",
+    "title": "Le Système",
+    "intro": "De l'étude stratégique au scaling : un processus éprouvé pour générer des inscriptions et des rendez-vous admissions de façon prévisible.",
     "subtitle": "Nous construisons des systèmes, pas des campagnes.",
     "step1": {
-      "title": "Contenu Qui Construit l'Autorité",
-      "description": "Vous positionner en expert. Attirer vos clients idéaux.",
-      "item1": "Stratégie de contenu",
-      "item2": "Articles & SEO",
-      "item3": "Vidéos & thought leadership",
-      "item4": "Production éditoriale"
+      "title": "Benchmark, étude stratégique & création de contenu",
+      "description": "Analyse du positionnement, étude concurrentielle et production de contenus à forte valeur pour renforcer l'attractivité.",
+      "item1": "Benchmark & positionnement",
+      "item2": "Étude concurrentielle",
+      "item3": "Contenus à forte valeur",
+      "item4": "Attractivité marque"
     },
     "step2": {
-      "title": "Médias Payants & Trafic Ciblé",
-      "description": "Campagnes data-driven. Prospects qualifiés vers votre entonnoir.",
+      "title": "Déploiement des campagnes publicitaires",
+      "description": "Lancement de campagnes Meta & Google optimisées pour générer des prospects qualifiés.",
       "item1": "Meta & Instagram",
       "item2": "Google Ads",
-      "item3": "LinkedIn Ads",
-      "item4": "Remarketing & programmatique"
+      "item3": "Ciblage & optimisation",
+      "item4": "Prospects qualifiés"
     },
     "step3": {
-      "title": "Entonnoir Qui Qualifie les Leads",
-      "description": "Filtrer et identifier les prospects prêts à acheter.",
-      "item1": "Landing pages performantes",
-      "item2": "Formulaires qualifiants",
-      "item3": "Lead scoring",
-      "item4": "Intégration CRM"
+      "title": "Tunnel de qualification",
+      "description": "Mise en place d'un système structuré pour filtrer et orienter les prospects vers des rendez-vous admissions.",
+      "item1": "Filtrage des leads",
+      "item2": "Orientation admissions",
+      "item3": "RDV structurés",
+      "item4": "Qualification"
     },
     "step4": {
-      "title": "CRM & Automatisation",
-      "description": "Suivi automatisé. Nourrir les leads et convertir.",
-      "item1": "Suivi automatisé",
-      "item2": "Séquences email",
-      "item3": "Chatbot & WhatsApp",
-      "item4": "Reporting & ROI"
+      "title": "CRM & automatisation",
+      "description": "Suivi intelligent des leads, relances et structuration du pipeline d'inscription.",
+      "item1": "Suivi des leads",
+      "item2": "Relances automatisées",
+      "item3": "Pipeline inscription",
+      "item4": "CRM dédié"
     },
-    "bottomMessage": "Nous construisons des systèmes, pas des campagnes."
+    "step5": {
+      "title": "Analyse, optimisation & scaling",
+      "description": "Amélioration continue des performances et adaptation du volume selon vos objectifs.",
+      "item1": "Analyse continue",
+      "item2": "Optimisation",
+      "item3": "Scaling",
+      "item4": "Objectifs"
+    },
+    "bottomMessage": "Un système d'acquisition structuré en 5 étapes."
   },
   "results": {
     "title": "Résultats Réels, Revenus Réels",
@@ -212,6 +220,8 @@
   },
   "founder": {
     "title": "Expertise qui transforme la vision en réalité.",
+    "quote": "Notre promesse est simple : Des résultats mesurables. Une performance prévisible.",
+    "quoteAuthor": "Saad CHAHOUBI — Founder, 63",
     "name": "Saad Chahoubi",
     "role": "CEO & FOUNDER",
     "company": "63 Agency",
@@ -223,6 +233,35 @@
     "phone": "07 20 007 007",
     "linkedInLabel": "Profil LinkedIn",
     "talkToStrategist": "Parler à un stratège"
+  },
+  "testimonials": {
+    "title": "Témoignages",
+    "sectionSubtitle": "Des résultats concrets en communication & marketing digital",
+    "sectionTitle": "Derrière chaque résultat, une histoire : l'impact concret de notre agence spécialisée en communication, marketing et performance digitale.",
+    "t1": {
+      "name": "Tarik El Adraoui",
+      "role": "CEO",
+      "company": "Oum Palace & New Hotel",
+      "quote": "Je travaille avec Saad et 63 agency depuis plus de 4 ans. C'est quelqu'un de sérieux, fiable et constant dans la performance. On a généré de bons résultats ensemble et la relation est basée sur la confiance."
+    },
+    "t2": {
+      "name": "Kenza Noumane",
+      "role": "Fondatrice",
+      "company": "ETC Academy",
+      "quote": "Le contenu produit par 63 Agency est vraiment d'un très bon niveau. Créatif, professionnel et parfaitement adapté à notre positionnement."
+    },
+    "t3": {
+      "name": "Samir Benmakhlouf",
+      "role": "Founder",
+      "company": "London Academy",
+      "quote": "C'est clairement la meilleure expérience que nous ayons eue avec une agence. Rien à voir avec nos anciennes collaborations. Un travail sérieux et performant."
+    },
+    "t4": {
+      "name": "Leila",
+      "role": "Sales Manager",
+      "company": "Madariss Achbal Al Atlas",
+      "quote": "Je suis fière de travailler avec Saad. Un partenaire sérieux et engagé dans la performance."
+    }
   },
   "aboutIntro": {
     "whoWeAreTitle": "Qui sommes-nous ?",

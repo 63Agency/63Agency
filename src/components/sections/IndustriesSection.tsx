@@ -10,22 +10,22 @@ export default function IndustriesSection() {
     {
       name: t('privateSchools.name'),
       description: t('privateSchools.description'),
-      image: "/images/industries/private-schools.jpg",
+      image: "/images/Ecolepreve.png",
     },
     {
       name: t('b2bServices.name'),
       description: t('b2bServices.description'),
-      image: "/images/industries/b2b-services.jpg",
+      image: "/images/Entreprise.png",
     },
     {
       name: t('realEstate.name'),
       description: t('realEstate.description'),
-      image: "/images/industries/real-estate.jpg",
+      image: "/images/Immobilier.png",
     },
     {
       name: t('hospitality.name'),
       description: t('hospitality.description'),
-      image: "/images/industries/hospitality.jpg",
+      image: "/images/Hotellerie.png",
     },
   ];
 

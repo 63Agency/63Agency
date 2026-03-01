@@ -7,10 +7,11 @@ const GREEN_ACCENT = "#22c55e";
 const iconClass = "text-white/90 text-2xl sm:text-3xl w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center mx-auto";
 
 const STEP_ICONS = [
-  <i key="1" className={`fa-solid fa-arrows-down-to-people ${iconClass}`} aria-hidden />,
+  <i key="1" className={`fa-solid fa-chart-line ${iconClass}`} aria-hidden />,
   <i key="2" className={`fa-solid fa-bullhorn ${iconClass}`} aria-hidden />,
-  <i key="3" className={`fa-solid fa-gauge-high ${iconClass}`} aria-hidden />,
+  <i key="3" className={`fa-solid fa-filter ${iconClass}`} aria-hidden />,
   <i key="4" className={`fa-solid fa-users ${iconClass}`} aria-hidden />,
+  <i key="5" className={`fa-solid fa-arrow-trend-up ${iconClass}`} aria-hidden />,
 ];
 
 export default function OurSystemSection() {
@@ -41,6 +42,12 @@ export default function OurSystemSection() {
       title: t("step4.title"),
       description: t("step4.description"),
       items: [t("step4.item1"), t("step4.item2"), t("step4.item3"), t("step4.item4")],
+    },
+    {
+      icon: STEP_ICONS[4],
+      title: t("step5.title"),
+      description: t("step5.description"),
+      items: [t("step5.item1"), t("step5.item2"), t("step5.item3"), t("step5.item4")],
     },
   ];
 
@@ -77,7 +84,7 @@ export default function OurSystemSection() {
         </div>
 
         {/* Four-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
           {steps.map((step, index) => (
             <div key={index} className="text-center lg:text-left">
               <div className="mb-4 flex justify-center lg:justify-start">

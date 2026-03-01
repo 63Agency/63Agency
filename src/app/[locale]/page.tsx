@@ -4,6 +4,7 @@ import ServicesSection from '@/components/sections/ServicesSection';
 import FounderSection from '@/components/sections/FounderSection';
 import OurSystemSection from '@/components/sections/OurSystemSection';
 import ResultsSection from '@/components/sections/ResultsSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import IndustriesSection from '@/components/sections/IndustriesSection';
 import CTASection from '@/components/sections/CTASection';
 import PartnersGridSection from '@/components/sections/PartnersGridSection';
@@ -19,6 +20,7 @@ export default function Home() {
       <ServicesSection />
       <OurSystemSection />
       <FounderSection />
+      <TestimonialsSection />
       <ResultsSection />
       <IndustriesSection />
       <CTASection />

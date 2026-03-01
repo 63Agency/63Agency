@@ -16,6 +16,16 @@ export default function FounderSection() {
   return (
     <section className="py-16 sm:py-24 bg-white" id="founder">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        {/* Quote block */}
+        <div className="rounded-2xl bg-black text-white p-8 sm:p-10 mb-8 text-center">
+          <p className="text-lg sm:text-xl font-medium leading-relaxed mb-4">
+            {t("quote")}
+          </p>
+          <p className="text-sm font-semibold text-white/80 uppercase tracking-wider">
+            {t("quoteAuthor")}
+          </p>
+        </div>
+
         <div className="rounded-2xl bg-gray-50/50 p-8 sm:p-10">
           <h2 className="text-xl sm:text-2xl font-bold text-black mb-8 text-center sm:text-left">
             {t("title")}
