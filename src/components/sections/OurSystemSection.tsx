@@ -6,7 +6,6 @@ const GREEN_ACCENT = "#22c55e";
 
 export default function OurSystemSection() {
   const t = useTranslations("system");
-  const tFooter = useTranslations("footer");
 
   const steps = [
     {
