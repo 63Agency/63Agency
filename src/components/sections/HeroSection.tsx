@@ -25,13 +25,13 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-32 text-center">
-        {/* Primary Headline - White */}
-        <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-light mb-3 sm:mb-4 text-white">
+        {/* Primary Headline – style image (texte gros, gras) */}
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-white tracking-tight">
           {t('primaryHeadline')}
         </h2>
 
-        {/* Secondary Headline - Large */}
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 leading-tight">
+        {/* Secondary Headline – gros titre gras, deux lignes */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight text-white">
           <span className="text-white">
             {(() => {
               const text = t('secondaryHeadlineStart');
@@ -57,8 +57,8 @@ export default function HeroSection() {
           <span className="text-white">{t('secondaryHeadlineEnd')}</span>
         </h1>
 
-        {/* Descriptive Text */}
-        <p className="text-sm sm:text-base md:text-lg text-white mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed px-4">
+        {/* Descriptive Text – style image */}
+        <p className="text-base sm:text-lg md:text-xl text-white mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
           {t('description').split('**').map((part, index) => 
             index % 2 === 1 ? (
               <strong key={index} className="font-bold">{part}</strong>

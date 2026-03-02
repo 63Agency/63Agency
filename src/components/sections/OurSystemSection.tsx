@@ -106,16 +106,6 @@ export default function OurSystemSection() {
           </p>
         </div>
       </div>
-
-      {/* Right sidebar: vertical "Suivez-nous" */}
-      <div className="hidden xl:block absolute right-0 top-1/2 -translate-y-1/2 -translate-x-4 origin-center">
-        <p
-          className="text-xs uppercase tracking-widest text-white/40 whitespace-nowrap"
-          style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)" }}
-        >
-          {tFooter("followUs")} — Ig. / Lk. / Fb.
-        </p>
-      </div>
     </section>
   );
 }

@@ -13,6 +13,7 @@ export type ContactFormData = {
   city: string;
   address: string;
   company: string;
+  employees?: string;
   role: string;
   objective: string;
   timing: string;
@@ -42,6 +43,7 @@ export async function sendContactEmails(data: ContactFormData): Promise<void> {
     city: data.city,
     address: data.address,
     company: data.company,
+    employees: data.employees ?? "",
     role: data.role,
     objective: data.objective,
     timing: data.timing,

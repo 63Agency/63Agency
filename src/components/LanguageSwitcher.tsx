@@ -1,20 +1,10 @@
 "use client";
 
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { createPortal } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { locales, type Locale } from "@/i18n/config";
-
-function FlagGB({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 60 30" className={className} aria-hidden preserveAspectRatio="xMidYMid slice">
-      <rect width="60" height="30" fill="#012169" />
-      <path fill="none" stroke="#fff" strokeWidth="7" d="M0 0 L60 30 M60 0 L0 30" />
-      <path fill="none" stroke="#C8102E" strokeWidth="4" d="M0 0 L60 30 M60 0 L0 30" />
-      <path fill="none" stroke="#fff" strokeWidth="5" d="M30 0 L30 30 M0 15 L60 15" />
-      <path fill="none" stroke="#C8102E" strokeWidth="2.5" d="M30 0 L30 30 M0 15 L60 15" />
-    </svg>
-  );
-}
 
 function FlagFR({ className }: { className?: string }) {
   return (
@@ -26,8 +16,20 @@ function FlagFR({ className }: { className?: string }) {
   );
 }
 
+function FlagEN({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 30" className={className} aria-hidden preserveAspectRatio="xMidYMid slice">
+      <rect width="60" height="30" fill="#012169" />
+      <path fill="none" stroke="#fff" strokeWidth="7" d="M0 0 L60 30 M60 0 L0 30" />
+      <path fill="none" stroke="#C8102E" strokeWidth="4" d="M0 0 L60 30 M60 0 L0 30" />
+      <path fill="none" stroke="#fff" strokeWidth="5" d="M30 0 L30 30 M0 15 L60 15" />
+      <path fill="none" stroke="#C8102E" strokeWidth="2.5" d="M30 0 L30 30 M0 15 L60 15" />
+    </svg>
+  );
+}
+
 const FLAG_SVG: Record<Locale, React.FC<{ className?: string }>> = {
-  en: FlagGB,
+  en: FlagEN,
   fr: FlagFR,
 };
 
@@ -42,43 +44,113 @@ export default function LanguageSwitcher({
   const router = useRouter();
   const locale = useLocale() as Locale;
   const t = useTranslations("nav");
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [menuPos, setMenuPos] = useState<{ top: number; left: number; width: number } | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(typeof document !== "undefined");
+  }, []);
 
   const switchLocale = (newLocale: Locale) => {
     if (newLocale === locale) return;
     const newPath = pathname.replace(new RegExp(`^/${locale}(/|$)`), `/${newLocale}$1`) || `/${newLocale}`;
     router.push(newPath);
+    setOpen(false);
   };
 
-  const isActive = (l: Locale) => l === locale;
+  useLayoutEffect(() => {
+    if (!open || !mounted) return;
+    const btn = buttonRef.current;
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    const width = Math.max(140, rect.width);
+    const left = Math.min(window.innerWidth - 8 - width, Math.max(8, rect.right - width));
+    const top = rect.bottom + 8;
+    setMenuPos({ top, left, width });
+  }, [open, mounted]);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      const target = e.target as Node;
+      if (ref.current && !ref.current.contains(target)) {
+        const portalRoot = document.getElementById("language-dropdown-portal");
+        if (portalRoot && portalRoot.contains(target)) return;
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const isFooter = variant === "footer";
   const isFooterLight = variant === "footerLight";
-  const btnBase =
-    "inline-flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 overflow-hidden";
-  const btnActive = isFooterLight
-    ? "ring-2 ring-black/30 ring-offset-2 ring-offset-neutral-100 bg-black/5"
-    : isFooter
-    ? "ring-2 ring-white/60 ring-offset-2 ring-offset-black bg-white/5"
-    : "ring-2 ring-gray-400 ring-offset-2 ring-offset-transparent bg-gray-100/50";
-  const btnInactive = isFooter || isFooterLight ? "opacity-70 hover:opacity-100" : "opacity-60 hover:opacity-100";
+  const isDark = isFooter && !isFooterLight;
+  const isNavbar = variant === "default";
+  const triggerBg = isNavbar ? "bg-white/10 border-white/30 hover:bg-white/15" : isDark ? "bg-white/10 border-white/20" : "bg-white border-gray-200";
 
-  return (
-    <div className={`flex items-center gap-1.5 ${className}`} role="group" aria-label="Switch language">
+  const dropdownContent = open && mounted && (
+    <ul
+      id="language-dropdown-portal"
+      className="fixed py-1 rounded-lg bg-white border border-gray-200 shadow-xl min-w-[100px]"
+      role="listbox"
+      style={
+        menuPos
+          ? { top: menuPos.top, left: menuPos.left, width: menuPos.width, zIndex: 99999 }
+          : { top: 0, left: 0, width: 140, visibility: "hidden" as const, zIndex: 99999 }
+      }
+    >
       {locales.map((l) => {
         const FlagIcon = FLAG_SVG[l];
         return (
-          <button
-            key={l}
-            type="button"
-            onClick={() => switchLocale(l)}
-            className={`${btnBase} ${isActive(l) ? btnActive : btnInactive}`}
-            aria-label={l === "en" ? t("languageEn") : t("languageFr")}
-            aria-current={isActive(l) ? "true" : undefined}
-            title={l === "en" ? t("languageEn") : t("languageFr")}
-          >
-            <FlagIcon className="w-6 h-4 object-cover rounded-sm" />
-          </button>
+          <li key={l} role="option" aria-selected={l === locale}>
+            <button
+              type="button"
+              onClick={() => switchLocale(l)}
+              className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 hover:bg-gray-100 transition-colors ${
+                l === locale ? "bg-gray-100" : ""
+              }`}
+              aria-label={l === "fr" ? t("languageFr") : t("languageEn")}
+            >
+              <FlagIcon className="w-8 h-5 object-cover rounded-sm flex-shrink-0" />
+            </button>
+          </li>
         );
       })}
-    </div>
+    </ul>
+  );
+
+  return (
+    <>
+      <div ref={ref} className={`relative ${className}`} role="group" aria-label="Switch language">
+        <button
+          ref={buttonRef}
+          type="button"
+          onClick={() => setOpen(!open)}
+          className={`inline-flex items-center gap-1.5 px-2.5 py-2 rounded-lg border ${triggerBg} hover:opacity-90 transition-opacity`}
+          aria-expanded={open}
+          aria-haspopup="listbox"
+          aria-label={locale === "en" ? t("languageEn") : t("languageFr")}
+        >
+          {(() => {
+            const FlagIcon = FLAG_SVG[locale];
+            return <FlagIcon className="w-6 h-4 object-cover rounded-sm shrink-0" />;
+          })()}
+          <svg
+            className={`w-4 h-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+            style={{ color: isNavbar || isDark ? "#fff" : "#000" }}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+      {mounted && dropdownContent && createPortal(dropdownContent, document.body)}
+    </>
   );
 }

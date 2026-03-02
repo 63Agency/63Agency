@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { sendContactEmails, isEmailJSConfigured } from "@/lib/emailjs";
 
-const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26590.729979015396!2d-7.6489544!3d33.5834709!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd84d09ffbb5%3A0x69653c6f96ae98ad!2sCommons%20Zerktouni!5e0!3m2!1sfr!2sma!4v1771980097793!5m2!1sfr!2sma";
+const MAP_CASABLANCA =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.835844913415!2d-7.6118495702715645!3d33.583611154454786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd5fec67f4b3%3A0x3f4a27637df0c279!2s179%20Bd%20de%20la%20R%C3%A9sistance%2C%20Casablanca%2020250!5e0!3m2!1sfr!2sma!4v1772465158955!5m2!1sfr!2sma";
+const MAP_RABAT =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.70258511729!2d-6.850715325639967!3d34.00017232048039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76c8ee06c07d7%3A0x93fbaec6c935ce1!2s18%20Rue%20Baht%2C%20Rabat%2010090!5e0!3m2!1sfr!2sma!4v1772465257205!5m2!1sfr!2sma";
 
 const SOCIAL_LINKS = [
   { label: "Instagram", href: "https://instagram.com/63agency", icon: "fa-brands fa-instagram" },
@@ -23,6 +25,14 @@ export default function ContactPage() {
   const t = useTranslations("contactPage");
   const [step, setStep] = useState<1 | 2>(1);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [personalInfo, setPersonalInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    city: "",
+    address: "",
+    company: "",
+  });
   const [qualification, setQualification] = useState({
     role: "",
     objective: "",
@@ -43,6 +53,7 @@ export default function ContactPage() {
     const city = (data.get("city") as string) ?? "";
     const address = (data.get("address") as string) ?? "";
     const company = (data.get("company") as string) ?? "";
+    const employees = (data.get("employees") as string) ?? "";
     try {
       if (!isEmailJSConfigured()) {
         const res = await fetch("/api/contact", {
@@ -72,6 +83,7 @@ export default function ContactPage() {
       }
       setStatus("success");
       form.reset();
+      setPersonalInfo({ name: "", email: "", phone: "", city: "", address: "", company: "", employees: "" });
       setQualification({ role: "", objective: "", timing: "", campaigns: "", sector: "", establishment: "" });
       setStep(1);
     } catch {
@@ -83,7 +95,16 @@ export default function ContactPage() {
   const q2Options = [t("q2_1"), t("q2_2"), t("q2_3"), t("q2_4")];
   const q3Options = [t("q3_1"), t("q3_2"), t("q3_3"), t("q3_4"), t("q3_5")];
   const q4Options = [t("q4_1"), t("q4_2"), t("q4_3")];
-  const q5Options = [t("q5_1"), t("q5_2"), t("q5_3"), t("q5_4"), t("q5_5"), t("q5_6")];
+  const q5Options = [t("q5_1"), t("q5_2"), t("q5_3"), t("q5_6")];
+  const employeesOptions = [
+    { value: "", labelKey: "employeesLabel" },
+    { value: t("employees_1"), labelKey: "employees_1" },
+    { value: t("employees_1_5"), labelKey: "employees_1_5" },
+    { value: t("employees_6_20"), labelKey: "employees_6_20" },
+    { value: t("employees_21_50"), labelKey: "employees_21_50" },
+    { value: t("employees_51_200"), labelKey: "employees_51_200" },
+    { value: t("employees_200_plus"), labelKey: "employees_200_plus" },
+  ];
 
   return (
     <div className="min-h-screen bg-white pt-20">
@@ -121,60 +142,60 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Hero image */}
-      <div className="relative w-full aspect-[21/9] min-h-[200px] sm:min-h-[260px] overflow-hidden bg-gray-200">
-        <Image
-          src="/images/contact/contactimage.jpg"
-          alt="Contact 63 Agency"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          quality={95}
-          priority
-        />
-      </div>
-
       {/* Contact info + Multi-step form */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
-          {/* Infos agence */}
+          {/* Bloc contact à côté du formulaire (style image : fond bleu, Connect + Visitez nos bureaux) */}
           <div className="lg:col-span-5">
-            <div className="rounded-2xl border border-gray-200 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-6 sm:p-8 lg:sticky lg:top-24">
-              <h2 className="text-[13px] font-bold text-black/70 uppercase tracking-widest mb-6">
-                {t("infoTitle")}
+            <div className="rounded-2xl p-6 sm:p-8 lg:sticky lg:top-24 overflow-hidden">
+              <h2 className="text-xl sm:text-2xl font-bold text-black mb-2">
+                {t("contactSidebarTitle")}
               </h2>
-              <div className="space-y-5">
-                <div>
-                  <p className="text-[11px] font-semibold text-black/50 uppercase tracking-wider mb-1">
-                    {t("phone")}
-                  </p>
-                  <a
-                    href={`tel:${t("phoneValue").replace(/\s/g, "")}`}
-                    className="text-[15px] font-semibold text-black hover:underline"
-                  >
-                    {t("phoneValue")}
-                  </a>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold text-black/50 uppercase tracking-wider mb-1">
-                    {t("email")}
-                  </p>
-                  <a
-                    href={`mailto:${t("emailValue")}`}
-                    className="text-[15px] font-semibold text-black hover:underline break-all"
-                  >
-                    {t("emailValue")}
-                  </a>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold text-black/50 uppercase tracking-wider mb-1">
-                    {t("address")}
-                  </p>
-                  <p className="text-[15px] text-black/90 leading-snug">{t("addressValue")}</p>
+              <p className="text-sm text-black/80 mb-8 leading-relaxed">
+                {t("contactSidebarSubtitle")}
+              </p>
+
+              {/* Connect with us */}
+              <div className="mb-8">
+                <h3 className="text-base font-bold text-black mb-1">{t("connectWithUs")}</h3>
+                <a
+                  href={`mailto:${t("emailValue")}`}
+                  className="text-black/90 hover:underline break-all"
+                >
+                  {t("emailValue")}
+                </a>
+              </div>
+
+              {/* Visit our offices */}
+              <div>
+                <h3 className="text-base font-bold text-black mb-4">{t("visitOffices")}</h3>
+                <div className="space-y-0">
+                  <div className="pb-4 border-b border-gray-200">
+                    <p className="text-sm font-bold text-black uppercase tracking-wide mb-2">{t("officeRabat")}</p>
+                    <a
+                      href={`tel:${t("phoneValue").replace(/\s/g, "")}`}
+                      className="block text-sm text-black/90 hover:underline mb-1"
+                    >
+                      {t("phoneValue")}
+                    </a>
+                    <p className="text-sm text-black/90">{t("addressRabat")}</p>
+                  </div>
+                  <div className="pt-4">
+                    <p className="text-sm font-bold text-black uppercase tracking-wide mb-2">{t("officeCasa")}</p>
+                    <a
+                      href={`tel:${t("phoneValue").replace(/\s/g, "")}`}
+                      className="block text-sm text-black/90 hover:underline mb-1"
+                    >
+                      {t("phoneValue")}
+                    </a>
+                    <p className="text-sm text-black/90">{t("addressCasa")}</p>
+                  </div>
                 </div>
               </div>
-              <div className="mt-6 pt-6 border-t border-gray-100">
-                <p className="text-[11px] font-bold text-black/60 uppercase tracking-widest mb-3">
+
+              {/* Suivez-nous */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <p className="text-xs font-bold text-black/70 uppercase tracking-widest mb-3">
                   {t("followUs")}
                 </p>
                 <div className="flex gap-2">
@@ -198,6 +219,9 @@ export default function ContactPage() {
           {/* Formulaire multi-étapes */}
           <div className="lg:col-span-7">
             <div className="max-w-2xl lg:max-w-none w-full">
+              <p className="text-sm font-semibold text-black/80 mb-4">
+                {t("formNotice")}
+              </p>
               {/* Progress */}
               <div className="mb-6 sm:mb-8">
                 <p className="text-xs font-semibold text-black/60 uppercase tracking-widest mb-2">
@@ -211,12 +235,146 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Étape 1 : Informations personnelles */}
               {step === 1 && (
                 <div className="rounded-2xl border border-gray-200 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-6 sm:p-8 lg:p-10">
                   <h3 className="text-xl font-bold text-black mb-6">
                     {t("step1Title")}
                   </h3>
-                  <div className="space-y-5 sm:space-y-6">
+                  <div className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label htmlFor="name" className={labelClass}>
+                          {t("fullNameLabel")} <span className="text-black/50 font-normal">*</span>
+                        </label>
+                        <input
+                          id="name"
+                          type="text"
+                          required
+                          placeholder={t("namePlaceholder")}
+                          className={inputClass}
+                          value={personalInfo.name}
+                          onChange={(e) => setPersonalInfo((p) => ({ ...p, name: e.target.value }))}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="phone" className={labelClass}>
+                          {t("phoneLabel")} <span className="text-black/50 font-normal">*</span>
+                        </label>
+                        <input
+                          id="phone"
+                          type="tel"
+                          required
+                          placeholder={t("phonePlaceholder")}
+                          className={inputClass}
+                          value={personalInfo.phone}
+                          onChange={(e) => setPersonalInfo((p) => ({ ...p, phone: e.target.value }))}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="city" className={labelClass}>
+                          {t("cityLabel")}
+                        </label>
+                        <input
+                          id="city"
+                          type="text"
+                          placeholder={t("cityPlaceholder")}
+                          className={inputClass}
+                          value={personalInfo.city}
+                          onChange={(e) => setPersonalInfo((p) => ({ ...p, city: e.target.value }))}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="company" className={labelClass}>
+                          {t("companyLabel")}
+                        </label>
+                        <input
+                          id="company"
+                          type="text"
+                          placeholder={t("companyPlaceholder")}
+                          className={inputClass}
+                          value={personalInfo.company}
+                          onChange={(e) => setPersonalInfo((p) => ({ ...p, company: e.target.value }))}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="employees" className={labelClass}>
+                          {t("employeesLabel")}
+                        </label>
+                        <select
+                          id="employees"
+                          className={selectClass}
+                          value={personalInfo.employees}
+                          onChange={(e) => setPersonalInfo((p) => ({ ...p, employees: e.target.value }))}
+                        >
+                          {employeesOptions.map((opt) => (
+                            <option key={opt.labelKey} value={opt.value}>
+                              {t(opt.labelKey)}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label htmlFor="address" className={labelClass}>
+                          {t("addressLabel")}
+                        </label>
+                        <input
+                          id="address"
+                          type="text"
+                          placeholder={t("addressPlaceholder")}
+                          className={inputClass}
+                          value={personalInfo.address}
+                          onChange={(e) => setPersonalInfo((p) => ({ ...p, address: e.target.value }))}
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label htmlFor="email" className={labelClass}>
+                          {t("emailAddressLabel")} <span className="text-black/50 font-normal">*</span>
+                        </label>
+                        <input
+                          id="email"
+                          type="email"
+                          required
+                          placeholder={t("emailPlaceholder")}
+                          className={inputClass}
+                          value={personalInfo.email}
+                          onChange={(e) => setPersonalInfo((p) => ({ ...p, email: e.target.value }))}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-8 pt-6 border-t border-gray-100">
+                    <button
+                      type="button"
+                      onClick={() => setStep(2)}
+                      disabled={!personalInfo.name || !personalInfo.email || !personalInfo.phone}
+                      className="w-full sm:w-auto min-w-[220px] px-8 py-3.5 bg-black text-white text-[15px] font-semibold rounded-lg border-2 border-black hover:bg-white hover:text-black transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-black disabled:hover:text-white"
+                    >
+                      {t("continue")}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Étape 2 : Questions de qualification */}
+              {step === 2 && (
+                <div className="rounded-2xl border border-gray-200 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-6 sm:p-8 lg:p-10">
+                  <h3 className="text-xl font-bold text-black mb-6">{t("step2Title")}</h3>
+                  <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                    <input type="hidden" name="name" value={personalInfo.name} />
+                    <input type="hidden" name="email" value={personalInfo.email} />
+                    <input type="hidden" name="phone" value={personalInfo.phone} />
+                    <input type="hidden" name="city" value={personalInfo.city} />
+                    <input type="hidden" name="address" value={personalInfo.address} />
+                    <input type="hidden" name="company" value={personalInfo.company} />
+                    <input type="hidden" name="employees" value={personalInfo.employees} />
+                    <input type="hidden" name="role" value={qualification.role} />
+                    <input type="hidden" name="objective" value={qualification.objective} />
+                    <input type="hidden" name="timing" value={qualification.timing} />
+                    <input type="hidden" name="campaigns" value={qualification.campaigns} />
+                    <input type="hidden" name="sector" value={qualification.sector} />
+                    <input type="hidden" name="establishment" value={qualification.establishment} />
+
                     <div>
                       <label htmlFor="role" className={labelClass}>
                         {t("q1Label")}
@@ -337,114 +495,6 @@ export default function ContactPage() {
                         className={inputClass}
                       />
                     </div>
-                  </div>
-                  <div className="mt-8 pt-6 border-t border-gray-100">
-                    <button
-                      type="button"
-                      onClick={() => setStep(2)}
-                      disabled={
-                        !qualification.role ||
-                        !qualification.objective ||
-                        !qualification.timing ||
-                        !qualification.campaigns ||
-                        !qualification.sector
-                      }
-                      className="w-full sm:w-auto min-w-[220px] px-8 py-3.5 bg-black text-white text-[15px] font-semibold rounded-lg border-2 border-black hover:bg-white hover:text-black transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-black disabled:hover:text-white"
-                    >
-                      {t("continue")}
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {step === 2 && (
-                <div className="rounded-2xl border border-gray-200 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-6 sm:p-8 lg:p-10">
-                  <h3 className="text-xl font-bold text-black mb-6">{t("step2Title")}</h3>
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <input type="hidden" name="role" value={qualification.role} />
-                    <input type="hidden" name="objective" value={qualification.objective} />
-                    <input type="hidden" name="timing" value={qualification.timing} />
-                    <input type="hidden" name="campaigns" value={qualification.campaigns} />
-                    <input type="hidden" name="sector" value={qualification.sector} />
-                    <input type="hidden" name="establishment" value={qualification.establishment} />
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div>
-                        <label htmlFor="name" className={labelClass}>
-                          {t("fullNameLabel")} <span className="text-black/50 font-normal">*</span>
-                        </label>
-                        <input
-                          id="name"
-                          name="name"
-                          type="text"
-                          required
-                          placeholder={t("namePlaceholder")}
-                          className={inputClass}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="phone" className={labelClass}>
-                          {t("phoneLabel")} <span className="text-black/50 font-normal">*</span>
-                        </label>
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          required
-                          placeholder={t("phonePlaceholder")}
-                          className={inputClass}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="city" className={labelClass}>
-                          {t("cityLabel")}
-                        </label>
-                        <input
-                          id="city"
-                          name="city"
-                          type="text"
-                          placeholder={t("cityPlaceholder")}
-                          className={inputClass}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="company" className={labelClass}>
-                          {t("companyLabel")}
-                        </label>
-                        <input
-                          id="company"
-                          name="company"
-                          type="text"
-                          placeholder={t("companyPlaceholder")}
-                          className={inputClass}
-                        />
-                      </div>
-                      <div className="sm:col-span-2">
-                        <label htmlFor="address" className={labelClass}>
-                          {t("addressLabel")}
-                        </label>
-                        <input
-                          id="address"
-                          name="address"
-                          type="text"
-                          placeholder={t("addressPlaceholder")}
-                          className={inputClass}
-                        />
-                      </div>
-                      <div className="sm:col-span-2">
-                        <label htmlFor="email" className={labelClass}>
-                          {t("emailAddressLabel")} <span className="text-black/50 font-normal">*</span>
-                        </label>
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          placeholder={t("emailPlaceholder")}
-                          className={inputClass}
-                        />
-                      </div>
-                    </div>
 
                     {status === "success" && (
                       <div className="rounded-lg bg-black/5 border border-black/10 px-4 py-3 text-sm font-medium text-black">
@@ -476,24 +526,44 @@ export default function ContactPage() {
                   </form>
                 </div>
               )}
+              <p className="text-sm font-semibold text-black/80 mt-6">
+                {t("formNotice")}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Map */}
-      <div className="w-full h-[45vh] min-h-[280px] bg-gray-200">
-        <iframe
-          src={MAP_EMBED_URL}
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Carte 63 Agency"
-          className="w-full h-full"
-        />
+      {/* Maps: Casablanca + Rabat côte à côte */}
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 shadow-sm h-[280px] sm:h-[300px] min-h-[240px]">
+            <iframe
+              src={MAP_CASABLANCA}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="63 Agency – Casablanca, 179 Bd de la Résistance"
+              className="w-full h-full min-h-[240px]"
+            />
+          </div>
+          <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 shadow-sm h-[280px] sm:h-[300px] min-h-[240px]">
+            <iframe
+              src={MAP_RABAT}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="63 Agency – Rabat, 18 Rue Baht"
+              className="w-full h-full min-h-[240px]"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

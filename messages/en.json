@@ -13,7 +13,9 @@
     "contactButton": "Contact us",
     "newBadge": "NEW",
     "languageEn": "English",
-    "languageFr": "Français"
+    "languageFr": "Français",
+    "languageOptionFr": "FR France",
+    "languageOptionEn": "EN English"
   },
   "expertisesMenu": {
     "caption": "4.2B+ MAD generated for clients since 2013.",
@@ -136,6 +138,18 @@
       "description": "Follow-up processes"
     }
   },
+  "digitalPresence": {
+    "card1Title": "Analysis of a Website's E-Reputation.",
+    "card1Alt": "Analytics dashboard",
+    "headline1": "Steer your campaigns with clear data.",
+    "body1": "Our dashboard centralizes results, cost per lead, budget and spend. You track campaign performance and your brand's e-reputation in real time to optimize every euro invested.",
+    "emphasis1": "Measurable results, predictable performance.",
+    "card2Title": "Results & KPIs",
+    "card2Alt": "Performance metrics",
+    "headline2": "Concrete results, figures that prove it.",
+    "body2": "Leads generated, cost per lead, total spend and reach: all your key metrics at a glance. We turn data into decisions to maximize your ROI.",
+    "emphasis2": "Every euro invested, every lead: tracked and optimized."
+  },
   "industries": {
     "title": "Sectors we master",
     "subtitle": "Lead generation systems for predictable growth.",
@@ -219,6 +233,7 @@
     "ctaButton": "Book a strategy call"
   },
   "founder": {
+    "headline": "Communication & Digital Marketing Agency Focused on ROI.",
     "title": "Expertise that turns vision into reality.",
     "name": "Saad Chahoubi",
     "role": "CEO & FOUNDER",
@@ -231,13 +246,14 @@
     "phone": "07 20 007 007",
     "linkedInLabel": "LinkedIn profile",
     "talkToStrategist": "Talk to a strategist",
-    "quote": "Measurable results. Predictable performance.",
-    "quoteAuthor": "Saad CHAHOUBI — Founder, 63"
+    "quote": "Our promise is simple:\nMeasurable results. Predictable performance.",
+    "quoteAuthor": "Saad CHAHOUBI - Founder, 63"
   },
   "testimonials": {
     "title": "Testimonials",
     "sectionSubtitle": "Concrete results in communication & digital marketing",
     "sectionTitle": "Concrete results. Client testimonials.",
+    "scrollHint": "Scroll to see all testimonials",
     "t1": {
       "name": "Tarik El Adraoui",
       "role": "CEO",
@@ -335,8 +351,34 @@
     "a8": "Measurable goals. Systems over one-off campaigns. Data-driven optimization. Regular reporting."
   },
   "cta": {
-    "title": "Generate Predictable Revenue.",
-    "description": "One call to turn your business into a lead engine.",
+    "title": "Get in touch",
+    "description": "Don't wait any longer, contact **63 Agency** full service **digital marketing agency** to discover how we can revolutionize your projects. We look forward to answering your questions and guiding you towards the solutions best suited to your business.",
+    "step1": "INFORMATION",
+    "step2": "SERVICE",
+    "step3": "DETAILS",
+    "fieldName": "Name",
+    "fieldCompany": "Company name",
+    "fieldEmployees": "Number of employees",
+    "employees_1": "1 employee",
+    "employees_1_5": "1-5 employees",
+    "employees_6_20": "6-20 employees",
+    "employees_21_50": "21-50 employees",
+    "employees_51_200": "51-200 employees",
+    "employees_200_plus": "200+ employees",
+    "fieldEmail": "E-mail",
+    "fieldPhone": "Phone",
+    "fieldBudget": "Budget",
+    "budget_under_5k": "Under 5,000 MAD",
+    "budget_5k_15k": "5,000 - 15,000 MAD",
+    "budget_15k_30k": "15,000 - 30,000 MAD",
+    "budget_30k_50k": "30,000 - 50,000 MAD",
+    "budget_50k_plus": "50,000 MAD and above",
+    "fieldSubject": "Subject",
+    "fieldSubjectPlaceholder": "Subject of your request",
+    "fieldMessage": "Message",
+    "fieldMessagePlaceholder": "Your message...",
+    "back": "Back",
+    "next": "Next",
     "button": "Book a Strategy Call"
   },
   "contactPage": {
@@ -373,6 +415,14 @@
     "success": "Message sent! We'll get back to you soon.",
     "error": "Something went wrong. Please try again or contact us by phone.",
     "infoTitle": "Other ways to reach us",
+    "contactSidebarTitle": "Contact us, tell us what you need",
+    "contactSidebarSubtitle": "There are thousands of marketing agencies. None offer a complete package at clear prices like 63 Agency.",
+    "connectWithUs": "Connect with us",
+    "visitOffices": "Visit our offices",
+    "officeRabat": "RABAT",
+    "officeCasa": "CASABLANCA",
+    "addressRabat": "18 Rue Baht, Agdal Rabat 10090",
+    "addressCasa": "179 Bd de la Résistance, Casablanca",
     "phone": "Phone",
     "phoneValue": "07 20 007 007",
     "whatsapp": "WhatsApp",
@@ -381,9 +431,10 @@
     "followUs": "Follow us",
     "email": "Email",
     "emailValue": "contact@63agency.com",
+    "formNotice": "Places are limited — 5 new clients per month.",
     "stepProgress": "Step {current} of 2",
-    "step1Title": "Qualification",
-    "step2Title": "Thank you for filling out this form!",
+    "step1Title": "Personal information",
+    "step2Title": "Qualification",
     "continue": "Continue",
     "back": "Back",
     "selectPlaceholder": "Select",
@@ -411,9 +462,7 @@
     "q5Label": "What is your sector?",
     "q5_1": "Education",
     "q5_2": "Real estate",
-    "q5_3": "B2B / Services",
-    "q5_4": "Retail / E-commerce",
-    "q5_5": "Health",
+    "q5_3": "B2B and B2C",
     "q5_6": "Other",
     "q6Label": "Name of your establishment?",
     "q6Placeholder": "Enter your answer.",
@@ -422,7 +471,14 @@
     "addressLabel": "Address",
     "addressPlaceholder": "Enter your answer.",
     "companyLabel": "Company name",
-    "companyPlaceholder": "Enter your answer."
+    "companyPlaceholder": "Enter your answer.",
+    "employeesLabel": "Number of employees",
+    "employees_1": "1 employee",
+    "employees_1_5": "1-5 employees",
+    "employees_6_20": "6-20 employees",
+    "employees_21_50": "21-50 employees",
+    "employees_51_200": "51-200 employees",
+    "employees_200_plus": "200+ employees"
   },
   "footer": {
     "tagline": "Marketing into predictable revenue.",

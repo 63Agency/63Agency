@@ -1,136 +1,99 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-const GREEN_ACCENT = "#22c55e";
-const TRANSITION_MS = 320;
-const AUTO_PLAY_MS = 5500;
-const SLIDE_OFFSET = 40;
 const testimonialKeys = ["t1", "t2", "t3", "t4"] as const;
+
+const REVIEW_IMAGES: Record<string, string> = {
+  t1: "/images/review/Tarik.png",
+  t2: "/images/review/kenza.png",
+  t3: "/images/review/Samir.png",
+  // t4 Leila: pas d'image, fallback initial
+};
+
+function StarRating({ className = "text-black" }: { className?: string }) {
+  return (
+    <div className={`flex gap-0.5 mt-2 ${className}`} aria-hidden>
+      {[1, 2, 3, 4, 5].map((i) => (
+        <svg key={i} className="w-4 h-4 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
 
 export default function TestimonialsSection() {
   const t = useTranslations("testimonials");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [direction, setDirection] = useState<"left" | "right" | null>(null);
-  const currentIndexRef = useRef(0);
-  currentIndexRef.current = currentIndex;
-
-  const total = testimonialKeys.length;
-  const key = testimonialKeys[currentIndex];
-
-  const runTransition = useCallback((nextIndex: number, dir: "left" | "right") => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setDirection(dir);
-    setTimeout(() => {
-      setCurrentIndex(nextIndex);
-      setDirection(null);
-      setTimeout(() => setIsTransitioning(false), 30);
-    }, TRANSITION_MS);
-  }, [isTransitioning]);
-
-  const goPrev = useCallback(() => {
-    const next = currentIndexRef.current === 0 ? total - 1 : currentIndexRef.current - 1;
-    runTransition(next, "left");
-  }, [runTransition, total]);
-
-  const goNext = useCallback(() => {
-    const next = currentIndexRef.current === total - 1 ? 0 : currentIndexRef.current + 1;
-    runTransition(next, "right");
-  }, [runTransition, total]);
-
-  const goNextRef = useRef(goNext);
-  goNextRef.current = goNext;
-
-  // Auto-play: same slide animation (vers la droite) every AUTO_PLAY_MS, even without clicking arrow
-  useEffect(() => {
-    const interval = setInterval(() => goNextRef.current(), AUTO_PLAY_MS);
-    return () => clearInterval(interval);
-  }, []);
-
-  const name = t(`${key}.name`);
-  const initial = name.charAt(0).toUpperCase();
-
-  // Slide "vers la droite" = content exits to the right (positive X). Slide "vers la gauche" = exits left (negative X).
-  const contentOpacity = isTransitioning ? 0 : 1;
-  const contentTranslateX =
-    isTransitioning && direction === "right" ? SLIDE_OFFSET : isTransitioning && direction === "left" ? -SLIDE_OFFSET : 0;
 
   return (
-    <section id="testimonials" className="py-16 sm:py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <section id="testimonials" className="py-16 sm:py-24 bg-black">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-black/70 text-center mb-3">
+        <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/70 text-center mb-3">
           {t("sectionSubtitle")}
         </p>
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black text-center leading-snug mb-12 sm:mb-16">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-center leading-snug mb-10 sm:mb-14">
           {t("sectionTitle")}
         </h2>
 
-        {/* Carousel */}
-        <div className="relative flex items-center gap-4 sm:gap-6">
-          {/* Left arrow */}
-          <button
-            type="button"
-            onClick={goPrev}
-            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-black/20 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-200 ease-out active:scale-95 active:border-black/40 disabled:opacity-50 disabled:pointer-events-none"
-            aria-label="Témoignage précédent"
-            disabled={isTransitioning}
-          >
-            <svg className="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+        {/* Horizontal scroll: cartes noir & blanc */}
+        <div
+          className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-hidden pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 snap-x snap-mandatory scroll-smooth"
+          style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
+        >
+          {testimonialKeys.map((key) => {
+            const name = t(`${key}.name`);
+            const initial = name.charAt(0).toUpperCase();
+            const imgSrc = REVIEW_IMAGES[key];
 
-          {/* Content - one testimonial with transition */}
-          <div
-            className="flex-1 min-w-0 text-center transition-all ease-out"
-            style={{
-              transitionDuration: `${TRANSITION_MS}ms`,
-              opacity: contentOpacity,
-              transform: `translateX(${contentTranslateX}px)`,
-            }}
-          >
-            <blockquote className="text-base sm:text-lg text-black/90 leading-relaxed mb-8 px-2">
-              « {t(`${key}.quote`)} »
-            </blockquote>
-            <div className="flex justify-center mb-4">
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center ring-2 ring-gray-200 ring-offset-2">
-                <span className="text-2xl sm:text-3xl font-bold text-black/60">{initial}</span>
-              </div>
-            </div>
-            <p className="font-bold text-black text-lg">{name}</p>
-            <p className="text-sm text-black/70 mt-1">
-              {t(`${key}.role`)} — {t(`${key}.company`)}
-            </p>
-            <div
-              className="w-2 h-2 rounded-full mx-auto mt-4"
-              style={{ backgroundColor: GREEN_ACCENT }}
-            />
-          </div>
+            return (
+              <article
+                key={key}
+                className="flex-shrink-0 w-[85vw] sm:w-[380px] md:w-[400px] snap-center rounded-xl border border-white/20 bg-white shadow-lg hover:shadow-xl hover:border-white/40 transition-all duration-300 hover:-translate-y-0.5 p-5 sm:p-6"
+              >
+                {/* Photo ronde petite en haut */}
+                <div className="flex justify-center sm:justify-start mb-4">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gray-200 ring-2 ring-gray-200 flex-shrink-0">
+                    {imgSrc ? (
+                      <Image
+                        src={imgSrc}
+                        alt={name}
+                        fill
+                        className="object-cover object-top"
+                        sizes="64px"
+                      />
+                    ) : (
+                      <span className="absolute inset-0 flex items-center justify-center text-black font-bold text-lg">
+                        {initial}
+                      </span>
+                    )}
+                  </div>
+                </div>
 
-          {/* Right arrow */}
-          <button
-            type="button"
-            onClick={goNext}
-            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-black/20 flex items-center justify-center text-black hover:border-black hover:bg-black hover:text-white transition-all duration-200 ease-out active:scale-95 active:border-black/40 disabled:opacity-50 disabled:pointer-events-none"
-            aria-label="Témoignage suivant"
-            disabled={isTransitioning}
-          >
-            <svg className="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+                {/* Nom */}
+                <h3 className="text-lg sm:text-xl font-bold text-black mb-0.5">
+                  {name}
+                </h3>
+                {/* Rôle & entreprise */}
+                <p className="text-xs sm:text-sm text-black/60 uppercase tracking-wide">
+                  {t(`${key}.role`)} — {t(`${key}.company`)}
+                </p>
+                {/* 5 étoiles noir & blanc */}
+                <StarRating className="text-black" />
+                {/* Citation */}
+                <p className="mt-4 text-sm sm:text-[15px] text-black/90 leading-relaxed line-clamp-5">
+                  « {t(`${key}.quote`)} »
+                </p>
+              </article>
+            );
+          })}
         </div>
 
-        {/* Pagination */}
-        <p
-          className="text-center text-sm text-black/60 mt-10 font-medium transition-opacity duration-200"
-          style={{ opacity: isTransitioning ? 0.6 : 1 }}
-        >
-          {currentIndex + 1} — {total}
+        {/* Indication scroll */}
+        <p className="text-center text-white/50 text-xs mt-6">
+          {t("scrollHint")}
         </p>
       </div>
     </section>

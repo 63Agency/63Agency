@@ -6,6 +6,7 @@ import ResultsSection from '@/components/sections/ResultsSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import IndustriesSection from '@/components/sections/IndustriesSection';
 import CTASection from '@/components/sections/CTASection';
+import DigitalPresenceSection from '@/components/sections/DigitalPresenceSection';
 import PartnersGridSection from '@/components/sections/PartnersGridSection';
 import ScrollReveal from '@/components/ScrollReveal';
 
@@ -31,6 +32,9 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal variant="fadeUp">
         <IndustriesSection />
+      </ScrollReveal>
+      <ScrollReveal variant="fadeUp">
+        <DigitalPresenceSection />
       </ScrollReveal>
       <ScrollReveal variant="fadeUp">
         <CTASection />
