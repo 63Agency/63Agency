@@ -31,7 +31,7 @@ export default function CardNavHeader() {
       links: [
         { label: tNav("home"), href: prefix, ariaLabel: tNav("home") },
         { label: tNav("innovations"), href: `${prefix}/about`, ariaLabel: tNav("innovations") },
-        { label: tNav("solutions"), href: `${prefix}#services`, ariaLabel: tNav("solutions") },
+        { label: tNav("solutions"), href: `${prefix}#system`, ariaLabel: tNav("solutions") },
         { label: tNav("joinUs"), href: `${prefix}#contact`, ariaLabel: tNav("joinUs") },
       ],
     },
@@ -40,11 +40,11 @@ export default function CardNavHeader() {
       bgColor: "#171717",
       textColor: "#fff",
       links: [
-        { label: tExp("section1Title"), href: `${prefix}#services`, ariaLabel: tExp("section1Title") },
-        { label: tExp("section2Title"), href: `${prefix}#services`, ariaLabel: tExp("section2Title") },
-        { label: tExp("section3Title"), href: `${prefix}#services`, ariaLabel: tExp("section3Title") },
-        { label: tExp("section4Title"), href: `${prefix}#services`, ariaLabel: tExp("section4Title") },
-        { label: tExp("section5Title"), href: `${prefix}#services`, ariaLabel: tExp("section5Title") },
+        { label: tExp("section1Title"), href: `${prefix}#system`, ariaLabel: tExp("section1Title") },
+        { label: tExp("section2Title"), href: `${prefix}#system`, ariaLabel: tExp("section2Title") },
+        { label: tExp("section3Title"), href: `${prefix}#system`, ariaLabel: tExp("section3Title") },
+        { label: tExp("section4Title"), href: `${prefix}#system`, ariaLabel: tExp("section4Title") },
+        { label: tExp("section5Title"), href: `${prefix}#system`, ariaLabel: tExp("section5Title") },
       ],
     },
     {
@@ -59,18 +59,18 @@ export default function CardNavHeader() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 transition-transform duration-300 ease-out"
+      className="card-nav-header-dark fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4 sm:px-6 transition-transform duration-300 ease-out"
       style={{ transform: showNav ? "translateY(0)" : "translateY(-100%)" }}
       aria-hidden={!showNav}
     >
       <CardNav
-        logo="/images/hero/63agency.png"
+        logo="/images/hero/63AgencyTextwhit.png"
         logoAlt="63 Agency"
         items={navItems}
-        baseColor="rgba(255,255,255,0.85)"
-        menuColor="#000"
+        baseColor="rgba(15, 15, 20, 0.58)"
+        menuColor="#fff"
         buttonBgColor="transparent"
-        buttonTextColor="#000"
+        buttonTextColor="#fff"
         ctaLabel={tNav("contactButton")}
         ctaHref={`${prefix}/contact`}
         trailingSlot={<LanguageSwitcher className="shrink-0" />}

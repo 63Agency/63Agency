@@ -72,7 +72,7 @@ export default function Footer() {
                   {col.items.map((item, j) => (
                     <li key={j}>
                       <Link
-                        href={`/${locale}#services`}
+                        href={`/${locale}#system`}
                         className="text-sm text-white/70 hover:text-white block break-words"
                       >
                         {item}
@@ -93,7 +93,7 @@ export default function Footer() {
                   {col.items.map((item, j) => (
                     <li key={j}>
                       <Link
-                        href={`/${locale}#services`}
+                        href={`/${locale}#system`}
                         className="text-sm text-white/70 hover:text-white block break-words"
                       >
                         {item}

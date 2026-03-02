@@ -15,7 +15,7 @@ export default function AboutFlowingMenuSection() {
   const locale = useLocale();
 
   const items = SERVICES.map(({ key, icon }) => ({
-    link: `/${locale}#services`,
+    link: `/${locale}#system`,
     text: t(key),
     image: icon,
   }));

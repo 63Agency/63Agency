@@ -23,8 +23,8 @@ export default function Header() {
   const navLinks = [
     { href: `/${locale}`, label: t("nav.home"), highlight: true },
     { href: `/${locale}/about`, label: t("nav.innovations") },
-    { href: "#services", label: t("nav.expertises"), hasDropdown: true },
-    { href: "#services", label: t("nav.solutions") },
+    { href: "#system", label: t("nav.expertises"), hasDropdown: true },
+    { href: "#system", label: t("nav.solutions") },
     { href: "#contact", label: t("nav.joinUs") },
   ];
 
@@ -33,14 +33,14 @@ export default function Header() {
   const isOnHome = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const services = [
-    { label: t("services.webDesign"), href: "#services" },
-    { label: t("services.moroccoSeo"), href: "#services" },
-    { label: t("services.graphicDesign"), href: "#services" },
-    { label: t("services.socialMedia"), href: "#services" },
-    { label: t("services.advertising"), href: "#services" },
-    { label: t("services.copywriting"), href: "#services" },
-    { label: t("services.photography"), href: "#services" },
-    { label: t("services.b2bSeo"), href: "#services" },
+    { label: t("services.webDesign"), href: "#system" },
+    { label: t("services.moroccoSeo"), href: "#system" },
+    { label: t("services.graphicDesign"), href: "#system" },
+    { label: t("services.socialMedia"), href: "#system" },
+    { label: t("services.advertising"), href: "#system" },
+    { label: t("services.copywriting"), href: "#system" },
+    { label: t("services.photography"), href: "#system" },
+    { label: t("services.b2bSeo"), href: "#system" },
   ];
 
   const servicesT = useTranslations("servicesSection");
@@ -83,8 +83,8 @@ export default function Header() {
     () => [
       { label: t("nav.home"), ariaLabel: t("nav.home"), link: `/${locale}` },
       { label: t("nav.innovations"), ariaLabel: t("nav.innovations"), link: `/${locale}/about` },
-      { label: t("nav.expertises"), ariaLabel: t("nav.expertises"), link: getNavHref("#services") },
-      { label: t("nav.solutions"), ariaLabel: t("nav.solutions"), link: getNavHref("#services") },
+      { label: t("nav.expertises"), ariaLabel: t("nav.expertises"), link: getNavHref("#system") },
+      { label: t("nav.solutions"), ariaLabel: t("nav.solutions"), link: getNavHref("#system") },
       { label: t("nav.joinUs"), ariaLabel: t("nav.joinUs"), link: getNavHref("#contact") },
       { label: t("nav.contactButton"), ariaLabel: t("nav.contactButton"), link: `/${locale}/contact` },
     ],
@@ -108,7 +108,7 @@ export default function Header() {
               className="flex items-center hover:opacity-85 transition-opacity"
             >
               <Image
-                src="/images/hero/63agency.png"
+                src="/images/hero/63AgencyTextwhit.png"
                 alt="63 Agency"
                 width={140}
                 height={44}
@@ -255,11 +255,11 @@ export default function Header() {
                         section.subs.map((sub) => (
                           <li key={sub}>
                             <Link
-                              href={getNavHref("#services")}
+                              href={getNavHref("#system")}
                               onClick={(e) => {
                                 if (isOnHome) {
                                   e.preventDefault();
-                                  handleNavClick("#services");
+                                  handleNavClick("#system");
                                 }
                               }}
                               className="text-sm text-gray-600 hover:text-black transition-colors"
@@ -272,11 +272,11 @@ export default function Header() {
                       ) : (
                         <li>
                           <Link
-                            href={getNavHref("#services")}
+                            href={getNavHref("#system")}
                             onClick={(e) => {
                               if (isOnHome) {
                                 e.preventDefault();
-                                handleNavClick("#services");
+                                handleNavClick("#system");
                               }
                             }}
                             className="text-sm text-gray-600 hover:text-black transition-colors"
@@ -303,7 +303,7 @@ export default function Header() {
           isFixed={true}
           position="right"
           items={staggeredMenuItems}
-          logoUrl="/images/hero/63agency.png"
+          logoUrl="/images/hero/63AgencyTextwhit.png"
           colors={["#ffffff", "#f5f5f5"]}
           menuButtonColor="#000"
           openMenuButtonColor="#000"

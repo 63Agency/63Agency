@@ -82,7 +82,7 @@
 }
 
 .coolBeansNav::after {
-  background-color: #000;
+  background-color: #fff;
   border-radius: 3rem;
   content: '';
   display: block;
@@ -104,7 +104,7 @@
 
 .coolBeansNav:hover {
   border: 2px solid transparent;
-  color: #fff !important;
+  color: #000 !important;
 }
 
 /* Partners Section Animation */
@@ -171,6 +171,20 @@
 .sm-scope .sm-logo-img {
   filter: none !important;
   -webkit-filter: none !important;
+}
+
+/* Floating nav: flow / soulagement – bg visible, blur, soft glow */
+.card-nav-header-dark .card-nav-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: min(800px, calc(100vw - 2rem));
+}
+.card-nav-header-dark .card-nav {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 28px rgba(255, 255, 255, 0.05),
+    0 6px 24px rgba(0, 0, 0, 0.2);
 }
 
 @layer base {

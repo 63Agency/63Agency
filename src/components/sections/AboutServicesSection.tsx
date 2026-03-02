@@ -23,7 +23,7 @@ export default function AboutServicesSection() {
   const locale = useLocale();
 
   const items = SOLUTIONS.map(({ titleKey, icon }) => ({
-    link: `/${locale}#services`,
+    link: `/${locale}#system`,
     text: tServices(titleKey),
     image: icon,
   }));

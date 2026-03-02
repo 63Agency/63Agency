@@ -1,6 +1,5 @@
 import { locales } from '@/i18n/config';
 import HeroSection from '@/components/sections/HeroSection';
-import ServicesSection from '@/components/sections/ServicesSection';
 import FounderSection from '@/components/sections/FounderSection';
 import OurSystemSection from '@/components/sections/OurSystemSection';
 import ResultsSection from '@/components/sections/ResultsSection';
@@ -18,9 +17,6 @@ export default function Home() {
   return (
     <main className="bg-black">
       <HeroSection />
-      <ScrollReveal variant="fadeUp">
-        <ServicesSection />
-      </ScrollReveal>
       <ScrollReveal variant="fadeUp">
         <OurSystemSection />
       </ScrollReveal>
