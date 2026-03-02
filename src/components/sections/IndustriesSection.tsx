@@ -22,11 +22,6 @@ export default function IndustriesSection() {
       description: t('realEstate.description'),
       image: "/images/Immobilier.png",
     },
-    {
-      name: t('hospitality.name'),
-      description: t('hospitality.description'),
-      image: "/images/Hotellerie.png",
-    },
   ];
 
   return (
@@ -50,8 +45,8 @@ export default function IndustriesSection() {
           </p>
         </div>
 
-        {/* Industries Grid - 4 cards on same line from md up */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        {/* Industries Grid - 3 cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {industries.map((industry, index) => (
             <div
               key={index}

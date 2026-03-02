@@ -28,12 +28,12 @@ export default function PartnersGridSection() {
           <span className="block">{t("titleLine2")}</span>
         </h2>
 
-        {/* Logos grid - greyscale, responsive */}
+        {/* Logos grid - couleurs d'origine, pas de hover */}
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-3 sm:gap-4 items-center justify-items-center">
           {gridLogos.map((partner, index) => (
             <div
               key={index}
-              className="flex items-center justify-center w-full aspect-[2/1] max-w-[120px] grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              className="flex items-center justify-center w-full aspect-[2/1] max-w-[120px]"
             >
               <Image
                 src={partner.logo}

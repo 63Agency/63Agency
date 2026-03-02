@@ -57,7 +57,7 @@
     "primaryHeadline": "According to your institution's capacity and goals.",
     "secondaryHeadlineStart": "Generate 50 to 450 qualified prospects",
     "secondaryHeadlineEnd": "every month.",
-    "description": "We build a complete acquisition system designed to deliver enrollment requests and admissions appointments predictably. Dedicated exclusively to educational institutions and high-value businesses.",
+    "description": "Acquisition system for enrollments and admissions appointments. Education and high-value businesses.",
     "trustIndicators": "Trusted by over **1,200 clients** and **1,600+ successful projects worldwide**.",
     "ctaButton": "Book a strategy call"
   },
@@ -68,7 +68,7 @@
   "system": {
     "tagline": "A 5-step acquisition system",
     "title": "The System",
-    "intro": "From strategy to scaling: a proven process to generate enrollments and admissions appointments predictably.",
+    "intro": "From strategy to scaling: enrollments and admissions appointments predictably.",
     "subtitle": "We build systems, not campaigns.",
     "step1": {
       "title": "Benchmark, strategy & content creation",
@@ -79,8 +79,8 @@
       "item4": "Brand appeal"
     },
     "step2": {
-      "title": "Advertising campaign deployment",
-      "description": "Meta & Google campaigns optimized to generate qualified prospects.",
+      "title": "Advertising campaigns",
+      "description": "Meta & Google optimized for qualified prospects.",
       "item1": "Meta & Instagram",
       "item2": "Google Ads",
       "item3": "Targeting & optimization",
@@ -96,15 +96,15 @@
     },
     "step4": {
       "title": "CRM & automation",
-      "description": "Smart lead follow-up, nurturing and enrollment pipeline structure.",
+      "description": "Lead follow-up, nurturing and enrollment pipeline.",
       "item1": "Lead follow-up",
       "item2": "Automated nurturing",
       "item3": "Enrollment pipeline",
       "item4": "Dedicated CRM"
     },
     "step5": {
-      "title": "Analysis, optimization & scaling",
-      "description": "Continuous performance improvement and volume scaling to match your goals.",
+      "title": "Analysis & scaling",
+      "description": "Continuous optimization and volume to match your goals.",
       "item1": "Ongoing analysis",
       "item2": "Optimization",
       "item3": "Scaling",
@@ -114,9 +114,9 @@
   },
   "results": {
     "title": "Real Results, Real Revenue",
-    "subtitle": "Predictable lead flow and revenue growth.",
+    "subtitle": "Our latest figures.",
     "metric1": {
-      "value": "500+",
+      "value": "+12000",
       "label": "Leads / Month",
       "description": "Avg. across clients"
     },
@@ -126,7 +126,7 @@
       "description": "System optimization"
     },
     "metric3": {
-      "value": "3.2x",
+      "value": "x8.6",
       "label": "Revenue Growth",
       "description": "Avg. client ROI"
     },
@@ -137,10 +137,10 @@
     }
   },
   "industries": {
-    "title": "Industries We Serve",
+    "title": "Sectors we master",
     "subtitle": "Lead generation systems for predictable growth.",
     "privateSchools": {
-      "name": "École Prévert / Academy",
+      "name": "School Group",
       "description": "Enrollment systems. Full classrooms."
     },
     "trainingCenters": {
@@ -149,14 +149,14 @@
     },
     "realEstate": {
       "name": "Real Estate",
-      "description": "Lead generation for agents and developers."
+      "description": "Generate visits or appointments."
     },
     "hospitality": {
       "name": "Hospitality",
       "description": "Booking systems. Maximize occupancy."
     },
     "b2bServices": {
-      "name": "Enterprise",
+      "name": "B2B & B2C Enterprise Services",
       "description": "High-value leads for B2B."
     }
   },
@@ -164,7 +164,7 @@
     "title": "Our Solutions",
     "tagline1": "We don't do marketing.",
     "tagline2": "We build acquisition systems.",
-    "intro": "Qualified leads. Lower cost per acquisition. Measurable revenue.",
+    "intro": "Qualified leads. Controlled costs. Measurable revenue.",
     "solution1Title": "Lead Generation B2B & B2C",
     "solution1Subtitle": "Complete systems for qualified prospects.",
     "solution1Bullet1": "Targeted acquisition strategy",
@@ -173,7 +173,7 @@
     "solution1Bullet4": "Continuous CPL optimization",
     "solution1Goal": "Feed your pipeline every month.",
     "solution2Title": "Advertising (Meta, Google, LinkedIn)",
-    "solution2Subtitle": "ROI-driven campaigns. Continuous optimization.",
+    "solution2Subtitle": "ROI campaigns. Continuous optimization.",
     "solution2Bullet1": "Meta Ads",
     "solution2Bullet2": "Google Ads",
     "solution2Bullet3": "LinkedIn Ads",
@@ -188,7 +188,7 @@
     "solution3Bullet5": "CRM & tracking integration (Meta Pixel, GA, GTM)",
     "solution3Tagline": "Your site as a revenue tool.",
     "solution4Title": "Content & Video",
-    "solution4Subtitle": "Strategic content that converts.",
+    "solution4Subtitle": "Content that converts.",
     "solution4Bullet1": "Ad videos",
     "solution4Bullet2": "Performance-oriented scripts",
     "solution4Bullet3": "Premium visual production",
@@ -200,7 +200,7 @@
     "solution5Bullet2": "Filtering forms",
     "solution5Bullet3": "Automation & CRM",
     "solution5Bullet4": "Follow-up sequences",
-    "solution5Result": "Only qualified prospects for your team.",
+    "solution5Result": "Qualified prospects for your team.",
     "solution6Title": "Graphic Design",
     "solution6Subtitle": "Design for performance.",
     "solution6Bullet1": "Ad creatives",
@@ -223,21 +223,21 @@
     "name": "Saad Chahoubi",
     "role": "CEO & FOUNDER",
     "company": "63 Agency",
-    "description": "We blend marketing and data to build campaigns that convert and retain. Lasting client relationships. Transparency. Measurable ROI.",
-    "extendedDescription": "Performance marketing rests on data and strategy. Measurable results. Predictable ROI. Trust with partners.",
+    "description": "Marketing and data: campaigns that convert. Transparency. Measurable ROI.",
+    "extendedDescription": "Data and strategy. Measurable results. Predictable ROI.",
     "showMore": "Show more",
     "showLess": "Show less",
     "contactUs": "Contact Us",
     "phone": "07 20 007 007",
     "linkedInLabel": "LinkedIn profile",
     "talkToStrategist": "Talk to a strategist",
-    "quote": "Our promise is simple: Measurable results. Predictable performance.",
+    "quote": "Measurable results. Predictable performance.",
     "quoteAuthor": "Saad CHAHOUBI — Founder, 63"
   },
   "testimonials": {
     "title": "Testimonials",
     "sectionSubtitle": "Concrete results in communication & digital marketing",
-    "sectionTitle": "Behind every result, a story: the concrete impact of our agency specialized in communication, marketing and digital performance.",
+    "sectionTitle": "Concrete results. Client testimonials.",
     "t1": {
       "name": "Tarik El Adraoui",
       "role": "CEO",
@@ -254,7 +254,7 @@
       "name": "Samir Benmakhlouf",
       "role": "Founder",
       "company": "London Academy",
-      "quote": "This is clearly the best experience we've had with an agency. Nothing like our previous collaborations. Serious, high-performing work."
+      "quote": "Best experience with an agency. Serious, high-performing work."
     },
     "t4": {
       "name": "Leila",
@@ -336,7 +336,7 @@
   },
   "cta": {
     "title": "Generate Predictable Revenue.",
-    "description": "Book a strategy call. We turn your business into a lead engine.",
+    "description": "One call to turn your business into a lead engine.",
     "button": "Book a Strategy Call"
   },
   "contactPage": {

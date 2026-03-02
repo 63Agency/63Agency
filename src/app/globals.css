@@ -127,6 +127,31 @@
   animation-play-state: paused;
 }
 
+/* Scroll reveal animations */
+.scroll-reveal-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scroll-reveal-fade {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scroll-reveal-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
 /* Contact form: professional select with chevron */
 .contact-select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23374151'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");

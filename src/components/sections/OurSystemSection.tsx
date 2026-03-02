@@ -4,47 +4,32 @@ import { useTranslations } from "next-intl";
 
 const GREEN_ACCENT = "#22c55e";
 
-const iconClass = "text-white/90 text-2xl sm:text-3xl w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center mx-auto";
-
-const STEP_ICONS = [
-  <i key="1" className={`fa-solid fa-chart-line ${iconClass}`} aria-hidden />,
-  <i key="2" className={`fa-solid fa-bullhorn ${iconClass}`} aria-hidden />,
-  <i key="3" className={`fa-solid fa-filter ${iconClass}`} aria-hidden />,
-  <i key="4" className={`fa-solid fa-users ${iconClass}`} aria-hidden />,
-  <i key="5" className={`fa-solid fa-arrow-trend-up ${iconClass}`} aria-hidden />,
-];
-
 export default function OurSystemSection() {
   const t = useTranslations("system");
   const tFooter = useTranslations("footer");
 
   const steps = [
     {
-      icon: STEP_ICONS[0],
       title: t("step1.title"),
       description: t("step1.description"),
       items: [t("step1.item1"), t("step1.item2"), t("step1.item3"), t("step1.item4")],
     },
     {
-      icon: STEP_ICONS[1],
       title: t("step2.title"),
       description: t("step2.description"),
       items: [t("step2.item1"), t("step2.item2"), t("step2.item3"), t("step2.item4")],
     },
     {
-      icon: STEP_ICONS[2],
       title: t("step3.title"),
       description: t("step3.description"),
       items: [t("step3.item1"), t("step3.item2"), t("step3.item3"), t("step3.item4")],
     },
     {
-      icon: STEP_ICONS[3],
       title: t("step4.title"),
       description: t("step4.description"),
       items: [t("step4.item1"), t("step4.item2"), t("step4.item3"), t("step4.item4")],
     },
     {
-      icon: STEP_ICONS[4],
       title: t("step5.title"),
       description: t("step5.description"),
       items: [t("step5.item1"), t("step5.item2"), t("step5.item3"), t("step5.item4")],
@@ -83,12 +68,18 @@ export default function OurSystemSection() {
           </div>
         </div>
 
-        {/* Four-column grid */}
+        {/* 5 steps with numbers */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
           {steps.map((step, index) => (
             <div key={index} className="text-center lg:text-left">
               <div className="mb-4 flex justify-center lg:justify-start">
-                {step.icon}
+                <span
+                  className="flex-shrink-0 w-9 h-9 rounded-full border-2 text-white font-bold text-sm flex items-center justify-center"
+                  style={{ borderColor: "rgba(34, 197, 94, 0.9)", backgroundColor: "rgba(34, 197, 94, 0.15)" }}
+                  aria-hidden
+                >
+                  {index + 1}
+                </span>
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white mb-3">
                 {step.title}

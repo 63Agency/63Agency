@@ -48,10 +48,6 @@ export default function Footer() {
             </Link>
             <div className="space-y-4">
               <div>
-                <p className="font-bold text-white text-sm mb-1">{tFooter("addressUaeTitle")}</p>
-                <p className="text-sm text-white/70 leading-snug">{tFooter("addressUaeValue")}</p>
-              </div>
-              <div>
                 <p className="font-bold text-white text-sm mb-1">{tFooter("addressMoroccoTitle")}</p>
                 <p className="text-sm text-white/70 leading-snug">{tFooter("addressMoroccoValue")}</p>
               </div>

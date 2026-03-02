@@ -57,7 +57,7 @@
     "primaryHeadline": "Selon la capacité et les objectifs de votre établissement.",
     "secondaryHeadlineStart": "Générez entre 50 et 450 prospects qualifiés",
     "secondaryHeadlineEnd": "chaque mois.",
-    "description": "Nous structurons un système d'acquisition complet conçu pour produire des demandes d'inscription et des rendez-vous admissions de manière prévisible. Système dédié exclusivement aux établissements éducatifs et entreprises à forte valeur.",
+    "description": "Système d'acquisition pour inscriptions et RDV admissions. Éducation et entreprises à forte valeur.",
     "trustIndicators": "Approuvé par plus de **1 200 clients** et **1 600+ projets réussis**.",
     "ctaButton": "Réserver un appel stratégique"
   },
@@ -71,16 +71,16 @@
     "intro": "De l'étude stratégique au scaling : un processus éprouvé pour générer des inscriptions et des rendez-vous admissions de façon prévisible.",
     "subtitle": "Nous construisons des systèmes, pas des campagnes.",
     "step1": {
-      "title": "Benchmark, étude stratégique & création de contenu",
-      "description": "Analyse du positionnement, étude concurrentielle et production de contenus à forte valeur pour renforcer l'attractivité.",
+      "title": "Benchmark & création de contenu",
+      "description": "Positionnement, concurrence et contenus à forte valeur.",
       "item1": "Benchmark & positionnement",
       "item2": "Étude concurrentielle",
       "item3": "Contenus à forte valeur",
       "item4": "Attractivité marque"
     },
     "step2": {
-      "title": "Déploiement des campagnes publicitaires",
-      "description": "Lancement de campagnes Meta & Google optimisées pour générer des prospects qualifiés.",
+      "title": "Campagnes publicitaires",
+      "description": "Meta & Google optimisées pour prospects qualifiés.",
       "item1": "Meta & Instagram",
       "item2": "Google Ads",
       "item3": "Ciblage & optimisation",
@@ -88,7 +88,7 @@
     },
     "step3": {
       "title": "Tunnel de qualification",
-      "description": "Mise en place d'un système structuré pour filtrer et orienter les prospects vers des rendez-vous admissions.",
+      "description": "Filtrer et orienter les prospects vers des RDV admissions.",
       "item1": "Filtrage des leads",
       "item2": "Orientation admissions",
       "item3": "RDV structurés",
@@ -96,15 +96,15 @@
     },
     "step4": {
       "title": "CRM & automatisation",
-      "description": "Suivi intelligent des leads, relances et structuration du pipeline d'inscription.",
+      "description": "Suivi des leads, relances et pipeline d'inscription.",
       "item1": "Suivi des leads",
       "item2": "Relances automatisées",
       "item3": "Pipeline inscription",
       "item4": "CRM dédié"
     },
     "step5": {
-      "title": "Analyse, optimisation & scaling",
-      "description": "Amélioration continue des performances et adaptation du volume selon vos objectifs.",
+      "title": "Analyse & scaling",
+      "description": "Optimisation continue et volume selon vos objectifs.",
       "item1": "Analyse continue",
       "item2": "Optimisation",
       "item3": "Scaling",
@@ -114,9 +114,9 @@
   },
   "results": {
     "title": "Résultats Réels, Revenus Réels",
-    "subtitle": "Flux de leads prévisible et croissance.",
+    "subtitle": "Nos derniers chiffres.",
     "metric1": {
-      "value": "500+",
+      "value": "+12000",
       "label": "Leads / Mois",
       "description": "Moy. clients"
     },
@@ -126,7 +126,7 @@
       "description": "Optimisation"
     },
     "metric3": {
-      "value": "3.2x",
+      "value": "x8.6",
       "label": "Croissance Revenus",
       "description": "ROI moyen"
     },
@@ -137,10 +137,10 @@
     }
   },
   "industries": {
-    "title": "Secteurs Que Nous Servons",
+    "title": "Secteurs que nous maîtrisons",
     "subtitle": "Systèmes de leads pour une croissance prévisible.",
     "privateSchools": {
-      "name": "École Prévert / Académie",
+      "name": "Groupe Scolaire",
       "description": "Systèmes d'inscription. Classes remplies."
     },
     "trainingCenters": {
@@ -149,14 +149,14 @@
     },
     "realEstate": {
       "name": "Immobilier",
-      "description": "Génération de leads pour agents et promoteurs."
+      "description": "Générer des visites ou des rendez-vous."
     },
     "hospitality": {
       "name": "Hôtellerie",
       "description": "Réservation. Taux d'occupation maximisés."
     },
     "b2bServices": {
-      "name": "Entreprise",
+      "name": "Entreprise service B2B & B2C",
       "description": "Leads à haute valeur pour le B2B."
     }
   },
@@ -164,9 +164,9 @@
     "title": "Nos Solutions",
     "tagline1": "Nous ne faisons pas du marketing.",
     "tagline2": "Nous construisons des systèmes d'acquisition.",
-    "intro": "Leads qualifiés. Coût d'acquisition réduit. Chiffre d'affaires mesurable.",
+    "intro": "Leads qualifiés. Coûts maîtrisés. CA mesurable.",
     "solution1Title": "Lead Generation B2B & B2C",
-    "solution1Subtitle": "Systèmes complets pour des prospects qualifiés.",
+    "solution1Subtitle": "Prospects qualifiés, pipeline alimenté.",
     "solution1Bullet1": "Stratégie d'acquisition ciblée",
     "solution1Bullet2": "Segmentation intelligente",
     "solution1Bullet3": "Qualification avancée des leads",
@@ -180,7 +180,7 @@
     "solution2Bullet4": "Optimisation continue basée sur la data",
     "solution2Tagline": "Résultats, pas des clics.",
     "solution3Title": "Sites Web & Landing Pages",
-    "solution3Subtitle": "Sites stratégiques pensés pour convertir.",
+    "solution3Subtitle": "Sites qui convertissent.",
     "solution3Bullet1": "Sites vitrines professionnels",
     "solution3Bullet2": "Landing pages haute conversion",
     "solution3Bullet3": "UX/UI orientée performance",
@@ -195,7 +195,7 @@
     "solution4Bullet4": "Créatifs optimisés pour ads",
     "solution4Tagline": "Contenu qui génère des leads.",
     "solution5Title": "Funnel de Qualification",
-    "solution5Subtitle": "Tunnels de conversion intelligents.",
+    "solution5Subtitle": "Tunnels de conversion.",
     "solution5Bullet1": "Landing pages optimisées",
     "solution5Bullet2": "Formulaires filtrants",
     "solution5Bullet3": "Automatisation & CRM",
@@ -215,12 +215,12 @@
     "approachItem3": "Funnel intelligent",
     "approachItem4": "Automatisation CRM",
     "approachFormula": "Système d'acquisition complet et scalable.",
-    "ctaTitle": "Transformez votre marketing en revenu prévisible.",
+    "ctaTitle": "Marketing → revenu prévisible.",
     "ctaButton": "Réserver un appel stratégique"
   },
   "founder": {
     "title": "Expertise qui transforme la vision en réalité.",
-    "quote": "Notre promesse est simple : Des résultats mesurables. Une performance prévisible.",
+    "quote": "Résultats mesurables. Performance prévisible.",
     "quoteAuthor": "Saad CHAHOUBI — Founder, 63",
     "name": "Saad Chahoubi",
     "role": "CEO & FOUNDER",
@@ -237,7 +237,7 @@
   "testimonials": {
     "title": "Témoignages",
     "sectionSubtitle": "Des résultats concrets en communication & marketing digital",
-    "sectionTitle": "Derrière chaque résultat, une histoire : l'impact concret de notre agence spécialisée en communication, marketing et performance digitale.",
+    "sectionTitle": "Résultats concrets. Témoignages de nos clients.",
     "t1": {
       "name": "Tarik El Adraoui",
       "role": "CEO",
@@ -248,7 +248,7 @@
       "name": "Kenza Noumane",
       "role": "Fondatrice",
       "company": "ETC Academy",
-      "quote": "Le contenu produit par 63 Agency est vraiment d'un très bon niveau. Créatif, professionnel et parfaitement adapté à notre positionnement."
+      "quote": "Contenu de très bon niveau. Créatif, pro, adapté à notre positionnement."
     },
     "t3": {
       "name": "Samir Benmakhlouf",
@@ -260,7 +260,7 @@
       "name": "Leila",
       "role": "Sales Manager",
       "company": "Madariss Achbal Al Atlas",
-      "quote": "Je suis fière de travailler avec Saad. Un partenaire sérieux et engagé dans la performance."
+      "quote": "Fière de travailler avec Saad. Partenaire sérieux et performant."
     }
   },
   "aboutIntro": {
@@ -336,7 +336,7 @@
   },
   "cta": {
     "title": "Générez des revenus prévisibles.",
-    "description": "Réservez un appel. Nous transformons votre entreprise en machine à leads.",
+    "description": "Un appel pour transformer votre activité en machine à leads.",
     "button": "Réserver un appel stratégique"
   },
   "contactPage": {

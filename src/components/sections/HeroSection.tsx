@@ -82,13 +82,13 @@ export default function HeroSection() {
         </Link>
       </div>
 
-      {/* WhatsApp Icon - Bottom Right */}
+      {/* WhatsApp Icon - Bottom Right (07 20 007 007) */}
       <a
-        href="https://wa.me/your-number"
+        href="https://wa.me/212720007007"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-20 right-4 sm:bottom-24 sm:right-8 flex h-12 w-12 items-center justify-center bg-green-500 hover:bg-green-600 rounded-full shadow-lg z-20 transition-all duration-200 transform hover:scale-110"
-        aria-label="WhatsApp"
+        aria-label="WhatsApp - 07 20 007 007"
       >
         <svg
           className="w-6 h-6 text-white"
