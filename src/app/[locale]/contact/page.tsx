@@ -32,6 +32,7 @@ export default function ContactPage() {
     city: "",
     address: "",
     company: "",
+    employees: "",
   });
   const [qualification, setQualification] = useState({
     role: "",
