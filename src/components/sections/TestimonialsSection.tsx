@@ -53,8 +53,8 @@ export default function TestimonialsSection() {
                 key={key}
                 className="flex-shrink-0 w-[85vw] sm:w-[380px] md:w-[400px] snap-center rounded-xl border border-white/20 bg-white shadow-lg hover:shadow-xl hover:border-white/40 transition-all duration-300 hover:-translate-y-0.5 p-5 sm:p-6"
               >
-                {/* Photo ronde petite en haut */}
-                <div className="flex justify-center sm:justify-start mb-4">
+                {/* Photo + nom et post à côté */}
+                <div className="flex items-center gap-3 sm:gap-4 mb-4">
                   <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gray-200 ring-2 ring-gray-200 flex-shrink-0">
                     {imgSrc ? (
                       <Image
@@ -70,16 +70,16 @@ export default function TestimonialsSection() {
                       </span>
                     )}
                   </div>
+                  <div className="min-w-0">
+                    <h3 className="text-lg sm:text-xl font-bold text-black truncate">
+                      {name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-black/60 uppercase tracking-wide truncate">
+                      {t(`${key}.role`)} — {t(`${key}.company`)}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Nom */}
-                <h3 className="text-lg sm:text-xl font-bold text-black mb-0.5">
-                  {name}
-                </h3>
-                {/* Rôle & entreprise */}
-                <p className="text-xs sm:text-sm text-black/60 uppercase tracking-wide">
-                  {t(`${key}.role`)} — {t(`${key}.company`)}
-                </p>
                 {/* 5 étoiles noir & blanc */}
                 <StarRating className="text-black" />
                 {/* Citation */}
@@ -90,11 +90,6 @@ export default function TestimonialsSection() {
             );
           })}
         </div>
-
-        {/* Indication scroll */}
-        <p className="text-center text-white/50 text-xs mt-6">
-          {t("scrollHint")}
-        </p>
       </div>
     </section>
   );

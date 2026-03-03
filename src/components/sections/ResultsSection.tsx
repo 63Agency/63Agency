@@ -29,7 +29,7 @@ export default function ResultsSection() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-32 bg-black overflow-hidden">
+    <section id="results" className="relative py-20 sm:py-32 bg-black overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

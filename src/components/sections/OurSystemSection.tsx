@@ -36,7 +36,7 @@ export default function OurSystemSection() {
   ];
 
   return (
-    <section id="system" className="relative py-20 sm:py-28 bg-black overflow-hidden">
+    <section id="system" className="relative pt-4 sm:pt-6 pb-20 sm:pb-28 bg-black overflow-hidden">
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
@@ -52,8 +52,7 @@ export default function OurSystemSection() {
                 {t("tagline")}
               </span>
               <span
-                className="w-2 h-2 rounded-full shrink-0"
-                style={{ backgroundColor: GREEN_ACCENT }}
+                className="w-2 h-2 rounded-full shrink-0 bg-teal-400"
               />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">

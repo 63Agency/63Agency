@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   src: url("https://mdn.github.io/shared-assets/fonts/variable-fonts/AmstelvarAlpha-VF.ttf");
   font-family: "AmstelvarAlpha";
@@ -177,7 +181,11 @@
 .card-nav-header-dark .card-nav-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: min(800px, calc(100vw - 2rem));
+  max-width: min(960px, calc(100vw - 1rem));
+  transition: max-width 0.35s ease-out;
+}
+.card-nav-header-dark .card-nav-container.card-nav-container-compact {
+  max-width: min(660px, calc(100vw - 1rem));
 }
 .card-nav-header-dark .card-nav {
   backdrop-filter: blur(14px);

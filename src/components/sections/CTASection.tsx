@@ -14,6 +14,24 @@ const EMPLOYEE_OPTIONS = [
   { value: "200+", key: "employees_200_plus" },
 ] as const;
 
+const CITY_OPTIONS = [
+  { value: "", key: "fieldCity" },
+  { value: "rabat", key: "city_rabat" },
+  { value: "casablanca", key: "city_casablanca" },
+  { value: "marrakech", key: "city_marrakech" },
+  { value: "fes", key: "city_fes" },
+  { value: "tanger", key: "city_tanger" },
+  { value: "agadir", key: "city_agadir" },
+  { value: "oujda", key: "city_oujda" },
+  { value: "kenitra", key: "city_kenitra" },
+  { value: "tetouan", key: "city_tetouan" },
+  { value: "meknes", key: "city_meknes" },
+  { value: "sale", key: "city_sale" },
+  { value: "nador", key: "city_nador" },
+  { value: "el_jadida", key: "city_el_jadida" },
+  { value: "autre", key: "city_autre" },
+] as const;
+
 const BUDGET_OPTIONS = [
   { value: "", key: "fieldBudget" },
   { value: "under_5k", key: "budget_under_5k" },
@@ -32,11 +50,14 @@ export default function CTASection() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [employeesOpen, setEmployeesOpen] = useState(false);
   const [selectedEmployees, setSelectedEmployees] = useState("");
+  const [cityOpen, setCityOpen] = useState(false);
+  const [selectedCity, setSelectedCity] = useState("");
   const [budgetOpen, setBudgetOpen] = useState(false);
   const [selectedBudget, setSelectedBudget] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const cityRef = useRef<HTMLDivElement>(null);
   const budgetRef = useRef<HTMLDivElement>(null);
 
   const description = t("description");
@@ -48,6 +69,9 @@ export default function CTASection() {
       if (dropdownRef.current && !dropdownRef.current.contains(target)) {
         setEmployeesOpen(false);
       }
+      if (cityRef.current && !cityRef.current.contains(target)) {
+        setCityOpen(false);
+      }
       if (budgetRef.current && !budgetRef.current.contains(target)) {
         setBudgetOpen(false);
       }
@@ -58,6 +82,8 @@ export default function CTASection() {
 
   const selectedOption = EMPLOYEE_OPTIONS.find((o) => o.value === selectedEmployees);
   const displayLabel = selectedOption ? t(selectedOption.key) : t("fieldEmployees");
+  const selectedCityOption = CITY_OPTIONS.find((o) => o.value === selectedCity);
+  const displayCityLabel = selectedCityOption ? t(selectedCityOption.key) : t("fieldCity");
   const selectedBudgetOption = BUDGET_OPTIONS.find((o) => o.value === selectedBudget);
   const displayBudgetLabel = selectedBudgetOption ? t(selectedBudgetOption.key) : t("fieldBudget");
 
@@ -198,6 +224,58 @@ export default function CTASection() {
                       placeholder={t("fieldPhone")}
                       className={inputClass}
                       aria-label={t("fieldPhone")}
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="relative" ref={cityRef}>
+                      <button
+                        type="button"
+                        onClick={() => setCityOpen(!cityOpen)}
+                        className="w-full rounded-lg px-4 py-3 text-left text-white text-[15px] border border-white/30 bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 cursor-pointer min-h-[48px] flex items-center justify-between"
+                        aria-haspopup="listbox"
+                        aria-expanded={cityOpen}
+                        aria-label={t("fieldCity")}
+                      >
+                        <span className={selectedCity ? "" : "text-white/60"}>
+                          {displayCityLabel}
+                        </span>
+                        <svg
+                          className={`w-5 h-5 text-white/80 shrink-0 transition-transform ${cityOpen ? "rotate-180" : ""}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {cityOpen && (
+                        <ul
+                          className="absolute z-50 left-0 right-0 mt-1 py-1 rounded-lg border border-white/30 bg-black shadow-xl max-h-[280px] overflow-y-auto"
+                          role="listbox"
+                        >
+                          {CITY_OPTIONS.map((opt) => (
+                            <li
+                              key={opt.value || "city_placeholder"}
+                              role="option"
+                              aria-selected={selectedCity === opt.value}
+                              onClick={() => {
+                                setSelectedCity(opt.value);
+                                setCityOpen(false);
+                              }}
+                              className="px-4 py-3 text-white text-[15px] cursor-pointer hover:bg-white/10 focus:bg-white/10 focus:outline-none"
+                            >
+                              {t(opt.key)}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      name="address"
+                      placeholder={t("fieldAddressPlaceholder")}
+                      className={inputClass}
+                      aria-label={t("fieldAddress")}
                     />
                   </div>
                 </div>

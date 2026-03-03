@@ -4,14 +4,13 @@ const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
 const TEMPLATE_ID_ADMIN = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_ADMIN ?? "";
 const TEMPLATE_ID_CLIENT = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_CLIENT ?? "";
-const ADMIN_EMAIL = process.env.NEXT_PUBLIC_EMAILJS_ADMIN_EMAIL ?? "contact@63agency.com";
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_EMAILJS_ADMIN_EMAIL ?? "contact@63agency.ma";
 
 export type ContactFormData = {
   name: string;
   email: string;
   phone: string;
   city: string;
-  address: string;
   company: string;
   employees?: string;
   role: string;
@@ -41,7 +40,6 @@ export async function sendContactEmails(data: ContactFormData): Promise<void> {
     from_email: data.email,
     phone: data.phone,
     city: data.city,
-    address: data.address,
     company: data.company,
     employees: data.employees ?? "",
     role: data.role,

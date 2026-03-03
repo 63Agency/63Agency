@@ -11,6 +11,8 @@
     "solutions": "Nos solutions",
     "joinUs": "Rejoignez-nous",
     "contactButton": "Contactez-nous",
+    "testimonials": "Témoignages",
+    "system": "Système",
     "newBadge": "NEW",
     "languageEn": "Anglais",
     "languageFr": "Français",
@@ -59,9 +61,10 @@
     "primaryHeadline": "Selon la capacité et les objectifs de votre établissement.",
     "secondaryHeadlineStart": "Générez entre 50 et 450 prospects qualifiés",
     "secondaryHeadlineEnd": "chaque mois.",
-    "description": "Système d'acquisition pour inscriptions et RDV admissions. Éducation et entreprises à forte valeur.",
+    "descriptionLine1": "Spécialisés dans l'éducation, les entreprises de services B2B & B2C, et l'immobilier.",
+    "descriptionLine2": "Système d'acquisition pour générer des rendez-vous et des visites qualifiées.",
     "trustIndicators": "Approuvé par plus de **1 200 clients** et **1 600+ projets réussis**.",
-    "ctaButton": "Réserver un appel stratégique"
+    "ctaButton": "Réservez un appel avec un expert"
   },
   "partners": {
     "titleLine1": "Ils nous font",
@@ -124,7 +127,7 @@
     },
     "metric2": {
       "value": "45%",
-      "label": "Réduction CPL",
+      "label": "Réduction coût",
       "description": "Optimisation"
     },
     "metric3": {
@@ -171,7 +174,7 @@
     },
     "b2bServices": {
       "name": "Entreprise service B2B & B2C",
-      "description": "Leads à haute valeur pour le B2B."
+      "description": "Prospects qualifiés prêts à payer B2B & B2C."
     }
   },
   "servicesSection": {
@@ -233,10 +236,10 @@
     "ctaButton": "Réserver un appel stratégique"
   },
   "founder": {
-    "headline": "Agence de Communication & Marketing Digital Orientée ROI.",
+    "headline": "Agence de Performance & Marketing Digital Orientée ROI.",
     "title": "Expertise qui transforme la vision en réalité.",
     "quote": "Notre promesse est simple :\nDes résultats mesurables. Une performance prévisible.",
-    "quoteAuthor": "Saad CHAHOUBI - Founder, 63",
+    "quoteAuthor": "Saad CHAHOUBI - Founder, 63 Agency",
     "name": "Saad Chahoubi",
     "role": "CEO & FOUNDER",
     "company": "63 Agency",
@@ -247,7 +250,7 @@
     "contactUs": "Nous contacter",
     "phone": "07 20 007 007",
     "linkedInLabel": "Profil LinkedIn",
-    "talkToStrategist": "Parler à un stratège"
+    "talkToStrategist": "Parler à un expert"
   },
   "testimonials": {
     "title": "Témoignages",
@@ -351,14 +354,31 @@
     "a8": "Objectifs mesurables. Systèmes plutôt qu'one-shots. Optimisation data-driven. Reporting régulier."
   },
   "cta": {
-    "title": "Restons en contact",
-    "description": "Ne restez pas sans réponse : contactez **63 Agency**, agence de **marketing digital** full service, pour voir comment nous pouvons faire évoluer vos projets. Nous sommes là pour répondre à vos questions et vous orienter vers les solutions adaptées.",
+    "title": "Réservez un appel avec un expert",
+    "description": "Travaillons ensemble avec notre **système d'acquisition** pour faire évoluer vos résultats.",
     "step1": "INFORMATION",
     "step2": "SERVICE",
     "step3": "DÉTAILS",
     "fieldName": "Nom",
     "fieldCompany": "Nom de l'entreprise",
     "fieldEmployees": "Nombre d'employés",
+    "fieldCity": "Ville",
+    "city_rabat": "Rabat",
+    "city_casablanca": "Casablanca",
+    "city_marrakech": "Marrakech",
+    "city_fes": "Fès",
+    "city_tanger": "Tanger",
+    "city_agadir": "Agadir",
+    "city_oujda": "Oujda",
+    "city_kenitra": "Kénitra",
+    "city_tetouan": "Tétouan",
+    "city_meknes": "Meknès",
+    "city_sale": "Salé",
+    "city_nador": "Nador",
+    "city_el_jadida": "El Jadida",
+    "city_autre": "Autre ville",
+    "fieldAddress": "Adresse",
+    "fieldAddressPlaceholder": "Adresse (rue, quartier...)",
     "employees_1": "1 employé",
     "employees_1_5": "1-5 employés",
     "employees_6_20": "6-20 employés",
@@ -417,6 +437,23 @@
     "infoTitle": "Autres moyens de nous joindre",
     "contactSidebarTitle": "Contactez-nous, dites-nous ce dont vous avez besoin",
     "contactSidebarSubtitle": "Des milliers d'agences existent. Aucune ne propose un package complet à des tarifs clairs comme 63 Agency.",
+    "sidebarSocialBadge": "+500",
+    "sidebarClientsSatisfaits": "500+ clients satisfaits",
+    "sidebarRating": "4.9/5 sur Google",
+    "sidebarHeadline": "Obtenez votre audit marketing gratuit et découvrez vos",
+    "sidebarHeadlineHighlight": "5 quick wins immédiats",
+    "sidebarDescription": "Profitez d'un **audit digital complet** d'une valeur de 15 000 MAD, entièrement offert et **sans engagement**. Vous obtiendrez une **analyse détaillée** de votre situation actuelle, des **opportunités de croissance chiffrées**, et un **plan d'action priorisé** pour **maximiser votre retour sur investissement**.",
+    "sidebarStat1Value": "1600+",
+    "sidebarStat1Label": "projets livrés",
+    "sidebarStat2Value": "98%",
+    "sidebarStat2Label": "clients satisfaits",
+    "sidebarStat3Value": "240 M+",
+    "sidebarStat3Label": "MAD générés",
+    "sidebarGuarantee1": "Sans engagement",
+    "sidebarGuarantee2": "Réponse sous 24h",
+    "sidebarGuarantee3": "Résultats garantis par contrat",
+    "sidebarLimitedTitle": "PLACES LIMITÉES",
+    "sidebarLimitedText": "Pour garantir qualité maximale : 5 nouveaux clients/mois seulement.",
     "connectWithUs": "Restons en contact",
     "visitOffices": "Visitez nos bureaux",
     "officeRabat": "RABAT",
@@ -435,7 +472,9 @@
     "stepProgress": "Étape {current} sur 2",
     "step1Title": "Informations personnelles",
     "step2Title": "Qualification",
-    "continue": "Continuer",
+    "continue": "Suivant",
+    "formSecurity": "Vos informations sont 100% sécurisées et ne seront jamais partagées.",
+    "formAuditInfo": "Audit gratuit réservé aux candidatures sélectionnées",
     "back": "Retour",
     "selectPlaceholder": "Sélectionner",
     "q1Label": "Quelle est votre fonction au sein de l'établissement ?",
@@ -481,23 +520,21 @@
     "employees_200_plus": "200+ employés"
   },
   "footer": {
-    "tagline": "Marketing en revenus prévisibles.",
+    "tagline": "Un système d'acquisition en 5 étapes. Nous construisons des systèmes, pas des campagnes.",
     "links": "Liens",
     "contact": "Contact",
     "followUs": "Suivez-nous",
     "followUsTitle": "NOUS SUIVRE",
-    "socialShort": "Ins. / In. / Fb. / YT.",
-    "addressUaeTitle": "Émirats Arabes Unis - Dubaï",
-    "addressUaeValue": "Building A1, Digital Park, Dubai Silicon Oasis, Dubai.",
-    "addressMoroccoTitle": "Maroc - Casablanca - Rabat",
-    "addressMoroccoValue": "18 Rue Baht, Agdal Rabat 10090.",
-    "resources": "Ressources",
-    "resource1": "Academy",
-    "resource2": "Livres blancs",
-    "resource3": "Blog",
-    "resource4": "Nos innovations",
+    "officesTitle": "Nos locaux",
+    "addressRabat": "18 Rue Baht, Agdal Rabat 10090",
+    "addressCasa": "179 Bd de la Résistance, Casablanca",
+    "resources": "Aller plus loin",
+    "resource1": "Le Système",
+    "resource2": "Résultats réels",
+    "resource3": "Page contact",
+    "resource4": "Réservez un appel",
     "copyright": "© {year} 63 Agency. Tous droits réservés.",
     "phone": "07 20 007 007",
-    "email": "contact@63agency.com"
+    "email": "contact@63agency.ma"
   }
 }

@@ -66,10 +66,9 @@ export default function LanguageSwitcher({
     const btn = buttonRef.current;
     if (!btn) return;
     const rect = btn.getBoundingClientRect();
-    const width = Math.max(140, rect.width);
-    const left = Math.min(window.innerWidth - 8 - width, Math.max(8, rect.right - width));
-    const top = rect.bottom + 8;
-    setMenuPos({ top, left, width });
+    const left = rect.left;
+    const top = rect.bottom + 6;
+    setMenuPos({ top, left, width: 0 });
   }, [open, mounted]);
 
   useEffect(() => {
@@ -89,18 +88,18 @@ export default function LanguageSwitcher({
   const isFooterLight = variant === "footerLight";
   const isDark = isFooter && !isFooterLight;
   const isNavbar = variant === "default";
-  const triggerBg = isNavbar ? "bg-white/10 border-white/30 hover:bg-white/15" : isDark ? "bg-white/10 border-white/20" : "bg-white border-gray-200";
+  const triggerBg = isNavbar ? "bg-transparent hover:opacity-80" : isDark ? "bg-white/10 hover:opacity-90" : "bg-white hover:opacity-90";
 
   const dropdownContent = open && mounted && (
     <ul
       id="language-dropdown-portal"
-      className="fixed py-1 rounded-lg bg-white border border-gray-200 shadow-xl min-w-[100px]"
-      role="listbox"
+      className="fixed flex items-center gap-1"
       style={
         menuPos
-          ? { top: menuPos.top, left: menuPos.left, width: menuPos.width, zIndex: 99999 }
-          : { top: 0, left: 0, width: 140, visibility: "hidden" as const, zIndex: 99999 }
+          ? { top: menuPos.top, left: menuPos.left, zIndex: 99999 }
+          : { top: 0, left: 0, visibility: "hidden" as const, zIndex: 99999 }
       }
+      role="listbox"
     >
       {locales.map((l) => {
         const FlagIcon = FLAG_SVG[l];
@@ -109,12 +108,10 @@ export default function LanguageSwitcher({
             <button
               type="button"
               onClick={() => switchLocale(l)}
-              className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 hover:bg-gray-100 transition-colors ${
-                l === locale ? "bg-gray-100" : ""
-              }`}
+              className="p-0.5 hover:opacity-80 transition-opacity"
               aria-label={l === "fr" ? t("languageFr") : t("languageEn")}
             >
-              <FlagIcon className="w-8 h-5 object-cover rounded-sm flex-shrink-0" />
+              <FlagIcon className="w-6 h-4 object-cover rounded-sm block" />
             </button>
           </li>
         );
@@ -129,14 +126,14 @@ export default function LanguageSwitcher({
           ref={buttonRef}
           type="button"
           onClick={() => setOpen(!open)}
-          className={`inline-flex items-center gap-1.5 px-2.5 py-2 rounded-lg border ${triggerBg} hover:opacity-90 transition-opacity`}
+          className={`inline-flex items-center gap-1.5 px-1.5 py-1 rounded-lg ${triggerBg} transition-opacity`}
           aria-expanded={open}
           aria-haspopup="listbox"
           aria-label={locale === "en" ? t("languageEn") : t("languageFr")}
         >
           {(() => {
             const FlagIcon = FLAG_SVG[locale];
-            return <FlagIcon className="w-6 h-4 object-cover rounded-sm shrink-0" />;
+            return <FlagIcon className="w-5 h-3.5 object-cover rounded-sm shrink-0" />;
           })()}
           <svg
             className={`w-4 h-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}

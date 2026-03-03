@@ -24,48 +24,34 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-32 text-center">
-        {/* Primary Headline – style image (texte gros, gras) */}
-        <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-white tracking-tight">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 lg:pt-32 pb-4 sm:pb-6 lg:pb-8 text-center">
+        {/* Primary Headline – même style que la description (Spécialisés…) */}
+        <h2 className="text-base sm:text-lg md:text-xl text-white mb-3 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
           {t('primaryHeadline')}
         </h2>
 
-        {/* Secondary Headline – gros titre gras, deux lignes */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight text-white">
-          <span className="text-white">
-            {(() => {
-              const text = t('secondaryHeadlineStart');
-              const parts = text.split(/(Agency|Agence)/i);
-              return parts.map((part, index) => 
-                /^(Agency|Agence)$/i.test(part) ? (
-                  <span 
-                    key={index}
-                    style={{
-                      fontFamily: '"AmstelvarAlpha", sans-serif',
-                      fontStyle: 'oblique 23deg'
-                    }}
-                  >
-                    {part}
-                  </span>
-                ) : (
-                  <span key={index}>{part}</span>
-                )
-              );
-            })()}
+        {/* Secondary Headline – style image: pastille blanche, 1re ligne gradient bleu-gris, 2e ligne blanche */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight tracking-tight flex flex-col items-center sm:block">
+          <span className="inline-flex items-center justify-center sm:justify-start gap-2 sm:gap-3 w-full sm:w-auto">
+            <span className="w-2 h-2 rounded-full bg-white shrink-0" aria-hidden />
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: "linear-gradient(to right, #51647D 0%, #A8C0D3 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              {t("secondaryHeadlineStart")}
+            </span>
           </span>
-          <br className="text-white" />
-          <span className="text-white">{t('secondaryHeadlineEnd')}</span>
+          <span className="block mt-1 text-white">{t("secondaryHeadlineEnd")}</span>
         </h1>
 
-        {/* Descriptive Text – style image */}
+        {/* Descriptive Text – ligne 1 au-dessus de ligne 2 */}
         <p className="text-base sm:text-lg md:text-xl text-white mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
-          {t('description').split('**').map((part, index) => 
-            index % 2 === 1 ? (
-              <strong key={index} className="font-bold">{part}</strong>
-            ) : (
-              part
-            )
-          )}
+          <span className="block">{t("descriptionLine1")}</span>
+          <span className="block mt-1">{t("descriptionLine2")}</span>
         </p>
 
         {/* Main CTA Button */}

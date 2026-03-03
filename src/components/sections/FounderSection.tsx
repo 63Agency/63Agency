@@ -50,7 +50,7 @@ export default function FounderSection() {
                 "
               </span>
             </p>
-            <p className="mt-3 text-sm text-gray-500 font-normal">
+            <p className="mt-1.5 text-sm text-gray-500 font-normal">
               {t("quoteAuthor")}
             </p>
           </div>
