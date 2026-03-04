@@ -46,6 +46,7 @@ function isValidPhone(s: string) {
 
 export default function ContactPage() {
   const t = useTranslations("contactPage");
+  const tDigital = useTranslations("digitalPresence");
   const [step, setStep] = useState<1 | 2>(1);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -627,6 +628,56 @@ export default function ContactPage() {
         </div>
         </div>
       </div>
+
+      {/* Section Google Ads & Meta en bas de page */}
+      <section className="w-full bg-gray-50 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+            <div className="flex flex-col">
+              <div className="relative w-full">
+                <Image
+                  src="/images/Feceboock/google ads.jpg.jpeg"
+                  alt={tDigital("card1Alt")}
+                  width={800}
+                  height={500}
+                  className="w-full h-auto block rounded-xl overflow-hidden"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <h3 className="mt-6 text-xl sm:text-2xl font-bold text-black">
+                {tDigital("headline1")}
+              </h3>
+              <p className="mt-3 text-black/80 text-base sm:text-lg leading-relaxed">
+                {tDigital("body1")}
+              </p>
+              <p className="mt-3 text-black font-semibold text-base sm:text-lg">
+                {tDigital("emphasis1")}
+              </p>
+            </div>
+            <div className="flex flex-col">
+              <div className="relative w-full">
+                <Image
+                  src="/images/Feceboock/meta.jpg (1).jpeg"
+                  alt={tDigital("card2Alt")}
+                  width={600}
+                  height={200}
+                  className="w-full h-auto block rounded-xl overflow-hidden"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <h3 className="mt-6 text-xl sm:text-2xl font-bold text-black">
+                {tDigital("headline2")}
+              </h3>
+              <p className="mt-3 text-black/80 text-base sm:text-lg leading-relaxed">
+                {tDigital("body2")}
+              </p>
+              <p className="mt-3 text-black font-semibold text-base sm:text-lg">
+                {tDigital("emphasis2")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
