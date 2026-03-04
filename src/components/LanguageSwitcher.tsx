@@ -6,12 +6,29 @@ import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { locales, type Locale } from "@/i18n/config";
 
-function FlagFR({ className }: { className?: string }) {
+function FlagMA({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 60 40" className={className} aria-hidden>
-      <rect width="20" height="40" x="0" fill="#002395" />
-      <rect width="20" height="40" x="20" fill="#fff" />
-      <rect width="20" height="40" x="40" fill="#ED2939" />
+      <rect width="60" height="40" fill="#C1272D" />
+      <path
+        fill="#006233"
+        d="M30 8 L35 20 L30 32 L25 20 Z M30 11.5 L27 18 L30 24 L33 18 Z"
+      />
+      <path
+        fill="#006233"
+        d="M30 10.5 L32.5 17 L30 22 L27.5 17 Z M30 14 L29 17 H31 L30 20 L29 17 H31 Z"
+      />
+      <path
+        fill="#006233"
+        stroke="#006233"
+        strokeWidth="0.5"
+        d="M30 8 L33.5 14 L30 12 L26.5 14 Z M30 12 L33 16 L30 20 L27 16 Z M30 20 L33 24 L30 28 L27 24 Z M30 28 L33.5 32 L30 30 L26.5 32 Z M30 8 L27 14 L30 12 L33.5 14 Z"
+      />
+      {/* Moroccan green pentagram (simplified star) */}
+      <path
+        fill="#006233"
+        d="M30 10 L31.76 16.18 L38.09 16.18 L32.66 20.64 L34.42 26.82 L30 23.27 L25.58 26.82 L27.34 20.64 L21.91 16.18 L28.24 16.18 Z"
+      />
     </svg>
   );
 }
@@ -28,10 +45,29 @@ function FlagEN({ className }: { className?: string }) {
   );
 }
 
+function FlagFR({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 40" className={className} aria-hidden preserveAspectRatio="xMidYMid slice">
+      <rect width="20" height="40" x="0" fill="#002395" />
+      <rect width="20" height="40" x="20" fill="#fff" />
+      <rect width="20" height="40" x="40" fill="#ED2939" />
+    </svg>
+  );
+}
+
+const FR_FLAG_STORAGE_KEY = "63agency_fr_flag"; // "ma" = Maroc, "fr" = France
+
 const FLAG_SVG: Record<Locale, React.FC<{ className?: string }>> = {
   en: FlagEN,
   fr: FlagFR,
 };
+
+/** 3 options: Maroc (fr), France (fr), Anglais (en) – كلاهما Maroc و France يعرضان الموقع بالفرنسية */
+const LANGUAGE_OPTIONS: { locale: Locale; Flag: React.FC<{ className?: string }>; labelKey: 'languageMa' | 'languageFr' | 'languageEn' }[] = [
+  { locale: 'fr', Flag: FlagMA, labelKey: 'languageMa' },
+  { locale: 'fr', Flag: FlagFR, labelKey: 'languageFr' },
+  { locale: 'en', Flag: FlagEN, labelKey: 'languageEn' },
+];
 
 export default function LanguageSwitcher({
   className = "",
@@ -49,13 +85,35 @@ export default function LanguageSwitcher({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [menuPos, setMenuPos] = useState<{ top: number; left: number; width: number } | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [frVariant, setFrVariant] = useState<"ma" | "fr">("fr");
 
   useEffect(() => {
     setMounted(typeof document !== "undefined");
   }, []);
 
-  const switchLocale = (newLocale: Locale) => {
-    if (newLocale === locale) return;
+  useEffect(() => {
+    if (!mounted || locale !== "fr") return;
+    const stored = typeof window !== "undefined" ? window.localStorage.getItem(FR_FLAG_STORAGE_KEY) : null;
+    setFrVariant(stored === "ma" ? "ma" : "fr");
+  }, [mounted, locale]);
+
+  const switchLocale = (newLocale: Locale, labelKey?: "languageMa" | "languageFr" | "languageEn") => {
+    if (newLocale === locale) {
+      if (newLocale === "fr" && labelKey) {
+        const variant = labelKey === "languageMa" ? "ma" : "fr";
+        if (variant !== frVariant && typeof window !== "undefined") {
+          window.localStorage.setItem(FR_FLAG_STORAGE_KEY, variant);
+          setFrVariant(variant);
+        }
+        setOpen(false);
+      }
+      return;
+    }
+    if (newLocale === "fr" && typeof window !== "undefined" && labelKey) {
+      const variant = labelKey === "languageMa" ? "ma" : "fr";
+      window.localStorage.setItem(FR_FLAG_STORAGE_KEY, variant);
+      setFrVariant(variant);
+    }
     const newPath = pathname.replace(new RegExp(`^/${locale}(/|$)`), `/${newLocale}$1`) || `/${newLocale}`;
     router.push(newPath);
     setOpen(false);
@@ -93,7 +151,7 @@ export default function LanguageSwitcher({
   const dropdownContent = open && mounted && (
     <ul
       id="language-dropdown-portal"
-      className="fixed flex items-center gap-1"
+      className="fixed flex flex-col list-none rounded-lg shadow-xl border border-gray-200 overflow-hidden min-w-[140px] bg-white"
       style={
         menuPos
           ? { top: menuPos.top, left: menuPos.left, zIndex: 99999 }
@@ -101,17 +159,19 @@ export default function LanguageSwitcher({
       }
       role="listbox"
     >
-      {locales.map((l) => {
-        const FlagIcon = FLAG_SVG[l];
+      {LANGUAGE_OPTIONS.map((opt) => {
+        const FlagIcon = opt.Flag;
+        const selected = opt.locale === locale;
         return (
-          <li key={l} role="option" aria-selected={l === locale}>
+          <li key={`${opt.locale}-${opt.labelKey}`} role="option" aria-selected={selected} className="border-b border-gray-100 last:border-b-0">
             <button
               type="button"
-              onClick={() => switchLocale(l)}
-              className="p-0.5 hover:opacity-80 transition-opacity"
-              aria-label={l === "fr" ? t("languageFr") : t("languageEn")}
+              onClick={() => switchLocale(opt.locale, opt.labelKey)}
+              className="w-full flex items-center gap-3 px-4 py-3 text-left text-black hover:bg-gray-50 transition-colors bg-white"
+              aria-label={t(opt.labelKey)}
             >
-              <FlagIcon className="w-6 h-4 object-cover rounded-sm block" />
+              <FlagIcon className="w-7 h-5 object-cover rounded-sm shrink-0 border border-gray-200" />
+              <span className="text-sm font-medium">{t(opt.labelKey)}</span>
             </button>
           </li>
         );
@@ -132,8 +192,12 @@ export default function LanguageSwitcher({
           aria-label={locale === "en" ? t("languageEn") : t("languageFr")}
         >
           {(() => {
-            const FlagIcon = FLAG_SVG[locale];
-            return <FlagIcon className="w-5 h-3.5 object-cover rounded-sm shrink-0" />;
+            if (locale === "en") return <FlagEN className="w-5 h-3.5 object-cover rounded-sm shrink-0" />;
+            return frVariant === "ma" ? (
+              <FlagMA className="w-5 h-3.5 object-cover rounded-sm shrink-0" />
+            ) : (
+              <FlagFR className="w-5 h-3.5 object-cover rounded-sm shrink-0" />
+            );
           })()}
           <svg
             className={`w-4 h-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}

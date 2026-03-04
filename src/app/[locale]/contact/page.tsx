@@ -27,11 +27,28 @@ const inputClass =
 const selectClass =
   "contact-select w-full rounded-lg bg-white border border-gray-200 px-5 py-3.5 text-base text-black appearance-none cursor-pointer focus:border-black focus:ring-2 focus:ring-black/5 focus:outline-none transition-all";
 const labelClass = "block text-sm font-semibold text-black/90 uppercase tracking-wide mb-2";
+/* Formulaire fond noir (page contact) */
+const formBoxClass = "rounded-2xl border border-white/20 bg-black shadow-xl p-8 sm:p-10 lg:p-12";
+const formLabelClass = "block text-sm font-semibold text-white/90 uppercase tracking-wide mb-2";
+const formInputClass =
+  "w-full rounded-lg bg-white/10 border border-white/30 px-5 py-3.5 text-base text-white placeholder-white/50 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all";
+const formSelectClass =
+  "contact-select w-full rounded-lg bg-white/10 border border-white/30 px-5 py-3.5 text-base text-white appearance-none cursor-pointer focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all [&>option]:text-black";
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function isValidEmail(s: string) {
+  return EMAIL_REGEX.test((s || "").trim());
+}
+function isValidPhone(s: string) {
+  const digits = (s || "").replace(/\D/g, "");
+  return digits.length >= 6;
+}
 
 export default function ContactPage() {
   const t = useTranslations("contactPage");
   const [step, setStep] = useState<1 | 2>(1);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [personalInfo, setPersonalInfo] = useState({
     name: "",
     email: "",
@@ -49,8 +66,39 @@ export default function ContactPage() {
     establishment: "",
   });
 
+  function validateStep1(): boolean {
+    const nextErrors: Record<string, string> = {};
+    const name = personalInfo.name.trim();
+    if (!name || name.length < 2) nextErrors.name = t("validationRequired");
+    if (!personalInfo.email.trim()) nextErrors.email = t("validationRequired");
+    else if (!isValidEmail(personalInfo.email)) nextErrors.email = t("validationEmail");
+    if (!personalInfo.phone.trim()) nextErrors.phone = t("validationRequired");
+    else if (!isValidPhone(personalInfo.phone)) nextErrors.phone = t("validationPhone");
+    if (!qualification.role) nextErrors.role = t("validationRequired");
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function validateStep2(): boolean {
+    const nextErrors: Record<string, string> = {};
+    if (!qualification.objective) nextErrors.objective = t("validationRequired");
+    if (!qualification.timing) nextErrors.timing = t("validationRequired");
+    if (!qualification.campaigns) nextErrors.campaigns = t("validationRequired");
+    if (!qualification.sector) nextErrors.sector = t("validationRequired");
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function handleContinueToStep2() {
+    if (!validateStep1()) return;
+    setErrors({});
+    setStep(2);
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!validateStep2()) return;
+    setErrors({});
     setStatus("sending");
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -125,13 +173,11 @@ export default function ContactPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight">
-            {t("heroHeadline1")}{" "}
-            <span className="block">
-              {t("heroHeadline2")}
-              <span className="inline-block w-2 h-2 rounded-full bg-black align-middle ml-1" />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight tracking-tight">
+            <span className="block">{t("heroHeadline1")}</span>
+            <span className="block mt-2 text-black/90 font-semibold text-2xl sm:text-3xl md:text-4xl">
+              {t("heroHeadline3")}
             </span>
-            <span className="block">{t("heroHeadline3")}</span>
           </h1>
           <div className="absolute top-0 right-0 text-black">
             <svg
@@ -196,27 +242,17 @@ export default function ContactPage() {
                 <span className="underline underline-offset-2">{t("sidebarHeadlineHighlight")}</span>
               </h2>
 
-              {/* Paragraphe avec parties en gras */}
-              <p className="text-sm text-black leading-relaxed mb-6">
-                {t("sidebarDescription").split(/\*\*(.*?)\*\*/g).map((part, i) =>
-                  i % 2 === 1 ? <strong key={i} className="font-semibold text-black">{part}</strong> : part
-                )}
-              </p>
-
-              {/* Statistiques */}
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                <div>
-                  <p className="text-2xl sm:text-3xl font-bold">{t("sidebarStat1Value")}</p>
-                  <p className="text-xs sm:text-sm text-white/80">{t("sidebarStat1Label")}</p>
-                </div>
-                <div>
-                  <p className="text-2xl sm:text-3xl font-bold">{t("sidebarStat2Value")}</p>
-                  <p className="text-xs sm:text-sm text-white/80">{t("sidebarStat2Label")}</p>
-                </div>
-                <div>
-                  <p className="text-2xl sm:text-3xl font-bold">{t("sidebarStat3Value")}</p>
-                  <p className="text-xs sm:text-sm text-white/80">{t("sidebarStat3Label")}</p>
-                </div>
+              {/* Paragraphe(s) avec parties en gras */}
+              <div className="text-sm text-black leading-relaxed mb-6 space-y-3">
+                {t("sidebarDescription")
+                  .split(/\n\n+/)
+                  .map((paragraph, idx) => (
+                    <p key={idx}>
+                      {paragraph.split(/\*\*(.*?)\*\*/g).map((part, i) =>
+                        i % 2 === 1 ? <strong key={i} className="font-semibold text-black">{part}</strong> : part
+                      )}
+                    </p>
+                  ))}
               </div>
 
               {/* Garanties avec checkmarks — une seule ligne */}
@@ -227,7 +263,7 @@ export default function ContactPage() {
                   t("sidebarGuarantee3"),
                 ].map((label, i) => (
                   <li key={i} className="flex items-center gap-2 text-sm whitespace-nowrap">
-                    <svg className="w-5 h-5 text-black flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <span>{label}</span>
@@ -236,15 +272,15 @@ export default function ContactPage() {
               </ul>
 
               {/* Encadré places limitées */}
-              <div className="rounded-xl border border-black/20 bg-gray-100 px-4 py-3">
-                <p className="text-xs font-bold uppercase tracking-wider text-black mb-2">
+              <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
+                <p className="text-xs font-bold uppercase tracking-wider text-amber-900 mb-2">
                   {t("sidebarLimitedTitle")}
                 </p>
                 <div className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                  <svg className="w-5 h-5 text-amber-700 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
                     <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
-                  <p className="text-sm text-black/90">{t("sidebarLimitedText")}</p>
+                  <p className="text-sm text-amber-900/90">{t("sidebarLimitedText")}</p>
                 </div>
               </div>
             </div>
@@ -268,73 +304,82 @@ export default function ContactPage() {
 
               {/* Étape 1 : Informations personnelles */}
               {step === 1 && (
-                <div className="rounded-2xl border border-gray-200 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-8 sm:p-10 lg:p-12">
-                  <h3 className="text-2xl font-bold text-black mb-8">
+                <div className={formBoxClass}>
+                  <h3 className="text-2xl font-bold text-white mb-8">
                     {t("step1Title")}
                   </h3>
                   <div className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name" className={labelClass}>
-                          {t("fullNameLabel")} <span className="text-black/50 font-normal">*</span>
+                        <label htmlFor="name" className={formLabelClass}>
+                          {t("fullNameLabel")} <span className="text-white/50 font-normal">*</span>
                         </label>
                         <input
                           id="name"
                           type="text"
                           required
                           placeholder={t("namePlaceholder")}
-                          className={inputClass}
+                          className={`${formInputClass} ${errors.name ? "border-red-400 focus:border-red-400 focus:ring-red-400/20" : ""}`}
                           value={personalInfo.name}
                           onChange={(e) => setPersonalInfo((p) => ({ ...p, name: e.target.value }))}
                         />
+                        {errors.name && (
+                          <p className="mt-1.5 text-sm text-red-400" role="alert">{errors.name}</p>
+                        )}
                       </div>
                       <div>
-                        <label htmlFor="phone" className={labelClass}>
-                          {t("phoneLabel")} <span className="text-black/50 font-normal">*</span>
+                        <label htmlFor="phone" className={formLabelClass}>
+                          {t("phoneLabel")} <span className="text-white/50 font-normal">*</span>
                         </label>
                         <input
                           id="phone"
                           type="tel"
                           required
                           placeholder={t("phonePlaceholder")}
-                          className={inputClass}
+                          className={formInputClass}
                           value={personalInfo.phone}
-                          onChange={(e) => setPersonalInfo((p) => ({ ...p, phone: e.target.value }))}
+                          onChange={(e) => {
+                            setPersonalInfo((p) => ({ ...p, phone: e.target.value }));
+                            if (errors.phone) setErrors((e) => ({ ...e, phone: "" }));
+                          }}
                         />
+                        {errors.phone && (
+                          <p className="mt-1.5 text-sm text-red-400" role="alert">{errors.phone}</p>
+                        )}
                       </div>
                       <div>
-                        <label htmlFor="city" className={labelClass}>
+                        <label htmlFor="city" className={formLabelClass}>
                           {t("cityLabel")}
                         </label>
                         <input
                           id="city"
                           type="text"
                           placeholder={t("cityPlaceholder")}
-                          className={inputClass}
+                          className={formInputClass}
                           value={personalInfo.city}
                           onChange={(e) => setPersonalInfo((p) => ({ ...p, city: e.target.value }))}
                         />
                       </div>
                       <div>
-                        <label htmlFor="company" className={labelClass}>
+                        <label htmlFor="company" className={formLabelClass}>
                           {t("companyLabel")}
                         </label>
                         <input
                           id="company"
                           type="text"
                           placeholder={t("companyPlaceholder")}
-                          className={inputClass}
+                          className={formInputClass}
                           value={personalInfo.company}
                           onChange={(e) => setPersonalInfo((p) => ({ ...p, company: e.target.value }))}
                         />
                       </div>
                       <div>
-                        <label htmlFor="employees" className={labelClass}>
+                        <label htmlFor="employees" className={formLabelClass}>
                           {t("employeesLabel")}
                         </label>
                         <select
                           id="employees"
-                          className={selectClass}
+                          className={formSelectClass}
                           value={personalInfo.employees}
                           onChange={(e) => setPersonalInfo((p) => ({ ...p, employees: e.target.value }))}
                         >
@@ -346,32 +391,60 @@ export default function ContactPage() {
                         </select>
                       </div>
                       <div className="sm:col-span-2">
-                        <label htmlFor="email" className={labelClass}>
-                          {t("emailAddressLabel")} <span className="text-black/50 font-normal">*</span>
+                        <label htmlFor="email" className={formLabelClass}>
+                          {t("emailAddressLabel")} <span className="text-white/50 font-normal">*</span>
                         </label>
                         <input
                           id="email"
                           type="email"
                           required
                           placeholder={t("emailPlaceholder")}
-                          className={inputClass}
+                          className={`${formInputClass} ${errors.email ? "border-red-400 focus:border-red-400 focus:ring-red-400/20" : ""}`}
                           value={personalInfo.email}
                           onChange={(e) => setPersonalInfo((p) => ({ ...p, email: e.target.value }))}
                         />
+                        {errors.email && (
+                          <p className="mt-1.5 text-sm text-red-400" role="alert">{errors.email}</p>
+                        )}
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label htmlFor="role" className={formLabelClass}>
+                          {t("q1Label")} <span className="text-white/50 font-normal">*</span>
+                        </label>
+                        <select
+                          id="role"
+                          value={qualification.role}
+                          onChange={(e) => {
+                            setQualification((p) => ({ ...p, role: e.target.value }));
+                            if (errors.role) setErrors((prev) => ({ ...prev, role: "" }));
+                          }}
+                          className={`${formSelectClass} ${errors.role ? "border-red-400" : ""}`}
+                          required
+                        >
+                          <option value="">{t("selectPlaceholder")}</option>
+                          {q1Options.map((opt, i) => (
+                            <option key={i} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
+                        </select>
+                        {errors.role && (
+                          <p className="mt-1.5 text-sm text-red-400" role="alert">{errors.role}</p>
+                        )}
                       </div>
                     </div>
                   </div>
-                  <div className="mt-10 pt-8 border-t border-gray-100 space-y-4">
-                    <div className="flex items-start gap-3 text-sm text-black/80">
-                      <span className="shrink-0 mt-0.5 text-black" aria-hidden>
+                  <div className="mt-10 pt-8 border-t border-white/10 space-y-4">
+                    <div className="flex items-start gap-3 text-sm text-white/80">
+                      <span className="shrink-0 mt-0.5 text-white" aria-hidden>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                           <path fillRule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clipRule="evenodd" />
                         </svg>
                       </span>
                       <span>{t("formSecurity")}</span>
                     </div>
-                    <div className="flex items-start gap-3 text-sm text-black/80">
-                      <span className="shrink-0 mt-0.5 text-black" aria-hidden>
+                    <div className="flex items-start gap-3 text-sm text-white/80">
+                      <span className="shrink-0 mt-0.5 text-white" aria-hidden>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                           <path fillRule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clipRule="evenodd" />
                         </svg>
@@ -380,9 +453,8 @@ export default function ContactPage() {
                     </div>
                     <button
                       type="button"
-                      onClick={() => setStep(2)}
-                      disabled={!personalInfo.name || !personalInfo.email || !personalInfo.phone}
-                      className="w-full sm:w-auto min-w-[240px] px-10 py-4 bg-black text-white text-base font-semibold rounded-lg border-2 border-black hover:bg-white hover:text-black transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-black disabled:hover:text-white"
+                      onClick={handleContinueToStep2}
+                      className="w-full sm:w-auto min-w-[240px] px-10 py-4 bg-white text-black text-base font-semibold rounded-lg border-2 border-white hover:bg-black hover:text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
                     >
                       {t("continue")}
                     </button>
@@ -392,8 +464,8 @@ export default function ContactPage() {
 
               {/* Étape 2 : Questions de qualification */}
               {step === 2 && (
-                <div className="rounded-2xl border border-gray-200 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-8 sm:p-10 lg:p-12">
-                  <h3 className="text-2xl font-bold text-black mb-8">{t("step2Title")}</h3>
+                <div className={formBoxClass}>
+                  <h3 className="text-2xl font-bold text-white mb-8">{t("step2Title")}</h3>
                   <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7">
                     <input type="hidden" name="name" value={personalInfo.name} />
                     <input type="hidden" name="email" value={personalInfo.email} />
@@ -409,28 +481,7 @@ export default function ContactPage() {
                     <input type="hidden" name="establishment" value={qualification.establishment} />
 
                     <div>
-                      <label htmlFor="role" className={labelClass}>
-                        {t("q1Label")}
-                      </label>
-                      <select
-                        id="role"
-                        value={qualification.role}
-                        onChange={(e) =>
-                          setQualification((p) => ({ ...p, role: e.target.value }))
-                        }
-                        className={selectClass}
-                        required
-                      >
-                        <option value="">{t("selectPlaceholder")}</option>
-                        {q1Options.map((opt, i) => (
-                          <option key={i} value={opt}>
-                            {opt}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="objective" className={labelClass}>
+                      <label htmlFor="objective" className={formLabelClass}>
                         {t("q2Label")}
                       </label>
                       <select
@@ -439,7 +490,7 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setQualification((p) => ({ ...p, objective: e.target.value }))
                         }
-                        className={selectClass}
+                        className={formSelectClass}
                         required
                       >
                         <option value="">{t("selectPlaceholder")}</option>
@@ -449,9 +500,12 @@ export default function ContactPage() {
                           </option>
                         ))}
                       </select>
+                      {errors.objective && (
+                        <p className="mt-1.5 text-sm text-red-600" role="alert">{errors.objective}</p>
+                      )}
                     </div>
                     <div>
-                      <label htmlFor="timing" className={labelClass}>
+                      <label htmlFor="timing" className={formLabelClass}>
                         {t("q3Label")}
                       </label>
                       <select
@@ -460,7 +514,7 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setQualification((p) => ({ ...p, timing: e.target.value }))
                         }
-                        className={selectClass}
+                        className={formSelectClass}
                         required
                       >
                         <option value="">{t("selectPlaceholder")}</option>
@@ -470,9 +524,12 @@ export default function ContactPage() {
                           </option>
                         ))}
                       </select>
+                      {errors.timing && (
+                        <p className="mt-1.5 text-sm text-red-400" role="alert">{errors.timing}</p>
+                      )}
                     </div>
                     <div>
-                      <label htmlFor="campaigns" className={labelClass}>
+                      <label htmlFor="campaigns" className={formLabelClass}>
                         {t("q4Label")}
                       </label>
                       <select
@@ -481,7 +538,7 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setQualification((p) => ({ ...p, campaigns: e.target.value }))
                         }
-                        className={selectClass}
+                        className={formSelectClass}
                         required
                       >
                         <option value="">{t("selectPlaceholder")}</option>
@@ -491,9 +548,12 @@ export default function ContactPage() {
                           </option>
                         ))}
                       </select>
+                      {errors.campaigns && (
+                        <p className="mt-1.5 text-sm text-red-600" role="alert">{errors.campaigns}</p>
+                      )}
                     </div>
                     <div>
-                      <label htmlFor="sector" className={labelClass}>
+                      <label htmlFor="sector" className={formLabelClass}>
                         {t("q5Label")}
                       </label>
                       <select
@@ -502,7 +562,7 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setQualification((p) => ({ ...p, sector: e.target.value }))
                         }
-                        className={selectClass}
+                        className={formSelectClass}
                         required
                       >
                         <option value="">{t("selectPlaceholder")}</option>
@@ -512,9 +572,12 @@ export default function ContactPage() {
                           </option>
                         ))}
                       </select>
+                      {errors.sector && (
+                        <p className="mt-1.5 text-sm text-red-400" role="alert">{errors.sector}</p>
+                      )}
                     </div>
                     <div>
-                      <label htmlFor="establishment" className={labelClass}>
+                      <label htmlFor="establishment" className={formLabelClass}>
                         {t("q6Label")}
                       </label>
                       <input
@@ -525,33 +588,33 @@ export default function ContactPage() {
                           setQualification((p) => ({ ...p, establishment: e.target.value }))
                         }
                         placeholder={t("q6Placeholder")}
-                        className={inputClass}
+                        className={formInputClass}
                       />
                     </div>
 
                     {status === "success" && (
-                      <div className="rounded-lg bg-black/5 border border-black/10 px-4 py-3 text-sm font-medium text-black">
+                      <div className="rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-sm font-medium text-white">
                         {t("success")}
                       </div>
                     )}
                     {status === "error" && (
-                      <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm font-medium text-red-800">
+                      <div className="rounded-lg bg-red-500/20 border border-red-400/50 px-4 py-3 text-sm font-medium text-red-300">
                         {t("error")}
                       </div>
                     )}
 
-                    <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-100">
+                    <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
                       <button
                         type="button"
                         onClick={() => setStep(1)}
-                        className="px-8 py-3.5 bg-white text-black text-base font-semibold rounded-lg border-2 border-gray-200 hover:border-black hover:bg-gray-50 transition-all"
+                        className="px-8 py-3.5 bg-transparent text-white text-base font-semibold rounded-lg border-2 border-white/40 hover:bg-white hover:text-black transition-all"
                       >
                         ← {t("back")}
                       </button>
                       <button
                         type="submit"
                         disabled={status === "sending"}
-                        className="min-w-[240px] px-10 py-4 bg-black text-white text-base font-semibold rounded-lg border-2 border-black hover:bg-white hover:text-black transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-black disabled:hover:text-white"
+                        className="min-w-[240px] px-10 py-4 bg-white text-black text-base font-semibold rounded-lg border-2 border-white hover:bg-black hover:text-white transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
                       >
                         {status === "sending" ? t("sending") : t("continue")}
                       </button>
@@ -562,38 +625,6 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-        </div>
-      </div>
-
-      {/* Maps: même largeur que la section contact */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 shadow-sm h-[280px] sm:h-[300px] min-h-[240px]">
-            <iframe
-              src={MAP_CASABLANCA}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="63 Agency – Casablanca, 179 Bd de la Résistance"
-              className="w-full h-full min-h-[240px]"
-            />
-          </div>
-          <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 shadow-sm h-[280px] sm:h-[300px] min-h-[240px]">
-            <iframe
-              src={MAP_RABAT}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="63 Agency – Rabat, 18 Rue Baht"
-              className="w-full h-full min-h-[240px]"
-            />
-          </div>
         </div>
       </div>
     </div>

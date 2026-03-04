@@ -121,62 +121,31 @@
   "results": {
     "title": "Résultats Réels, Revenus Réels",
     "subtitle": "Nos derniers chiffres.",
-    "metric1": {
-      "value": "+12000",
-      "label": "Leads / Mois",
-      "description": "Moy. clients"
-    },
-    "metric2": {
-      "value": "45%",
-      "label": "Réduction coût",
-      "description": "Optimisation"
-    },
-    "metric3": {
-      "value": "x8.6",
-      "label": "Croissance Revenus",
-      "description": "ROI moyen"
-    },
-    "metric4": {
-      "value": "85%",
-      "label": "Automatisation",
-      "description": "Processus suivi"
-    }
+    "metric1": { "value": "+12000", "label": "Leads / Mois", "description": "Moy. clients" },
+    "metric2": { "value": "45%", "label": "Réduction coût", "description": "Optimisation" },
+    "metric3": { "value": "x8.6", "label": "Croissance Revenus", "description": "ROI moyen" },
+    "metric4": { "value": "85%", "label": "Automatisation", "description": "Processus suivi" }
   },
   "digitalPresence": {
-    "card1Title": "Résultats Google Ads – Lead generation",
-    "card1Alt": "Résultats publicitaires Google Ads pour la génération de leads – service à forte valeur",
-    "headline1": "Google Ads : des conversions et un coût par acquisition maîtrisés.",
-    "body1": "Nous structurons vos campagnes Google pour la génération de leads sur des services à forte valeur. Suivi des ventes, du coût et du coût par conversion en temps réel, avec des courbes de tendance pour piloter et scaler vos investissements.",
-    "emphasis1": "Performance tracée, budget optimisé, ROI mesurable.",
-    "card2Title": "Résultats Meta – Leads (formulaires)",
-    "card2Alt": "Résultats publicitaires Meta pour la génération de leads – service à forte valeur",
-    "headline2": "Meta Ads : volume de leads qualifiés et coût par lead optimisé.",
-    "body2": "Nos campagnes Meta ciblent la génération de leads via formulaires : résultats, coût par lead, budget et dépenses, impressions et portée. Tableaux de bord synthétiques pour suivre les volumes et le coût par acquisition.",
-    "emphasis2": "Des milliers de leads générés, un coût par lead maîtrisé."
+    "card1Title": "نتائج Google Ads – توليد العملاء المحتملين",
+    "card1Alt": "نتائج إعلانات Google Ads لتوليد العملاء المحتملين – خدمة ذات قيمة عالية",
+    "headline1": "Google Ads: تحويلات وتكلفة لكل اكتساب تحت السيطرة.",
+    "body1": "ننظم حملاتك على Google لتوليد العملاء المحتملين لخدمات ذات قيمة عالية. متابعة المبيعات والتكلفة وتكلفة التحويل في الوقت الفعلي، مع منحنيات الاتجاه لتوجيه وتوسيع استثمارك.",
+    "emphasis1": "أداء متتبع، ميزانية محسّنة، عائد استثمار قابل للقياس.",
+    "card2Title": "نتائج Meta – نماذج العملاء المحتملين",
+    "card2Alt": "نتائج إعلانات Meta لتوليد العملاء المحتملين – خدمة ذات قيمة عالية",
+    "headline2": "Meta Ads: حجم عملاء محتملين مؤهلين وتكلفة محسّنة لكل عميل محتمل.",
+    "body2": "حملاتنا على Meta تركز على توليد العملاء عبر النماذج: النتائج، التكلفة لكل عميل محتمل، الميزانية والإنفاق، مرات الظهور والوصول. لوحات ملخص لمتابعة الحجم وتكلفة الاكتساب.",
+    "emphasis2": "آلاف العملاء المحتملين المُولَّدين، تكلفة لكل عميل محتمل تحت السيطرة."
   },
   "industries": {
     "title": "Secteurs que nous maîtrisons",
     "subtitle": "Systèmes de leads pour une croissance prévisible.",
-    "privateSchools": {
-      "name": "Groupe Scolaire & Academy",
-      "description": "Systèmes d'inscription. Classes remplies."
-    },
-    "trainingCenters": {
-      "name": "Centres de Formation",
-      "description": "Entonnoirs d'inscription. Prospects → étudiants."
-    },
-    "realEstate": {
-      "name": "Immobilier",
-      "description": "Générer des visites ou des rendez-vous."
-    },
-    "hospitality": {
-      "name": "Hôtellerie",
-      "description": "Réservation. Taux d'occupation maximisés."
-    },
-    "b2bServices": {
-      "name": "Entreprise service B2B & B2C",
-      "description": "Prospects qualifiés prêts à payer B2B & B2C."
-    }
+    "privateSchools": { "name": "Groupe Scolaire & Academy", "description": "Systèmes d'inscription. Classes remplies." },
+    "trainingCenters": { "name": "Centres de Formation", "description": "Entonnoirs d'inscription. Prospects → étudiants." },
+    "realEstate": { "name": "Immobilier", "description": "Générer des visites ou des rendez-vous." },
+    "hospitality": { "name": "Hôtellerie", "description": "Réservation. Taux d'occupation maximisés." },
+    "b2bServices": { "name": "Entreprise service B2B & B2C", "description": "Prospects qualifiés prêts à payer B2B & B2C." }
   },
   "servicesSection": {
     "title": "Nos Solutions",
@@ -258,30 +227,10 @@
     "sectionSubtitle": "Des résultats concrets en communication & marketing digital",
     "sectionTitle": "Résultats concrets. Témoignages de nos clients.",
     "scrollHint": "Faites défiler pour voir tous les témoignages",
-    "t1": {
-      "name": "Tarik El Adraoui",
-      "role": "CEO",
-      "company": "Oum Palace & New Hotel",
-      "quote": "Je travaille avec Saad et 63 agency depuis plus de 4 ans. C'est quelqu'un de sérieux, fiable et constant dans la performance. On a généré de bons résultats ensemble et la relation est basée sur la confiance."
-    },
-    "t2": {
-      "name": "Kenza Noumane",
-      "role": "Fondatrice",
-      "company": "ETC Academy",
-      "quote": "Contenu de très bon niveau. Créatif, pro, adapté à notre positionnement."
-    },
-    "t3": {
-      "name": "Samir Benmakhlouf",
-      "role": "Founder",
-      "company": "London Academy",
-      "quote": "C'est clairement la meilleure expérience que nous ayons eue avec une agence. Rien à voir avec nos anciennes collaborations. Un travail sérieux et performant."
-    },
-    "t4": {
-      "name": "Leila",
-      "role": "Sales Manager",
-      "company": "Madariss Achbal Al Atlas",
-      "quote": "Fière de travailler avec Saad. Partenaire sérieux et performant."
-    }
+    "t1": { "name": "Tarik El Adraoui", "role": "CEO", "company": "Oum Palace & New Hotel", "quote": "Je travaille avec Saad et 63 agency depuis plus de 4 ans. C'est quelqu'un de sérieux, fiable et constant dans la performance. On a généré de bons résultats ensemble et la relation est basée sur la confiance." },
+    "t2": { "name": "Kenza Noumane", "role": "Fondatrice", "company": "ETC Academy", "quote": "Contenu de très bon niveau. Créatif, pro, adapté à notre positionnement." },
+    "t3": { "name": "Samir Benmakhlouf", "role": "Founder", "company": "London Academy", "quote": "C'est clairement la meilleure expérience que nous ayons eue avec une agence. Rien à voir avec nos anciennes collaborations. Un travail sérieux et performant." },
+    "t4": { "name": "Leila", "role": "Sales Manager", "company": "Madariss Achbal Al Atlas", "quote": "Fière de travailler avec Saad. Partenaire sérieux et performant." }
   },
   "aboutIntro": {
     "whoWeAreTitle": "Qui sommes-nous ?",
@@ -357,11 +306,11 @@
   "cta": {
     "title": "Réservez un appel avec un expert",
     "description": "Travaillons ensemble avec notre **système d'acquisition** pour faire évoluer vos résultats.",
-    "auditIntro": "Profitez d'un audit gratuit de votre système de génération de prospects et découvrez 5 actions rapides pour augmenter vos leads et votre ROI.",
-    "auditDetail": "Vous obtiendrez une analyse détaillée de votre processus actuel (contenu, campagnes publicitaires, tunnel et suivi des leads), l'identification des points de blocage qui limitent vos conversions, ainsi que des opportunités de croissance chiffrées.",
+    "auditIntro": "استفد من تدقيق مجاني لنظام توليد العملاء المحتملين واكتشف 5 إجراءات سريعة لزيادة عملائك وعائد الاستثمار.",
+    "auditDetail": "تحصل على تحليل مفصل لعمليتك الحالية (المحتوى، الحملات، النفق ومتابعة العملاء)، تحديد نقاط الاختناق التي تحد من التحويلات، وفرص نمو مُقدّرة بالأرقام.",
     "step1": "INFORMATION",
     "step2": "SERVICE",
-    "step3": "QUALIFICATION",
+    "step3": "DÉTAILS",
     "fieldName": "Nom",
     "fieldCompany": "Nom de l'entreprise",
     "fieldEmployees": "Nombre d'employés",
@@ -402,18 +351,14 @@
     "fieldMessagePlaceholder": "Votre message...",
     "back": "Retour",
     "next": "Suivant",
-    "button": "Réserver un appel stratégique",
-    "validationRequired": "Ce champ est requis.",
-    "validationEmail": "Adresse email invalide.",
-    "validationPhone": "Numéro de téléphone invalide.",
-    "validationBudget": "Veuillez sélectionner un budget."
+    "button": "Réserver un appel stratégique"
   },
   "contactPage": {
     "title": "Contact",
     "contactTag": "CONTACT",
-    "heroHeadline1": "Êtes-vous prêt à commencer ?",
+    "heroHeadline1": "هل أنت مستعد للبدء؟",
     "heroHeadline2": "",
-    "heroHeadline3": "Envoyez-nous votre demande.",
+    "heroHeadline3": "أرسل لنا طلبك.",
     "headline": "Donnons vie à votre vision.",
     "subtitle": "Parlons de votre projet.",
     "formTitle": "Envoyez-nous un message",
@@ -449,7 +394,7 @@
     "sidebarRating": "4.9/5 sur Google",
     "sidebarHeadline": "Obtenez votre audit marketing gratuit et découvrez vos",
     "sidebarHeadlineHighlight": "5 quick wins immédiats",
-    "sidebarDescription": "Vous obtiendrez une **analyse détaillée** de votre processus actuel (contenu, campagnes publicitaires, tunnel et suivi des leads), l'**identification des points de blocage** qui limitent vos conversions, ainsi que des **opportunités de croissance chiffrées**.\n\nÀ l'issue de cet audit, nous vous remettrons un **plan d'action clair et priorisé** pour améliorer la qualité de vos prospects et **maximiser votre retour sur investissement**.",
+    "sidebarDescription": "ستحصل على **تحليل مفصل** لعمليتك الحالية (المحتوى، الحملات الإعلانية، القمع ومتابعة العملاء المحتملين)، **تحديد نقاط الاحتباس** التي تحد من تحويلاتك، بالإضافة إلى **فرص نمو مُقَوَّمة**.\n\nفي نهاية هذا التدقيق، نسلّمك **خطة عمل واضحة ومرتبة حسب الأولوية** لتحسين جودة عملائك المحتملين و**تعظيم العائد على استثمارك**.",
     "sidebarStat1Value": "1600+",
     "sidebarStat1Label": "projets livrés",
     "sidebarStat2Value": "98%",
@@ -458,7 +403,7 @@
     "sidebarStat3Label": "MAD générés",
     "sidebarGuarantee1": "Sans engagement",
     "sidebarGuarantee2": "Réponse sous 24h",
-    "sidebarGuarantee3": "Système prouvé",
+    "sidebarGuarantee3": "نظام مُجرّب",
     "sidebarLimitedTitle": "PLACES LIMITÉES",
     "sidebarLimitedText": "Pour garantir qualité maximale : 5 nouveaux clients/mois seulement.",
     "connectWithUs": "Restons en contact",
@@ -478,14 +423,11 @@
     "formNotice": "Les places sont limitées — 5 nouveaux clients par mois.",
     "stepProgress": "Étape {current} sur 2",
     "step1Title": "Informations personnelles",
-    "step2Title": "Information personnelle",
+    "step2Title": "المعلومات الشخصية",
     "continue": "Suivant",
     "formSecurity": "Vos informations sont 100% sécurisées et ne seront jamais partagées.",
-    "formAuditInfo": "Le meeting est gratuit dès que le client envoie un message.",
+    "formAuditInfo": "الاجتماع مجاني بمجرد أن يرسل العميل رسالة.",
     "back": "Retour",
-    "validationRequired": "Ce champ est requis.",
-    "validationEmail": "Adresse email invalide.",
-    "validationPhone": "Numéro de téléphone invalide.",
     "selectPlaceholder": "Sélectionner",
     "q1Label": "Quelle est votre fonction au sein de l'établissement ?",
     "q1_1": "Fondateur(trice)",
@@ -536,9 +478,9 @@
     "followUs": "Suivez-nous",
     "followUsTitle": "NOUS SUIVRE",
     "officesTitle": "Nos locaux",
-    "localisationTitle": "Localisation",
-    "cityCasablanca": "Casablanca",
-    "cityRabat": "Rabat",
+    "localisationTitle": "الموقع",
+    "cityCasablanca": "الدار البيضاء",
+    "cityRabat": "الرباط",
     "addressRabat": "18 Rue Baht, Agdal Rabat 10090",
     "addressCasa": "179 Bd de la Résistance, Casablanca",
     "resources": "Aller plus loin",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 
 const EMPLOYEE_OPTIONS = [
@@ -34,7 +34,6 @@ const CITY_OPTIONS = [
 
 const BUDGET_OPTIONS = [
   { value: "", key: "fieldBudget" },
-  { value: "under_5k", key: "budget_under_5k" },
   { value: "5k_15k", key: "budget_5k_15k" },
   { value: "15k_30k", key: "budget_15k_30k" },
   { value: "30k_50k", key: "budget_30k_50k" },
@@ -43,42 +42,48 @@ const BUDGET_OPTIONS = [
 
 const inputClass =
   "w-full rounded-lg px-4 py-3 text-white placeholder-white/50 text-[15px] border border-white/30 bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30";
+const selectClassCta =
+  "w-full rounded-lg px-4 py-3 text-white text-[15px] border border-white/30 bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 cursor-pointer appearance-none";
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function isValidEmail(s: string) {
+  return EMAIL_REGEX.test((s || "").trim());
+}
+function isValidPhone(s: string) {
+  const digits = (s || "").replace(/\D/g, "");
+  return digits.length >= 6;
+}
 
 export default function CTASection() {
   const t = useTranslations("cta");
+  const tContact = useTranslations("contactPage");
   const locale = useLocale();
+  const router = useRouter();
   const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [role, setRole] = useState("");
+  const [objective, setObjective] = useState("");
+  const [timing, setTiming] = useState("");
+  const [campaigns, setCampaigns] = useState("");
+  const [sector, setSector] = useState("");
+  const [establishment, setEstablishment] = useState("");
   const [employeesOpen, setEmployeesOpen] = useState(false);
   const [selectedEmployees, setSelectedEmployees] = useState("");
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [budgetOpen, setBudgetOpen] = useState(false);
   const [selectedBudget, setSelectedBudget] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const cityRef = useRef<HTMLDivElement>(null);
   const budgetRef = useRef<HTMLDivElement>(null);
 
   const description = t("description");
   const parts = description.split(/\*\*(.*?)\*\*/g);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      const target = e.target as Node;
-      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
-        setEmployeesOpen(false);
-      }
-      if (cityRef.current && !cityRef.current.contains(target)) {
-        setCityOpen(false);
-      }
-      if (budgetRef.current && !budgetRef.current.contains(target)) {
-        setBudgetOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   const selectedOption = EMPLOYEE_OPTIONS.find((o) => o.value === selectedEmployees);
   const displayLabel = selectedOption ? t(selectedOption.key) : t("fieldEmployees");
@@ -87,11 +92,89 @@ export default function CTASection() {
   const selectedBudgetOption = BUDGET_OPTIONS.find((o) => o.value === selectedBudget);
   const displayBudgetLabel = selectedBudgetOption ? t(selectedBudgetOption.key) : t("fieldBudget");
 
+  const q1Options = [tContact("q1_1"), tContact("q1_2"), tContact("q1_3"), tContact("q1_4"), tContact("q1_5")];
+  const q2Options = [tContact("q2_1"), tContact("q2_2"), tContact("q2_3"), tContact("q2_4")];
+  const q3Options = [tContact("q3_1"), tContact("q3_2"), tContact("q3_3"), tContact("q3_4"), tContact("q3_5")];
+  const q4Options = [tContact("q4_1"), tContact("q4_2"), tContact("q4_3")];
+  const q5Options = [tContact("q5_1"), tContact("q5_2"), tContact("q5_3"), tContact("q5_6")];
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      const target = e.target as Node;
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) setEmployeesOpen(false);
+      if (cityRef.current && !cityRef.current.contains(target)) setCityOpen(false);
+      if (budgetRef.current && !budgetRef.current.contains(target)) setBudgetOpen(false);
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  function validateStep1(): boolean {
+    const nextErrors: Record<string, string> = {};
+    const nameTrim = name.trim();
+    if (!nameTrim || nameTrim.length < 2) nextErrors.name = t("validationRequired");
+    if (!email.trim()) nextErrors.email = t("validationRequired");
+    else if (!isValidEmail(email)) nextErrors.email = t("validationEmail");
+    if (!phone.trim()) nextErrors.phone = t("validationRequired");
+    else if (!isValidPhone(phone)) nextErrors.phone = t("validationPhone");
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function validateStep2(): boolean {
+    if (selectedBudget) {
+      setErrors({});
+      return true;
+    }
+    setErrors({ budget: t("validationBudget") });
+    return false;
+  }
+
+  function validateStep3(): boolean {
+    const nextErrors: Record<string, string> = {};
+    if (!role.trim()) nextErrors.role = t("validationRequired");
+    if (!objective.trim()) nextErrors.objective = t("validationRequired");
+    if (!timing.trim()) nextErrors.timing = t("validationRequired");
+    if (!campaigns.trim()) nextErrors.campaigns = t("validationRequired");
+    if (!sector.trim()) nextErrors.sector = t("validationRequired");
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function handleNext() {
+    if (step === 1 && !validateStep1()) return;
+    if (step === 2 && !validateStep2()) return;
+    if (step === 3) {
+      if (!validateStep3()) return;
+      setErrors({});
+      const cityLabel = selectedCity ? (() => { try { return t("city_" + selectedCity); } catch { return selectedCity; } })() : "";
+      const q = new URLSearchParams({
+        ...(name && { name }),
+        ...(email && { email }),
+        ...(phone && { phone }),
+        ...(cityLabel && { city: cityLabel }),
+        ...(company && { company }),
+        ...(selectedEmployees && { employees: selectedEmployees }),
+        ...(role && { role }),
+        ...(objective && { objective }),
+        ...(timing && { timing }),
+        ...(campaigns && { campaigns }),
+        ...(sector && { sector }),
+        ...(establishment && { establishment }),
+      }).toString();
+      router.push(`/${locale}/contact${q ? `?${q}` : ""}`);
+      return;
+    }
+    setErrors({});
+    setStep((s) => (s + 1) as 1 | 2 | 3);
+  }
+
+  const labelClassStep3 = "block text-sm font-medium text-white/90 mb-2";
+
   return (
     <section id="contact" className="relative py-16 sm:py-24 bg-white overflow-visible">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
-          {/* Colonne gauche */}
           <div className="lg:pt-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6">
               {t("title")}
@@ -101,68 +184,57 @@ export default function CTASection() {
                 i % 2 === 1 ? <strong key={i}>{part}</strong> : part
               )}
             </p>
+            <div className="mt-5 space-y-3">
+              <p className="text-base text-black/90 leading-relaxed font-medium">
+                {t("auditIntro")}
+              </p>
+              <p className="text-sm text-black/75 leading-relaxed">
+                {t("auditDetail")}
+              </p>
+            </div>
           </div>
 
-          {/* Carte formulaire */}
           <div className="relative">
             <div className="rounded-2xl p-6 sm:p-8 shadow-xl bg-black border border-white/20 overflow-visible">
-              {/* Indicateur d'étapes */}
               <div className="flex items-center gap-2 mb-8">
                 <div className="flex items-center gap-2">
-                  <span
-                    className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${
-                      step >= 1 ? "text-black bg-white" : "bg-white/20 text-white/70"
-                    }`}
-                  >
-                    1
-                  </span>
-                  <span className={`text-sm font-semibold ${step >= 1 ? "text-white" : "text-white/60"}`}>
-                    {t("step1")}
-                  </span>
+                  <span className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${step >= 1 ? "text-black bg-white" : "bg-white/20 text-white/70"}`}>1</span>
+                  <span className={`text-sm font-semibold ${step >= 1 ? "text-white" : "text-white/60"}`}>{t("step1")}</span>
                 </div>
                 <span className="flex-1 h-px bg-white/20 min-w-[12px]" />
                 <div className="flex items-center gap-2">
-                  <span
-                    className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${
-                      step >= 2 ? "text-black bg-white" : "bg-white/20 text-white/70"
-                    }`}
-                  >
-                    2
-                  </span>
-                  <span className={`text-sm font-medium ${step >= 2 ? "text-white" : "text-white/60"}`}>
-                    {t("step2")}
-                  </span>
+                  <span className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${step >= 2 ? "text-black bg-white" : "bg-white/20 text-white/70"}`}>2</span>
+                  <span className={`text-sm font-medium ${step >= 2 ? "text-white" : "text-white/60"}`}>{t("step2")}</span>
                 </div>
                 <span className="flex-1 h-px bg-white/20 min-w-[12px]" />
                 <div className="flex items-center gap-2">
-                  <span
-                    className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${
-                      step >= 3 ? "text-black bg-white" : "bg-white/20 text-white/70"
-                    }`}
-                  >
-                    3
-                  </span>
-                  <span className={`text-sm font-medium ${step >= 3 ? "text-white" : "text-white/60"}`}>
-                    {t("step3")}
-                  </span>
+                  <span className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${step >= 3 ? "text-black bg-white" : "bg-white/20 text-white/70"}`}>3</span>
+                  <span className={`text-sm font-medium ${step >= 3 ? "text-white" : "text-white/60"}`}>{t("step3")}</span>
                 </div>
               </div>
 
-              {/* Step 1: Information */}
+              {/* Step 1: Information (original) */}
               {step === 1 && (
                 <div className="space-y-4">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder={t("fieldName")}
-                    className={inputClass}
-                    aria-label={t("fieldName")}
-                  />
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder={t("fieldName")}
+                      value={name}
+                      onChange={(e) => { setName(e.target.value); if (errors.name) setErrors((p) => ({ ...p, name: "" })); }}
+                      className={`${inputClass} ${errors.name ? "border-red-400 focus:ring-red-400/30" : ""}`}
+                      aria-label={t("fieldName")}
+                    />
+                    {errors.name && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.name}</p>}
+                  </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input
                       type="text"
                       name="company"
                       placeholder={t("fieldCompany")}
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
                       className={inputClass}
                       aria-label={t("fieldCompany")}
                     />
@@ -175,32 +247,19 @@ export default function CTASection() {
                         aria-expanded={employeesOpen}
                         aria-label={t("fieldEmployees")}
                       >
-                        <span className={selectedEmployees ? "" : "text-white/60"}>
-                          {displayLabel}
-                        </span>
-                        <svg
-                          className={`w-5 h-5 text-white/80 shrink-0 transition-transform ${employeesOpen ? "rotate-180" : ""}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
+                        <span className={selectedEmployees ? "" : "text-white/60"}>{displayLabel}</span>
+                        <svg className={`w-5 h-5 text-white/80 shrink-0 transition-transform ${employeesOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
                       {employeesOpen && (
-                        <ul
-                          className="absolute z-50 left-0 right-0 mt-1 py-1 rounded-lg border border-white/30 bg-black shadow-xl max-h-[280px] overflow-y-auto"
-                          role="listbox"
-                        >
+                        <ul className="absolute z-50 left-0 right-0 mt-1 py-1 rounded-lg border border-white/30 bg-black shadow-xl max-h-[280px] overflow-y-auto" role="listbox">
                           {EMPLOYEE_OPTIONS.map((opt) => (
                             <li
                               key={opt.value || "placeholder"}
                               role="option"
                               aria-selected={selectedEmployees === opt.value}
-                              onClick={() => {
-                                setSelectedEmployees(opt.value);
-                                setEmployeesOpen(false);
-                              }}
+                              onClick={() => { setSelectedEmployees(opt.value); setEmployeesOpen(false); }}
                               className="px-4 py-3 text-white text-[15px] cursor-pointer hover:bg-white/10 focus:bg-white/10 focus:outline-none"
                             >
                               {t(opt.key)}
@@ -211,20 +270,30 @@ export default function CTASection() {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder={t("fieldEmail")}
-                      className={inputClass}
-                      aria-label={t("fieldEmail")}
-                    />
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder={t("fieldPhone")}
-                      className={inputClass}
-                      aria-label={t("fieldPhone")}
-                    />
+                    <div>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder={t("fieldEmail")}
+                        value={email}
+                        onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((p) => ({ ...p, email: "" })); }}
+                        className={`${inputClass} ${errors.email ? "border-red-400 focus:ring-red-400/30" : ""}`}
+                        aria-label={t("fieldEmail")}
+                      />
+                      {errors.email && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.email}</p>}
+                    </div>
+                    <div>
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder={t("fieldPhone")}
+                        value={phone}
+                        onChange={(e) => { setPhone(e.target.value); if (errors.phone) setErrors((p) => ({ ...p, phone: "" })); }}
+                        className={`${inputClass} ${errors.phone ? "border-red-400 focus:ring-red-400/30" : ""}`}
+                        aria-label={t("fieldPhone")}
+                      />
+                      {errors.phone && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.phone}</p>}
+                    </div>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="relative" ref={cityRef}>
@@ -236,32 +305,19 @@ export default function CTASection() {
                         aria-expanded={cityOpen}
                         aria-label={t("fieldCity")}
                       >
-                        <span className={selectedCity ? "" : "text-white/60"}>
-                          {displayCityLabel}
-                        </span>
-                        <svg
-                          className={`w-5 h-5 text-white/80 shrink-0 transition-transform ${cityOpen ? "rotate-180" : ""}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
+                        <span className={selectedCity ? "" : "text-white/60"}>{displayCityLabel}</span>
+                        <svg className={`w-5 h-5 text-white/80 shrink-0 transition-transform ${cityOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
                       {cityOpen && (
-                        <ul
-                          className="absolute z-50 left-0 right-0 mt-1 py-1 rounded-lg border border-white/30 bg-black shadow-xl max-h-[280px] overflow-y-auto"
-                          role="listbox"
-                        >
+                        <ul className="absolute z-50 left-0 right-0 mt-1 py-1 rounded-lg border border-white/30 bg-black shadow-xl max-h-[280px] overflow-y-auto" role="listbox">
                           {CITY_OPTIONS.map((opt) => (
                             <li
                               key={opt.value || "city_placeholder"}
                               role="option"
                               aria-selected={selectedCity === opt.value}
-                              onClick={() => {
-                                setSelectedCity(opt.value);
-                                setCityOpen(false);
-                              }}
+                              onClick={() => { setSelectedCity(opt.value); setCityOpen(false); }}
                               className="px-4 py-3 text-white text-[15px] cursor-pointer hover:bg-white/10 focus:bg-white/10 focus:outline-none"
                             >
                               {t(opt.key)}
@@ -274,6 +330,8 @@ export default function CTASection() {
                       type="text"
                       name="address"
                       placeholder={t("fieldAddressPlaceholder")}
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
                       className={inputClass}
                       aria-label={t("fieldAddress")}
                     />
@@ -281,44 +339,31 @@ export default function CTASection() {
                 </div>
               )}
 
-              {/* Step 2: Budget (liste déroulante) */}
+              {/* Step 2: Budget (original) */}
               {step === 2 && (
                 <div className="space-y-4">
                   <div className="relative" ref={budgetRef}>
                     <button
                       type="button"
-                      onClick={() => setBudgetOpen(!budgetOpen)}
-                      className="w-full rounded-lg px-4 py-3 text-left text-white text-[15px] border border-white/30 bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 cursor-pointer min-h-[48px] flex items-center justify-between"
+                      onClick={() => { setBudgetOpen(!budgetOpen); if (errors.budget) setErrors((p) => ({ ...p, budget: "" })); }}
+                      className={`w-full rounded-lg px-4 py-3 text-left text-white text-[15px] border bg-white/10 focus:outline-none focus:ring-2 cursor-pointer min-h-[48px] flex items-center justify-between ${errors.budget ? "border-red-400 focus:ring-red-400/30" : "border-white/30 focus:ring-white/30"}`}
                       aria-haspopup="listbox"
                       aria-expanded={budgetOpen}
                       aria-label={t("fieldBudget")}
                     >
-                      <span className={selectedBudget ? "" : "text-white/60"}>
-                        {displayBudgetLabel}
-                      </span>
-                      <svg
-                        className={`w-5 h-5 text-white/80 shrink-0 transition-transform ${budgetOpen ? "rotate-180" : ""}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
+                      <span className={selectedBudget ? "" : "text-white/60"}>{displayBudgetLabel}</span>
+                      <svg className={`w-5 h-5 text-white/80 shrink-0 transition-transform ${budgetOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                     {budgetOpen && (
-                      <ul
-                        className="absolute z-50 left-0 right-0 mt-1 py-1 rounded-lg border border-white/30 bg-black shadow-xl max-h-[280px] overflow-y-auto"
-                        role="listbox"
-                      >
+                      <ul className="absolute z-50 left-0 right-0 mt-1 py-1 rounded-lg border border-white/30 bg-black shadow-xl max-h-[280px] overflow-y-auto" role="listbox">
                         {BUDGET_OPTIONS.map((opt) => (
                           <li
                             key={opt.value || "placeholder"}
                             role="option"
                             aria-selected={selectedBudget === opt.value}
-                            onClick={() => {
-                              setSelectedBudget(opt.value);
-                              setBudgetOpen(false);
-                            }}
+                            onClick={() => { setSelectedBudget(opt.value); setBudgetOpen(false); }}
                             className="px-4 py-3 text-white text-[15px] cursor-pointer hover:bg-white/10 focus:bg-white/10 focus:outline-none"
                           >
                             {t(opt.key)}
@@ -327,34 +372,97 @@ export default function CTASection() {
                       </ul>
                     )}
                   </div>
+                  {errors.budget && <p className="text-sm text-red-300" role="alert">{errors.budget}</p>}
                 </div>
               )}
 
-              {/* Step 3: Sujet + Message */}
+              {/* Step 3: Qualification (same as contact page step 2) */}
               {step === 3 && (
                 <div className="space-y-4">
-                  <input
-                    type="text"
-                    name="subject"
-                    placeholder={t("fieldSubjectPlaceholder")}
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    className={inputClass}
-                    aria-label={t("fieldSubject")}
-                  />
-                  <textarea
-                    name="message"
-                    placeholder={t("fieldMessagePlaceholder")}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    rows={5}
-                    className={`${inputClass} resize-y min-h-[120px]`}
-                    aria-label={t("fieldMessage")}
-                  />
+                  <p className="text-sm font-semibold text-white/90 mb-4">{tContact("step2Title")}</p>
+                  <div>
+                    <label className={labelClassStep3}>{tContact("q1Label")}</label>
+                    <select
+                      value={role}
+                      onChange={(e) => { setRole(e.target.value); if (errors.role) setErrors((p) => ({ ...p, role: "" })); }}
+                      className={`${selectClassCta} ${errors.role ? "border-red-400" : ""}`}
+                    >
+                      <option value="">{tContact("selectPlaceholder")}</option>
+                      {q1Options.map((opt, i) => (
+                        <option key={i} value={opt} className="text-black bg-white">{opt}</option>
+                      ))}
+                    </select>
+                    {errors.role && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.role}</p>}
+                  </div>
+                  <div>
+                    <label className={labelClassStep3}>{tContact("q2Label")}</label>
+                    <select
+                      value={objective}
+                      onChange={(e) => { setObjective(e.target.value); if (errors.objective) setErrors((p) => ({ ...p, objective: "" })); }}
+                      className={`${selectClassCta} ${errors.objective ? "border-red-400" : ""}`}
+                    >
+                      <option value="">{tContact("selectPlaceholder")}</option>
+                      {q2Options.map((opt, i) => (
+                        <option key={i} value={opt} className="text-black bg-white">{opt}</option>
+                      ))}
+                    </select>
+                    {errors.objective && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.objective}</p>}
+                  </div>
+                  <div>
+                    <label className={labelClassStep3}>{tContact("q3Label")}</label>
+                    <select
+                      value={timing}
+                      onChange={(e) => { setTiming(e.target.value); if (errors.timing) setErrors((p) => ({ ...p, timing: "" })); }}
+                      className={`${selectClassCta} ${errors.timing ? "border-red-400" : ""}`}
+                    >
+                      <option value="">{tContact("selectPlaceholder")}</option>
+                      {q3Options.map((opt, i) => (
+                        <option key={i} value={opt} className="text-black bg-white">{opt}</option>
+                      ))}
+                    </select>
+                    {errors.timing && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.timing}</p>}
+                  </div>
+                  <div>
+                    <label className={labelClassStep3}>{tContact("q4Label")}</label>
+                    <select
+                      value={campaigns}
+                      onChange={(e) => { setCampaigns(e.target.value); if (errors.campaigns) setErrors((p) => ({ ...p, campaigns: "" })); }}
+                      className={`${selectClassCta} ${errors.campaigns ? "border-red-400" : ""}`}
+                    >
+                      <option value="">{tContact("selectPlaceholder")}</option>
+                      {q4Options.map((opt, i) => (
+                        <option key={i} value={opt} className="text-black bg-white">{opt}</option>
+                      ))}
+                    </select>
+                    {errors.campaigns && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.campaigns}</p>}
+                  </div>
+                  <div>
+                    <label className={labelClassStep3}>{tContact("q5Label")}</label>
+                    <select
+                      value={sector}
+                      onChange={(e) => { setSector(e.target.value); if (errors.sector) setErrors((p) => ({ ...p, sector: "" })); }}
+                      className={`${selectClassCta} ${errors.sector ? "border-red-400" : ""}`}
+                    >
+                      <option value="">{tContact("selectPlaceholder")}</option>
+                      {q5Options.map((opt, i) => (
+                        <option key={i} value={opt} className="text-black bg-white">{opt}</option>
+                      ))}
+                    </select>
+                    {errors.sector && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.sector}</p>}
+                  </div>
+                  <div>
+                    <label className={labelClassStep3}>{tContact("q6Label")}</label>
+                    <input
+                      type="text"
+                      value={establishment}
+                      onChange={(e) => setEstablishment(e.target.value)}
+                      placeholder={tContact("q6Placeholder")}
+                      className={inputClass}
+                    />
+                  </div>
                 </div>
               )}
 
-              {/* Boutons Retour + Suivant */}
               <div className="mt-6 flex flex-wrap gap-3">
                 {step > 1 && (
                   <button
@@ -365,26 +473,16 @@ export default function CTASection() {
                     {t("back")}
                   </button>
                 )}
-                {step < 3 ? (
-                  <button
-                    type="button"
-                    onClick={() => setStep((s) => (s + 1) as 1 | 2 | 3)}
-                    className="px-8 py-4 rounded-lg font-semibold text-black bg-white hover:bg-gray-100 text-[15px] transition-colors"
-                  >
-                    {t("next")}
-                  </button>
-                ) : (
-                  <Link
-                    href={`/${locale}/contact`}
-                    className="inline-flex justify-center items-center px-8 py-4 rounded-lg font-semibold text-black bg-white hover:bg-gray-100 text-[15px] transition-colors no-underline"
-                  >
-                    {t("next")}
-                  </Link>
-                )}
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="px-8 py-4 rounded-lg font-semibold text-black bg-white hover:bg-gray-100 text-[15px] transition-colors"
+                >
+                  {step < 3 ? t("next") : t("button")}
+                </button>
               </div>
             </div>
 
-            {/* Boutons flottants */}
             <div className="flex gap-3 justify-end mt-4 sm:mt-6">
               <a
                 href="https://wa.me/212720007007"

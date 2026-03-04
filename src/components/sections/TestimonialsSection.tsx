@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-const testimonialKeys = ["t1", "t2", "t3", "t4"] as const;
+const testimonialKeys = ["t3", "t2", "t1", "t4"] as const; /* Samir, Kenza, Tarik, Leila */
 
 const REVIEW_IMAGES: Record<string, string> = {
   t1: "/images/review/Tarik.png",
@@ -29,7 +29,7 @@ export default function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="py-16 sm:py-24 bg-black">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/70 text-center mb-3">
           {t("sectionSubtitle")}
@@ -38,7 +38,7 @@ export default function TestimonialsSection() {
           {t("sectionTitle")}
         </h2>
 
-        {/* Horizontal scroll: cartes noir & blanc */}
+        {/* Horizontal scroll: 3 cartes visibles + un peu de la 4e */}
         <div
           className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-hidden pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 snap-x snap-mandatory scroll-smooth"
           style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
             return (
               <article
                 key={key}
-                className="flex-shrink-0 w-[85vw] sm:w-[380px] md:w-[400px] snap-center rounded-xl border border-white/20 bg-white shadow-lg hover:shadow-xl hover:border-white/40 transition-all duration-300 hover:-translate-y-0.5 p-5 sm:p-6"
+                className="flex-shrink-0 w-[78vw] sm:w-[300px] md:w-[340px] lg:w-[360px] snap-center rounded-xl border border-white/20 bg-white shadow-lg hover:shadow-xl hover:border-white/40 transition-all duration-300 hover:-translate-y-0.5 p-5 sm:p-6"
               >
                 {/* Photo + nom et post à côté */}
                 <div className="flex items-center gap-3 sm:gap-4 mb-4">
@@ -71,10 +71,10 @@ export default function TestimonialsSection() {
                     )}
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-lg sm:text-xl font-bold text-black truncate">
+                    <h3 className="text-base sm:text-lg font-bold text-black truncate">
                       {name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-black/60 uppercase tracking-wide truncate">
+                    <p className="text-[11px] sm:text-xs text-black/60 uppercase tracking-wide truncate">
                       {t(`${key}.role`)} — {t(`${key}.company`)}
                     </p>
                   </div>

@@ -17,11 +17,11 @@ export default function DigitalPresenceSection() {
           <div className="flex flex-col">
             <div className="relative w-full">
               <Image
-                src="/images/Feceboock/Dashbord.png"
+                src="/images/Feceboock/google ads.jpg.jpeg"
                 alt={t("card1Alt")}
                 width={800}
                 height={500}
-                className="w-full h-auto block"
+                className="w-full h-auto block rounded-xl overflow-hidden"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
@@ -40,11 +40,11 @@ export default function DigitalPresenceSection() {
           <div className="flex flex-col">
             <div className="relative w-full">
               <Image
-                src="/images/Feceboock/result.png"
+                src="/images/Feceboock/meta.jpg (1).jpeg"
                 alt={t("card2Alt")}
                 width={600}
                 height={200}
-                className="w-full h-auto block"
+                className="w-full h-auto block rounded-xl overflow-hidden"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
