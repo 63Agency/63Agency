@@ -3,8 +3,18 @@
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
 
+/** Split text into two lines with balanced word count. */
+function splitIntoTwoLines(text: string): [string, string] {
+  const words = (text || "").trim().split(/\s+/).filter(Boolean);
+  if (words.length <= 1) return [text.trim(), ""];
+  const mid = Math.ceil(words.length / 2);
+  return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
+}
+
 export default function HeroSection() {
   const t = useTranslations('hero');
+  const headlineFull = `${t("secondaryHeadlineStart")} ${t("secondaryHeadlineEnd")}`.trim();
+  const [line1, line2] = splitIntoTwoLines(headlineFull);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId.replace("#", ""));
@@ -30,22 +40,32 @@ export default function HeroSection() {
           {t('primaryHeadline')}
         </h2>
 
-        {/* Secondary Headline – style image: pastille blanche, 1re ligne gradient bleu-gris, 2e ligne blanche */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight tracking-tight flex flex-col items-center sm:block">
-          <span className="inline-flex items-center justify-center sm:justify-start gap-2 sm:gap-3 w-full sm:w-auto">
-            <span className="w-2 h-2 rounded-full bg-white shrink-0" aria-hidden />
+        {/* Secondary Headline – affichage professionnel, 2 lignes */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 flex flex-col items-center sm:items-start max-w-4xl mx-auto">
+          <span className="inline-flex flex-col items-center w-full sm:w-auto">
+            <span className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" aria-hidden />
+              <span
+                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-nowrap"
+                style={{
+                  backgroundImage: "linear-gradient(to right, #86efac 0%, #22c55e 50%, #15803d 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  letterSpacing: "0.02em",
+                  lineHeight: 1.15,
+                }}
+              >
+                {line1}
+              </span>
+            </span>
             <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(to right, #51647D 0%, #A8C0D3 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
+              className="block mt-2 sm:mt-2.5 text-white font-bold tracking-tight whitespace-nowrap"
+              style={{ letterSpacing: "0.01em", lineHeight: 1.2 }}
             >
-              {t("secondaryHeadlineStart")}
+              {line2}
             </span>
           </span>
-          <span className="block mt-1 text-white">{t("secondaryHeadlineEnd")}</span>
         </h1>
 
         {/* Descriptive Text – ligne 1 au-dessus de ligne 2 */}

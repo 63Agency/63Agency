@@ -13,30 +13,7 @@ export default function DigitalPresenceSection() {
     <section className="relative py-16 sm:py-24 overflow-hidden bg-black">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-          {/* Left column - Dashboard: image only, no frame */}
-          <div className="flex flex-col">
-            <div className="relative w-full">
-              <Image
-                src="/images/Feceboock/google ads.jpg.jpeg"
-                alt={t("card1Alt")}
-                width={800}
-                height={500}
-                className="w-full h-auto block rounded-xl overflow-hidden"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-            <h3 className="mt-6 text-xl sm:text-2xl font-bold text-white">
-              {t("headline1")}
-            </h3>
-            <p className="mt-3 text-white/90 text-base sm:text-lg leading-relaxed">
-              {t("body1")}
-            </p>
-            <p className="mt-3 text-white font-bold text-base sm:text-lg">
-              {t("emphasis1")}
-            </p>
-          </div>
-
-          {/* Right column - Result: image only, no card/chrome */}
+          {/* Left column - Meta */}
           <div className="flex flex-col">
             <div className="relative w-full">
               <Image
@@ -56,6 +33,29 @@ export default function DigitalPresenceSection() {
             </p>
             <p className="mt-3 text-white font-bold text-base sm:text-lg">
               {t("emphasis2")}
+            </p>
+          </div>
+
+          {/* Right column - Google Ads */}
+          <div className="flex flex-col">
+            <div className="relative w-full">
+              <Image
+                src="/images/Feceboock/google ads.jpg.jpeg"
+                alt={t("card1Alt")}
+                width={800}
+                height={500}
+                className="w-full h-auto block rounded-xl overflow-hidden"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <h3 className="mt-6 text-xl sm:text-2xl font-bold text-white">
+              {t("headline1")}
+            </h3>
+            <p className="mt-3 text-white/90 text-base sm:text-lg leading-relaxed">
+              {t("body1")}
+            </p>
+            <p className="mt-3 text-white font-bold text-base sm:text-lg">
+              {t("emphasis1")}
             </p>
           </div>
         </div>

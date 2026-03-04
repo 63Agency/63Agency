@@ -69,7 +69,7 @@ const CardNav: React.FC<CardNavProps> = ({
   return (
     <>
       <div
-        className={`card-nav-container relative mx-auto mt-4 md:mt-6 w-[98%] z-10 overflow-visible ${compact ? 'card-nav-container-compact' : ''} ${className}`}
+        className={`card-nav-container relative mx-auto mt-4 md:mt-6 w-[98%] max-w-7xl z-10 overflow-visible ${compact ? 'card-nav-container-compact' : ''} ${className}`}
       >
         <nav
           className="card-nav block h-[72px] p-0 rounded-xl shadow-md relative overflow-visible"
