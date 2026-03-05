@@ -69,9 +69,9 @@ export default function HeroSection() {
             <span className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
               <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" aria-hidden />
               <span
-                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-nowrap"
+                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-normal sm:whitespace-nowrap"
                 style={{
-                  backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #95A5B5 25%, #B8C8D8 50%, #D8E4F0 75%, #FFFFFF 100%)",
+                  backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #8293A4 15%, #95A5B5 35%, #A8B8C8 55%, #B8C8D8 72%, #C5D5E5 88%, #D5E2EE 96%, #FFFFFF 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -84,11 +84,11 @@ export default function HeroSection() {
               </span>
             </span>
             <span
-              className="block mt-2 sm:mt-2.5 font-bold tracking-tight whitespace-nowrap bg-clip-text text-transparent"
+              className="block mt-2 sm:mt-2.5 font-bold tracking-tight whitespace-normal sm:whitespace-nowrap bg-clip-text text-transparent"
               style={{
                 letterSpacing: "0.01em",
                 lineHeight: 1.2,
-                backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #95A5B5 25%, #B8C8D8 50%, #D8E4F0 75%, #FFFFFF 100%)",
+                backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #8293A4 15%, #95A5B5 35%, #A8B8C8 55%, #B8C8D8 72%, #C5D5E5 88%, #D5E2EE 96%, #FFFFFF 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
