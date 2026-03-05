@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { sendContactEmails, isEmailJSConfigured } from "@/lib/emailjs";
 
 const REVIEW_AVATARS = [
@@ -35,6 +35,15 @@ const formInputClass =
 const formSelectClass =
   "contact-select w-full rounded-lg bg-gray-50 border border-gray-200 px-5 py-3.5 text-base text-black appearance-none cursor-pointer focus:border-black focus:ring-2 focus:ring-black/5 focus:outline-none transition-all [&>option]:text-black";
 
+const META_IMAGE_BY_LOCALE: Record<string, string> = {
+  en: "/images/Feceboock/meta-For-Anglais.jpg (2).jpeg",
+  fr: "/images/Feceboock/meta-For-Français.jpg (1).jpeg",
+};
+const GOOGLE_ADS_IMAGE_BY_LOCALE: Record<string, string> = {
+  en: "/images/Feceboock/google-Ads-For-Anglais.jpg (2).jpeg",
+  fr: "/images/Feceboock/google-Ads-For-Français.jpg (1).jpeg",
+};
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function isValidEmail(s: string) {
   return EMAIL_REGEX.test((s || "").trim());
@@ -47,6 +56,9 @@ function isValidPhone(s: string) {
 export default function ContactPage() {
   const t = useTranslations("contactPage");
   const tDigital = useTranslations("digitalPresence");
+  const locale = useLocale();
+  const metaSrc = META_IMAGE_BY_LOCALE[locale] ?? META_IMAGE_BY_LOCALE.fr;
+  const googleAdsSrc = GOOGLE_ADS_IMAGE_BY_LOCALE[locale] ?? GOOGLE_ADS_IMAGE_BY_LOCALE.fr;
   const [step, setStep] = useState<1 | 2>(1);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -659,7 +671,7 @@ export default function ContactPage() {
             <div className="flex flex-col">
               <div className="relative w-full">
                 <Image
-                  src="/images/Feceboock/google ads.jpg.jpeg"
+                  src={googleAdsSrc}
                   alt={tDigital("card1Alt")}
                   width={800}
                   height={500}

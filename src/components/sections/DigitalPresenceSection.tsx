@@ -4,10 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 
+const META_IMAGE_BY_LOCALE: Record<string, string> = {
+  en: "/images/Feceboock/meta-For-Anglais.jpg (2).jpeg",
+  fr: "/images/Feceboock/meta-For-Français.jpg (1).jpeg",
+};
+const GOOGLE_ADS_IMAGE_BY_LOCALE: Record<string, string> = {
+  en: "/images/Feceboock/google-Ads-For-Anglais.jpg (2).jpeg",
+  fr: "/images/Feceboock/google-Ads-For-Français.jpg (1).jpeg",
+};
+
 export default function DigitalPresenceSection() {
   const t = useTranslations("digitalPresence");
   const tNav = useTranslations("nav");
   const locale = useLocale();
+  const metaSrc = META_IMAGE_BY_LOCALE[locale] ?? META_IMAGE_BY_LOCALE.fr;
+  const googleAdsSrc = GOOGLE_ADS_IMAGE_BY_LOCALE[locale] ?? GOOGLE_ADS_IMAGE_BY_LOCALE.fr;
 
   return (
     <section className="relative py-16 sm:py-24 overflow-hidden bg-black">
@@ -17,7 +28,7 @@ export default function DigitalPresenceSection() {
           <div className="flex flex-col">
             <div className="relative w-full">
               <Image
-                src="/images/Feceboock/meta.jpg (1).jpeg"
+                src={metaSrc}
                 alt={t("card2Alt")}
                 width={600}
                 height={200}
@@ -40,7 +51,7 @@ export default function DigitalPresenceSection() {
           <div className="flex flex-col">
             <div className="relative w-full">
               <Image
-                src="/images/Feceboock/google ads.jpg.jpeg"
+                src={googleAdsSrc}
                 alt={t("card1Alt")}
                 width={800}
                 height={500}
