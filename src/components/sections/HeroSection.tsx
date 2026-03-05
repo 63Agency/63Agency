@@ -57,14 +57,14 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-28 sm:pt-24 lg:pt-32 pb-4 sm:pb-6 lg:pb-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 pt-36 sm:pt-24 lg:pt-32 pb-10 sm:pb-6 lg:pb-8 text-center">
         {/* Primary Headline – même style que la description (Spécialisés…) */}
-        <h2 className="text-sm sm:text-lg md:text-xl text-gray-400 mb-3 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
+        <h2 className="text-sm sm:text-lg md:text-xl text-gray-400 mb-4 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
           {t('primaryHeadline')}
         </h2>
 
         {/* Secondary Headline – affichage professionnel, 2 lignes */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 flex flex-col items-center sm:items-start max-w-4xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-5 sm:mb-6 flex flex-col items-center sm:items-start max-w-4xl mx-auto">
           <span className="inline-flex flex-col items-center w-full sm:w-auto">
             <span className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
               <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
@@ -101,23 +101,25 @@ export default function HeroSection() {
         </h1>
 
         {/* Descriptive Text – ligne 1 au-dessus de ligne 2 */}
-        <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
+        <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-6 sm:mb-6 max-w-4xl mx-auto leading-relaxed sm:leading-relaxed px-2 sm:px-4 font-medium">
           <span className="block">{t("descriptionLine1")}</span>
-          <span className="block mt-1">{t("descriptionLine2")}</span>
+          <span className="block mt-2 sm:mt-1">{t("descriptionLine2")}</span>
         </p>
 
         {/* Main CTA Button */}
-        <Link
-          href="#contact"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("#contact");
-          }}
-          className="coolBeans inline-block px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-bold"
-          style={{ textDecoration: 'none' }}
-        >
-          {t('ctaButton')}
-        </Link>
+        <div className="mt-6 sm:mt-4">
+          <Link
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("#contact");
+            }}
+            className="coolBeans inline-block px-5 sm:px-6 py-3 sm:py-3 text-base sm:text-lg font-bold min-w-[200px]"
+            style={{ textDecoration: 'none' }}
+          >
+            {t('ctaButton')}
+          </Link>
+        </div>
       </div>
 
       {/* WhatsApp Icon - Bottom Right (07 20 007 007) */}
