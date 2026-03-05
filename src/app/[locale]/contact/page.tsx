@@ -233,7 +233,7 @@ export default function ContactPage() {
                       </div>
                     ))}
                   </div>
-                  <span className="rounded-lg bg-purple-500/90 px-2.5 py-1 text-sm font-bold">
+                  <span className="rounded-lg bg-green-500/90 px-2.5 py-1 text-sm font-bold text-white">
                     {t("sidebarSocialBadge")}
                   </span>
                 </div>
