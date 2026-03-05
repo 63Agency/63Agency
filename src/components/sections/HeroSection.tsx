@@ -57,9 +57,9 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-8 sm:pt-24 lg:pt-32 pb-4 sm:pb-6 lg:pb-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-24 lg:pt-32 pb-4 sm:pb-6 lg:pb-8 text-center">
         {/* Primary Headline – même style que la description (Spécialisés…) */}
-        <h2 className="text-base sm:text-lg md:text-xl text-gray-400 mb-3 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
+        <h2 className="text-sm sm:text-lg md:text-xl text-gray-400 mb-3 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
           {t('primaryHeadline')}
         </h2>
 
