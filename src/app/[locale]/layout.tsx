@@ -50,7 +50,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <main>
             <CardNavHeader />
-            <div className="pt-4">{children}</div>
+            <div className="pt-0 sm:pt-4">{children}</div>
           </main>
           <Footer />
           <ScrollToTop />

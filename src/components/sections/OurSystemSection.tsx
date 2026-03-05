@@ -52,7 +52,7 @@ export default function OurSystemSection() {
                 {t("tagline")}
               </span>
               <span
-                className="w-2 h-2 rounded-full shrink-0 bg-teal-400"
+                className="w-2 h-2 rounded-full shrink-0 bg-green-500"
               />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">

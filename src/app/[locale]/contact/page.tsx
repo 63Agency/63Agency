@@ -175,9 +175,9 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-black pt-20">
       {/* Top: CONTACT + hero headline — même largeur que le contenu */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 sm:pt-12 sm:pb-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 sm:pt-12 sm:pb-14">
         <div className="relative">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-3 sm:mb-4">
             <span className="w-2.5 h-2.5 rounded-full bg-white shrink-0" />
             <span className="text-sm font-semibold uppercase tracking-wider text-white">
               {t("contactTag")}
@@ -186,9 +186,9 @@ export default function ContactPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
+          <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
             <span className="block">{t("heroHeadline1")}</span>
-            <span className="block mt-2 text-white/90 font-semibold text-2xl sm:text-3xl md:text-4xl">
+            <span className="block mt-1.5 sm:mt-2 text-white/90 font-semibold text-lg sm:text-3xl md:text-4xl">
               {t("heroHeadline3")}
             </span>
           </h1>
@@ -207,7 +207,7 @@ export default function ContactPage() {
       </div>
 
       {/* Contact: bloc texte à gauche, formulaire à droite — sections bien placées */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      <div className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
             {/* Bloc texte — gauche (ordre 2 sur mobile pour afficher le formulaire en premier) */}
