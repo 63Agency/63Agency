@@ -67,7 +67,7 @@ export default function HeroSection() {
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 flex flex-col items-center sm:items-start max-w-4xl mx-auto">
           <span className="inline-flex flex-col items-center w-full sm:w-auto">
             <span className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" aria-hidden />
+              <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
               <span
                 className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-nowrap"
                 style={{
