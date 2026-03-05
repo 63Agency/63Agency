@@ -649,7 +649,7 @@ export default function ContactPage() {
             <div className="flex flex-col">
               <div className="relative w-full">
                 <Image
-                  src={metaSrc}
+                  src={encodeURI(metaSrc)}
                   alt={tDigital("card2Alt")}
                   width={600}
                   height={200}
