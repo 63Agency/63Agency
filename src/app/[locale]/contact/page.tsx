@@ -210,8 +210,8 @@ export default function ContactPage() {
       <div className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
-            {/* Bloc texte — gauche */}
-            <div className="lg:col-span-5">
+            {/* Bloc texte — gauche (ordre 2 sur mobile pour afficher le formulaire en premier) */}
+            <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="p-0 lg:sticky lg:top-24 overflow-hidden text-white">
               {/* Social proof */}
               <div className="flex items-center justify-between gap-4 mb-6">
@@ -299,8 +299,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-            {/* Formulaire — droite, aligné à la fin de la colonne */}
-            <div className="lg:col-span-7 min-w-0 flex flex-col items-stretch lg:items-end">
+            {/* Formulaire — droite sur desktop, en premier sur mobile */}
+            <div className="lg:col-span-7 min-w-0 flex flex-col items-stretch lg:items-end order-1 lg:order-2">
               <div className="w-full max-w-2xl lg:max-w-[680px]">
               {/* Progress */}
               <div className="mb-8 sm:mb-10">
