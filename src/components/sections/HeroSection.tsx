@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useTranslations } from 'next-intl';
+import React from "react";
+import { useTranslations, useLocale } from "next-intl";
 
 /** Split text into two lines with balanced word count. */
 function splitIntoTwoLines(text: string): [string, string] {
@@ -11,10 +12,32 @@ function splitIntoTwoLines(text: string): [string, string] {
   return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
 }
 
+const UNDERLINE_CLASS = "underline underline-offset-2 decoration-2";
+
+/** Apply underlines to multiple phrases (order matters for nested splits). */
+function withUnderlines(text: string, phrases: string[]): React.ReactNode {
+  if (phrases.length === 0) return text;
+  const [phrase, ...rest] = phrases;
+  if (!phrase || !text.includes(phrase)) return withUnderlines(text, rest);
+  const [before, ...restSplit] = text.split(phrase);
+  const after = restSplit.join(phrase);
+  return (
+    <>
+      {withUnderlines(before, rest)}
+      <span className={UNDERLINE_CLASS}>{phrase}</span>
+      {withUnderlines(after, rest)}
+    </>
+  );
+}
+
 export default function HeroSection() {
-  const t = useTranslations('hero');
+  const t = useTranslations("hero");
+  const locale = useLocale();
   const headlineFull = `${t("secondaryHeadlineStart")} ${t("secondaryHeadlineEnd")}`.trim();
   const [line1, line2] = splitIntoTwoLines(headlineFull);
+  const underlinePhrases = locale === "en" ? ["50 to 650"] : ["50 et 650", "qualifiés chaque mois"];
+  const line1Content = withUnderlines(line1, underlinePhrases);
+  const line2Content = withUnderlines(line2, underlinePhrases);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId.replace("#", ""));
@@ -56,14 +79,21 @@ export default function HeroSection() {
                   lineHeight: 1.15,
                 }}
               >
-                {line1}
+                {line1Content}
               </span>
             </span>
             <span
-              className="block mt-2 sm:mt-2.5 text-white font-bold tracking-tight whitespace-nowrap"
-              style={{ letterSpacing: "0.01em", lineHeight: 1.2 }}
+              className="block mt-2 sm:mt-2.5 font-bold tracking-tight whitespace-nowrap bg-clip-text text-transparent"
+              style={{
+                letterSpacing: "0.01em",
+                lineHeight: 1.2,
+                backgroundImage: "linear-gradient(to right, #86efac 0%, #22c55e 50%, #15803d 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
-              {line2}
+              {line2Content}
             </span>
           </span>
         </h1>

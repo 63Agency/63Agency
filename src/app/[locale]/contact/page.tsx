@@ -642,14 +642,14 @@ export default function ContactPage() {
       </div>
 
       {/* Section Google Ads & Meta en bas de page */}
-      <section className="w-full bg-gray-900 border-t border-white/10">
+      <section className="w-full bg-black border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
             {/* Left - Meta */}
             <div className="flex flex-col">
               <div className="relative w-full">
                 <Image
-                  src="/images/Feceboock/meta.jpg (1).jpeg"
+                  src={metaSrc}
                   alt={tDigital("card2Alt")}
                   width={600}
                   height={200}
@@ -670,9 +670,9 @@ export default function ContactPage() {
             {/* Right - Google Ads */}
             <div className="flex flex-col">
               <div className="relative w-full">
-                <Image
-                  src={googleAdsSrc}
-                  alt={tDigital("card1Alt")}
+<Image
+                src={encodeURI(googleAdsSrc)}
+                alt={tDigital("card1Alt")}
                   width={800}
                   height={500}
                   className="w-full h-auto block rounded-xl overflow-hidden"

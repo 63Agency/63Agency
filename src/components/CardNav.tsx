@@ -99,7 +99,7 @@ const CardNav: React.FC<CardNavProps> = ({
               {ctaHref ? (
                 <a
                   href={ctaHref}
-                  className="coolBeansNav card-nav-cta-button inline-flex items-center justify-center rounded-md border border-white/50 px-5 py-2.5 min-h-[36px] font-semibold text-[15px] cursor-pointer no-underline whitespace-nowrap flex-shrink-0 hover:border-white/80"
+                  className="coolBeansNav card-nav-cta-button inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-5 py-2.5 min-h-[38px] font-semibold text-[15px] cursor-pointer no-underline whitespace-nowrap flex-shrink-0 shadow-lg shadow-black/20 hover:border-white hover:shadow-xl hover:shadow-black/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 ease-out"
                   style={{ backgroundColor: 'transparent', color: buttonTextColor }}
                 >
                   {ctaLabel}
@@ -107,7 +107,7 @@ const CardNav: React.FC<CardNavProps> = ({
               ) : (
                 <button
                   type="button"
-                  className="coolBeansNav card-nav-cta-button inline-flex items-center justify-center rounded-md border border-white/50 px-5 py-2.5 min-h-[36px] font-semibold text-[15px] whitespace-nowrap flex-shrink-0 hover:border-white/80"
+                  className="coolBeansNav card-nav-cta-button inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-5 py-2.5 min-h-[38px] font-semibold text-[15px] whitespace-nowrap flex-shrink-0 shadow-lg shadow-black/20 hover:border-white hover:shadow-xl hover:shadow-black/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 ease-out"
                   style={{ backgroundColor: 'transparent', color: buttonTextColor }}
                 >
                   {ctaLabel}
@@ -178,14 +178,14 @@ const CardNav: React.FC<CardNavProps> = ({
                 <a
                   href={ctaHref}
                   onClick={closeSidebar}
-                  className="coolBeansNav inline-flex items-center justify-center rounded-md border border-white/50 px-5 py-3 font-semibold text-[15px] text-white no-underline hover:border-white/80 hover:bg-white/10 transition-colors"
+                  className="coolBeansNav inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-5 py-3 font-semibold text-[15px] text-white no-underline shadow-lg shadow-black/20 hover:border-white hover:bg-white/10 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                 >
                   {ctaLabel}
                 </a>
               ) : (
                 <button
                   type="button"
-                  className="coolBeansNav inline-flex items-center justify-center rounded-md border border-white/50 px-5 py-3 font-semibold text-[15px] text-white hover:border-white/80 hover:bg-white/10 transition-colors"
+                  className="coolBeansNav inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-5 py-3 font-semibold text-[15px] text-white hover:border-white hover:bg-white/10 shadow-lg shadow-black/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                   style={{ color: buttonTextColor }}
                 >
                   {ctaLabel}

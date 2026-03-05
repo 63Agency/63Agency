@@ -32,14 +32,6 @@ const CITY_OPTIONS = [
   { value: "autre", key: "city_autre" },
 ] as const;
 
-const BUDGET_OPTIONS = [
-  { value: "", key: "fieldBudget" },
-  { value: "5k_15k", key: "budget_5k_15k" },
-  { value: "15k_30k", key: "budget_15k_30k" },
-  { value: "30k_50k", key: "budget_30k_50k" },
-  { value: "50k_plus", key: "budget_50k_plus" },
-] as const;
-
 const inputClass =
   "w-full rounded-lg px-4 py-3 text-white placeholder-white/50 text-[15px] border border-white/30 bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30";
 const selectClassCta =
@@ -59,12 +51,11 @@ export default function CTASection() {
   const tContact = useTranslations("contactPage");
   const locale = useLocale();
   const router = useRouter();
-  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [step, setStep] = useState<1 | 2>(1);
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [role, setRole] = useState("");
   const [objective, setObjective] = useState("");
@@ -76,11 +67,8 @@ export default function CTASection() {
   const [selectedEmployees, setSelectedEmployees] = useState("");
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
-  const [budgetOpen, setBudgetOpen] = useState(false);
-  const [selectedBudget, setSelectedBudget] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const cityRef = useRef<HTMLDivElement>(null);
-  const budgetRef = useRef<HTMLDivElement>(null);
 
   const description = t("description");
   const parts = description.split(/\*\*(.*?)\*\*/g);
@@ -89,8 +77,6 @@ export default function CTASection() {
   const displayLabel = selectedOption ? t(selectedOption.key) : t("fieldEmployees");
   const selectedCityOption = CITY_OPTIONS.find((o) => o.value === selectedCity);
   const displayCityLabel = selectedCityOption ? t(selectedCityOption.key) : t("fieldCity");
-  const selectedBudgetOption = BUDGET_OPTIONS.find((o) => o.value === selectedBudget);
-  const displayBudgetLabel = selectedBudgetOption ? t(selectedBudgetOption.key) : t("fieldBudget");
 
   const q1Options = [tContact("q1_1"), tContact("q1_2"), tContact("q1_3"), tContact("q1_4"), tContact("q1_5")];
   const q2Options = [tContact("q2_1"), tContact("q2_2"), tContact("q2_3"), tContact("q2_4")];
@@ -103,7 +89,6 @@ export default function CTASection() {
       const target = e.target as Node;
       if (dropdownRef.current && !dropdownRef.current.contains(target)) setEmployeesOpen(false);
       if (cityRef.current && !cityRef.current.contains(target)) setCityOpen(false);
-      if (budgetRef.current && !budgetRef.current.contains(target)) setBudgetOpen(false);
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -117,22 +102,13 @@ export default function CTASection() {
     else if (!isValidEmail(email)) nextErrors.email = t("validationEmail");
     if (!phone.trim()) nextErrors.phone = t("validationRequired");
     else if (!isValidPhone(phone)) nextErrors.phone = t("validationPhone");
+    if (!role.trim()) nextErrors.role = t("validationRequired");
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   }
 
   function validateStep2(): boolean {
-    if (selectedBudget) {
-      setErrors({});
-      return true;
-    }
-    setErrors({ budget: t("validationBudget") });
-    return false;
-  }
-
-  function validateStep3(): boolean {
     const nextErrors: Record<string, string> = {};
-    if (!role.trim()) nextErrors.role = t("validationRequired");
     if (!objective.trim()) nextErrors.objective = t("validationRequired");
     if (!timing.trim()) nextErrors.timing = t("validationRequired");
     if (!campaigns.trim()) nextErrors.campaigns = t("validationRequired");
@@ -142,10 +118,14 @@ export default function CTASection() {
   }
 
   function handleNext() {
-    if (step === 1 && !validateStep1()) return;
-    if (step === 2 && !validateStep2()) return;
-    if (step === 3) {
-      if (!validateStep3()) return;
+    if (step === 1) {
+      if (!validateStep1()) return;
+      setErrors({});
+      setStep(2);
+      return;
+    }
+    if (step === 2) {
+      if (!validateStep2()) return;
       setErrors({});
       const cityLabel = selectedCity ? (() => { try { return t("city_" + selectedCity); } catch { return selectedCity; } })() : "";
       const q = new URLSearchParams({
@@ -163,10 +143,7 @@ export default function CTASection() {
         ...(establishment && { establishment }),
       }).toString();
       router.push(`/${locale}/contact${q ? `?${q}` : ""}`);
-      return;
     }
-    setErrors({});
-    setStep((s) => (s + 1) as 1 | 2 | 3);
   }
 
   const labelClassStep3 = "block text-sm font-medium text-white/90 mb-2";
@@ -196,26 +173,22 @@ export default function CTASection() {
 
           <div className="relative">
             <div className="rounded-2xl p-6 sm:p-8 shadow-xl bg-black border border-white/20 overflow-visible">
-              <div className="flex items-center gap-2 mb-8">
-                <div className="flex items-center gap-2">
-                  <span className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${step >= 1 ? "text-black bg-white" : "bg-white/20 text-white/70"}`}>1</span>
-                  <span className={`text-sm font-semibold ${step >= 1 ? "text-white" : "text-white/60"}`}>{t("step1")}</span>
-                </div>
-                <span className="flex-1 h-px bg-white/20 min-w-[12px]" />
-                <div className="flex items-center gap-2">
-                  <span className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${step >= 2 ? "text-black bg-white" : "bg-white/20 text-white/70"}`}>2</span>
-                  <span className={`text-sm font-medium ${step >= 2 ? "text-white" : "text-white/60"}`}>{t("step2")}</span>
-                </div>
-                <span className="flex-1 h-px bg-white/20 min-w-[12px]" />
-                <div className="flex items-center gap-2">
-                  <span className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${step >= 3 ? "text-black bg-white" : "bg-white/20 text-white/70"}`}>3</span>
-                  <span className={`text-sm font-medium ${step >= 3 ? "text-white" : "text-white/60"}`}>{t("step3")}</span>
+              <div className="mb-6">
+                <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-2">
+                  {tContact("stepProgress", { current: step })}
+                </p>
+                <div className="h-1 bg-white/20 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-white rounded-full transition-all duration-300 ease-out"
+                    style={{ width: step === 1 ? "50%" : "100%" }}
+                  />
                 </div>
               </div>
 
-              {/* Step 1: Information (original) */}
+              {/* Step 1: Informations personnelles */}
               {step === 1 && (
                 <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-black mb-4">{tContact("step1Title")}</h3>
                   <div>
                     <input
                       type="text"
@@ -272,18 +245,6 @@ export default function CTASection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <input
-                        type="email"
-                        name="email"
-                        placeholder={t("fieldEmail")}
-                        value={email}
-                        onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((p) => ({ ...p, email: "" })); }}
-                        className={`${inputClass} ${errors.email ? "border-red-400 focus:ring-red-400/30" : ""}`}
-                        aria-label={t("fieldEmail")}
-                      />
-                      {errors.email && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.email}</p>}
-                    </div>
-                    <div>
-                      <input
                         type="tel"
                         name="phone"
                         placeholder={t("fieldPhone")}
@@ -294,8 +255,6 @@ export default function CTASection() {
                       />
                       {errors.phone && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.phone}</p>}
                     </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="relative" ref={cityRef}>
                       <button
                         type="button"
@@ -326,66 +285,25 @@ export default function CTASection() {
                         </ul>
                       )}
                     </div>
+                  </div>
+                  <div>
                     <input
-                      type="text"
-                      name="address"
-                      placeholder={t("fieldAddressPlaceholder")}
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      className={inputClass}
-                      aria-label={t("fieldAddress")}
+                      type="email"
+                      name="email"
+                      placeholder={t("fieldEmail")}
+                      value={email}
+                      onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors((p) => ({ ...p, email: "" })); }}
+                      className={`${inputClass} ${errors.email ? "border-red-400 focus:ring-red-400/30" : ""}`}
+                      aria-label={t("fieldEmail")}
                     />
+                    {errors.email && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.email}</p>}
                   </div>
-                </div>
-              )}
-
-              {/* Step 2: Budget (original) */}
-              {step === 2 && (
-                <div className="space-y-4">
-                  <div className="relative" ref={budgetRef}>
-                    <button
-                      type="button"
-                      onClick={() => { setBudgetOpen(!budgetOpen); if (errors.budget) setErrors((p) => ({ ...p, budget: "" })); }}
-                      className={`w-full rounded-lg px-4 py-3 text-left text-white text-[15px] border bg-white/10 focus:outline-none focus:ring-2 cursor-pointer min-h-[48px] flex items-center justify-between ${errors.budget ? "border-red-400 focus:ring-red-400/30" : "border-white/30 focus:ring-white/30"}`}
-                      aria-haspopup="listbox"
-                      aria-expanded={budgetOpen}
-                      aria-label={t("fieldBudget")}
-                    >
-                      <span className={selectedBudget ? "" : "text-white/60"}>{displayBudgetLabel}</span>
-                      <svg className={`w-5 h-5 text-white/80 shrink-0 transition-transform ${budgetOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    {budgetOpen && (
-                      <ul className="absolute z-50 left-0 right-0 mt-1 py-1 rounded-lg border border-white/30 bg-black shadow-xl max-h-[280px] overflow-y-auto" role="listbox">
-                        {BUDGET_OPTIONS.map((opt) => (
-                          <li
-                            key={opt.value || "placeholder"}
-                            role="option"
-                            aria-selected={selectedBudget === opt.value}
-                            onClick={() => { setSelectedBudget(opt.value); setBudgetOpen(false); }}
-                            className="px-4 py-3 text-white text-[15px] cursor-pointer hover:bg-white/10 focus:bg-white/10 focus:outline-none"
-                          >
-                            {t(opt.key)}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                  {errors.budget && <p className="text-sm text-red-300" role="alert">{errors.budget}</p>}
-                </div>
-              )}
-
-              {/* Step 3: Qualification (same as contact page step 2) */}
-              {step === 3 && (
-                <div className="space-y-4">
-                  <p className="text-sm font-semibold text-white/90 mb-4">{tContact("step2Title")}</p>
                   <div>
                     <label className={labelClassStep3}>{tContact("q1Label")}</label>
                     <select
                       value={role}
                       onChange={(e) => { setRole(e.target.value); if (errors.role) setErrors((p) => ({ ...p, role: "" })); }}
-                      className={`${selectClassCta} ${errors.role ? "border-red-400" : ""}`}
+                      className={`${selectClassCta} ${errors.role ? "border-red-400 focus:ring-red-400/30" : ""}`}
                     >
                       <option value="">{tContact("selectPlaceholder")}</option>
                       {q1Options.map((opt, i) => (
@@ -394,6 +312,13 @@ export default function CTASection() {
                     </select>
                     {errors.role && <p className="mt-1.5 text-sm text-red-300" role="alert">{errors.role}</p>}
                   </div>
+                </div>
+              )}
+
+              {/* Step 2: Questions de qualification (comme page contact étape 2) */}
+              {step === 2 && (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-black mb-4">{tContact("step2Title")}</h3>
                   <div>
                     <label className={labelClassStep3}>{tContact("q2Label")}</label>
                     <select
@@ -464,13 +389,13 @@ export default function CTASection() {
               )}
 
               <div className="mt-6 flex flex-wrap gap-3">
-                {step > 1 && (
+                {step === 2 && (
                   <button
                     type="button"
-                    onClick={() => setStep((s) => (s - 1) as 1 | 2 | 3)}
-                    className="px-6 py-3 rounded-lg font-semibold text-white border-2 border-white/40 bg-transparent hover:bg-white/10 text-[15px] transition-colors"
+                    onClick={() => { setStep(1); setErrors({}); }}
+                    className="px-6 py-3 rounded-lg font-semibold text-white border-2 border-white/50 bg-transparent hover:bg-white/10 text-[15px] transition-colors"
                   >
-                    {t("back")}
+                    {tContact("back")}
                   </button>
                 )}
                 <button
@@ -478,7 +403,7 @@ export default function CTASection() {
                   onClick={handleNext}
                   className="px-8 py-4 rounded-lg font-semibold text-black bg-white hover:bg-gray-100 text-[15px] transition-colors"
                 >
-                  {step < 3 ? t("next") : t("button")}
+                  {step === 1 ? tContact("continue") : t("button")}
                 </button>
               </div>
             </div>

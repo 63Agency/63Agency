@@ -28,7 +28,7 @@ export default function DigitalPresenceSection() {
           <div className="flex flex-col">
             <div className="relative w-full">
               <Image
-                src={metaSrc}
+                src={encodeURI(metaSrc)}
                 alt={t("card2Alt")}
                 width={600}
                 height={200}
@@ -51,7 +51,7 @@ export default function DigitalPresenceSection() {
           <div className="flex flex-col">
             <div className="relative w-full">
               <Image
-                src={googleAdsSrc}
+                src={encodeURI(googleAdsSrc)}
                 alt={t("card1Alt")}
                 width={800}
                 height={500}
