@@ -101,7 +101,7 @@ export default function HeroSection() {
         </h1>
 
         {/* Descriptive Text – ligne 1 au-dessus de ligne 2 */}
-        <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
+        <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
           <span className="block">{t("descriptionLine1")}</span>
           <span className="block mt-1">{t("descriptionLine2")}</span>
         </p>
