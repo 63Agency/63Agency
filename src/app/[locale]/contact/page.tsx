@@ -27,13 +27,13 @@ const inputClass =
 const selectClass =
   "contact-select w-full rounded-lg bg-white border border-gray-200 px-5 py-3.5 text-base text-black appearance-none cursor-pointer focus:border-black focus:ring-2 focus:ring-black/5 focus:outline-none transition-all";
 const labelClass = "block text-sm font-semibold text-black/90 uppercase tracking-wide mb-2";
-/* Formulaire fond noir (page contact) */
-const formBoxClass = "rounded-2xl border border-white/20 bg-black shadow-xl p-8 sm:p-10 lg:p-12";
-const formLabelClass = "block text-sm font-semibold text-white/90 uppercase tracking-wide mb-2";
+/* Formulaire fond blanc (page contact, fond page noir) */
+const formBoxClass = "rounded-2xl border border-gray-200 bg-white shadow-xl p-8 sm:p-10 lg:p-12";
+const formLabelClass = "block text-sm font-semibold text-black/90 uppercase tracking-wide mb-2";
 const formInputClass =
-  "w-full rounded-lg bg-white/10 border border-white/30 px-5 py-3.5 text-base text-white placeholder-white/50 focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all";
+  "w-full rounded-lg bg-gray-50 border border-gray-200 px-5 py-3.5 text-base text-black placeholder-gray-400 focus:border-black focus:ring-2 focus:ring-black/5 focus:outline-none transition-all";
 const formSelectClass =
-  "contact-select w-full rounded-lg bg-white/10 border border-white/30 px-5 py-3.5 text-base text-white appearance-none cursor-pointer focus:border-white/50 focus:ring-2 focus:ring-white/20 focus:outline-none transition-all [&>option]:text-black";
+  "contact-select w-full rounded-lg bg-gray-50 border border-gray-200 px-5 py-3.5 text-base text-black appearance-none cursor-pointer focus:border-black focus:ring-2 focus:ring-black/5 focus:outline-none transition-all [&>option]:text-black";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function isValidEmail(s: string) {
@@ -161,26 +161,26 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-black pt-20">
       {/* Top: CONTACT + hero headline — même largeur que le contenu */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 sm:pt-12 sm:pb-14">
         <div className="relative">
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-2.5 h-2.5 rounded-full bg-black shrink-0" />
-            <span className="text-sm font-semibold uppercase tracking-wider text-black">
+            <span className="w-2.5 h-2.5 rounded-full bg-white shrink-0" />
+            <span className="text-sm font-semibold uppercase tracking-wider text-white">
               {t("contactTag")}
             </span>
-            <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
             <span className="block">{t("heroHeadline1")}</span>
-            <span className="block mt-2 text-black/90 font-semibold text-2xl sm:text-3xl md:text-4xl">
+            <span className="block mt-2 text-white/90 font-semibold text-2xl sm:text-3xl md:text-4xl">
               {t("heroHeadline3")}
             </span>
           </h1>
-          <div className="absolute top-0 right-0 text-black">
+          <div className="absolute top-0 right-0 text-white">
             <svg
               className="w-8 h-8 sm:w-10 sm:h-10 opacity-70"
               fill="none"
@@ -200,7 +200,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
             {/* Bloc texte — gauche */}
             <div className="lg:col-span-5">
-            <div className="p-0 lg:sticky lg:top-24 overflow-hidden text-black">
+            <div className="p-0 lg:sticky lg:top-24 overflow-hidden text-white">
               {/* Social proof */}
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div className="flex items-center gap-3">
@@ -208,7 +208,7 @@ export default function ContactPage() {
                     {REVIEW_AVATARS.map((src) => (
                       <div
                         key={src}
-                        className="relative w-9 h-9 rounded-full border-2 border-gray-200 bg-gray-100 flex-shrink-0 overflow-hidden ring-2 ring-white"
+                        className="relative w-9 h-9 rounded-full border-2 border-gray-600 bg-gray-700 flex-shrink-0 overflow-hidden ring-2 ring-gray-900"
                         aria-hidden
                       >
                         <Image
@@ -229,7 +229,7 @@ export default function ContactPage() {
                   <p className="text-sm font-semibold">{t("sidebarClientsSatisfaits")}</p>
                   <div className="flex items-center justify-end gap-1.5 mt-1">
                     {[1, 2, 3, 4, 5].map((i) => (
-                      <svg key={i} className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                      <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     ))}
@@ -244,13 +244,13 @@ export default function ContactPage() {
               </h2>
 
               {/* Paragraphe(s) avec parties en gras */}
-              <div className="text-sm text-black leading-relaxed mb-6 space-y-3">
+              <div className="text-sm text-white/90 leading-relaxed mb-6 space-y-3">
                 {t("sidebarDescription")
                   .split(/\n\n+/)
                   .map((paragraph, idx) => (
                     <p key={idx}>
                       {paragraph.split(/\*\*(.*?)\*\*/g).map((part, i) =>
-                        i % 2 === 1 ? <strong key={i} className="font-semibold text-black">{part}</strong> : part
+                        i % 2 === 1 ? <strong key={i} className="font-semibold text-white">{part}</strong> : part
                       )}
                     </p>
                   ))}
@@ -263,8 +263,8 @@ export default function ContactPage() {
                   t("sidebarGuarantee2"),
                   t("sidebarGuarantee3"),
                 ].map((label, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm whitespace-nowrap">
-                    <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                  <li key={i} className="flex items-center gap-2 text-sm text-white/90 whitespace-nowrap">
+                    <svg className="w-5 h-5 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <span>{label}</span>
@@ -273,15 +273,15 @@ export default function ContactPage() {
               </ul>
 
               {/* Encadré places limitées */}
-              <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
-                <p className="text-xs font-bold uppercase tracking-wider text-amber-900 mb-2">
+              <div className="rounded-xl border border-amber-500/50 bg-amber-950/40 px-4 py-3">
+                <p className="text-xs font-bold uppercase tracking-wider text-amber-300 mb-2">
                   {t("sidebarLimitedTitle")}
                 </p>
                 <div className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-amber-700 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                  <svg className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
                     <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
-                  <p className="text-sm text-amber-900/90">{t("sidebarLimitedText")}</p>
+                  <p className="text-sm text-amber-200/90">{t("sidebarLimitedText")}</p>
                 </div>
               </div>
             </div>
@@ -306,14 +306,14 @@ export default function ContactPage() {
               {/* Étape 1 : Informations personnelles */}
               {step === 1 && (
                 <div className={formBoxClass}>
-                  <h3 className="text-2xl font-bold text-white mb-8">
+                  <h3 className="text-2xl font-bold text-black mb-8">
                     {t("step1Title")}
                   </h3>
                   <div className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="name" className={formLabelClass}>
-                          {t("fullNameLabel")} <span className="text-white/50 font-normal">*</span>
+                          {t("fullNameLabel")} <span className="text-black/50 font-normal">*</span>
                         </label>
                         <input
                           id="name"
@@ -330,7 +330,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <label htmlFor="phone" className={formLabelClass}>
-                          {t("phoneLabel")} <span className="text-white/50 font-normal">*</span>
+                          {t("phoneLabel")} <span className="text-black/50 font-normal">*</span>
                         </label>
                         <input
                           id="phone"
@@ -393,7 +393,7 @@ export default function ContactPage() {
                       </div>
                       <div className="sm:col-span-2">
                         <label htmlFor="email" className={formLabelClass}>
-                          {t("emailAddressLabel")} <span className="text-white/50 font-normal">*</span>
+                          {t("emailAddressLabel")} <span className="text-black/50 font-normal">*</span>
                         </label>
                         <input
                           id="email"
@@ -410,7 +410,7 @@ export default function ContactPage() {
                       </div>
                       <div className="sm:col-span-2">
                         <label htmlFor="role" className={formLabelClass}>
-                          {t("q1Label")} <span className="text-white/50 font-normal">*</span>
+                          {t("q1Label")} <span className="text-black/50 font-normal">*</span>
                         </label>
                         <select
                           id="role"
@@ -435,17 +435,17 @@ export default function ContactPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="mt-10 pt-8 border-t border-white/10 space-y-4">
-                    <div className="flex items-start gap-3 text-sm text-white/80">
-                      <span className="shrink-0 mt-0.5 text-white" aria-hidden>
+                  <div className="mt-10 pt-8 border-t border-gray-200 space-y-4">
+                    <div className="flex items-start gap-3 text-sm text-black/70">
+                      <span className="shrink-0 mt-0.5 text-black" aria-hidden>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                           <path fillRule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clipRule="evenodd" />
                         </svg>
                       </span>
                       <span>{t("formSecurity")}</span>
                     </div>
-                    <div className="flex items-start gap-3 text-sm text-white/80">
-                      <span className="shrink-0 mt-0.5 text-white" aria-hidden>
+                    <div className="flex items-start gap-3 text-sm text-black/70">
+                      <span className="shrink-0 mt-0.5 text-black" aria-hidden>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                           <path fillRule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clipRule="evenodd" />
                         </svg>
@@ -455,7 +455,7 @@ export default function ContactPage() {
                     <button
                       type="button"
                       onClick={handleContinueToStep2}
-                      className="w-full sm:w-auto min-w-[240px] px-10 py-4 bg-white text-black text-base font-semibold rounded-lg border-2 border-white hover:bg-black hover:text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
+                      className="w-full sm:w-auto min-w-[240px] px-10 py-4 bg-black text-white text-base font-semibold rounded-lg border-2 border-black hover:bg-white hover:text-black transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-black disabled:hover:text-white"
                     >
                       {t("continue")}
                     </button>
@@ -466,7 +466,7 @@ export default function ContactPage() {
               {/* Étape 2 : Questions de qualification */}
               {step === 2 && (
                 <div className={formBoxClass}>
-                  <h3 className="text-2xl font-bold text-white mb-8">{t("step2Title")}</h3>
+                  <h3 className="text-2xl font-bold text-black mb-8">{t("step2Title")}</h3>
                   <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7">
                     <input type="hidden" name="name" value={personalInfo.name} />
                     <input type="hidden" name="email" value={personalInfo.email} />
@@ -599,23 +599,23 @@ export default function ContactPage() {
                       </div>
                     )}
                     {status === "error" && (
-                      <div className="rounded-lg bg-red-500/20 border border-red-400/50 px-4 py-3 text-sm font-medium text-red-300">
+                      <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm font-medium text-red-700">
                         {t("error")}
                       </div>
                     )}
 
-                    <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
+                    <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-200">
                       <button
                         type="button"
                         onClick={() => setStep(1)}
-                        className="px-8 py-3.5 bg-transparent text-white text-base font-semibold rounded-lg border-2 border-white/40 hover:bg-white hover:text-black transition-all"
+                        className="px-8 py-3.5 bg-transparent text-black text-base font-semibold rounded-lg border-2 border-gray-300 hover:bg-gray-100 transition-all"
                       >
                         ← {t("back")}
                       </button>
                       <button
                         type="submit"
                         disabled={status === "sending"}
-                        className="min-w-[240px] px-10 py-4 bg-white text-black text-base font-semibold rounded-lg border-2 border-white hover:bg-black hover:text-white transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
+                        className="min-w-[240px] px-10 py-4 bg-black text-white text-base font-semibold rounded-lg border-2 border-black hover:bg-gray-800 transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-gray-800"
                       >
                         {status === "sending" ? t("sending") : t("continue")}
                       </button>
@@ -630,7 +630,7 @@ export default function ContactPage() {
       </div>
 
       {/* Section Google Ads & Meta en bas de page */}
-      <section className="w-full bg-gray-50 border-t border-gray-200">
+      <section className="w-full bg-gray-900 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
             {/* Left - Meta */}
@@ -645,13 +645,13 @@ export default function ContactPage() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-              <h3 className="mt-6 text-xl sm:text-2xl font-bold text-black">
+              <h3 className="mt-6 text-xl sm:text-2xl font-bold text-white">
                 {tDigital("headline2")}
               </h3>
-              <p className="mt-3 text-black/80 text-base sm:text-lg leading-relaxed">
+              <p className="mt-3 text-white/80 text-base sm:text-lg leading-relaxed">
                 {tDigital("body2")}
               </p>
-              <p className="mt-3 text-black font-semibold text-base sm:text-lg">
+              <p className="mt-3 text-white font-semibold text-base sm:text-lg">
                 {tDigital("emphasis2")}
               </p>
             </div>
@@ -667,13 +667,13 @@ export default function ContactPage() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-              <h3 className="mt-6 text-xl sm:text-2xl font-bold text-black">
+              <h3 className="mt-6 text-xl sm:text-2xl font-bold text-white">
                 {tDigital("headline1")}
               </h3>
-              <p className="mt-3 text-black/80 text-base sm:text-lg leading-relaxed">
+              <p className="mt-3 text-white/80 text-base sm:text-lg leading-relaxed">
                 {tDigital("body1")}
               </p>
-              <p className="mt-3 text-black font-semibold text-base sm:text-lg">
+              <p className="mt-3 text-white font-semibold text-base sm:text-lg">
                 {tDigital("emphasis1")}
               </p>
             </div>
