@@ -71,12 +71,13 @@ export default function HeroSection() {
               <span
                 className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-nowrap"
                 style={{
-                  backgroundImage: "linear-gradient(to right, #86efac 0%, #22c55e 50%, #15803d 100%)",
+                  backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #95A5B5 25%, #B8C8D8 50%, #D8E4F0 75%, #FFFFFF 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                   letterSpacing: "0.02em",
                   lineHeight: 1.15,
+                  textShadow: "0 2px 20px rgba(184, 200, 218, 0.35), 0 0 40px rgba(200, 215, 230, 0.12)",
                 }}
               >
                 {line1Content}
@@ -87,10 +88,11 @@ export default function HeroSection() {
               style={{
                 letterSpacing: "0.01em",
                 lineHeight: 1.2,
-                backgroundImage: "linear-gradient(to right, #86efac 0%, #22c55e 50%, #15803d 100%)",
+                backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #95A5B5 25%, #B8C8D8 50%, #D8E4F0 75%, #FFFFFF 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
+                textShadow: "0 2px 20px rgba(184, 200, 218, 0.35), 0 0 40px rgba(200, 215, 230, 0.12)",
               }}
             >
               {line2Content}
