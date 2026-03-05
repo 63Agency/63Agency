@@ -57,7 +57,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 lg:pt-32 pb-4 sm:pb-6 lg:pb-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-8 sm:pt-24 lg:pt-32 pb-4 sm:pb-6 lg:pb-8 text-center">
         {/* Primary Headline – même style que la description (Spécialisés…) */}
         <h2 className="text-base sm:text-lg md:text-xl text-gray-400 mb-3 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
           {t('primaryHeadline')}
@@ -69,7 +69,7 @@ export default function HeroSection() {
             <span className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
               <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" aria-hidden />
               <span
-                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-normal sm:whitespace-nowrap"
+                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-nowrap"
                 style={{
                   backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #8293A4 15%, #95A5B5 35%, #A8B8C8 55%, #B8C8D8 72%, #C5D5E5 88%, #D5E2EE 96%, #FFFFFF 100%)",
                   WebkitBackgroundClip: "text",
