@@ -8,11 +8,18 @@ import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 
 export const metadata: Metadata = {
-  title: "63 Agency | Turning Marketing Into Predictable Revenue",
-  description: "We build systems that generate qualified leads consistently. Performance-driven lead generation agency in Morocco and Europe.",
+  metadataBase: new URL("https://63agency.ma"),
+  title: {
+    default: "63 Agency | Lead Generation & Performance Marketing",
+    template: "%s | 63 Agency",
+  },
+  description:
+    "Lead generation & performance marketing agency in Morocco & Europe.",
   icons: {
-    icon: '/images/logo/6.jpg',
-    apple: '/images/logo/6.jpg',
+    icon: "/favicon.ico",
+  },
+  verification: {
+    google: "PLACEHOLDER_GOOGLE_SEARCH_CONSOLE_TAG",
   },
 };
 

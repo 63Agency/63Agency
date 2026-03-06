@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { sendContactEmails, isEmailJSConfigured } from "@/lib/emailjs";
 
 const REVIEW_AVATARS = [
@@ -57,10 +58,15 @@ export default function ContactPage() {
   const t = useTranslations("contactPage");
   const tDigital = useTranslations("digitalPresence");
   const locale = useLocale();
+  const searchParams = useSearchParams();
   const metaSrc = META_IMAGE_BY_LOCALE[locale] ?? META_IMAGE_BY_LOCALE.fr;
   const googleAdsSrc = GOOGLE_ADS_IMAGE_BY_LOCALE[locale] ?? GOOGLE_ADS_IMAGE_BY_LOCALE.fr;
   const [step, setStep] = useState<1 | 2>(1);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  useEffect(() => {
+    if (searchParams.get("sent") === "1") setStatus("success");
+  }, [searchParams]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [personalInfo, setPersonalInfo] = useState({
     name: "",
@@ -139,6 +145,7 @@ export default function ContactPage() {
           phone,
           city,
           company,
+          employees,
           role: qualification.role,
           objective: qualification.objective,
           timing: qualification.timing,
@@ -302,21 +309,52 @@ export default function ContactPage() {
             {/* Formulaire — droite sur desktop, en premier sur mobile */}
             <div className="lg:col-span-7 min-w-0 flex flex-col items-stretch lg:items-end order-1 lg:order-2">
               <div className="w-full max-w-2xl lg:max-w-[680px]">
-              {/* Progress */}
-              <div className="mb-8 sm:mb-10">
-                <p className="text-sm font-semibold text-black/60 uppercase tracking-widest mb-2">
-                  {t("stepProgress", { current: step })}
-                </p>
-                <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-black rounded-full transition-all duration-300 ease-out"
-                    style={{ width: step === 1 ? "50%" : "100%" }}
-                  />
+              {/* Progress (hidden when thank you is shown) */}
+              {status !== "success" && (
+                <div className="mb-8 sm:mb-10">
+                  <p className="text-sm font-semibold text-black/60 uppercase tracking-widest mb-2">
+                    {t("stepProgress", { current: step })}
+                  </p>
+                  <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-black rounded-full transition-all duration-300 ease-out"
+                      style={{ width: step === 1 ? "50%" : "100%" }}
+                    />
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* Thank you section (after successful submit) */}
+              {status === "success" && (
+                <div className={formBoxClass}>
+                  <div className="text-center py-4 sm:py-6">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-6" aria-hidden>
+                      <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-black mb-3">
+                      {t("thankYouTitle")}
+                    </h3>
+                    <p className="text-lg text-black/80 mb-2">
+                      {t("thankYouMessage")}
+                    </p>
+                    <p className="text-base text-black/60 mb-8 max-w-md mx-auto">
+                      {t("thankYouSubMessage")}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => { setStatus("idle"); setStep(1); setErrors({}); }}
+                      className="px-6 py-3 rounded-lg font-semibold text-black border-2 border-gray-300 bg-transparent hover:bg-gray-100 transition-colors"
+                    >
+                      {t("thankYouButton")}
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {/* Étape 1 : Informations personnelles */}
-              {step === 1 && (
+              {status !== "success" && step === 1 && (
                 <div className={formBoxClass}>
                   <h3 className="text-2xl font-bold text-black mb-8">
                     {t("step1Title")}
@@ -476,7 +514,7 @@ export default function ContactPage() {
               )}
 
               {/* Étape 2 : Questions de qualification */}
-              {step === 2 && (
+              {status !== "success" && step === 2 && (
                 <div className={formBoxClass}>
                   <h3 className="text-2xl font-bold text-black mb-8">{t("step2Title")}</h3>
                   <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7">
@@ -605,11 +643,6 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    {status === "success" && (
-                      <div className="rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-sm font-medium text-white">
-                        {t("success")}
-                      </div>
-                    )}
                     {status === "error" && (
                       <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm font-medium text-red-700">
                         {t("error")}

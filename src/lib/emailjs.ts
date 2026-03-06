@@ -28,6 +28,7 @@ export function isEmailJSConfigured(): boolean {
 /**
  * Send 1) email to admin (new lead), 2) email to client (confirmation).
  * Uses sequential sends to respect EmailJS rate limit (~1 req/s).
+ * Template variables: see docs/email-templates-emailjs.md
  */
 export async function sendContactEmails(data: ContactFormData): Promise<void> {
   if (!isEmailJSConfigured()) {

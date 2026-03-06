@@ -50,7 +50,6 @@ export default function CTASection() {
   const t = useTranslations("cta");
   const tContact = useTranslations("contactPage");
   const locale = useLocale();
-  const router = useRouter();
   const [step, setStep] = useState<1 | 2>(1);
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -67,6 +66,9 @@ export default function CTASection() {
   const [selectedEmployees, setSelectedEmployees] = useState("");
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submittedSuccess, setSubmittedSuccess] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const cityRef = useRef<HTMLDivElement>(null);
 
@@ -117,7 +119,7 @@ export default function CTASection() {
     return Object.keys(nextErrors).length === 0;
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (step === 1) {
       if (!validateStep1()) return;
       setErrors({});
@@ -127,22 +129,41 @@ export default function CTASection() {
     if (step === 2) {
       if (!validateStep2()) return;
       setErrors({});
+      setSubmitError("");
+      setSending(true);
       const cityLabel = selectedCity ? (() => { try { return t("city_" + selectedCity); } catch { return selectedCity; } })() : "";
-      const q = new URLSearchParams({
-        ...(name && { name }),
-        ...(email && { email }),
-        ...(phone && { phone }),
-        ...(cityLabel && { city: cityLabel }),
-        ...(company && { company }),
-        ...(selectedEmployees && { employees: selectedEmployees }),
-        ...(role && { role }),
-        ...(objective && { objective }),
-        ...(timing && { timing }),
-        ...(campaigns && { campaigns }),
-        ...(sector && { sector }),
-        ...(establishment && { establishment }),
-      }).toString();
-      router.push(`/${locale}/contact${q ? `?${q}` : ""}`);
+      const body = {
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        city: cityLabel || undefined,
+        company: company.trim() || undefined,
+        employees: selectedEmployees || undefined,
+        role: role.trim() || undefined,
+        objective: objective.trim() || undefined,
+        timing: timing.trim() || undefined,
+        campaigns: campaigns.trim() || undefined,
+        sector: sector.trim() || undefined,
+        establishment: establishment.trim() || undefined,
+      };
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          setSubmitError(data?.error || tContact("error"));
+          setSending(false);
+          return;
+        }
+        setSending(false);
+        setSubmittedSuccess(true);
+      } catch {
+        setSubmitError(tContact("error"));
+        setSending(false);
+      }
     }
   }
 
@@ -173,20 +194,52 @@ export default function CTASection() {
 
           <div className="relative">
             <div className="rounded-2xl p-6 sm:p-8 shadow-xl bg-black border border-white/20 overflow-visible">
-              <div className="mb-6">
-                <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-2">
-                  {tContact("stepProgress", { current: step })}
-                </p>
-                <div className="h-1 bg-white/20 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-white rounded-full transition-all duration-300 ease-out"
-                    style={{ width: step === 1 ? "50%" : "100%" }}
-                  />
+              {/* Thank you section (in place of form, same page) */}
+              {submittedSuccess && (
+                <div className="text-center py-4 sm:py-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 mb-6" aria-hidden>
+                    <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                    {tContact("thankYouTitle")}
+                  </h3>
+                  <p className="text-lg text-white/90 mb-2">
+                    {tContact("thankYouMessage")}
+                  </p>
+                  <p className="text-base text-white/70 mb-8 max-w-md mx-auto">
+                    {tContact("thankYouSubMessage")}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSubmittedSuccess(false);
+                      setStep(1);
+                      setErrors({});
+                      setSubmitError("");
+                      setName("");
+                      setCompany("");
+                      setEmail("");
+                      setPhone("");
+                      setRole("");
+                      setObjective("");
+                      setTiming("");
+                      setCampaigns("");
+                      setSector("");
+                      setEstablishment("");
+                      setSelectedEmployees("");
+                      setSelectedCity("");
+                    }}
+                    className="px-6 py-3 rounded-lg font-semibold text-white border-2 border-white/50 bg-transparent hover:bg-white/10 transition-colors"
+                  >
+                    {tContact("thankYouButton")}
+                  </button>
                 </div>
-              </div>
+              )}
 
               {/* Step 1: Informations personnelles */}
-              {step === 1 && (
+              {!submittedSuccess && step === 1 && (
                 <div className="space-y-4">
                   <h3 className="text-xl font-bold text-black mb-4">{tContact("step1Title")}</h3>
                   <div>
@@ -316,7 +369,7 @@ export default function CTASection() {
               )}
 
               {/* Step 2: Questions de qualification (comme page contact étape 2) */}
-              {step === 2 && (
+              {!submittedSuccess && step === 2 && (
                 <div className="space-y-4">
                   <h3 className="text-xl font-bold text-black mb-4">{tContact("step2Title")}</h3>
                   <div>
@@ -388,23 +441,32 @@ export default function CTASection() {
                 </div>
               )}
 
+              {!submittedSuccess && step === 2 && submitError && (
+                <div className="rounded-lg bg-red-500/20 border border-red-400/50 px-4 py-3 text-sm text-red-200 mb-4" role="alert">
+                  {submitError}
+                </div>
+              )}
               <div className="mt-6 flex flex-wrap gap-3">
-                {step === 2 && (
+                {!submittedSuccess && step === 2 && (
                   <button
                     type="button"
-                    onClick={() => { setStep(1); setErrors({}); }}
-                    className="px-6 py-3 rounded-lg font-semibold text-white border-2 border-white/50 bg-transparent hover:bg-white/10 text-[15px] transition-colors"
+                    onClick={() => { setStep(1); setErrors({}); setSubmitError(""); }}
+                    disabled={sending}
+                    className="px-6 py-3 rounded-lg font-semibold text-white border-2 border-white/50 bg-transparent hover:bg-white/10 text-[15px] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {tContact("back")}
                   </button>
                 )}
+                {!submittedSuccess && (
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-8 py-4 rounded-lg font-semibold text-black bg-white hover:bg-gray-100 text-[15px] transition-colors"
+                  disabled={sending}
+                  className="px-8 py-4 rounded-lg font-semibold text-black bg-white hover:bg-gray-100 text-[15px] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {step === 1 ? tContact("continue") : t("button")}
+                  {step === 1 ? tContact("continue") : sending ? tContact("sending") : t("button")}
                 </button>
+              )}
               </div>
             </div>
 
