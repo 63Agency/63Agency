@@ -61,7 +61,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-start sm:items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-[100dvh] min-h-screen flex items-start sm:items-center justify-center overflow-x-hidden overflow-y-auto bg-black">
       {/* Grainient background — gris et noir, animé */}
       <div className="absolute inset-0 z-0 min-h-screen w-full bg-black">
         <div className="absolute inset-0 min-h-full w-full">
@@ -94,7 +94,7 @@ export default function HeroSection() {
         </h2>
 
         {/* Secondary Headline – centré, taille réduite */}
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto">
+        <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto min-w-0 px-1">
           <span className="inline-flex flex-col items-center w-full">
             <span className="flex items-center justify-center gap-2 sm:gap-3 w-full">
               <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
@@ -113,7 +113,7 @@ export default function HeroSection() {
                 {line1Content}
               </span>
             </span>
-            <span className="block mt-1.5 sm:mt-2 font-bold tracking-tight whitespace-normal text-center text-white">
+            <span className="block mt-1.5 sm:mt-2 font-bold tracking-tight whitespace-normal text-center text-white break-words">
               {line2Content}
             </span>
           </span>
@@ -141,12 +141,12 @@ export default function HeroSection() {
         </div>
 
         {/* Partenaires – tous les logos visibles en une ligne (taille réduite pour tenir dans l’écran) */}
-        <div className="mt-3 sm:mt-4 lg:mt-5 pt-3 sm:pt-4 w-full max-w-5xl mx-auto">
-          <div className="scrollbar-hide flex flex-nowrap items-center justify-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto w-full">
+        <div className="mt-3 sm:mt-4 lg:mt-5 pt-3 sm:pt-4 w-full max-w-5xl mx-auto px-1 sm:px-0">
+          <div className="scrollbar-hide flex flex-nowrap items-center justify-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto w-full py-1">
             {PARTNER_LOGOS.map((logo, i) => (
               <div
                 key={i}
-                className="flex shrink-0 items-center justify-center h-10 sm:h-12 md:h-14 w-20 sm:w-24 md:w-28 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                className="flex shrink-0 items-center justify-center h-9 sm:h-12 md:h-14 w-16 sm:w-24 md:w-28 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               >
                 <Image
                   src={encodeURI(logo.src)}

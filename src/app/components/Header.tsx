@@ -110,9 +110,9 @@ export default function Header() {
               <Image
                 src="/images/hero/63AgencyTextwhit.png"
                 alt="63 Agency"
-                width={140}
-                height={44}
-                className="object-contain h-9 sm:h-11 w-auto"
+                width={160}
+                height={48}
+                className="object-contain h-9 lg:h-10 xl:h-11 w-auto max-h-12"
               />
             </Link>
           </div>

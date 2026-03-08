@@ -77,7 +77,7 @@ const CardNav: React.FC<CardNavProps> = ({
         >
           <div className="card-nav-top absolute inset-x-0 top-0 h-[56px] sm:h-[72px] flex items-center justify-between gap-2 sm:gap-4 p-2 sm:p-3 pl-[1rem] sm:pl-[1.1rem] pr-3 sm:pr-5 z-[2]">
             <a href={logoHref} className="logo-container flex items-center shrink-0 -mt-2 sm:-mt-3" aria-label={logoAlt}>
-              <img src={logo} alt={logoAlt} className="logo h-[32px] sm:h-[44px]" style={{ filter: 'none' }} />
+              <img src={logo} alt={logoAlt} className="logo h-[30px] sm:h-[40px] md:h-[44px] w-auto object-contain max-h-12" style={{ filter: 'none' }} />
             </a>
 
             {/* Desktop: links + trailing + CTA */}
