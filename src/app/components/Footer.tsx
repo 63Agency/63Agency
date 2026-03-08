@@ -25,7 +25,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="relative z-20 bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <div className="footer-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 sm:gap-y-10 gap-x-8 lg:gap-x-10 items-start">
           {/* Colonne 1 : Logo + taglines – espacement serré (CSS .footer-col-1) */}

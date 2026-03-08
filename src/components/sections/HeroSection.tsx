@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { useTranslations, useLocale } from "next-intl";
+import Grainient from "@/components/Grainient";
 
 const PARTNER_LOGOS = [
   { src: "/images/partners/partner-logos/unnamed (1).png", alt: "Partner" },
@@ -59,10 +60,22 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-start sm:items-center justify-center overflow-hidden bg-black">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Grainient background */}
+      <div className="absolute inset-0 z-0">
+        <Grainient
+          className="h-full w-full"
+          color1="#1a1a2e"
+          color2="#16213e"
+          color3="#0f0f23"
+          timeSpeed={0.2}
+          warpStrength={0.8}
+          grainAmount={0.06}
+        />
+      </div>
+      {/* Subtle dot pattern overlay */}
+      <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.08) 1px, transparent 0)`,
           backgroundSize: '40px 40px'
         }}></div>
       </div>

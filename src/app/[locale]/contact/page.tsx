@@ -7,6 +7,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { useSearchParams, useRouter } from "next/navigation";
 import { sendContactEmails, isEmailJSConfigured } from "@/lib/emailjs";
 import ContactFormThreeSteps from "@/components/ContactFormThreeSteps";
+import Grainient from "@/components/Grainient";
 
 const REVIEW_AVATARS = [
   "/images/review/Tarik.png",
@@ -203,7 +204,24 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black pt-20">
+    <div className="relative min-h-screen pt-20 overflow-hidden">
+      {/* Grainient background — noir, gris, blanc animés */}
+      <div className="fixed inset-0 z-0">
+        <Grainient
+          className="h-full w-full"
+          color1="#000000"
+          color2="#666666"
+          color3="#ffffff"
+          timeSpeed={0.35}
+          warpStrength={1.2}
+          warpSpeed={1.5}
+          grainAmount={0.1}
+          grainAnimated={true}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
       {/* Top: CONTACT + hero headline — même largeur que le contenu */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 sm:pt-12 sm:pb-14">
         <div className="relative">
@@ -808,7 +826,7 @@ export default function ContactPage() {
       </div>
 
       {/* Section Google Ads & Meta en bas de page */}
-      <section className="w-full bg-black border-t border-white/10">
+      <section className="relative z-10 w-full border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
             {/* Left - Meta : même fond blanc pour image + texte */}
@@ -920,6 +938,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }
