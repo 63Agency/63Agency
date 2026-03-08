@@ -5,16 +5,17 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 
 const META_IMAGE_BY_LOCALE: Record<string, string> = {
-  en: "/images/Feceboock/Meta-EN-(1).png",
-  fr: "/images/Feceboock/Meta-Fr-(3).png",
+  en: "/images/Feceboock/Meta-Eng (1).png",
+  fr: "/images/Feceboock/meta-Fr (1).png",
 };
 const GOOGLE_ADS_IMAGE_BY_LOCALE: Record<string, string> = {
-  en: "/images/Feceboock/GoogleAds-EN-(3).png",
-  fr: "/images/Feceboock/Google-Ads-Fr-(2).png",
+  en: "/images/Feceboock/GoogleAds-En (1).png",
+  fr: "/images/Feceboock/GoogleAds-Fr.png",
 };
 
 export default function DigitalPresenceSection() {
   const t = useTranslations("digitalPresence");
+  const tNav = useTranslations("nav");
   const locale = useLocale();
   const metaSrc = META_IMAGE_BY_LOCALE[locale] ?? META_IMAGE_BY_LOCALE.fr;
   const googleAdsSrc = GOOGLE_ADS_IMAGE_BY_LOCALE[locale] ?? GOOGLE_ADS_IMAGE_BY_LOCALE.fr;
@@ -57,11 +58,11 @@ export default function DigitalPresenceSection() {
                   <Link
                     href={`/${locale}/contact`}
                     className="view-more-btn"
-                    aria-label={t("viewMore")}
+                    aria-label={tNav("contactButton")}
                   >
                     <span>
-                      <span className="text-1">{t("viewMore")}</span>
-                      <span className="text-2">{t("viewMore")}</span>
+                      <span className="text-1">{tNav("contactButton")}</span>
+                      <span className="text-2">{tNav("contactButton")}</span>
                     </span>
                     <i>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,11 +112,11 @@ export default function DigitalPresenceSection() {
                   <Link
                     href={`/${locale}/contact`}
                     className="view-more-btn"
-                    aria-label={t("viewMore")}
+                    aria-label={tNav("contactButton")}
                   >
                     <span>
-                      <span className="text-1">{t("viewMore")}</span>
-                      <span className="text-2">{t("viewMore")}</span>
+                      <span className="text-1">{tNav("contactButton")}</span>
+                      <span className="text-2">{tNav("contactButton")}</span>
                     </span>
                     <i>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

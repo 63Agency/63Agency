@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { useSearchParams, useRouter } from "next/navigation";
 import { sendContactEmails, isEmailJSConfigured } from "@/lib/emailjs";
@@ -45,12 +46,12 @@ const MOROCCAN_CITIES = [
 ];
 
 const META_IMAGE_BY_LOCALE: Record<string, string> = {
-  en: "/images/Feceboock/Meta-EN-(1).png",
-  fr: "/images/Feceboock/Meta-Fr-(3).png",
+  en: "/images/Feceboock/Meta-Eng (1).png",
+  fr: "/images/Feceboock/meta-Fr (1).png",
 };
 const GOOGLE_ADS_IMAGE_BY_LOCALE: Record<string, string> = {
-  en: "/images/Feceboock/GoogleAds-EN-(3).png",
-  fr: "/images/Feceboock/Google-Ads-Fr-(2).png",
+  en: "/images/Feceboock/GoogleAds-En (1).png",
+  fr: "/images/Feceboock/GoogleAds-Fr.png",
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -65,6 +66,7 @@ function isValidPhone(s: string) {
 export default function ContactPage() {
   const t = useTranslations("contactPage");
   const tDigital = useTranslations("digitalPresence");
+  const tNav = useTranslations("nav");
   const locale = useLocale();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -361,7 +363,7 @@ export default function ContactPage() {
           </div>
 
             {/* Formulaire — colonnes 7–12 pour le placer à droite */}
-            <div className="lg:col-span-6 lg:col-start-7 min-w-0 flex flex-col items-stretch order-1 lg:order-2">
+            <div id="form" className="lg:col-span-6 lg:col-start-7 min-w-0 flex flex-col items-stretch order-1 lg:order-2">
               <div className="w-full">
               <ContactFormThreeSteps />
               {false && step === 1 && (
@@ -839,6 +841,26 @@ export default function ContactPage() {
                   <p className="mt-3 text-black font-semibold text-base sm:text-lg">
                     {tDigital("emphasis2")}
                   </p>
+                  <div className="mt-4 flex justify-end">
+                    <Link
+                      href="#form"
+                      className="view-more-btn"
+                      aria-label={tNav("contactButton")}
+                    >
+                      <span>
+                        <span className="text-1">{tNav("contactButton")}</span>
+                        <span className="text-2">{tNav("contactButton")}</span>
+                      </span>
+                      <i>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 11L11 1M11 1V11M11 1H1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 11L11 1M11 1V11M11 1H1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </i>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -872,6 +894,26 @@ export default function ContactPage() {
                   <p className="mt-3 text-black font-semibold text-base sm:text-lg">
                     {tDigital("emphasis1")}
                   </p>
+                  <div className="mt-4 flex justify-end">
+                    <Link
+                      href="#form"
+                      className="view-more-btn"
+                      aria-label={tNav("contactButton")}
+                    >
+                      <span>
+                        <span className="text-1">{tNav("contactButton")}</span>
+                        <span className="text-2">{tNav("contactButton")}</span>
+                      </span>
+                      <i>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 11L11 1M11 1V11M11 1H1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 11L11 1M11 1V11M11 1H1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </i>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
