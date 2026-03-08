@@ -28,32 +28,27 @@ function isValidPhone(s: string) {
   return digits.length >= 6;
 }
 
+/** Barre de progression (bar) pour les 3 étapes — pas de cercles */
 function Stepper({ step, t }: { step: number; t: (k: string) => string }) {
+  const widthPercent = step === 1 ? 33.33 : step === 2 ? 66.66 : 100;
   return (
-    <div className="flex items-start justify-center gap-0 mb-8 overflow-visible">
-      {[1, 2, 3].map((s) => (
-        <div key={s} className="flex items-center min-w-0 overflow-visible shrink-0">
-          <div className="flex flex-col items-center flex-shrink-0 w-8">
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors shrink-0 ${
-                step === s ? "bg-black text-white" : "bg-white border-2 border-gray-300 text-gray-600"
-              }`}
-            >
-              {s}
-            </div>
-            <span
-              className={`mt-1.5 text-xs font-medium text-center whitespace-nowrap block w-full leading-tight ${
-                step === s ? "text-black font-semibold" : "text-gray-600"
-              } ${s === 1 ? "-translate-x-5" : s === 2 ? "-translate-x-5" : ""}`}
-            >
-              {t(s === 1 ? "step1Label" : s === 2 ? "step2Label" : "step3Label")}
-            </span>
-          </div>
-          {s < 3 && (
-            <div className="h-px w-8 sm:w-12 bg-gray-300 shrink-0 self-start mt-3.5 mx-2" aria-hidden />
-          )}
-        </div>
-      ))}
+    <div className="mb-8">
+      <div className="h-2 w-full rounded-full bg-gray-200 overflow-hidden" role="progressbar" aria-valuenow={step} aria-valuemin={1} aria-valuemax={3} aria-label={`Étape ${step} sur 3`}>
+        <div
+          className="h-full rounded-full bg-black transition-all duration-300 ease-out"
+          style={{ width: `${widthPercent}%` }}
+        />
+      </div>
+      <div className="flex justify-between mt-2 pr-8">
+        {[1, 2, 3].map((s) => (
+          <span
+            key={s}
+            className={`text-xs font-medium ${step >= s ? "text-black font-semibold" : "text-gray-500"}`}
+          >
+            {t(s === 1 ? "step1Label" : s === 2 ? "step2Label" : "step3Label")}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -171,9 +166,11 @@ export default function ContactFormThreeSteps() {
     <div className="w-full">
       {step === 1 && (
         <div className={formBoxClass}>
-          <h2 className="text-2xl font-bold text-black mb-1">{t("formTitleAudit")}</h2>
-          {t("formSubtitle") ? <p className="text-base text-black/70 mb-6">{t("formSubtitle")}</p> : null}
           <Stepper step={step} t={t} />
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-black">{t("formTitleAudit")}</h2>
+            {t("formSubtitle") ? <p className="text-base text-black/70 mt-2">{t("formSubtitle")}</p> : null}
+          </div>
           <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -276,9 +273,11 @@ export default function ContactFormThreeSteps() {
 
       {step === 3 && (
         <div className={formBoxClass}>
-          <h2 className="text-2xl font-bold text-black mb-1">{t("formTitleAudit")}</h2>
-          {t("formSubtitle") ? <p className="text-base text-black/70 mb-6">{t("formSubtitle")}</p> : null}
           <Stepper step={step} t={t} />
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-black">{t("formTitleAudit")}</h2>
+            {t("formSubtitle") ? <p className="text-base text-black/70 mt-2">{t("formSubtitle")}</p> : null}
+          </div>
           <h3 className="text-xl font-bold text-black mb-6">{t("step3Title")}</h3>
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
             <input type="hidden" name="name" value={personalInfo.name} />

@@ -37,7 +37,7 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
 
 ```html
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="color-scheme: light; background-color: #ffffff;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,10 +46,15 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
   <title>63 Agency — Confirmation</title>
   <style type="text/css">
     :root { color-scheme: light; supported-color-schemes: light; }
-    .card { background: #ffffff !important; }
-    .logo-cell { background: #000000 !important; }
-    .body-cell { background: #ffffff !important; }
-    .body-cell, .body-cell h1, .body-cell p, .body-cell a { color: #000000 !important; }
+    .card { background-color: #ffffff !important; background: #ffffff !important; }
+    .logo-cell { background-color: #000000 !important; background: #000000 !important; }
+    .body-cell { background-color: #ffffff !important; background: #ffffff !important; }
+    .body-cell, .body-cell h1, .body-cell p, .body-cell a { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+    @media (prefers-color-scheme: dark) {
+      .card, .body-cell { background-color: #ffffff !important; background: #ffffff !important; }
+      .logo-cell { background-color: #000000 !important; background: #000000 !important; }
+      .body-cell, .body-cell h1, .body-cell p, .body-cell a { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+    }
     @media only screen and (max-width: 600px) {
       .wrapper { padding: 16px 12px !important; }
       .card { max-width: 100% !important; border-radius: 12px !important; }
@@ -60,31 +65,31 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
     }
   </style>
 </head>
-<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #111;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wrapper" style="background-color: #111; padding: 40px 20px;">
+<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #e5e5e5; color-scheme: light;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wrapper" style="background-color: #e5e5e5; padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="card" style="max-width: 520px; background: #ffffff; border-radius: 12px; overflow: hidden;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="card" style="max-width: 520px; background-color: #ffffff; background: #ffffff; border-radius: 12px; overflow: hidden;" bgcolor="#ffffff">
           <!-- Section logo : fond NOIR -->
           <tr>
-            <td class="logo-cell" style="background: #000000; padding: 28px 32px; text-align: center;">
+            <td class="logo-cell" style="background-color: #000000; background: #000000; padding: 28px 32px; text-align: center;" bgcolor="#000000">
               <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="100" style="display: block; max-width: 100px; height: auto; margin: 0 auto;" />
             </td>
           </tr>
           <!-- Section texte : fond BLANC, texte NOIR -->
           <tr>
-            <td class="body-cell" style="padding: 32px 28px 28px; background: #ffffff;">
-              <h1 style="margin: 0 0 20px; font-size: 20px; font-weight: 700; color: #000000; line-height: 1.25;">Merci pour votre message</h1>
-              <p style="margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: #000000;">Bonjour {{client_name}},</p>
-              <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.65; color: #1a1a1a;">Nous avons bien reçu votre demande. Notre équipe vous recontactera sous 24 à 48 h ouvrées.</p>
-              <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.5; color: #1a1a1a;">En attendant : <a href="tel:+212720007007" style="color: #000000; font-weight: 600; text-decoration: none;">07 20 007 007</a> · <a href="mailto:contact@63agency.com" style="color: #000000; font-weight: 600; text-decoration: none;">contact@63agency.com</a></p>
-              <p style="margin: 0; font-size: 14px; color: #1a1a1a;">À bientôt,<br><strong style="color: #000000;">63 Agency</strong></p>
+            <td class="body-cell" style="padding: 32px 28px 28px; background-color: #ffffff; background: #ffffff;" bgcolor="#ffffff">
+              <h1 style="margin: 0 0 20px; font-size: 20px; font-weight: 700; color: #000000; -webkit-text-fill-color: #000000; line-height: 1.25;">Merci pour votre message</h1>
+              <p style="margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: #000000; -webkit-text-fill-color: #000000;">Bonjour {{client_name}},</p>
+              <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.65; color: #1a1a1a; -webkit-text-fill-color: #1a1a1a;">Nous avons bien reçu votre demande. Notre équipe vous recontactera sous 24 à 48 h ouvrées.</p>
+              <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.5; color: #1a1a1a; -webkit-text-fill-color: #1a1a1a;">En attendant : <a href="tel:+212720007007" style="color: #000000; -webkit-text-fill-color: #000000; font-weight: 600; text-decoration: none;">07 20 007 007</a> · <a href="mailto:contact@63agency.com" style="color: #000000; -webkit-text-fill-color: #000000; font-weight: 600; text-decoration: none;">contact@63agency.com</a></p>
+              <p style="margin: 0; font-size: 14px; color: #1a1a1a; -webkit-text-fill-color: #1a1a1a;">À bientôt,<br><strong style="color: #000000; -webkit-text-fill-color: #000000;">63 Agency</strong></p>
             </td>
           </tr>
           <!-- Footer -->
           <tr>
-            <td class="footer-cell" style="padding: 16px 28px; background: #f5f5f5; border-top: 1px solid #eee;">
-              <p style="margin: 0; font-size: 11px; color: #666;">63 Agency · Lead generation &amp; performance</p>
+            <td class="footer-cell" style="padding: 16px 28px; background-color: #f5f5f5; background: #f5f5f5; border-top: 1px solid #eee;" bgcolor="#f5f5f5">
+              <p style="margin: 0; font-size: 11px; color: #666666; -webkit-text-fill-color: #666666;">63 Agency · Lead generation &amp; performance</p>
             </td>
           </tr>
         </table>

@@ -259,10 +259,10 @@ export default function ContactPage() {
       {/* Contact: bloc texte à gauche, formulaire à droite — sections bien placées */}
       <div className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start">
-            {/* Bloc texte — gauche (ordre 2 sur mobile pour afficher le formulaire en premier) */}
-            <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="p-0 lg:sticky lg:top-24 overflow-hidden text-white">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 lg:items-stretch">
+            {/* Bloc texte — gauche : même hauteur que le formulaire, fin au même niveau */}
+            <div className="lg:col-span-5 order-2 lg:order-1 lg:min-h-0 lg:flex lg:flex-col">
+            <div className="p-0 lg:sticky lg:top-24 overflow-hidden text-white lg:flex-1 lg:flex lg:flex-col lg:min-h-0">
               {/* Social proof — badge vert + étoiles dorées comme l’image */}
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div className="flex items-center gap-3">
