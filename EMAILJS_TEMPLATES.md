@@ -41,8 +41,15 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
   <title>63 Agency — Confirmation</title>
   <style type="text/css">
+    :root { color-scheme: light; supported-color-schemes: light; }
+    .card { background: #ffffff !important; }
+    .logo-cell { background: #000000 !important; }
+    .body-cell { background: #ffffff !important; }
+    .body-cell, .body-cell h1, .body-cell p, .body-cell a { color: #000000 !important; }
     @media only screen and (max-width: 600px) {
       .wrapper { padding: 16px 12px !important; }
       .card { max-width: 100% !important; border-radius: 12px !important; }
