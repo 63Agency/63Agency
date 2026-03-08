@@ -163,9 +163,12 @@ const Grainient: React.FC<GrainientProps> = ({
 
     const gl = renderer.gl;
     const canvas = gl.canvas as HTMLCanvasElement;
+    canvas.style.position = 'absolute';
+    canvas.style.inset = '0';
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.display = 'block';
+    canvas.style.pointerEvents = 'none';
 
     const container = containerRef.current;
     container.appendChild(canvas);
@@ -215,7 +218,7 @@ const Grainient: React.FC<GrainientProps> = ({
 
     const ro = new ResizeObserver(setSize);
     ro.observe(container);
-    setSize();
+    requestAnimationFrame(() => setSize());
 
     let raf = 0;
     const t0 = performance.now();
@@ -260,7 +263,7 @@ const Grainient: React.FC<GrainientProps> = ({
     color3
   ]);
 
-  return <div ref={containerRef} className={`relative h-full w-full overflow-hidden ${className}`.trim()} />;
+  return <div ref={containerRef} className={`absolute inset-0 h-full w-full min-h-full overflow-hidden ${className}`.trim()} />;
 };
 
 export default Grainient;

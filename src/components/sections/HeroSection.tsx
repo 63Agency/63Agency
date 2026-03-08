@@ -3,17 +3,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import dynamic from "next/dynamic";
 import { useTranslations, useLocale } from "next-intl";
-import Grainient from "@/components/Grainient";
+
+const Grainient = dynamic(() => import("@/components/Grainient"), { ssr: false });
 
 const PARTNER_LOGOS = [
-  { src: "/images/partners/partner-logos/unnamed (1).png", alt: "Partner" },
-  { src: "/images/partners/partner-logos/Unit-Education .png", alt: "Unit Education" },
   { src: "/images/partners/partner-logos/partener1.png", alt: "Partner" },
-  { src: "/images/partners/partner-logos/partenaire18.png", alt: "Partner" },
   { src: "/images/partners/partner-logos/partenaire7.png", alt: "Partner" },
   { src: "/images/partners/partner-logos/logo02cadre.png", alt: "Partner" },
   { src: "/images/partners/partner-logos/Afriquia.png", alt: "Afriquia" },
+  { src: "/images/partners/partner-logos/Unit-Education .png", alt: "Unit Education" },
+  { src: "/images/partners/partner-logos/partenaire18.png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/unnamed (1).png", alt: "Partner" },
 ];
 
 /** Split text into two lines with balanced word count. */
@@ -60,20 +62,24 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-start sm:items-center justify-center overflow-hidden bg-black">
-      {/* Grainient background */}
-      <div className="absolute inset-0 z-0">
-        <Grainient
-          className="h-full w-full"
-          color1="#1a1a2e"
-          color2="#16213e"
-          color3="#0f0f23"
-          timeSpeed={0.2}
-          warpStrength={0.8}
-          grainAmount={0.06}
-        />
+      {/* Grainient background — gris et noir, animé */}
+      <div className="absolute inset-0 z-0 min-h-screen w-full bg-black">
+        <div className="absolute inset-0 min-h-full w-full">
+          <Grainient
+            className="h-full w-full min-h-screen"
+            color1="#000000"
+            color2="#404040"
+            color3="#1a1a1a"
+            timeSpeed={0.8}
+            warpStrength={1.4}
+            warpSpeed={2.8}
+            grainAmount={0.1}
+            grainAnimated={true}
+          />
+        </div>
       </div>
       {/* Subtle dot pattern overlay */}
-      <div className="absolute inset-0 z-0 opacity-20">
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.08) 1px, transparent 0)`,
           backgroundSize: '40px 40px'
@@ -134,22 +140,19 @@ export default function HeroSection() {
           </Link>
         </div>
 
-        {/* Partenaires – 7 logos en fin de hero (plus haut pour tenir dans le hero) */}
-        <div className="mt-3 sm:mt-4 lg:mt-5 pt-3 sm:pt-4 border-t border-white/10 w-full max-w-5xl mx-auto">
-          <p className="text-[9px] sm:text-[10px] text-white/50 uppercase tracking-widest mb-2 sm:mb-3">
-            {locale === "ar" ? "شركاؤنا" : locale === "en" ? "Our partners" : "Nos partenaires"}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10">
+        {/* Partenaires – tous les logos visibles en une ligne (taille réduite pour tenir dans l’écran) */}
+        <div className="mt-3 sm:mt-4 lg:mt-5 pt-3 sm:pt-4 w-full max-w-5xl mx-auto">
+          <div className="scrollbar-hide flex flex-nowrap items-center justify-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto w-full">
             {PARTNER_LOGOS.map((logo, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center h-10 sm:h-12 w-24 sm:w-28 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                className="flex shrink-0 items-center justify-center h-10 sm:h-12 md:h-14 w-20 sm:w-24 md:w-28 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               >
                 <Image
                   src={encodeURI(logo.src)}
                   alt={logo.alt}
-                  width={112}
-                  height={48}
+                  width={144}
+                  height={64}
                   className="object-contain max-h-full w-auto"
                   unoptimized={logo.src.includes(" ") ? true : undefined}
                 />

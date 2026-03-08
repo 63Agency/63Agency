@@ -205,19 +205,21 @@ export default function ContactPage() {
 
   return (
     <div className="relative min-h-screen pt-20 overflow-hidden">
-      {/* Grainient background — noir, gris, blanc animés */}
-      <div className="fixed inset-0 z-0">
-        <Grainient
-          className="h-full w-full"
-          color1="#000000"
-          color2="#666666"
-          color3="#ffffff"
-          timeSpeed={0.35}
-          warpStrength={1.2}
-          warpSpeed={1.5}
-          grainAmount={0.1}
-          grainAnimated={true}
-        />
+      {/* Grainient background — noir et gris animés (gris visible) */}
+      <div className="fixed inset-0 z-0 min-h-screen w-full bg-black">
+        <div className="absolute inset-0 min-h-full w-full">
+          <Grainient
+            className="h-full w-full min-h-screen"
+            color1="#000000"
+            color2="#5a5a5a"
+            color3="#2d2d2d"
+            timeSpeed={0.45}
+            warpStrength={1.5}
+            warpSpeed={2}
+            grainAmount={0.12}
+            grainAnimated={true}
+          />
+        </div>
       </div>
 
       {/* Content */}
@@ -397,9 +399,9 @@ export default function ContactPage() {
                   <div className="flex items-start justify-between gap-0 mb-8 overflow-visible">
                     {[1, 2, 3].map((s) => (
                       <div key={s} className={`flex items-center min-w-0 overflow-visible ${s === 2 ? "flex-1" : s === 3 ? "ml-auto flex-initial" : "flex-1"}`}>
-                        <div className="flex flex-col items-center flex-shrink-0 w-10">
+                        <div className="flex flex-col items-center flex-shrink-0 w-8">
                           <div
-                            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-colors shrink-0 ${
+                            className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors shrink-0 ${
                               step === s
                                 ? "bg-black text-white"
                                 : "bg-white border-2 border-gray-300 text-gray-600"
@@ -408,15 +410,15 @@ export default function ContactPage() {
                             {s}
                           </div>
                           <span
-                            className={`mt-2 text-sm font-medium text-center whitespace-nowrap block w-full leading-tight ${
+                            className={`mt-1.5 text-xs font-medium text-center whitespace-nowrap block w-full leading-tight ${
                               step === s ? "text-black font-semibold" : "text-gray-600"
-                            } ${s === 1 ? "-translate-x-6" : s === 2 ? "-translate-x-6" : ""}`}
+                            } ${s === 1 ? "-translate-x-5" : s === 2 ? "-translate-x-5" : ""}`}
                           >
                             {t(s === 1 ? "step1Label" : s === 2 ? "step2Label" : "step3Label")}
                           </span>
                         </div>
                         {s < 3 && (
-                          <div className="flex-1 h-0.5 mx-3 bg-gray-300 rounded self-start mt-5 min-w-[48px]" aria-hidden />
+                          <div className="flex-1 h-px mx-1.5 bg-gray-300 self-start mt-3.5 min-w-[32px]" aria-hidden />
                         )}
                       </div>
                     ))}
@@ -570,9 +572,9 @@ export default function ContactPage() {
                   <div className="flex items-start justify-between gap-0 mb-8 overflow-visible">
                     {[1, 2, 3].map((s) => (
                       <div key={s} className={`flex items-center min-w-0 overflow-visible ${s === 2 ? "flex-1" : s === 3 ? "ml-auto flex-initial" : "flex-1"}`}>
-                        <div className="flex flex-col items-center flex-shrink-0 w-10">
+                        <div className="flex flex-col items-center flex-shrink-0 w-8">
                           <div
-                            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-colors shrink-0 ${
+                            className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors shrink-0 ${
                               step === s
                                 ? "bg-black text-white"
                                 : "bg-white border-2 border-gray-300 text-gray-600"
@@ -581,15 +583,15 @@ export default function ContactPage() {
                             {s}
                           </div>
                           <span
-                            className={`mt-2 text-sm font-medium text-center whitespace-nowrap block w-full leading-tight ${
+                            className={`mt-1.5 text-xs font-medium text-center whitespace-nowrap block w-full leading-tight ${
                               step === s ? "text-black font-semibold" : "text-gray-600"
-                            } ${s === 1 ? "-translate-x-6" : s === 2 ? "-translate-x-6" : ""}`}
+                            } ${s === 1 ? "-translate-x-5" : s === 2 ? "-translate-x-5" : ""}`}
                           >
                             {t(s === 1 ? "step1Label" : s === 2 ? "step2Label" : "step3Label")}
                           </span>
                         </div>
                         {s < 3 && (
-                          <div className="flex-1 h-0.5 mx-3 bg-gray-300 rounded self-start mt-5 min-w-[48px]" aria-hidden />
+                          <div className="flex-1 h-px mx-1.5 bg-gray-300 self-start mt-3.5 min-w-[32px]" aria-hidden />
                         )}
                       </div>
                     ))}
@@ -715,9 +717,9 @@ export default function ContactPage() {
                   <div className="flex items-start justify-between gap-0 mb-8 overflow-visible">
                     {[1, 2, 3].map((s) => (
                       <div key={s} className={`flex items-center min-w-0 overflow-visible ${s === 2 ? "flex-1" : s === 3 ? "ml-auto flex-initial" : "flex-1"}`}>
-                        <div className="flex flex-col items-center flex-shrink-0 w-10">
+                        <div className="flex flex-col items-center flex-shrink-0 w-8">
                           <div
-                            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-colors shrink-0 ${
+                            className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors shrink-0 ${
                               step === s
                                 ? "bg-black text-white"
                                 : "bg-white border-2 border-gray-300 text-gray-600"
@@ -726,15 +728,15 @@ export default function ContactPage() {
                             {s}
                           </div>
                           <span
-                            className={`mt-2 text-sm font-medium text-center whitespace-nowrap block w-full leading-tight ${
+                            className={`mt-1.5 text-xs font-medium text-center whitespace-nowrap block w-full leading-tight ${
                               step === s ? "text-black font-semibold" : "text-gray-600"
-                            } ${s === 1 ? "-translate-x-6" : s === 2 ? "-translate-x-6" : ""}`}
+                            } ${s === 1 ? "-translate-x-5" : s === 2 ? "-translate-x-5" : ""}`}
                           >
                             {t(s === 1 ? "step1Label" : s === 2 ? "step2Label" : "step3Label")}
                           </span>
                         </div>
                         {s < 3 && (
-                          <div className="flex-1 h-0.5 mx-3 bg-gray-300 rounded self-start mt-5 min-w-[48px]" aria-hidden />
+                          <div className="flex-1 h-px mx-1.5 bg-gray-300 self-start mt-3.5 min-w-[32px]" aria-hidden />
                         )}
                       </div>
                     ))}

@@ -6,6 +6,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbar but keep scroll (e.g. partner logos) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   src: url("https://mdn.github.io/shared-assets/fonts/variable-fonts/AmstelvarAlpha-VF.ttf");
   font-family: "AmstelvarAlpha";

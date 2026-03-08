@@ -30,27 +30,27 @@ function isValidPhone(s: string) {
 
 function Stepper({ step, t }: { step: number; t: (k: string) => string }) {
   return (
-    <div className="flex items-start justify-between gap-0 mb-8 overflow-visible">
+    <div className="flex items-start justify-center gap-0 mb-8 overflow-visible">
       {[1, 2, 3].map((s) => (
-        <div key={s} className={`flex items-center min-w-0 overflow-visible ${s === 2 ? "flex-1" : s === 3 ? "ml-auto flex-initial" : "flex-1"}`}>
-          <div className="flex flex-col items-center flex-shrink-0 w-10">
+        <div key={s} className="flex items-center min-w-0 overflow-visible shrink-0">
+          <div className="flex flex-col items-center flex-shrink-0 w-8">
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-colors shrink-0 ${
+              className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors shrink-0 ${
                 step === s ? "bg-black text-white" : "bg-white border-2 border-gray-300 text-gray-600"
               }`}
             >
               {s}
             </div>
             <span
-              className={`mt-2 text-sm font-medium text-center whitespace-nowrap block w-full leading-tight ${
+              className={`mt-1.5 text-xs font-medium text-center whitespace-nowrap block w-full leading-tight ${
                 step === s ? "text-black font-semibold" : "text-gray-600"
-              } ${s === 1 ? "-translate-x-6" : s === 2 ? "-translate-x-6" : ""}`}
+              } ${s === 1 ? "-translate-x-5" : s === 2 ? "-translate-x-5" : ""}`}
             >
               {t(s === 1 ? "step1Label" : s === 2 ? "step2Label" : "step3Label")}
             </span>
           </div>
           {s < 3 && (
-            <div className="flex-1 h-0.5 mx-3 bg-gray-300 rounded self-start mt-5 min-w-[48px]" aria-hidden />
+            <div className="h-px w-8 sm:w-12 bg-gray-300 shrink-0 self-start mt-3.5 mx-2" aria-hidden />
           )}
         </div>
       ))}
