@@ -74,8 +74,8 @@ export default function HeroSection() {
           {t("descriptionLine2")}
         </h2>
 
-        {/* Secondary Headline – centré, un peu plus grand */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto">
+        {/* Secondary Headline – centré, taille réduite */}
+        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto">
           <span className="inline-flex flex-col items-center w-full">
             <span className="flex items-center justify-center gap-2 sm:gap-3 w-full">
               <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
@@ -100,8 +100,8 @@ export default function HeroSection() {
           </span>
         </h1>
 
-        {/* Descriptive Text : Selon la capacité... (taille normale) puis Spécialisés... */}
-        <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-4 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
+        {/* Descriptive Text : Selon la capacité... puis Spécialisés... (texte plus petit) */}
+        <p className="text-[11px] sm:text-sm md:text-base text-gray-400 mb-4 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
           <span className="block">{t("primaryHeadline")}</span>
           <span className="block mt-1 sm:mt-1">{t("descriptionLine1")}</span>
         </p>
@@ -114,7 +114,7 @@ export default function HeroSection() {
               e.preventDefault();
               scrollToSection("#contact");
             }}
-            className="coolBeans inline-block px-5 sm:px-6 py-3 sm:py-3 text-sm sm:text-base font-bold min-w-[200px]"
+            className="coolBeans inline-block px-4 sm:px-5 py-2.5 sm:py-2.5 text-xs sm:text-sm font-bold min-w-[180px]"
             style={{ textDecoration: 'none' }}
           >
             {t('ctaButton')}
