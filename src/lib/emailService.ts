@@ -37,48 +37,43 @@ function getTransporter() {
 }
 
 /**
- * Email 1: Confirmation sent TO THE CLIENT — creative & professional design.
+ * Email 1: Confirmation sent TO THE CLIENT.
+ * Section logo = fond noir. Section texte = fond blanc, texte noir. Responsive mobile.
  */
 function getClientConfirmationHtml(name: string): string {
   const safeName = escapeHtml(name);
   return `
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0; padding:0; background-color:#0c0c0c; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:#0c0c0c; padding: 48px 20px;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    @media only screen and (max-width: 600px) {
+      .wrapper { padding: 16px 12px !important; }
+      .card { max-width: 100% !important; border-radius: 12px !important; }
+      .logo-cell { padding: 24px 20px !important; text-align: center !important; }
+      .body-cell { padding: 24px 20px 32px !important; }
+      .footer-cell { padding: 16px 20px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#111; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" class="wrapper" style="background-color:#111; padding: 40px 20px;">
     <tr><td align="center">
-      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:560px; background:#ffffff; border-radius:20px; overflow:hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.25);">
-        <tr><td style="background:#000000; padding:32px 40px 24px; text-align:left;">
-          <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="112" style="display:block; max-width:112px; height:auto;" />
-          <table role="presentation" cellspacing="0" cellpadding="0" style="margin-top:20px;"><tr><td style="width:48px; height:3px; background:#d0ff71; border-radius:2px;"></td></tr></table>
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" class="card" style="max-width: 520px; background: #ffffff; border-radius: 12px; overflow: hidden;">
+        <tr><td class="logo-cell" style="background: #000000; padding: 28px 32px; text-align: center;">
+          <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="100" style="display: block; max-width: 100px; height: auto; margin: 0 auto;" />
         </td></tr>
-        <tr><td style="padding:40px 40px 32px; background-color:#f8faf9;">
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
-            <tr>
-              <td style="width:44px; vertical-align:top; padding-top:2px;">
-                <table role="presentation" cellspacing="0" cellpadding="0" style="width:36px; height:36px; background:#d0ff71; border-radius:50%;"><tr><td align="center" style="font-size:18px; color:#000;">&#10003;</td></tr></table>
-              </td>
-              <td>
-                <p style="margin:0 0 6px; font-size:11px; font-weight:700; color:#0c0c0c; letter-spacing:0.14em; text-transform:uppercase;">Confirmation</p>
-                <h1 style="margin:0; font-size:26px; font-weight:800; color:#0c0c0c; line-height:1.2; letter-spacing:-0.02em;">Merci pour votre message</h1>
-              </td>
-            </tr>
-          </table>
+        <tr><td class="body-cell" style="padding: 32px 28px 28px; background: #ffffff;">
+          <h1 style="margin: 0 0 20px; font-size: 20px; font-weight: 700; color: #000000; line-height: 1.25;">Merci pour votre message</h1>
+          <p style="margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: #000000;">Bonjour ${safeName},</p>
+          <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.65; color: #1a1a1a;">Nous avons bien re&#231;u votre demande. Notre &#233;quipe vous recontactera sous 24 &#224; 48&#8239;h ouvr&#233;es.</p>
+          <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.5; color: #1a1a1a;">En attendant&#8239;: <a href="tel:+212720007007" style="color: #000000; font-weight: 600; text-decoration: none;">07 20 007 007</a> &#183; <a href="mailto:contact@63agency.com" style="color: #000000; font-weight: 600; text-decoration: none;">contact@63agency.com</a></p>
+          <p style="margin: 0; font-size: 14px; color: #1a1a1a;">&#192; bient&#244;t,<br><strong style="color: #000000;">63 Agency</strong></p>
         </td></tr>
-        <tr><td style="padding:0 40px 32px;">
-          <p style="margin:0 0 16px; font-size:16px; line-height:1.65; color:#1a1a1a;">Bonjour ${safeName},</p>
-          <p style="margin:0 0 28px; font-size:15px; line-height:1.7; color:#444;">Nous avons bien re&#231;u votre demande. Un membre de notre &#233;quipe vous recontactera sous <strong style="color:#0c0c0c;">24 &#224; 48 heures ouvr&#233;es</strong>.</p>
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#0c0c0c; border-radius:12px; margin:0 0 28px;">
-            <tr><td style="padding:24px 28px;">
-              <p style="margin:0 0 12px; font-size:11px; font-weight:700; color:#d0ff71; letter-spacing:0.1em; text-transform:uppercase;">Besoin de nous joindre&#8239;?</p>
-              <p style="margin:0; font-size:15px; line-height:1.6; color:#ffffff;"><a href="tel:+212720007007" style="color:#ffffff; font-weight:600; text-decoration:none;">07 20 007 007</a> &nbsp;&#183;&nbsp; <a href="mailto:contact@63agency.com" style="color:#d0ff71; font-weight:600; text-decoration:none;">contact@63agency.com</a></p>
-            </td></tr>
-          </table>
-          <p style="margin:0; font-size:15px; line-height:1.6; color:#333;">&#192; tr&#232;s bient&#244;t,<br><strong style="color:#0c0c0c;">L'&#233;quipe 63 Agency</strong></p>
-        </td></tr>
-        <tr><td style="padding:24px 40px; background:#f1f1f1; border-top:1px solid #e5e5e5;">
-          <p style="margin:0; font-size:11px; color:#888; letter-spacing:0.04em;">63 Agency &#183; Lead generation &amp; performance &#183; Maroc &amp; Europe</p>
+        <tr><td class="footer-cell" style="padding: 16px 28px; background: #f5f5f5; border-top: 1px solid #eee;">
+          <p style="margin: 0; font-size: 11px; color: #666;">63 Agency &#183; Lead generation &amp; performance</p>
         </td></tr>
       </table>
     </td></tr>

@@ -33,7 +33,7 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
 **Subject** : `{{subject_client}}`  
 **To** : `{{to_email}}`
 
-**Content (HTML)** :
+**Content (HTML)** — Section logo **noir**, section texte **blanc** avec texte **noir**, responsive mobile.
 
 ```html
 <!DOCTYPE html>
@@ -42,58 +42,42 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>63 Agency — Confirmation</title>
+  <style type="text/css">
+    @media only screen and (max-width: 600px) {
+      .wrapper { padding: 16px 12px !important; }
+      .card { max-width: 100% !important; border-radius: 12px !important; }
+      .logo-cell { padding: 24px 20px !important; text-align: center !important; }
+      .logo-cell img { margin: 0 auto !important; }
+      .body-cell { padding: 24px 20px 32px !important; }
+      .footer-cell { padding: 16px 20px !important; }
+    }
+  </style>
 </head>
-<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0c0c0c;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #0c0c0c; padding: 48px 20px;">
+<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #111;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="wrapper" style="background-color: #111; padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.25);">
-          <!-- Header: logo + accent -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="card" style="max-width: 520px; background: #ffffff; border-radius: 12px; overflow: hidden;">
+          <!-- Section logo : fond NOIR -->
           <tr>
-            <td style="background: #000000; padding: 32px 40px 24px; text-align: left;">
-              <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="112" style="display: block; max-width: 112px; height: auto;" />
-              <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top: 20px;"><tr><td style="width: 48px; height: 3px; background: #d0ff71; border-radius: 2px;"></td></tr></table>
+            <td class="logo-cell" style="background: #000000; padding: 28px 32px; text-align: center;">
+              <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="100" style="display: block; max-width: 100px; height: auto; margin: 0 auto;" />
             </td>
           </tr>
-          <!-- Hero: thank you -->
+          <!-- Section texte : fond BLANC, texte NOIR -->
           <tr>
-            <td style="padding: 40px 40px 32px; background-color: #f8faf9;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td style="width: 44px; vertical-align: top; padding-top: 2px;">
-                    <table role="presentation" cellpadding="0" cellspacing="0" style="width: 36px; height: 36px; background: #d0ff71; border-radius: 50%;"><tr><td align="center" style="font-size: 18px; color: #000;">✓</td></tr></table>
-                  </td>
-                  <td>
-                    <p style="margin: 0 0 6px; font-size: 11px; font-weight: 700; color: #0c0c0c; letter-spacing: 0.14em; text-transform: uppercase;">Confirmation</p>
-                    <h1 style="margin: 0; font-size: 26px; font-weight: 800; color: #0c0c0c; line-height: 1.2; letter-spacing: -0.02em;">Merci pour votre message</h1>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <!-- Body -->
-          <tr>
-            <td style="padding: 0 40px 32px;">
-              <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #1a1a1a;">Bonjour {{client_name}},</p>
-              <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.7; color: #444;">Nous avons bien reçu votre demande. Un membre de notre équipe vous recontactera sous <strong style="color: #0c0c0c;">24 à 48 heures ouvrées</strong>.</p>
-              <!-- Contact card -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background: #0c0c0c; border-radius: 12px; margin: 0 0 28px;">
-                <tr>
-                  <td style="padding: 24px 28px;">
-                    <p style="margin: 0 0 12px; font-size: 11px; font-weight: 700; color: #d0ff71; letter-spacing: 0.1em; text-transform: uppercase;">Besoin de nous joindre ?</p>
-                    <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #ffffff;">
-                      <a href="tel:+212720007007" style="color: #ffffff; font-weight: 600; text-decoration: none;">07 20 007 007</a> &nbsp;·&nbsp; <a href="mailto:contact@63agency.com" style="color: #d0ff71; font-weight: 600; text-decoration: none;">contact@63agency.com</a>
-                    </p>
-                  </td>
-                </tr>
-              </table>
-              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333;">À très bientôt,<br><strong style="color: #0c0c0c;">L'équipe 63 Agency</strong></p>
+            <td class="body-cell" style="padding: 32px 28px 28px; background: #ffffff;">
+              <h1 style="margin: 0 0 20px; font-size: 20px; font-weight: 700; color: #000000; line-height: 1.25;">Merci pour votre message</h1>
+              <p style="margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: #000000;">Bonjour {{client_name}},</p>
+              <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.65; color: #1a1a1a;">Nous avons bien reçu votre demande. Notre équipe vous recontactera sous 24 à 48 h ouvrées.</p>
+              <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.5; color: #1a1a1a;">En attendant : <a href="tel:+212720007007" style="color: #000000; font-weight: 600; text-decoration: none;">07 20 007 007</a> · <a href="mailto:contact@63agency.com" style="color: #000000; font-weight: 600; text-decoration: none;">contact@63agency.com</a></p>
+              <p style="margin: 0; font-size: 14px; color: #1a1a1a;">À bientôt,<br><strong style="color: #000000;">63 Agency</strong></p>
             </td>
           </tr>
           <!-- Footer -->
           <tr>
-            <td style="padding: 24px 40px; background: #f1f1f1; border-top: 1px solid #e5e5e5;">
-              <p style="margin: 0; font-size: 11px; color: #888; letter-spacing: 0.04em;">63 Agency · Lead generation &amp; performance · Maroc &amp; Europe</p>
+            <td class="footer-cell" style="padding: 16px 28px; background: #f5f5f5; border-top: 1px solid #eee;">
+              <p style="margin: 0; font-size: 11px; color: #666;">63 Agency · Lead generation &amp; performance</p>
             </td>
           </tr>
         </table>
