@@ -28,7 +28,7 @@ export default function TestimonialsSection() {
   const t = useTranslations("testimonials");
 
   return (
-    <section id="testimonials" className="py-16 sm:py-24 bg-black">
+    <section id="testimonials" className="py-6 sm:py-12 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/70 text-center mb-3">

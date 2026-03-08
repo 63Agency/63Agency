@@ -12,7 +12,7 @@ export default function FounderSection() {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <section className="py-16 sm:py-24 bg-white" id="founder">
+    <section className="py-6 sm:py-12 bg-white" id="founder">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Titre principal + point vert */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-10 sm:mb-12 text-left leading-tight">

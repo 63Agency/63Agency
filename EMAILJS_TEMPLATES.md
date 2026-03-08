@@ -33,7 +33,7 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
 **Subject** : `{{subject_client}}`  
 **To** : `{{to_email}}`
 
-**Content (HTML)** :
+**Content (HTML)** — Simple, professionnel, créatif. Section logo en **noir** pour afficher le logo blanc.
 
 ```html
 <!DOCTYPE html>
@@ -43,37 +43,31 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>63 Agency — Confirmation</title>
 </head>
-<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0a0a0a;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #0a0a0a; padding: 48px 24px;">
+<body style="margin:0; padding:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #111;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #111; padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; background: #ffffff; border-radius: 16px; overflow: hidden;">
-          <!-- Header band -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; background: #fff; border-radius: 12px; overflow: hidden;">
+          <!-- Header: fond noir pour logo blanc -->
           <tr>
-            <td style="background: #000000; padding: 28px 32px; text-align: left;">
-              <p style="margin: 0; font-size: 28px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em;">63</p>
-              <p style="margin: 4px 0 0; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.2em; text-transform: uppercase;">Agency</p>
+            <td style="background: #000000; padding: 36px 32px; text-align: center;">
+              <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="100" style="display: block; max-width: 100px; height: auto; margin: 0 auto;" />
             </td>
           </tr>
           <!-- Body -->
           <tr>
-            <td style="padding: 40px 32px 32px;">
-              <p style="margin: 0 0 6px; font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.12em; text-transform: uppercase;">Confirmation</p>
-              <h1 style="margin: 0 0 24px; font-size: 24px; font-weight: 700; color: #000; line-height: 1.25;">Merci pour votre message</h1>
-              <p style="margin: 0 0 20px; font-size: 15px; line-height: 1.65; color: #333;">Bonjour {{client_name}},</p>
-              <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.65; color: #444;">Nous avons bien reçu votre demande. Un membre de notre équipe vous recontactera sous 24 à 48 heures ouvrées.</p>
-              <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0 0 28px; width: 100%; border: 1px solid #eee; border-radius: 10px;">
-                <tr>
-                  <td style="padding: 16px 20px; font-size: 13px; color: #666;">En attendant, vous pouvez nous joindre au <strong style="color: #000;">07 20 007 007</strong> ou à <a href="mailto:contact@63agency.com" style="color: #000; font-weight: 600; text-decoration: none;">contact@63agency.com</a>.</td>
-                </tr>
-              </table>
-              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333;">À très bientôt,<br><strong style="color: #000;">L'équipe 63 Agency</strong></p>
+            <td style="padding: 40px 32px 36px;">
+              <h1 style="margin: 0 0 24px; font-size: 22px; font-weight: 700; color: #111; letter-spacing: -0.02em;">Merci pour votre message</h1>
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #333;">Bonjour {{client_name}},</p>
+              <p style="margin: 0 0 28px; font-size: 15px; line-height: 1.65; color: #444;">Nous avons bien reçu votre demande. Notre équipe vous recontactera sous 24 à 48 h ouvrées.</p>
+              <p style="margin: 0 0 28px; font-size: 14px; line-height: 1.5; color: #666;">En attendant : <a href="tel:+212720007007" style="color: #000; font-weight: 600; text-decoration: none;">07 20 007 007</a> · <a href="mailto:contact@63agency.com" style="color: #000; font-weight: 600; text-decoration: none;">contact@63agency.com</a></p>
+              <p style="margin: 0; font-size: 15px; color: #333;">À bientôt,<br><strong style="color: #000;">63 Agency</strong></p>
             </td>
           </tr>
           <!-- Footer -->
           <tr>
-            <td style="padding: 24px 32px; background: #f8f8f8; border-top: 1px solid #eee;">
-              <p style="margin: 0; font-size: 11px; color: #999; letter-spacing: 0.05em;">63 Agency · Digital Marketing · contact@63agency.com · 07 20 007 007</p>
+            <td style="padding: 20px 32px; background: #f5f5f5; border-top: 1px solid #eee;">
+              <p style="margin: 0; font-size: 11px; color: #999;">63 Agency · Lead generation &amp; performance</p>
             </td>
           </tr>
         </table>
@@ -110,8 +104,7 @@ Dans chaque template EmailJS, le champ **To** doit être : `{{to_email}}` (le co
           <!-- Header -->
           <tr>
             <td style="background: #000000; padding: 24px 32px; text-align: left;">
-              <p style="margin: 0; font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em;">63</p>
-              <p style="margin: 2px 0 0; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.2em; text-transform: uppercase;">Agency</p>
+              <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="120" style="display: block; max-width: 120px; height: auto;" />
               <p style="margin: 16px 0 0; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.15em; text-transform: uppercase;">Nouveau lead</p>
             </td>
           </tr>

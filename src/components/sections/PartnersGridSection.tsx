@@ -39,12 +39,11 @@ export default function PartnersGridSection() {
   const gridLogos = Array.from({ length: 60 }, (_, i) => PARTNER_LOGOS[i % PARTNER_LOGOS.length]);
 
   return (
-    <section className="relative py-16 sm:py-20 bg-neutral-100 overflow-hidden">
+    <section className="relative py-6 sm:py-12 bg-neutral-100 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Title */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-10 sm:mb-14 leading-tight">
-          <span className="block">{t("titleLine1")}</span>
-          <span className="block">{t("titleLine2")}</span>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-10 sm:mb-14 leading-tight whitespace-nowrap">
+          {t("titleLine1")} {t("titleLine2")}
         </h2>
 
         {/* Logos grid - couleurs d'origine, pas de hover */}

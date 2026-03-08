@@ -36,7 +36,7 @@ export default function OurSystemSection() {
   ];
 
   return (
-    <section id="system" className="relative pt-4 sm:pt-6 pb-20 sm:pb-28 bg-black overflow-hidden">
+    <section id="system" className="relative pt-4 sm:pt-6 pb-8 sm:pb-14 bg-black overflow-hidden">
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,

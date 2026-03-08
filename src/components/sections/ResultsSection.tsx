@@ -1,72 +1,93 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 
 export default function ResultsSection() {
-  const t = useTranslations('results');
+  const t = useTranslations("results");
 
   const metrics = [
-    {
-      value: t('metric1.value'),
-      label: t('metric1.label'),
-      description: t('metric1.description'),
-    },
-    {
-      value: t('metric2.value'),
-      label: t('metric2.label'),
-      description: t('metric2.description'),
-    },
-    {
-      value: t('metric3.value'),
-      label: t('metric3.label'),
-      description: t('metric3.description'),
-    },
-    {
-      value: t('metric4.value'),
-      label: t('metric4.label'),
-      description: t('metric4.description'),
-    },
+    { value: t("metric1.value"), label: t("metric1.label"), description: t("metric1.description") },
+    { value: t("metric2.value"), label: t("metric2.label"), description: t("metric2.description") },
+    { value: t("metric3.value"), label: t("metric3.label"), description: t("metric3.description") },
+    { value: t("metric4.value"), label: t("metric4.label"), description: t("metric4.description") },
   ];
 
   return (
-    <section id="results" className="relative py-20 sm:py-32 bg-black overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}></div>
+    <section id="results" className="relative py-16 sm:py-24 bg-black overflow-hidden">
+      {/* Decorative: large faded number behind content */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0" aria-hidden>
+        <span className="text-[min(40vw,520px)] font-bold text-white/[0.03] leading-none select-none">
+          63
+        </span>
       </div>
 
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 opacity-[0.04] z-0"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)`,
+          backgroundSize: "64px 64px",
+        }}
+      />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            {t('title')}
-          </h2>
-          <p className="text-lg sm:text-xl text-white opacity-80 max-w-3xl mx-auto">
-            {t('subtitle')}
-          </p>
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-14 sm:mb-16">
+          <div className="lg:col-span-5">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white/50 mb-3">
+              {t("eyebrow")}
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              {t("title")}
+            </h2>
+          </div>
+          <div className="lg:col-span-7 flex items-end">
+            <p className="text-base sm:text-lg text-white/60 leading-relaxed max-w-xl">
+              {t("subtitle")}
+            </p>
+          </div>
         </div>
 
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {metrics.map((metric, index) => (
-            <div
-              key={index}
-              className="text-center p-6 sm:p-8 border border-white border-opacity-10 rounded-lg hover:border-opacity-30 transition-all duration-300 bg-black bg-opacity-30"
-            >
-              <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-3">
-                {metric.value}
-              </div>
-              <div className="text-lg sm:text-xl font-semibold text-white mb-2">
-                {metric.label}
-              </div>
-              <div className="text-sm sm:text-base text-white opacity-60">
-                {metric.description}
-              </div>
+        {/* Metrics: bento-style — first card large, then 3 in a row */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
+          {/* Hero metric (Leads) — spans 5 cols on lg */}
+          <div className="lg:col-span-5 rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 hover:border-white/20 transition-colors duration-300">
+            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-2">
+              {metrics[0].value}
             </div>
-          ))}
+            <div className="text-lg sm:text-xl font-semibold text-white mb-1">
+              {metrics[0].label}
+            </div>
+            <div className="text-sm text-white/50">
+              {metrics[0].description}
+            </div>
+            <div className="mt-6 h-px w-12 bg-white/20" aria-hidden />
+          </div>
+
+          {/* Right column: 3 metrics stacked */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            {metrics.slice(1, 4).map((metric, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-6 hover:border-white/20 transition-colors duration-300"
+              >
+                <div className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-1">
+                  {metric.value}
+                </div>
+                <div className="text-base font-semibold text-white">
+                  {metric.label}
+                </div>
+                <div className="text-xs sm:text-sm text-white/50 mt-1">
+                  {metric.description}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom line: single thin rule */}
+        <div className="mt-12 sm:mt-16 flex justify-center">
+          <div className="h-px w-24 sm:w-32 bg-white/20" aria-hidden />
         </div>
       </div>
     </section>

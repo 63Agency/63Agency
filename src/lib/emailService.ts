@@ -37,28 +37,32 @@ function getTransporter() {
 }
 
 /**
- * Email 1: Confirmation sent TO THE CLIENT at their submitted email address.
+ * Email 1: Confirmation sent TO THE CLIENT — simple, professionnel, créatif.
+ * Section logo en noir pour afficher le logo blanc.
  */
 function getClientConfirmationHtml(name: string): string {
+  const safeName = escapeHtml(name);
   return `
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0; padding:0; background-color:#f4f4f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f4f4f5; padding: 40px 16px;">
+<body style="margin:0; padding:0; background-color:#111; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:#111; padding: 40px 20px;">
     <tr><td align="center">
-      <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
-        <tr><td style="background-color:#0f0f14; padding: 32px 40px; text-align:center;">
-          <p style="margin:0; font-size:24px; font-weight:700; color:#ffffff;">63 AGENCY</p>
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:520px; background:#fff; border-radius:12px; overflow:hidden;">
+        <tr><td style="background:#000000; padding:36px 32px; text-align:center;">
+          <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="100" style="display:block; max-width:100px; height:auto; margin:0 auto;" />
         </td></tr>
-        <tr><td style="padding: 40px;">
-          <p style="margin:0 0 20px 0; font-size:18px; color:#111827; font-weight:600;">Bonjour ${escapeHtml(name)},</p>
-          <p style="margin:0 0 16px 0; font-size:16px; color:#374151; line-height:1.6;">Nous avons bien reçu votre message et nous vous remercions pour votre intérêt.</p>
-          <p style="margin:0 0 24px 0; font-size:16px; color:#374151; line-height:1.6;">Un membre de notre équipe vous recontactera très prochainement.</p>
-          <p style="margin: 28px 0 0 0; font-size:16px; color:#111827;">Cordialement,</p>
-          <p style="margin: 4px 0 0 0; font-size:16px; color:#22c55e; font-weight:600;">L'équipe 63 Agency</p>
+        <tr><td style="padding:40px 32px 36px;">
+          <h1 style="margin:0 0 24px; font-size:22px; font-weight:700; color:#111; letter-spacing:-0.02em;">Merci pour votre message</h1>
+          <p style="margin:0 0 20px; font-size:16px; line-height:1.6; color:#333;">Bonjour ${safeName},</p>
+          <p style="margin:0 0 28px; font-size:15px; line-height:1.65; color:#444;">Nous avons bien re&#231;u votre demande. Notre &#233;quipe vous recontactera sous 24 &#224; 48&#8239;h ouvr&#233;es.</p>
+          <p style="margin:0 0 28px; font-size:14px; line-height:1.5; color:#666;">En attendant&#8239;: <a href="tel:+212720007007" style="color:#000; font-weight:600; text-decoration:none;">07 20 007 007</a> &#183; <a href="mailto:contact@63agency.com" style="color:#000; font-weight:600; text-decoration:none;">contact@63agency.com</a></p>
+          <p style="margin:0; font-size:15px; color:#333;">&#192; bient&#244;t,<br><strong style="color:#000;">63 Agency</strong></p>
         </td></tr>
-        <tr><td style="padding: 24px 40px; background-color:#f8fafc; font-size:12px; color:#6b7280; text-align:center;">63 Agency · Génération de leads qualifiés</td></tr>
+        <tr><td style="padding:20px 32px; background:#f5f5f5; border-top:1px solid #eee;">
+          <p style="margin:0; font-size:11px; color:#999;">63 Agency &#183; Lead generation &amp; performance</p>
+        </td></tr>
       </table>
     </td></tr>
   </table>
@@ -113,8 +117,8 @@ function getAdminNotificationHtml(data: ContactFormPayload): string {
     <tr><td align="center">
       <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width:600px; width:100%; background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
         <tr><td style="background-color:#0f0f14; padding: 24px 32px; text-align:center;">
-          <p style="margin:0; font-size:22px; font-weight:700; color:#ffffff;">63 AGENCY</p>
-          <p style="margin:8px 0 0 0; font-size:13px; color:rgba(255,255,255,0.7);">Nouveau contact</p>
+          <img src="https://lhleyqtvyojrqwjthlfz.supabase.co/storage/v1/object/public/assets/63.png" alt="63 Agency" width="120" style="display:block; max-width:120px; height:auto; margin:0 auto;" />
+          <p style="margin:16px 0 0 0; font-size:13px; color:rgba(255,255,255,0.7);">Nouveau contact</p>
         </td></tr>
         <tr><td style="padding: 32px;">
           <table role="presentation" width="100%" cellspacing="0" cellpadding="0">${bodyRows}</table>

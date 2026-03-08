@@ -25,7 +25,7 @@ export default function IndustriesSection() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-32 bg-white overflow-hidden">
+    <section className="relative py-6 sm:py-12 bg-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0" style={{

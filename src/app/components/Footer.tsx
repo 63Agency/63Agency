@@ -11,58 +11,66 @@ const SOCIAL_LINKS = [
   { label: "Facebook", href: "https://www.facebook.com/63agency", icon: "fa-brands fa-facebook-f" },
 ];
 
+const FOOTER_SERVICES = [
+  "service1",
+  "service2",
+  "service3",
+  "service4",
+  "service5",
+] as const;
+
 export default function Footer() {
   const tFooter = useTranslations("footer");
-  const tSystem = useTranslations("system");
   const locale = useLocale();
   const year = new Date().getFullYear();
-
-  const systemCols = [
-    { title: tSystem("step1.title"), items: [tSystem("step1.item1"), tSystem("step1.item2"), tSystem("step1.item3"), tSystem("step1.item4")] },
-    { title: tSystem("step2.title"), items: [tSystem("step2.item1"), tSystem("step2.item2"), tSystem("step2.item3"), tSystem("step2.item4")] },
-    { title: tSystem("step3.title"), items: [tSystem("step3.item1"), tSystem("step3.item2"), tSystem("step3.item3"), tSystem("step3.item4")] },
-    { title: tSystem("step4.title"), items: [tSystem("step4.item1"), tSystem("step4.item2"), tSystem("step4.item3"), tSystem("step4.item4")] },
-    { title: tSystem("step5.title"), items: [tSystem("step5.item1"), tSystem("step5.item2"), tSystem("step5.item3"), tSystem("step5.item4")] },
-  ];
-
-  const resourceLinks = [
-    { label: tFooter("resource1"), href: `/${locale}#system` },
-    { label: tFooter("resource2"), href: `/${locale}#results` },
-    { label: tFooter("resource3"), href: `/${locale}/contact` },
-    { label: tFooter("resource4"), href: `/${locale}#contact` },
-  ];
 
   return (
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 lg:gap-x-10">
-          {/* Column 1: Logo + tagline (system) + addresses */}
-          <div className="space-y-5 min-w-0">
-            <Link href={`/${locale}`} className="inline-block">
+        <div className="footer-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 sm:gap-y-10 gap-x-8 lg:gap-x-10 items-start">
+          {/* Colonne 1 : Logo + taglines – espacement serré (CSS .footer-col-1) */}
+          <div className="footer-col-1 min-w-0">
+            <Link href={`/${locale}`} className="footer-logo inline-block" aria-label="63 Agency">
               <Image
                 src="/images/hero/63.png"
                 alt="63 Agency"
-                width={200}
-                height={64}
-                className="object-contain h-14 sm:h-16 w-auto max-w-full"
+                width={140}
+                height={45}
+                className="object-contain h-10 sm:h-12 w-auto max-w-full"
               />
             </Link>
-            <p className="text-sm text-white/80 leading-snug">{tFooter("tagline")}</p>
-            <div className="space-y-4">
-              <div>
-                <p className="font-bold text-white text-sm mb-1">{tFooter("contact")}</p>
-                <a
-                  href={`tel:${tFooter("phone").replace(/\s/g, "")}`}
-                  className="text-sm text-white/70 hover:text-white flex items-center gap-2"
+            <p className="footer-tagline-intro text-sm text-white/80 leading-snug">{tFooter("taglineIntro")}</p>
+            <p className="footer-tagline text-sm text-white/80 leading-snug">{tFooter("tagline")}</p>
+          </div>
+
+          {/* Colonne 2 : Notre système – même arrangement que Contactez-nous, un peu à droite */}
+          <div className="min-w-0 flex flex-col lg:pl-6">
+            <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-3">
+              {tFooter("servicesTitle")}
+            </h3>
+            <div className="flex flex-col gap-2 text-sm text-white/80">
+              {FOOTER_SERVICES.map((key) => (
+                <Link
+                  key={key}
+                  href={`/${locale}#system`}
+                  className="inline-flex items-center gap-2 hover:text-white transition-colors w-fit text-white/70"
                 >
-                  <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
-                  {tFooter("phone")}
-                </a>
+                  {tFooter(key)}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Colonne 3 : Contactez-nous + Nous suivre – disposition verticale, un peu à droite */}
+          <div className="min-w-0 flex flex-col space-y-5 lg:pl-6">
+            <div>
+              <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-3">
+                {tFooter("contactSectionTitle")}
+              </h3>
+              <div className="flex flex-col gap-2 text-sm text-white/80">
                 <a
                   href={`mailto:${tFooter("email")}`}
-                  className="text-sm text-white/70 hover:text-white flex items-center gap-2 mt-1"
+                  className="inline-flex items-center gap-2 hover:text-white transition-colors w-fit"
                 >
                   <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -70,86 +78,41 @@ export default function Footer() {
                   </svg>
                   {tFooter("email")}
                 </a>
+                <a
+                  href={`tel:${tFooter("phone").replace(/\s/g, "")}`}
+                  className="inline-flex items-center gap-2 hover:text-white transition-colors w-fit"
+                >
+                  <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                  </svg>
+                  {tFooter("phone")}
+                </a>
+                {/* Rabat */}
+                <span className="inline-flex items-start gap-2 w-fit">
+                  <svg className="w-4 h-4 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="leading-snug">
+                    <span className="font-semibold text-white/90">{tFooter("cityRabat")}</span>
+                    {" — "}
+                    {tFooter("addressRabat")}
+                  </span>
+                </span>
+                {/* Casablanca */}
+                <span className="inline-flex items-start gap-2 w-fit">
+                  <svg className="w-4 h-4 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="leading-snug">
+                    <span className="font-semibold text-white/90">{tFooter("cityCasablanca")}</span>
+                    {" — "}
+                    {tFooter("addressCasa")}
+                  </span>
+                </span>
               </div>
             </div>
-          </div>
-
-          {/* Column 2: Steps 1 & 2 (Le Système) */}
-          <div className="flex flex-col gap-8 min-w-0">
-            {systemCols.slice(0, 2).map((col, i) => (
-              <div key={i} className="min-w-0">
-                <h3 className="font-bold text-white text-sm mb-3">{col.title}</h3>
-                <ul className="space-y-2">
-                  {col.items.map((item, j) => (
-                    <li key={j}>
-                      <Link
-                        href={`/${locale}#system`}
-                        className="text-sm text-white/70 hover:text-white block break-words"
-                      >
-                        {item}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Column 3: Steps 3 & 4 (Le Système) */}
-          <div className="flex flex-col gap-8 min-w-0">
-            {systemCols.slice(2, 4).map((col, i) => (
-              <div key={i} className="min-w-0">
-                <h3 className="font-bold text-white text-sm mb-3">{col.title}</h3>
-                <ul className="space-y-2">
-                  {col.items.map((item, j) => (
-                    <li key={j}>
-                      <Link
-                        href={`/${locale}#system`}
-                        className="text-sm text-white/70 hover:text-white block break-words"
-                      >
-                        {item}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Column 4: Step 5 + Resources + Follow us */}
-          <div className="space-y-8 min-w-0">
             <div>
-              <h3 className="font-bold text-white text-sm mb-3">{systemCols[4].title}</h3>
-              <ul className="space-y-2 mb-6">
-                {systemCols[4].items.map((item, j) => (
-                  <li key={j}>
-                    <Link
-                      href={`/${locale}#system`}
-                      className="text-sm text-white/70 hover:text-white block break-words"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold text-white text-sm mb-3">{tFooter("resources")}</h3>
-              <ul className="space-y-2">
-                {resourceLinks.map((r) => (
-                  <li key={r.label}>
-                    <Link
-                      href={r.href}
-                      className="text-sm text-white/70 hover:text-white block"
-                    >
-                      {r.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold text-white text-sm mb-3 uppercase tracking-wider">
+              <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-2.5">
                 {tFooter("followUsTitle")}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -170,9 +133,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-white/60">
-          <LanguageSwitcher variant="footer" />
-          <span>{tFooter("copyright", { year })}</span>
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm text-white/60">
+          <LanguageSwitcher variant="footer" className="shrink-0" />
+          <span className="text-center sm:text-left">{tFooter("copyright", { year })}</span>
         </div>
       </div>
     </footer>

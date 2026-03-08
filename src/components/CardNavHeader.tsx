@@ -27,7 +27,7 @@ export default function CardNavHeader() {
 
   return (
     <div
-      className="card-nav-header-dark fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4 sm:px-6 transition-transform duration-300 ease-out"
+      className="card-nav-header-dark fixed top-0 left-0 right-0 z-50 flex justify-center pt-1 sm:pt-2 px-4 sm:px-6 transition-transform duration-300 ease-out"
     >
       <CardNav
         logo="/images/hero/63AgencyTextwhit.png"

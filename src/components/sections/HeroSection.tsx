@@ -1,8 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 import { useTranslations, useLocale } from "next-intl";
+
+const PARTNER_LOGOS = [
+  { src: "/images/partners/partner-logos/unnamed (1).png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/Unit-Education .png", alt: "Unit Education" },
+  { src: "/images/partners/partner-logos/partener1.png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/partenaire18.png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/partenaire7.png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/logo02cadre.png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/Afriquia.png", alt: "Afriquia" },
+];
 
 /** Split text into two lines with balanced word count. */
 function splitIntoTwoLines(text: string): [string, string] {
@@ -35,7 +46,7 @@ export default function HeroSection() {
   const locale = useLocale();
   const headlineFull = `${t("secondaryHeadlineStart")} ${t("secondaryHeadlineEnd")}`.trim();
   const [line1, line2] = splitIntoTwoLines(headlineFull);
-  const underlinePhrases = locale === "en" ? ["50 to 650"] : ["50 et 650", "qualifiés chaque mois"];
+  const underlinePhrases = locale === "en" ? ["50 to 950"] : ["50 et 950", "qualifiés chaque mois"];
   const line1Content = withUnderlines(line1, underlinePhrases);
   const line2Content = withUnderlines(line2, underlinePhrases);
 
@@ -57,68 +68,81 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 pt-36 sm:pt-24 lg:pt-32 pb-10 sm:pb-6 lg:pb-8 text-center">
-        {/* Primary Headline – même style que la description (Spécialisés…) */}
-        <h2 className="text-sm sm:text-lg md:text-xl text-gray-400 mb-4 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
-          {t('primaryHeadline')}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 pt-28 sm:pt-20 lg:pt-24 pb-6 sm:pb-4 lg:pb-6 text-center">
+        {/* Texte du haut : Système d'acquisition... (petit) */}
+        <h2 className="text-[10px] sm:text-xs md:text-sm text-gray-400 mb-2 sm:mb-2 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
+          {t("descriptionLine2")}
         </h2>
 
-        {/* Secondary Headline – affichage professionnel, 2 lignes */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-5 sm:mb-6 flex flex-col items-center sm:items-start max-w-4xl mx-auto">
-          <span className="inline-flex flex-col items-center w-full sm:w-auto">
-            <span className="flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto">
+        {/* Secondary Headline – centré, un peu plus grand */}
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto">
+          <span className="inline-flex flex-col items-center w-full">
+            <span className="flex items-center justify-center gap-2 sm:gap-3 w-full">
               <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
               <span
-                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-nowrap"
+                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-normal text-center sm:whitespace-nowrap"
                 style={{
-                  backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #8293A4 15%, #95A5B5 35%, #A8B8C8 55%, #B8C8D8 72%, #C5D5E5 88%, #D5E2EE 96%, #FFFFFF 100%)",
+                  backgroundImage: "linear-gradient(to bottom, #E2E8F0 0%, #C5D1DE 18%, #A8B8C8 38%, #94A5B8 55%, #B8C5D2 72%, #D1DCE8 88%, #E8EEF5 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                   letterSpacing: "0.02em",
                   lineHeight: 1.15,
-                  textShadow: "0 2px 20px rgba(184, 200, 218, 0.35), 0 0 40px rgba(200, 215, 230, 0.12)",
+                  textShadow: "0 2px 24px rgba(148, 163, 184, 0.35), 0 0 48px rgba(203, 213, 224, 0.15)",
                 }}
               >
                 {line1Content}
               </span>
             </span>
-            <span
-              className="block mt-2 sm:mt-2.5 font-bold tracking-tight whitespace-normal sm:whitespace-nowrap bg-clip-text text-transparent"
-              style={{
-                letterSpacing: "0.01em",
-                lineHeight: 1.2,
-                backgroundImage: "linear-gradient(to bottom, #7A8B9C 0%, #8293A4 15%, #95A5B5 35%, #A8B8C8 55%, #B8C8D8 72%, #C5D5E5 88%, #D5E2EE 96%, #FFFFFF 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                textShadow: "0 2px 20px rgba(184, 200, 218, 0.35), 0 0 40px rgba(200, 215, 230, 0.12)",
-              }}
-            >
+            <span className="block mt-1.5 sm:mt-2 font-bold tracking-tight whitespace-normal text-center text-white">
               {line2Content}
             </span>
           </span>
         </h1>
 
-        {/* Descriptive Text – ligne 1 au-dessus de ligne 2 */}
-        <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-6 sm:mb-6 max-w-4xl mx-auto leading-relaxed sm:leading-relaxed px-2 sm:px-4 font-medium">
-          <span className="block">{t("descriptionLine1")}</span>
-          <span className="block mt-2 sm:mt-1">{t("descriptionLine2")}</span>
+        {/* Descriptive Text : Selon la capacité... (taille normale) puis Spécialisés... */}
+        <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-4 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
+          <span className="block">{t("primaryHeadline")}</span>
+          <span className="block mt-1 sm:mt-1">{t("descriptionLine1")}</span>
         </p>
 
         {/* Main CTA Button */}
-        <div className="mt-6 sm:mt-4">
+        <div className="mt-3 sm:mt-2">
           <Link
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection("#contact");
             }}
-            className="coolBeans inline-block px-5 sm:px-6 py-3 sm:py-3 text-base sm:text-lg font-bold min-w-[200px]"
+            className="coolBeans inline-block px-5 sm:px-6 py-3 sm:py-3 text-sm sm:text-base font-bold min-w-[200px]"
             style={{ textDecoration: 'none' }}
           >
             {t('ctaButton')}
           </Link>
+        </div>
+
+        {/* Partenaires – 7 logos en fin de hero (plus haut pour tenir dans le hero) */}
+        <div className="mt-3 sm:mt-4 lg:mt-5 pt-3 sm:pt-4 border-t border-white/10 w-full max-w-5xl mx-auto">
+          <p className="text-[9px] sm:text-[10px] text-white/50 uppercase tracking-widest mb-2 sm:mb-3">
+            {locale === "ar" ? "شركاؤنا" : locale === "en" ? "Our partners" : "Nos partenaires"}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10">
+            {PARTNER_LOGOS.map((logo, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-center h-10 sm:h-12 w-24 sm:w-28 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              >
+                <Image
+                  src={encodeURI(logo.src)}
+                  alt={logo.alt}
+                  width={112}
+                  height={48}
+                  className="object-contain max-h-full w-auto"
+                  unoptimized={logo.src.includes(" ") ? true : undefined}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
