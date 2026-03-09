@@ -97,7 +97,7 @@ export default function HeroSection() {
         </h2>
 
         {/* Secondary Headline – centré, wrap propre sur mobile */}
-        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto w-full min-w-0">
+        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto w-full min-w-0">
           <span className="inline-flex flex-col items-center w-full">
             <span className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 w-full">
               <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />

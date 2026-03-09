@@ -83,7 +83,7 @@ export default function LanguageSwitcher({
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [menuPos, setMenuPos] = useState<{ top: number; left: number; width: number } | null>(null);
+  const [menuPos, setMenuPos] = useState<{ top: number; left: number; width: number; openUpward?: boolean } | null>(null);
   const [mounted, setMounted] = useState(false);
   const [frVariant, setFrVariant] = useState<"ma" | "fr">("fr");
 
@@ -125,9 +125,11 @@ export default function LanguageSwitcher({
     if (!btn) return;
     const rect = btn.getBoundingClientRect();
     const left = rect.left;
-    const top = rect.bottom + 6;
-    setMenuPos({ top, left, width: 0 });
-  }, [open, mounted]);
+    const isFooterVariant = variant === "footer" || variant === "footerLight";
+    // Footer : ouvrir la liste au-dessus du bouton pour qu'elle soit visible (drapeaux en haut)
+    const top = isFooterVariant ? rect.top - 6 : rect.bottom + 6;
+    setMenuPos({ top, left, width: Math.max(rect.width, 140), openUpward: isFooterVariant });
+  }, [open, mounted, variant]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -154,7 +156,14 @@ export default function LanguageSwitcher({
       className="fixed flex flex-col list-none rounded-lg shadow-xl border border-gray-200 overflow-hidden min-w-[140px] bg-white"
       style={
         menuPos
-          ? { top: menuPos.top, left: menuPos.left, zIndex: 99999 }
+          ? {
+              top: menuPos.top,
+              left: menuPos.left,
+              width: menuPos.width || undefined,
+              minWidth: 140,
+              transform: menuPos.openUpward ? "translateY(-100%)" : undefined,
+              zIndex: 99999,
+            }
           : { top: 0, left: 0, visibility: "hidden" as const, zIndex: 99999 }
       }
       role="listbox"
@@ -170,7 +179,9 @@ export default function LanguageSwitcher({
               className="w-full flex items-center gap-3 px-4 py-3 text-left text-black hover:bg-gray-50 transition-colors bg-white"
               aria-label={t(opt.labelKey)}
             >
-              <FlagIcon className="w-7 h-5 object-cover rounded-sm shrink-0 border border-gray-200" />
+              <span className="w-7 h-5 flex shrink-0 rounded-sm overflow-hidden border border-gray-200">
+                <FlagIcon className="w-full h-full object-cover" />
+              </span>
               <span className="text-sm font-medium">{t(opt.labelKey)}</span>
             </button>
           </li>

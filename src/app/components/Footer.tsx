@@ -87,18 +87,7 @@ export default function Footer() {
                   </svg>
                   {tFooter("phone")}
                 </a>
-                {/* Rabat */}
-                <span className="inline-flex items-start gap-2 w-fit">
-                  <svg className="w-4 h-4 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="leading-snug">
-                    <span className="font-semibold text-white/90">{tFooter("cityRabat")}</span>
-                    {" — "}
-                    {tFooter("addressRabat")}
-                  </span>
-                </span>
-                {/* Casablanca */}
+                {/* Casablanca — en premier */}
                 <span className="inline-flex items-start gap-2 w-fit">
                   <svg className="w-4 h-4 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -107,6 +96,17 @@ export default function Footer() {
                     <span className="font-semibold text-white/90">{tFooter("cityCasablanca")}</span>
                     {" — "}
                     {tFooter("addressCasa")}
+                  </span>
+                </span>
+                {/* Rabat — après Casablanca */}
+                <span className="inline-flex items-start gap-2 w-fit">
+                  <svg className="w-4 h-4 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="leading-snug">
+                    <span className="font-semibold text-white/90">{tFooter("cityRabat")}</span>
+                    {" — "}
+                    {tFooter("addressRabat")}
                   </span>
                 </span>
               </div>
