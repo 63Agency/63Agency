@@ -10,12 +10,11 @@ const Grainient = dynamic(() => import("@/components/Grainient"), { ssr: false }
 
 const PARTNER_LOGOS = [
   { src: "/images/partners/partner-logos/partener1.png", alt: "Partner" },
-  { src: "/images/partners/partner-logos/partenaire7.png", alt: "Partner" },
-  { src: "/images/partners/partner-logos/logo02cadre.png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/CommonsLogo.png", alt: "Commons" },
   { src: "/images/partners/partner-logos/Afriquia.png", alt: "Afriquia" },
   { src: "/images/partners/partner-logos/Unit-Education .png", alt: "Unit Education" },
   { src: "/images/partners/partner-logos/partenaire18.png", alt: "Partner" },
-  { src: "/images/partners/partner-logos/unnamed (1).png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
 ];
 
 /** Split text into two lines with balanced word count. */
@@ -97,7 +96,7 @@ export default function HeroSection() {
         </h2>
 
         {/* Secondary Headline – centré, wrap propre sur mobile */}
-        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto w-full min-w-0">
+        <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto w-full min-w-0">
           <span className="inline-flex flex-col items-center w-full">
             <span className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 w-full">
               <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
@@ -128,7 +127,7 @@ export default function HeroSection() {
           <span className="block mt-1 sm:mt-1">{t("descriptionLine1")}</span>
         </p>
 
-        {/* Main CTA Button */}
+        {/* Main CTA Button – effet ripple comme .btn / .animation */}
         <div className="mt-3 sm:mt-2 flex justify-center">
           <Link
             href="#contact"
@@ -136,20 +135,21 @@ export default function HeroSection() {
               e.preventDefault();
               scrollToSection("#contact");
             }}
-            className="coolBeans inline-block px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold min-w-[200px] sm:min-w-[220px] text-center"
-            style={{ textDecoration: 'none' }}
+            className="hero-cta-btn"
           >
-            {t('ctaButton')}
+            <span className="animation" aria-hidden />
+            <span>{t('ctaButton')}</span>
+            <span className="animation" aria-hidden />
           </Link>
         </div>
 
         {/* Partenaires – tous les logos visibles en une ligne (taille réduite pour tenir dans l’écran) */}
         <div className="mt-3 sm:mt-4 lg:mt-5 pt-3 sm:pt-4 w-full max-w-5xl mx-auto px-1 sm:px-0">
-          <div className="scrollbar-hide flex flex-nowrap items-center justify-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto w-full py-1">
+          <div className="scrollbar-hide flex flex-nowrap items-center justify-center gap-3 sm:gap-4 md:gap-5 overflow-x-auto w-full py-1.5">
             {PARTNER_LOGOS.map((logo, i) => (
               <div
                 key={i}
-                className="flex shrink-0 items-center justify-center h-10 sm:h-12 md:h-14 w-20 sm:w-24 md:w-28 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                className="flex shrink-0 items-center justify-center h-12 sm:h-14 md:h-16 w-24 sm:w-28 md:w-32 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               >
                 <Image
                   src={encodeURI(logo.src)}

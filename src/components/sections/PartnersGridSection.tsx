@@ -29,7 +29,7 @@ const PARTNER_LOGOS = [
   { name: "Partenaire Logoo", logo: "/images/partners/partner-logos/logoo.jpg" },
   { name: "Partenaire Social Media", logo: "/images/partners/partner-logos/logo-social-media.png" },
   { name: "Partenaire LOGO PNG", logo: "/images/partners/partner-logos/LOGO PNG-01.png" },
-  { name: "Partenaire", logo: "/images/partners/partner-logos/unnamed (1).png" },
+  { name: "London Academy", logo: "/images/partners/partner-logos/londonacademio.png" },
 ];
 
 export default function PartnersGridSection() {

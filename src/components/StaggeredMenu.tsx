@@ -13,6 +13,10 @@ export interface StaggeredMenuSocialItem {
   label: string;
   link: string;
 }
+export interface StaggeredMenuHeaderCta {
+  label: string;
+  href: string;
+}
 export interface StaggeredMenuProps {
   position?: 'left' | 'right';
   colors?: string[];
@@ -28,6 +32,7 @@ export interface StaggeredMenuProps {
   isFixed: boolean;
   changeMenuColorOnOpen?: boolean;
   closeOnClickAway?: boolean;
+  headerCta?: StaggeredMenuHeaderCta;
   onMenuOpen?: () => void;
   onMenuClose?: () => void;
 }
@@ -416,10 +421,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         </div>
 
         <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20"
+          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between gap-3 p-[2em] bg-transparent pointer-events-none z-20"
           aria-label="Main navigation header"
         >
-          <div className="sm-logo flex items-center select-none pointer-events-auto" aria-label="Logo">
+          <div className="sm-logo flex items-center select-none pointer-events-auto shrink-0" aria-label="Logo">
             <img
               src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
               alt="Logo"
@@ -429,6 +434,15 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               height={24}
             />
           </div>
+
+          {headerCta && (
+            <a
+              href={headerCta.href}
+              className="sm-header-cta pointer-events-auto shrink-0 bg-black text-white px-4 py-2 font-semibold text-sm no-underline border-2 border-white hover:opacity-90 transition-opacity"
+            >
+              {headerCta.label}
+            </a>
+          )}
 
           <button
             ref={toggleBtnRef}

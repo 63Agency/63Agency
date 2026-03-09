@@ -43,7 +43,51 @@ html {
   width: 100%;
 }
 
-/* Cool Beans Button Effect */
+/* Hero CTA button (Réservez un appel) – style .btn + effet ripple .animation */
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.08), 0 0 0 20px rgba(0, 0, 0, 0.06), 0 0 0 40px rgba(0, 0, 0, 0.04), 0 0 0 60px rgba(0, 0, 0, 0.02);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.06), 0 0 0 40px rgba(0, 0, 0, 0.04), 0 0 0 60px rgba(0, 0, 0, 0.02), 0 0 0 80px rgba(0, 0, 0, 0);
+  }
+}
+
+.hero-cta-btn {
+  outline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  min-width: 200px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  padding: 16px 20px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hero-cta-btn:hover {
+  opacity: 0.95;
+}
+
+.hero-cta-btn .animation {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-radius: 100%;
+  animation: ripple 0.6s linear infinite;
+}
+
+/* Cool Beans Button Effect (utilisé dans le header et ailleurs) */
 .coolBeans {
   border: 2px solid currentColor;
   border-radius: 3rem;

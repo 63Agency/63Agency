@@ -58,7 +58,7 @@ export default function FounderSection() {
 
         {/* Bouton CTA noir, hover = fond blanc + texte noir (comme navbar) */}
         <Link
-          href={`/${locale}/contact`}
+          href={`/${locale}#contact`}
           className="coolBeansNav inline-flex items-center gap-3 px-6 py-3.5 rounded-[3rem] border-2 border-white bg-black text-white font-semibold text-[15px] no-underline"
         >
           <span className="flex items-center justify-center w-9 h-9 rounded-full border border-current opacity-90" aria-hidden>

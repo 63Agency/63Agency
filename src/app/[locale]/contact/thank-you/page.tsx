@@ -46,7 +46,7 @@ export default function ContactThankYouPage() {
             {t("backToHome")}
           </Link>
           <Link
-            href={`/${locale}/contact`}
+            href={`/${locale}#contact`}
             className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg font-semibold text-black border-2 border-gray-300 bg-transparent hover:bg-gray-100 transition-colors no-underline"
           >
             {t("thankYouButton")}

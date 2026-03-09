@@ -86,7 +86,7 @@ export default function Header() {
       { label: t("nav.expertises"), ariaLabel: t("nav.expertises"), link: getNavHref("#system") },
       { label: t("nav.solutions"), ariaLabel: t("nav.solutions"), link: getNavHref("#system") },
       { label: t("nav.joinUs"), ariaLabel: t("nav.joinUs"), link: getNavHref("#contact") },
-      { label: t("nav.contactButton"), ariaLabel: t("nav.contactButton"), link: `/${locale}/contact` },
+      { label: t("nav.contactButton"), ariaLabel: t("nav.contactButton"), link: getNavHref("#contact") },
     ],
     [t, locale]
   );
@@ -196,7 +196,7 @@ export default function Header() {
               </button>
             </div>
             <Link
-              href={`/${locale}/contact`}
+              href={getNavHref("#contact")}
               className="coolBeans bg-black text-white px-5 py-2.5 font-semibold text-sm border-2 border-white inline-block"
               style={{ textDecoration: "none" }}
             >
@@ -312,6 +312,7 @@ export default function Header() {
           displayItemNumbering={false}
           changeMenuColorOnOpen={false}
           closeOnClickAway={true}
+          headerCta={{ label: t("nav.contactButton"), href: getNavHref("#contact") }}
         />
       </div>
     </>

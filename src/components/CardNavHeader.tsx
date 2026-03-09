@@ -37,7 +37,7 @@ export default function CardNavHeader() {
         baseColor="rgba(15, 15, 20, 0.58)"
         buttonTextColor="#fff"
         ctaLabel={tNav("contactButton")}
-        ctaHref={`${prefix}/contact`}
+        ctaHref={`${prefix}#contact`}
         trailingSlot={<LanguageSwitcher className="shrink-0" />}
         compact={compact}
       />

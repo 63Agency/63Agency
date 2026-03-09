@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   description:
     "Lead generation & performance marketing agency in Morocco & Europe.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/images/hero/63.png",
+    apple: "/images/hero/63.png",
   },
   verification: {
     google: "PLACEHOLDER_GOOGLE_SEARCH_CONSOLE_TAG",
