@@ -131,7 +131,7 @@ html {
   box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.25);
 }
 
-/* Bouton Contactez-nous (section Meta/Ads) – texte et flèche en blanc */
+/* Bouton Contactez-nous (section Meta/Ads) – première lettre en majuscule uniquement (Contactez-nous) */
 .view-more-btn {
   font-weight: 600;
   font-size: 15px;
@@ -141,7 +141,7 @@ html {
   display: inline-flex;
   align-items: center;
   letter-spacing: -0.01em;
-  text-transform: uppercase;
+  text-transform: none;
   color: #fff !important;
   background: #1a1b1e;
   border: 1px solid #1a1b1e;

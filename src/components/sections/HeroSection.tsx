@@ -61,7 +61,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[100dvh] min-h-screen flex items-start sm:items-center justify-center overflow-x-hidden overflow-y-auto bg-black">
+    <section className="relative min-h-[100dvh] min-h-screen flex items-start sm:items-center justify-center bg-black">
       {/* Grainient background — gris et noir, animé */}
       <div className="absolute inset-0 z-0 min-h-screen w-full bg-black">
         <div className="absolute inset-0 min-h-full w-full">
@@ -86,34 +86,37 @@ export default function HeroSection() {
         }}></div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 pt-28 sm:pt-20 lg:pt-24 pb-6 sm:pb-4 lg:pb-6 text-center">
+      {/* Content — responsive pro: safe area + padding suffisant pour éviter coupure texte */}
+      <div
+        className="relative z-10 w-full max-w-7xl mx-auto pt-24 sm:pt-20 lg:pt-24 pb-6 sm:pb-4 lg:pb-6 text-center box-border overflow-visible pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pl-6 sm:pr-6"
+      >
+        <div className="w-full min-w-0 max-w-4xl mx-auto px-4 sm:px-0">
         {/* Texte du haut : Système d'acquisition... (petit) */}
-        <h2 className="text-[10px] sm:text-xs md:text-sm text-gray-400 mb-2 sm:mb-2 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
+        <h2 className="text-[11px] sm:text-xs md:text-sm text-gray-400 mb-2 max-w-4xl mx-auto leading-relaxed font-medium w-full">
           {t("descriptionLine2")}
         </h2>
 
-        {/* Secondary Headline – centré, taille réduite */}
-        <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto min-w-0 px-1">
+        {/* Secondary Headline – centré, wrap propre sur mobile */}
+        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto w-full min-w-0">
           <span className="inline-flex flex-col items-center w-full">
-            <span className="flex items-center justify-center gap-2 sm:gap-3 w-full">
+            <span className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 w-full">
               <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
               <span
-                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] whitespace-normal text-center sm:whitespace-nowrap"
+                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] text-center break-words"
                 style={{
                   backgroundImage: "linear-gradient(to bottom, #E2E8F0 0%, #C5D1DE 18%, #A8B8C8 38%, #94A5B8 55%, #B8C5D2 72%, #D1DCE8 88%, #E8EEF5 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                   letterSpacing: "0.02em",
-                  lineHeight: 1.15,
+                  lineHeight: 1.2,
                   textShadow: "0 2px 24px rgba(148, 163, 184, 0.35), 0 0 48px rgba(203, 213, 224, 0.15)",
                 }}
               >
                 {line1Content}
               </span>
             </span>
-            <span className="block mt-1.5 sm:mt-2 font-bold tracking-tight whitespace-normal text-center text-white break-words">
+            <span className="block mt-1.5 sm:mt-2 font-bold tracking-tight text-center text-white break-words w-full">
               {line2Content}
             </span>
           </span>
@@ -126,14 +129,14 @@ export default function HeroSection() {
         </p>
 
         {/* Main CTA Button */}
-        <div className="mt-3 sm:mt-2">
+        <div className="mt-3 sm:mt-2 flex justify-center">
           <Link
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection("#contact");
             }}
-            className="coolBeans inline-block px-4 sm:px-5 py-2.5 sm:py-2.5 text-xs sm:text-sm font-bold min-w-[180px]"
+            className="coolBeans inline-block px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold min-w-[200px] sm:min-w-[220px] text-center"
             style={{ textDecoration: 'none' }}
           >
             {t('ctaButton')}
@@ -146,7 +149,7 @@ export default function HeroSection() {
             {PARTNER_LOGOS.map((logo, i) => (
               <div
                 key={i}
-                className="flex shrink-0 items-center justify-center h-9 sm:h-12 md:h-14 w-16 sm:w-24 md:w-28 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                className="flex shrink-0 items-center justify-center h-10 sm:h-12 md:h-14 w-20 sm:w-24 md:w-28 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               >
                 <Image
                   src={encodeURI(logo.src)}
@@ -159,6 +162,7 @@ export default function HeroSection() {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </div>
 
