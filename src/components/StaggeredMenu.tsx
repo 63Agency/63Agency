@@ -52,6 +52,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   accentColor = '#5227FF',
   isFixed = false,
   closeOnClickAway = true,
+  headerCta,
   onMenuOpen,
   onMenuClose
 }: StaggeredMenuProps) => {
