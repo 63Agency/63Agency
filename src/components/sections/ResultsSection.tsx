@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export default function ResultsSection() {
@@ -15,15 +14,11 @@ export default function ResultsSection() {
 
   return (
     <section id="results" className="relative py-16 sm:py-24 bg-black overflow-hidden">
-      {/* Decorative: image 63 en arrière-plan, effet gris */}
+      {/* Decorative: large faded number behind content */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0" aria-hidden>
-        <Image
-          src="/images/hero/63.png"
-          alt=""
-          width={520}
-          height={320}
-          className="w-[min(40vw,520px)] h-auto object-contain opacity-[0.08] grayscale"
-        />
+        <span className="text-[min(40vw,520px)] font-bold text-white/[0.03] leading-none select-none">
+          63
+        </span>
       </div>
 
       {/* Subtle grid */}
