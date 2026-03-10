@@ -81,8 +81,7 @@ function getBreadcrumbSchema(locale: string) {
 
 export default async function AboutPage({ params }: Props) {
   const locale = params.locale;
-  const messages = await getMessages({ locale });
-  const faqSchema = buildFaqSchema((messages as Record<string, unknown>).aboutFaq as Record<string, string> | undefined);
+  const faqSchema = getAboutFaqSchema(locale);
   const breadcrumbSchema = getBreadcrumbSchema(locale);
 
   return (
