@@ -31,6 +31,7 @@ export default function FounderSection() {
                   fill
                   className="object-cover object-top"
                   sizes="112px"
+                  priority
                   onError={() => setImgError(true)}
                 />
               ) : (

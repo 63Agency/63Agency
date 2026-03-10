@@ -6,9 +6,46 @@ import { locales } from '@/i18n/config';
 import CardNavHeader from "@/components/CardNavHeader";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
+import JsonLd from "@/components/seo/JsonLd";
+
+const SITE_URL = "https://63agency.ma";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "63 Agency",
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/hero/63.png`,
+  description: "Agence spécialisée en génération de leads et marketing performance au Maroc et en Europe.",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "MA",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    availableLanguage: ["French", "English"],
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "63 Agency",
+  url: SITE_URL,
+  description: "Lead generation & performance marketing agency in Morocco & Europe.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/fr#contact`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://63agency.ma"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "63 Agency | Lead Generation & Performance Marketing",
     template: "%s | 63 Agency",
@@ -47,6 +84,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir="ltr">
       <head>
+        <JsonLd data={[organizationSchema, websiteSchema]} />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"

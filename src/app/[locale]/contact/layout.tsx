@@ -16,17 +16,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     openGraph: {
+      type: "website",
       title,
       description,
       url: `${baseUrl}/${locale}/contact`,
       siteName: "63 Agency",
       locale: locale === "fr" ? "fr_FR" : "en_US",
+      alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
     },
     alternates: {
       canonical: `${baseUrl}/${locale}/contact`,
       languages: {
         en: `${baseUrl}/en/contact`,
         fr: `${baseUrl}/fr/contact`,
+        "x-default": `${baseUrl}/fr/contact`,
       },
     },
     robots: {
