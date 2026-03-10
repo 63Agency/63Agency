@@ -115,17 +115,36 @@ const CardNav: React.FC<CardNavProps> = ({
               )}
             </div>
 
-            {/* Mobile: menu button only */}
-            <button
-              type="button"
-              className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
-              onClick={() => setSidebarOpen(true)}
-              aria-label="Ouvrir le menu"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            {/* Mobile: CTA button + menu button */}
+            <div className="md:hidden flex items-center gap-1.5 flex-shrink-0">
+              {ctaHref ? (
+                <a
+                  href={ctaHref}
+                  className="coolBeansNav inline-flex items-center justify-center rounded-lg border border-white/50 px-2.5 py-1.5 min-h-[32px] font-medium text-[12px] cursor-pointer no-underline whitespace-nowrap flex-shrink-0 shadow-md hover:border-white/80 hover:bg-white/10 transition-all duration-200"
+                  style={{ color: buttonTextColor ?? '#fff' }}
+                >
+                  {ctaLabel}
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  className="coolBeansNav inline-flex items-center justify-center rounded-lg border border-white/50 px-2.5 py-1.5 min-h-[32px] font-medium text-[12px] whitespace-nowrap flex-shrink-0 shadow-md hover:border-white/80 hover:bg-white/10 transition-all duration-200"
+                  style={{ color: buttonTextColor ?? '#fff' }}
+                >
+                  {ctaLabel}
+                </button>
+              )}
+              <button
+                type="button"
+                className="flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors flex-shrink-0"
+                onClick={() => setSidebarOpen(true)}
+                aria-label="Ouvrir le menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           </div>
         </nav>
       </div>

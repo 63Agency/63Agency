@@ -149,7 +149,8 @@ export default function HeroSection() {
             {PARTNER_LOGOS.map((logo, i) => (
               <div
                 key={i}
-                className="flex shrink-0 items-center justify-center h-12 sm:h-14 md:h-16 w-24 sm:w-28 md:w-32 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                className="flex shrink-0 items-center justify-center h-12 sm:h-14 md:h-16 w-24 sm:w-28 md:w-32 opacity-90"
+                style={{ filter: "brightness(0) invert(1)" }}
               >
                 <Image
                   src={encodeURI(logo.src)}
