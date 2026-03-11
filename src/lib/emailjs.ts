@@ -19,6 +19,9 @@ export type ContactFormData = {
   campaigns: string;
   sector: string;
   establishment: string;
+  budget?: string;
+  service?: string;
+  availability?: string;
 };
 
 export function isEmailJSConfigured(): boolean {
@@ -49,6 +52,9 @@ export async function sendContactEmails(data: ContactFormData): Promise<void> {
     campaigns: data.campaigns,
     sector: data.sector,
     establishment: data.establishment,
+    budget: data.budget ?? "",
+    service: data.service ?? "",
+    availability: data.availability ?? "",
     subject_admin: `[63 Agency] Nouveau contact - ${data.name}`,
   };
 
