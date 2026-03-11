@@ -77,8 +77,12 @@ function getAuthHeader(token: string): string {
   return token.startsWith("pk_") ? token : `Bearer ${token}`;
 }
 
+/** Placeholder when form did not send a value, so every mapped field gets filled in ClickUp */
+const EMPTY_PLACEHOLDER = "—";
+
 /**
- * Builds custom_fields array from hardcoded IDs and payload. Only includes fields with a value.
+ * Builds custom_fields array from hardcoded IDs and payload.
+ * All mapped fields get a value (form data, static, date, or placeholder).
  */
 function buildCustomFields(payload: ClickUpLeadPayload): { id: string; value: string | number }[] {
   const out: { id: string; value: string | number }[] = [];
@@ -86,17 +90,41 @@ function buildCustomFields(payload: ClickUpLeadPayload): { id: string; value: st
     let value: string | number;
     if (field.type === "payload") {
       const raw = payload[field.key];
-      if (raw === undefined || raw === "") continue;
-      value = typeof raw === "string" ? raw : String(raw);
+      value =
+        raw !== undefined && raw !== "" ? (typeof raw === "string" ? raw : String(raw)) : EMPTY_PLACEHOLDER;
     } else if (field.type === "static") {
       value = field.value;
     } else {
-      // dateSubmitted: current time in ms for ClickUp date fields
       value = Date.now();
     }
     out.push({ id: field.id, value });
   }
   return out;
+}
+
+/**
+ * After task creation, set each custom field via Set Custom Field Value so they are applied
+ * (create task sometimes does not apply dropdown/date custom fields).
+ */
+async function setCustomFieldsAfterCreate(
+  taskId: string,
+  customFields: { id: string; value: string | number }[],
+  headers: Record<string, string>
+): Promise<void> {
+  for (const { id: fieldId, value } of customFields) {
+    try {
+      const res = await fetch(`${BASE_URL}/task/${taskId}/field/${fieldId}`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ value }),
+      });
+      if (!res.ok) {
+        console.warn("[ClickUp] set field failed:", fieldId, res.status, await res.text());
+      }
+    } catch (e) {
+      console.warn("[ClickUp] set field error:", fieldId, e);
+    }
+  }
 }
 
 /**
@@ -147,6 +175,12 @@ export async function createClickUpLead(payload: ClickUpLeadPayload): Promise<bo
   if (!res.ok) {
     console.error("[ClickUp] create task failed:", res.status, await res.text());
     return false;
+  }
+
+  const task = await res.json().catch(() => null);
+  const taskId = task?.id ?? task?.data?.id;
+  if (taskId && custom_fields.length > 0) {
+    await setCustomFieldsAfterCreate(taskId, custom_fields, headers);
   }
 
   return true;
