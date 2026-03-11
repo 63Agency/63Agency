@@ -10,12 +10,18 @@ const CLICKUP_STATUS = "new lead";
 
 const BASE_URL = "https://api.clickup.com/api/v2";
 
-/** Hardcoded custom field IDs for list 901216143943. Each entry: field id → payload key (or static value). */
+/**
+ * Champs ClickUp ← champs formulaire contact (tous ceux qu’on a dans le formulaire).
+ * Si un champ renvoie 404 (Field not found), vérifier l’ID dans ClickUp (liste 901216143943).
+ * Source = dropdown → utiliser CLICKUP_SOURCE_OPTION_INDEX (index de l’option, ex: 0).
+ * Service Type = multi-select → valeur envoyée en tableau.
+ */
 const CUSTOM_FIELD_IDS: Array<
-  { id: string } & (
+  { id: string; valueAsArray?: boolean } & (
     | { type: "payload"; key: keyof ClickUpLeadPayload }
     | { type: "static"; value: string }
     | { type: "dateSubmitted" }
+    | { type: "sourceOptionIndex" }
   )
 > = [
   { id: "90e56d9a-9864-4dd3-b6ff-8eadd681995b", type: "payload", key: "name" }, // Full Name
@@ -26,8 +32,8 @@ const CUSTOM_FIELD_IDS: Array<
   { id: "af3f1e6b-7eee-4fae-9cc8-fd8a648140ca", type: "payload", key: "role" }, // Fonction
   { id: "b0d0af66-e11d-4204-b726-e548b525d4e2", type: "dateSubmitted" }, // Date Submitted
   { id: "c74b47d5-6b1a-4c7d-b237-39b7b6542b6d", type: "payload", key: "budget" }, // Budget prêt à Investir
-  { id: "ce16924f-be03-463f-a368-93d6051004b8", type: "static", value: "Website 63agency.ma" }, // Source
-  { id: "e8cb1a0d-fdda-4fee-88a5-8aecd3e48ed7", type: "payload", key: "service" }, // Service Type
+  { id: "ce16924f-be03-463f-a368-93d6051004b8", type: "sourceOptionIndex" }, // Source (dropdown: option index via env)
+  { id: "e8cb1a0d-fdda-4fee-88a5-8aecd3e48ed7", type: "payload", key: "service", valueAsArray: true }, // Service Type (array)
   { id: "ed40c77d-29fc-4681-8eb6-5578ceb9a761", type: "payload", key: "company" }, // Établissement
   { id: "f4dc469d-dbda-4ceb-b477-c596d13369a7", type: "payload", key: "objective" }, // Objectif
   { id: "f8705cd4-72d4-4db8-8be4-f7d024a22853", type: "payload", key: "sector" }, // Secteur d'activité
@@ -80,12 +86,15 @@ function getAuthHeader(token: string): string {
 /** Placeholder when form did not send a value, so every mapped field gets filled in ClickUp */
 const EMPTY_PLACEHOLDER = "—";
 
+type CustomFieldValue = string | number | (string | number)[];
+
 /**
  * Builds custom_fields array from hardcoded IDs and payload.
- * All mapped fields get a value (form data, static, date, or placeholder).
+ * Tous les champs du formulaire contact sont mappés (valeur ou "—" si vide).
+ * Source = option index (env CLICKUP_SOURCE_OPTION_INDEX). Service Type = tableau.
  */
-function buildCustomFields(payload: ClickUpLeadPayload): { id: string; value: string | number }[] {
-  const out: { id: string; value: string | number }[] = [];
+function buildCustomFields(payload: ClickUpLeadPayload): { id: string; value: CustomFieldValue }[] {
+  const out: { id: string; value: CustomFieldValue }[] = [];
   for (const field of CUSTOM_FIELD_IDS) {
     let value: string | number;
     if (field.type === "payload") {
@@ -94,21 +103,26 @@ function buildCustomFields(payload: ClickUpLeadPayload): { id: string; value: st
         raw !== undefined && raw !== "" ? (typeof raw === "string" ? raw : String(raw)) : EMPTY_PLACEHOLDER;
     } else if (field.type === "static") {
       value = field.value;
+    } else if (field.type === "sourceOptionIndex") {
+      const idx = Number(process.env.CLICKUP_SOURCE_OPTION_INDEX);
+      if (Number.isNaN(idx) || idx < 0) continue;
+      value = idx;
     } else {
       value = Date.now();
     }
-    out.push({ id: field.id, value });
+    const finalValue: CustomFieldValue = field.valueAsArray ? [value] : value;
+    out.push({ id: field.id, value: finalValue });
   }
   return out;
 }
 
 /**
- * After task creation, set each custom field via Set Custom Field Value so they are applied
- * (create task sometimes does not apply dropdown/date custom fields).
+ * Après création de la tâche, remplit chaque champ personnalisé via Set Custom Field Value.
+ * value peut être string, number ou array (ex: Service Type).
  */
 async function setCustomFieldsAfterCreate(
   taskId: string,
-  customFields: { id: string; value: string | number }[],
+  customFields: { id: string; value: CustomFieldValue }[],
   headers: Record<string, string>
 ): Promise<void> {
   for (const { id: fieldId, value } of customFields) {
