@@ -4,6 +4,7 @@
  */
 
 const CLICKUP_LIST_ID = "901216143943";
+/** Exact status name in ClickUp (case- and space-sensitive) */
 const CLICKUP_STATUS = "NEW LEAD";
 
 export type ClickUpLeadPayload = {
@@ -54,18 +55,32 @@ export async function createClickUpLead(payload: ClickUpLeadPayload): Promise<bo
   const name = `Lead: ${payload.name}`;
   const description = getDescription(payload);
 
-  const res = await fetch(`https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`, {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    Authorization: token.startsWith("pk_") ? token : `Bearer ${token}`,
+  };
+
+  const baseBody = { name, description };
+
+  // Try with status "NEW LEAD" first (exact string: case and spacing)
+  let res = await fetch(`https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: token.startsWith("pk_") ? token : `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      name,
-      description,
-      status: CLICKUP_STATUS,
-    }),
+    headers,
+    body: JSON.stringify({ ...baseBody, status: CLICKUP_STATUS }),
   });
+
+  if (!res.ok && res.status === 400) {
+    const text = await res.text();
+    const isStatusError = text.includes("CRTSK_001") || text.toLowerCase().includes("status");
+    if (isStatusError) {
+      // Fallback: create task without status (uses list default)
+      res = await fetch(`https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(baseBody),
+      });
+    }
+  }
 
   if (!res.ok) {
     const text = await res.text();
