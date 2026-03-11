@@ -239,7 +239,7 @@
     "ctaButton": "Book a strategy call"
   },
   "founder": {
-    "headline": "63 Agency · Performance & Digital Marketing Agency Focused on ROI.",
+    "headline": "Performance & Digital Marketing Agency Focused on ROI.",
     "title": "Expertise that turns vision into reality.",
     "name": "Saad Chahoubi",
     "role": "CEO & FOUNDER",
@@ -448,7 +448,7 @@
     "subjectPlaceholder": "How can we help you?",
     "messageLabel": "Message",
     "messagePlaceholder": "Your project or goal...",
-    "submit": "Send message",
+    "submit": "Send your request",
     "sending": "Sending...",
     "success": "Message sent! We'll get back to you soon.",
     "error": "Something went wrong. Please try again or contact us by phone.",
@@ -495,7 +495,7 @@
     "stepProgress": "Step {current} of 3",
     "step1Title": "Personal information",
     "step2Title": "Your role",
-    "step3Title": "Qualification questions",
+    "step3Title": "Last step",
     "continue": "Next",
     "formSecurity": "Your information is 100% secure and will never be shared.",
     "formAuditInfo": "The meeting is free once the client sends a message.",

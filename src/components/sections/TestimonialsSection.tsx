@@ -30,11 +30,11 @@ export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="py-6 sm:py-12 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/70 text-center mb-3">
+        {/* Header – sous-titre plus petit sur mobile */}
+        <p className="text-[8px] sm:text-xs font-semibold uppercase tracking-widest text-white/70 text-center mb-3">
           {t("sectionSubtitle")}
         </p>
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-center leading-snug mb-10 sm:mb-14">
+        <h2 className="text-base sm:text-2xl md:text-3xl font-bold text-white text-center leading-snug mb-10 sm:mb-14">
           {t("sectionTitle")}
         </h2>
 

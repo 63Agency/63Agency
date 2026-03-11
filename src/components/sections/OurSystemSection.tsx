@@ -48,7 +48,7 @@ export default function OurSystemSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16 sm:mb-20">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/60">
+              <span className="text-[10px] sm:text-sm font-semibold uppercase tracking-widest text-white/60">
                 {t("tagline")}
               </span>
               <span
@@ -66,10 +66,13 @@ export default function OurSystemSection() {
           </div>
         </div>
 
-        {/* 5 steps with numbers */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
+        {/* 5 steps with numbers – mobile: cartes séparées | desktop: grille */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-8 sm:gap-10">
           {steps.map((step, index) => (
-            <div key={index} className="text-center lg:text-left">
+            <div
+              key={index}
+              className="text-center lg:text-left rounded-xl border border-white/10 bg-white/[0.03] md:bg-transparent md:border-0 px-4 py-5 md:p-0 md:rounded-none last:mb-0 mb-4 md:mb-0"
+            >
               <div className="mb-4 flex justify-center lg:justify-start">
                 <span
                   className="flex-shrink-0 w-9 h-9 rounded-full border-2 text-white font-bold text-sm flex items-center justify-center"
@@ -97,9 +100,9 @@ export default function OurSystemSection() {
           ))}
         </div>
 
-        {/* Bottom message */}
+        {/* Bottom message – mobile: un peu plus petit */}
         <div className="mt-14 sm:mt-16 text-center">
-          <p className="text-lg sm:text-xl font-bold text-white">
+          <p className="text-sm sm:text-xl font-bold text-white">
             {t("bottomMessage")}
           </p>
         </div>

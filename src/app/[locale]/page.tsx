@@ -127,6 +127,14 @@ export default function Home({ params }: Props) {
       <ScrollReveal variant="fadeUp">
         <TestimonialsSection />
       </ScrollReveal>
+      {/* Séparateur créatif entre Témoignages et Résultats */}
+      <div className="w-full px-4 sm:px-6 py-8 sm:py-10" aria-hidden>
+        <div className="max-w-7xl mx-auto flex items-center gap-4 sm:gap-6">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-white/40" />
+          <span className="w-2 h-2 rounded-full bg-[#22c55e] shrink-0 ring-4 ring-white/5" />
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-white/20 to-white/40" />
+        </div>
+      </div>
       <ScrollReveal variant="fadeUp">
         <ResultsSection />
       </ScrollReveal>

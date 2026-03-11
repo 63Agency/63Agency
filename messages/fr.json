@@ -239,7 +239,7 @@
     "ctaButton": "Réserver un appel stratégique"
   },
   "founder": {
-    "headline": "63 Agency · Agence de Performance & Marketing Digital Orientée ROI.",
+    "headline": "Agence de Performance & Marketing Digital Orientée ROI.",
     "title": "Expertise qui transforme la vision en réalité.",
     "quote": "Notre promesse est simple :\nDes résultats mesurables. Une performance prévisible.",
     "quoteAuthor": "Saad CHAHOUBI - Founder, 63 Agency",
@@ -448,7 +448,7 @@
     "subjectPlaceholder": "Comment pouvons-nous vous aider ?",
     "messageLabel": "Message",
     "messagePlaceholder": "Votre projet ou objectif...",
-    "submit": "Envoyer le message",
+    "submit": "Envoiyer votre demande",
     "sending": "Envoi en cours...",
     "success": "Message envoyé ! Nous vous recontacterons rapidement.",
     "error": "Une erreur est survenue. Réessayez ou contactez-nous par téléphone.",
@@ -495,7 +495,7 @@
     "stepProgress": "Étape {current} sur 3",
     "step1Title": "Informations personnelles",
     "step2Title": "Votre rôle",
-    "step3Title": "Questions de qualification",
+    "step3Title": "Dernier etape",
     "continue": "Suivant",
     "formSecurity": "Vos informations sont 100% sécurisées et ne seront jamais partagées.",
     "formAuditInfo": "Le meeting est gratuit dès que le client envoie un message.",

@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from 'next-intl';
+import Link from "next/link";
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function IndustriesSection() {
   const t = useTranslations('industries');
+  const tHero = useTranslations('hero');
+  const locale = useLocale();
 
   const industries = [
     {
@@ -79,6 +82,15 @@ export default function IndustriesSection() {
               </div>
             </div>
           ))}
+        </div>
+        {/* Mobile: bouton en bas du cadre (sous les cartes, pas dedans) */}
+        <div className="md:hidden mt-6 flex justify-center">
+          <Link
+            href={`/${locale}#contact`}
+            className="inline-block w-full max-w-sm text-center py-3 px-4 rounded-lg bg-black text-white font-semibold text-sm no-underline hover:bg-gray-800 transition-colors border-2 border-black"
+          >
+            {tHero('ctaButton')}
+          </Link>
         </div>
       </div>
     </section>

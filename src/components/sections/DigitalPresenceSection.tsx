@@ -15,7 +15,7 @@ const GOOGLE_ADS_IMAGE_BY_LOCALE: Record<string, string> = {
 
 export default function DigitalPresenceSection() {
   const t = useTranslations("digitalPresence");
-  const tNav = useTranslations("nav");
+  const tHero = useTranslations("hero");
   const locale = useLocale();
   const metaSrc = META_IMAGE_BY_LOCALE[locale] ?? META_IMAGE_BY_LOCALE.fr;
   const googleAdsSrc = GOOGLE_ADS_IMAGE_BY_LOCALE[locale] ?? GOOGLE_ADS_IMAGE_BY_LOCALE.fr;
@@ -58,11 +58,11 @@ export default function DigitalPresenceSection() {
                   <Link
                     href={`/${locale}#contact`}
                     className="view-more-btn"
-                    aria-label={tNav("contactButton")}
+                    aria-label={tHero("ctaButton")}
                   >
                     <span>
-                      <span className="text-1">{tNav("contactButton")}</span>
-                      <span className="text-2">{tNav("contactButton")}</span>
+                      <span className="text-1">{tHero("ctaButton")}</span>
+                      <span className="text-2">{tHero("ctaButton")}</span>
                     </span>
                     <i>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,11 +112,11 @@ export default function DigitalPresenceSection() {
                   <Link
                     href={`/${locale}#contact`}
                     className="view-more-btn"
-                    aria-label={tNav("contactButton")}
+                    aria-label={tHero("ctaButton")}
                   >
                     <span>
-                      <span className="text-1">{tNav("contactButton")}</span>
-                      <span className="text-2">{tNav("contactButton")}</span>
+                      <span className="text-1">{tHero("ctaButton")}</span>
+                      <span className="text-2">{tHero("ctaButton")}</span>
                     </span>
                     <i>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

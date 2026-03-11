@@ -103,9 +103,9 @@ export default function HeroSection() {
       <div
         className="relative z-10 w-full max-w-7xl mx-auto pt-24 sm:pt-20 lg:pt-24 pb-6 sm:pb-4 lg:pb-6 text-center box-border overflow-visible pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pl-6 sm:pr-6"
       >
-        <div className="w-full min-w-0 max-w-4xl mx-auto px-4 sm:px-0">
-        {/* Texte du haut : Système d'acquisition... (mobile: plus petit pour tenir en une ligne) */}
-        <h2 className="text-[10px] sm:text-xs md:text-sm text-gray-400 mb-2 max-w-4xl mx-auto leading-tight font-medium w-full whitespace-nowrap sm:whitespace-normal">
+        <div className="w-full min-w-0 max-w-4xl mx-auto px-1 sm:px-4 md:px-0">
+        {/* Texte du haut : mobile = très petit + une seule ligne */}
+        <h2 className="text-[8px] sm:text-xs md:text-sm text-gray-400 mb-2 max-w-4xl mx-auto leading-none font-medium w-full whitespace-nowrap sm:whitespace-normal tracking-tight sm:tracking-normal overflow-x-auto sm:overflow-visible text-center scrollbar-hide min-w-0" style={{ WebkitTextSizeAdjust: 'none' }}>
           {t("descriptionLine2")}
         </h2>
 
