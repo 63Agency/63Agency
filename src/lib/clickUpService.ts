@@ -5,7 +5,7 @@
 
 const CLICKUP_LIST_ID = "901216143943";
 /** Exact status name in ClickUp (case- and space-sensitive) */
-const CLICKUP_STATUS = "NEW LEAD";
+const CLICKUP_STATUS = "new lead";
 
 export type ClickUpLeadPayload = {
   name: string;
