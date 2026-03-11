@@ -22,6 +22,9 @@ export type ContactFormPayload = {
   campaigns?: string;
   sector?: string;
   establishment?: string;
+  budget?: string;
+  service?: string;
+  availability?: string;
 };
 
 function getTransporter() {

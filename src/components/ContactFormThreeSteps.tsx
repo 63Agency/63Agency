@@ -66,6 +66,9 @@ export default function ContactFormThreeSteps() {
   const [qualification, setQualification] = useState({
     role: "", objective: "", timing: "", campaigns: "", sector: "", establishment: "",
   });
+  const [extraFields, setExtraFields] = useState({
+    budget: "", service: "", availability: "",
+  });
 
   const validateStep1 = () => {
     const nextErrors: Record<string, string> = {};
@@ -135,6 +138,9 @@ export default function ContactFormThreeSteps() {
           campaigns: qualification.campaigns,
           sector: qualification.sector,
           establishment: qualification.establishment,
+          budget: (data.get("budget") as string) ?? "",
+          service: (data.get("service") as string) ?? "",
+          availability: (data.get("availability") as string) ?? "",
         });
       }
       form.reset();
@@ -152,6 +158,9 @@ export default function ContactFormThreeSteps() {
   const q3Options = [t("q3_1"), t("q3_2"), t("q3_3"), t("q3_4"), t("q3_5")];
   const q4Options = [t("q4_1"), t("q4_2"), t("q4_3")];
   const q5Options = [t("q5_1"), t("q5_2"), t("q5_3"), t("q5_6")];
+  const budgetOptions = [t("budget_0"), t("budget_1"), t("budget_2"), t("budget_3"), t("budget_4")];
+  const serviceOptions = [t("service_1"), t("service_2"), t("service_3"), t("service_4"), t("service_5")];
+  const availabilityOptions = [t("availability_1"), t("availability_2"), t("availability_3"), t("availability_4")];
   const employeesOptions = [
     { value: "", labelKey: "employeesLabel" },
     { value: t("employees_1"), labelKey: "employees_1" },
@@ -303,6 +312,33 @@ export default function ContactFormThreeSteps() {
             <div>
               <label htmlFor="cta-establishment" className={formLabelClass}>{t("q6Label")}</label>
               <input id="cta-establishment" type="text" value={qualification.establishment} onChange={(e) => setQualification((p) => ({ ...p, establishment: e.target.value }))} placeholder={t("q6Placeholder")} className={formInputClass} />
+            </div>
+            <div>
+              <label htmlFor="cta-budget" className={formLabelClass}>{t("budgetLabel")}</label>
+              <select id="cta-budget" name="budget" className={formSelectClass} value={extraFields.budget} onChange={(e) => setExtraFields((p) => ({ ...p, budget: e.target.value }))}>
+                <option value="">{t("selectPlaceholder")}</option>
+                {budgetOptions.map((opt, i) => (
+                  <option key={i} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="cta-service" className={formLabelClass}>{t("serviceLabel")}</label>
+              <select id="cta-service" name="service" className={formSelectClass} value={extraFields.service} onChange={(e) => setExtraFields((p) => ({ ...p, service: e.target.value }))}>
+                <option value="">{t("selectPlaceholder")}</option>
+                {serviceOptions.map((opt, i) => (
+                  <option key={i} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="cta-availability" className={formLabelClass}>{t("availabilityLabel")}</label>
+              <select id="cta-availability" name="availability" className={formSelectClass} value={extraFields.availability} onChange={(e) => setExtraFields((p) => ({ ...p, availability: e.target.value }))}>
+                <option value="">{t("selectPlaceholder")}</option>
+                {availabilityOptions.map((opt, i) => (
+                  <option key={i} value={opt}>{opt}</option>
+                ))}
+              </select>
             </div>
             {status === "error" && (
               <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm font-medium text-red-700">{t("error")}</div>

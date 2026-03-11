@@ -56,6 +56,9 @@ export async function POST(request: NextRequest) {
       campaigns: campaigns || undefined,
       sector: sector || undefined,
       establishment: establishment || undefined,
+      budget: budget || undefined,
+      service: service || undefined,
+      availability: availability || undefined,
     });
 
     // ClickUp: create lead in separate try/catch so Nodemailer result is unchanged

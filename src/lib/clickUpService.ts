@@ -11,10 +11,11 @@ const CLICKUP_STATUS = "new lead";
 const BASE_URL = "https://api.clickup.com/api/v2";
 
 /**
- * Champs ClickUp ← champs formulaire contact (tous ceux qu’on a dans le formulaire).
- * Si un champ renvoie 404 (Field not found), vérifier l’ID dans ClickUp (liste 901216143943).
- * Source = dropdown → utiliser CLICKUP_SOURCE_OPTION_INDEX (index de l’option, ex: 0).
- * Service Type = multi-select → valeur envoyée en tableau.
+ * Champs ClickUp ← formulaire contact (liste 901216143943).
+ * - 404 "Field not found" = ID du champ incorrect : récupérer le bon ID dans ClickUp (liste → paramètres champs).
+ * - Source = liste déroulante : définir CLICKUP_SOURCE_OPTION_INDEX (0, 1, 2…) dans .env.
+ * - Champs retirés car 404 ou format invalide (Phone, City, Budget, Objectif, Service Type) :
+ *   réintégrer ici avec les vrais IDs / option IDs depuis ClickUp pour les réactiver.
  */
 const CUSTOM_FIELD_IDS: Array<
   { id: string; valueAsArray?: boolean } & (
@@ -26,17 +27,12 @@ const CUSTOM_FIELD_IDS: Array<
 > = [
   { id: "90e56d9a-9864-4dd3-b6ff-8eadd681995b", type: "payload", key: "name" }, // Full Name
   { id: "cf170d1a-077f-4912-ae5a-9d1609af4cf3", type: "payload", key: "email" }, // Email
-  { id: "9f4f7b73-9475-46fe-85a0-b990096cb1d9", type: "payload", key: "phone" }, // Phone Number (manuel)
-  { id: "2564654e-3169-4816-b521-4cf8a9791b84", type: "payload", key: "city" }, // City
-  { id: "6ba586e1-62aa-40b7-baf5-307c9cf9b7a0", type: "payload", key: "availability" }, // when you ready?
   { id: "af3f1e6b-7eee-4fae-9cc8-fd8a648140ca", type: "payload", key: "role" }, // Fonction
   { id: "b0d0af66-e11d-4204-b726-e548b525d4e2", type: "dateSubmitted" }, // Date Submitted
-  { id: "c74b47d5-6b1a-4c7d-b237-39b7b6542b6d", type: "payload", key: "budget" }, // Budget prêt à Investir
-  { id: "ce16924f-be03-463f-a368-93d6051004b8", type: "sourceOptionIndex" }, // Source (dropdown: option index via env)
-  { id: "e8cb1a0d-fdda-4fee-88a5-8aecd3e48ed7", type: "payload", key: "service", valueAsArray: true }, // Service Type (array)
+  { id: "ce16924f-be03-463f-a368-93d6051004b8", type: "sourceOptionIndex" }, // Source (CLICKUP_SOURCE_OPTION_INDEX)
   { id: "ed40c77d-29fc-4681-8eb6-5578ceb9a761", type: "payload", key: "company" }, // Établissement
-  { id: "f4dc469d-dbda-4ceb-b477-c596d13369a7", type: "payload", key: "objective" }, // Objectif
   { id: "f8705cd4-72d4-4db8-8be4-f7d024a22853", type: "payload", key: "sector" }, // Secteur d'activité
+  { id: "6ba586e1-62aa-40b7-baf5-307c9cf9b7a0", type: "payload", key: "availability" }, // when you ready?
 ];
 
 export type ClickUpLeadPayload = {
