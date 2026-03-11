@@ -20,7 +20,6 @@ const CUSTOM_FIELD_IDS: Array<
 > = [
   { id: "90e56d9a-9864-4dd3-b6ff-8eadd681995b", type: "payload", key: "name" }, // Full Name
   { id: "cf170d1a-077f-4912-ae5a-9d1609af4cf3", type: "payload", key: "email" }, // Email
-  { id: "42586fcee-f057-402d-b8f4-10689f6a6a24", type: "payload", key: "phone" }, // Phone Number
   { id: "9f4f7b73-9475-46fe-85a0-b990096cb1d9", type: "payload", key: "phone" }, // Phone Number (manuel)
   { id: "2564654e-3169-4816-b521-4cf8a9791b84", type: "payload", key: "city" }, // City
   { id: "6ba586e1-62aa-40b7-baf5-307c9cf9b7a0", type: "payload", key: "availability" }, // when you ready?
