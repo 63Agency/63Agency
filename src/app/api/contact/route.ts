@@ -31,6 +31,9 @@ export async function POST(request: NextRequest) {
     const campaigns = stringVal(body.campaigns);
     const sector = stringVal(body.sector);
     const establishment = stringVal(body.establishment);
+    const budget = stringVal(body.budget);
+    const service = stringVal(body.service);
+    const availability = stringVal(body.availability);
 
     if (!name || !email) {
       return NextResponse.json(
@@ -71,6 +74,9 @@ export async function POST(request: NextRequest) {
         campaigns: campaigns || undefined,
         sector: sector || undefined,
         establishment: establishment || undefined,
+        budget: budget || undefined,
+        service: service || undefined,
+        availability: availability || undefined,
       });
     } catch (clickUpError) {
       console.error("[api/contact] ClickUp lead creation failed:", clickUpError);
