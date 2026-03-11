@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendContactEmails } from "@/lib/emailService";
+import { createClickUpLead } from "@/lib/clickUpService";
 
 type ContactBody = {
   name?: string;
@@ -53,6 +54,27 @@ export async function POST(request: NextRequest) {
       sector: sector || undefined,
       establishment: establishment || undefined,
     });
+
+    // ClickUp: create lead in separate try/catch so Nodemailer result is unchanged
+    try {
+      await createClickUpLead({
+        name,
+        email,
+        phone,
+        message: message || undefined,
+        city: city || undefined,
+        company: company || undefined,
+        employees: employees || undefined,
+        role: role || undefined,
+        objective: objective || undefined,
+        timing: timing || undefined,
+        campaigns: campaigns || undefined,
+        sector: sector || undefined,
+        establishment: establishment || undefined,
+      });
+    } catch (clickUpError) {
+      console.error("[api/contact] ClickUp lead creation failed:", clickUpError);
+    }
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
