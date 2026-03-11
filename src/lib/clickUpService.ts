@@ -1,7 +1,7 @@
 /**
  * ClickUp integration: create a lead task in a list when contact form is submitted.
  * Uses CLICKUP_API_TOKEN (add to .env.local) and list 901216143943, status "new lead".
- * Fetches list custom fields and maps form data into custom_fields; description is a fallback summary.
+ * Custom field IDs are hardcoded for list 901216143943; description is a fallback summary.
  */
 
 const CLICKUP_LIST_ID = "901216143943";
@@ -10,23 +10,29 @@ const CLICKUP_STATUS = "new lead";
 
 const BASE_URL = "https://api.clickup.com/api/v2";
 
-/** ClickUp custom field name → our payload key or static value */
-const FIELD_NAME_TO_SOURCE: Record<
-  string,
-  { type: "payload"; key: keyof ClickUpLeadPayload } | { type: "static"; value: string }
-> = {
-  "Full Name": { type: "payload", key: "name" },
-  Email: { type: "payload", key: "email" },
-  "Phone Number": { type: "payload", key: "phone" },
-  City: { type: "payload", key: "city" },
-  "Établissement": { type: "payload", key: "company" },
-  Fonction: { type: "payload", key: "role" },
-  "Secteur d'activité": { type: "payload", key: "sector" },
-  Source: { type: "static", value: "Website 63agency.ma" },
-  "Budget prêt à Investir": { type: "payload", key: "budget" },
-  "Service Type": { type: "payload", key: "service" },
-  "when you ready?": { type: "payload", key: "availability" },
-};
+/** Hardcoded custom field IDs for list 901216143943. Each entry: field id → payload key (or static value). */
+const CUSTOM_FIELD_IDS: Array<
+  { id: string } & (
+    | { type: "payload"; key: keyof ClickUpLeadPayload }
+    | { type: "static"; value: string }
+    | { type: "dateSubmitted" }
+  )
+> = [
+  { id: "90e56d9a-9864-4dd3-b6ff-8eadd681995b", type: "payload", key: "name" }, // Full Name
+  { id: "cf170d1a-077f-4912-ae5a-9d1609af4cf3", type: "payload", key: "email" }, // Email
+  { id: "42586fcee-f057-402d-b8f4-10689f6a6a24", type: "payload", key: "phone" }, // Phone Number
+  { id: "9f4f7b73-9475-46fe-85a0-b990096cb1d9", type: "payload", key: "phone" }, // Phone Number (manuel)
+  { id: "2564654e-3169-4816-b521-4cf8a9791b84", type: "payload", key: "city" }, // City
+  { id: "6ba586e1-62aa-40b7-baf5-307c9cf9b7a0", type: "payload", key: "availability" }, // when you ready?
+  { id: "af3f1e6b-7eee-4fae-9cc8-fd8a648140ca", type: "payload", key: "role" }, // Fonction
+  { id: "b0d0af66-e11d-4204-b726-e548b525d4e2", type: "dateSubmitted" }, // Date Submitted
+  { id: "c74b47d5-6b1a-4c7d-b237-39b7b6542b6d", type: "payload", key: "budget" }, // Budget prêt à Investir
+  { id: "ce16924f-be03-463f-a368-93d6051004b8", type: "static", value: "Website 63agency.ma" }, // Source
+  { id: "e8cb1a0d-fdda-4fee-88a5-8aecd3e48ed7", type: "payload", key: "service" }, // Service Type
+  { id: "ed40c77d-29fc-4681-8eb6-5578ceb9a761", type: "payload", key: "company" }, // Établissement
+  { id: "f4dc469d-dbda-4ceb-b477-c596d13369a7", type: "payload", key: "objective" }, // Objectif
+  { id: "f8705cd4-72d4-4db8-8be4-f7d024a22853", type: "payload", key: "sector" }, // Secteur d'activité
+];
 
 export type ClickUpLeadPayload = {
   name: string;
@@ -46,8 +52,6 @@ export type ClickUpLeadPayload = {
   service?: string;
   availability?: string;
 };
-
-type ClickUpField = { id: string; name: string; type: string; type_config?: Record<string, unknown> };
 
 function getDescription(payload: ClickUpLeadPayload): string {
   const lines: string[] = [
@@ -75,51 +79,23 @@ function getAuthHeader(token: string): string {
 }
 
 /**
- * Fetches custom fields for the list from GET list/{list_id}/field.
- * Returns array of { id, name, type }; empty array on failure.
+ * Builds custom_fields array from hardcoded IDs and payload. Only includes fields with a value.
  */
-async function fetchListFields(token: string): Promise<ClickUpField[]> {
-  const res = await fetch(`${BASE_URL}/list/${CLICKUP_LIST_ID}/field`, {
-    headers: { Authorization: getAuthHeader(token) },
-  });
-  if (!res.ok) {
-    console.warn("[ClickUp] fetch list fields failed:", res.status, await res.text());
-    return [];
-  }
-  const data = await res.json();
-  const rawFields = Array.isArray(data) ? data : data?.fields;
-  if (!Array.isArray(rawFields)) return [];
-  return rawFields.map((f: { id: string; name: string; type: string; type_config?: Record<string, unknown> }) => ({
-    id: f.id,
-    name: f.name,
-    type: f.type,
-    type_config: f.type_config,
-  }));
-}
-
-/**
- * Builds custom_fields array for create task: only includes fields we have a value for.
- */
-function buildCustomFields(
-  fields: ClickUpField[],
-  payload: ClickUpLeadPayload
-): { id: string; value: string | number }[] {
-  const nameToId = new Map(fields.map((f) => [f.name, f.id]));
+function buildCustomFields(payload: ClickUpLeadPayload): { id: string; value: string | number }[] {
   const out: { id: string; value: string | number }[] = [];
-
-  for (const [fieldName, source] of Object.entries(FIELD_NAME_TO_SOURCE)) {
-    const fieldId = nameToId.get(fieldName);
-    if (!fieldId) continue;
-
+  for (const field of CUSTOM_FIELD_IDS) {
     let value: string | number;
-    if (source.type === "static") {
-      value = source.value;
-    } else {
-      const raw = payload[source.key];
+    if (field.type === "payload") {
+      const raw = payload[field.key];
       if (raw === undefined || raw === "") continue;
       value = typeof raw === "string" ? raw : String(raw);
+    } else if (field.type === "static") {
+      value = field.value;
+    } else {
+      // dateSubmitted: current time in ms for ClickUp date fields
+      value = Date.now();
     }
-    out.push({ id: fieldId, value });
+    out.push({ id: field.id, value });
   }
   return out;
 }
@@ -143,8 +119,7 @@ export async function createClickUpLead(payload: ClickUpLeadPayload): Promise<bo
     Authorization: getAuthHeader(token),
   };
 
-  const fields = await fetchListFields(token);
-  const custom_fields = buildCustomFields(fields, payload);
+  const custom_fields = buildCustomFields(payload);
 
   const baseBody: { name: string; description: string; custom_fields?: { id: string; value: string | number }[] } = {
     name,
@@ -152,7 +127,6 @@ export async function createClickUpLead(payload: ClickUpLeadPayload): Promise<bo
   };
   if (custom_fields.length > 0) baseBody.custom_fields = custom_fields;
 
-  // Try with status first
   let res = await fetch(`${BASE_URL}/list/${CLICKUP_LIST_ID}/task`, {
     method: "POST",
     headers,
