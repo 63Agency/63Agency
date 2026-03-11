@@ -148,16 +148,14 @@ export async function createClickUpLead(payload: ClickUpLeadPayload): Promise<bo
 
   const custom_fields = buildCustomFields(payload);
 
-  const baseBody: { name: string; description: string; custom_fields?: { id: string; value: string | number }[] } = {
-    name,
-    description,
-  };
-  if (custom_fields.length > 0) baseBody.custom_fields = custom_fields;
+  // Create task WITHOUT custom_fields to avoid 404 "Cannot find the custom field" (FIELD_058)
+  // when one of the field IDs is invalid; then set each field one by one so invalid IDs only log a warning.
+  const createBody = { name, description, status: CLICKUP_STATUS };
 
   let res = await fetch(`${BASE_URL}/list/${CLICKUP_LIST_ID}/task`, {
     method: "POST",
     headers,
-    body: JSON.stringify({ ...baseBody, status: CLICKUP_STATUS }),
+    body: JSON.stringify(createBody),
   });
 
   if (!res.ok && res.status === 400) {
@@ -167,7 +165,7 @@ export async function createClickUpLead(payload: ClickUpLeadPayload): Promise<bo
       res = await fetch(`${BASE_URL}/list/${CLICKUP_LIST_ID}/task`, {
         method: "POST",
         headers,
-        body: JSON.stringify(baseBody),
+        body: JSON.stringify({ name, description }),
       });
     }
   }
