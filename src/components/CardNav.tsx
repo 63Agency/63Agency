@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 export type CardNavBarLink = {
   label: string;
@@ -56,16 +56,6 @@ const CardNav: React.FC<CardNavProps> = ({
   trailingSlot,
   compact = false,
 }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  useEffect(() => {
-    if (sidebarOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = '';
-    return () => { document.body.style.overflow = ''; };
-  }, [sidebarOpen]);
-
-  const closeSidebar = () => setSidebarOpen(false);
-
   return (
     <>
       <div
@@ -75,9 +65,9 @@ const CardNav: React.FC<CardNavProps> = ({
           className="card-nav block h-[56px] sm:h-[72px] p-0 rounded-xl shadow-md relative overflow-visible"
           style={{ backgroundColor: baseColor }}
         >
-          <div className="card-nav-top absolute inset-x-0 top-0 h-[56px] sm:h-[72px] flex items-center justify-between gap-2 sm:gap-4 p-2 sm:p-3 pl-[1rem] sm:pl-[1.1rem] pr-3 sm:pr-5 z-[2]">
-            <a href={logoHref} className="logo-container flex items-center shrink-0 -mt-2 sm:-mt-3" aria-label={logoAlt}>
-              <img src={logo} alt={logoAlt} className="logo h-[30px] sm:h-[40px] md:h-[44px] w-auto object-contain max-h-12" style={{ filter: 'none' }} />
+          <div className="card-nav-top absolute inset-x-0 top-0 h-[56px] sm:h-[72px] flex items-center justify-between gap-2 sm:gap-4 p-2 sm:p-3 pl-2 sm:pl-[1.1rem] pr-3 sm:pr-5 z-[2]">
+            <a href={logoHref} className="logo-container flex items-center shrink-0 -mt-2 sm:-mt-3 order-first -ml-0.5 md:ml-0" aria-label={logoAlt}>
+              <img src={logo} alt={logoAlt} className="logo h-[24px] sm:h-[32px] md:h-[40px] w-auto object-contain max-h-10 md:max-h-12" style={{ filter: 'none' }} />
             </a>
 
             {/* Desktop: links + trailing + CTA */}
@@ -115,105 +105,28 @@ const CardNav: React.FC<CardNavProps> = ({
               )}
             </div>
 
-            {/* Mobile: CTA button + menu button */}
-            <div className="md:hidden flex items-center gap-1.5 flex-shrink-0">
+            {/* Mobile: CTA same style as nav links (Notre système), un peu plus haut */}
+            <div className="md:hidden flex items-center gap-1.5 flex-shrink-0 -mt-1">
               {ctaHref ? (
                 <a
                   href={ctaHref}
-                  className="coolBeansNav inline-flex items-center justify-center rounded-lg border border-white/50 px-2.5 py-1.5 min-h-[32px] font-medium text-[12px] cursor-pointer no-underline whitespace-nowrap flex-shrink-0 shadow-md hover:border-white/80 hover:bg-white/10 transition-all duration-200"
-                  style={{ color: buttonTextColor ?? '#fff' }}
+                  className="text-white/90 hover:text-white text-[13px] sm:text-[15px] font-medium transition-colors no-underline whitespace-nowrap rounded-lg border border-white/50 px-3 py-2 hover:border-white/80 flex-shrink-0"
                 >
                   {ctaLabel}
                 </a>
               ) : (
                 <button
                   type="button"
-                  className="coolBeansNav inline-flex items-center justify-center rounded-lg border border-white/50 px-2.5 py-1.5 min-h-[32px] font-medium text-[12px] whitespace-nowrap flex-shrink-0 shadow-md hover:border-white/80 hover:bg-white/10 transition-all duration-200"
+                  className="text-white/90 hover:text-white text-[13px] sm:text-[15px] font-medium whitespace-nowrap rounded-lg border border-white/50 px-3 py-2 hover:border-white/80 flex-shrink-0 transition-colors"
                   style={{ color: buttonTextColor ?? '#fff' }}
                 >
                   {ctaLabel}
                 </button>
               )}
-              <button
-                type="button"
-                className="flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors flex-shrink-0"
-                onClick={() => setSidebarOpen(true)}
-                aria-label="Ouvrir le menu"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
             </div>
           </div>
         </nav>
       </div>
-
-      {/* Mobile sidebar overlay */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-[100] md:hidden"
-          aria-modal="true"
-          role="dialog"
-          aria-label="Menu de navigation"
-        >
-          <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={closeSidebar}
-            aria-hidden
-          />
-          <aside
-            className="absolute right-0 top-0 bottom-0 w-full max-w-[320px] bg-[rgba(15,15,20,0.98)] shadow-xl flex flex-col p-6 pt-14 transition-transform duration-200 ease-out translate-x-0"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-lg text-white hover:bg-white/10 transition-colors"
-              onClick={closeSidebar}
-              aria-label="Fermer le menu"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <nav className="flex flex-col gap-2 mt-4">
-              {barLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => {
-                    handleBarLinkClick(e, link.href, closeSidebar);
-                    if (!link.href.includes('#')) setTimeout(closeSidebar, 0);
-                  }}
-                  className="text-white/90 hover:text-white text-base font-medium py-3 px-4 rounded-lg border border-white/30 hover:border-white/60 transition-colors no-underline"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-            <div className="mt-6 pt-6 border-t border-white/20 flex flex-col gap-3">
-              {trailingSlot && <div className="px-4">{trailingSlot}</div>}
-              {ctaHref ? (
-                <a
-                  href={ctaHref}
-                  onClick={closeSidebar}
-                  className="coolBeansNav inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-5 py-3 font-semibold text-[15px] text-white no-underline shadow-lg shadow-black/20 hover:border-white hover:bg-white/10 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                >
-                  {ctaLabel}
-                </a>
-              ) : (
-                <button
-                  type="button"
-                  className="coolBeansNav inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-5 py-3 font-semibold text-[15px] text-white hover:border-white hover:bg-white/10 shadow-lg shadow-black/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                  style={{ color: buttonTextColor }}
-                >
-                  {ctaLabel}
-                </button>
-              )}
-            </div>
-          </aside>
-        </div>
-      )}
     </>
   );
 };

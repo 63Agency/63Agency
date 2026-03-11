@@ -17,6 +17,20 @@ const PARTNER_LOGOS = [
   { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
 ];
 
+/** Responsive: 2 rows of 3 logos (row1: London Academy, Afriquia, Commons | row2: Unit Education, Algorithme, Uno Mars) */
+const PARTNER_LOGOS_MOBILE_ROWS: { row1: typeof PARTNER_LOGOS; row2: typeof PARTNER_LOGOS } = {
+  row1: [
+    { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
+    { src: "/images/partners/partner-logos/Afriquia.png", alt: "Afriquia" },
+    { src: "/images/partners/partner-logos/CommonsLogo.png", alt: "Commons" },
+  ],
+  row2: [
+    { src: "/images/partners/partner-logos/Unit-Education .png", alt: "Unit Education" },
+    { src: "/images/partners/partner-logos/partenaire18.png", alt: "Algorithme" },
+    { src: "/images/partners/partner-logos/partenaire17.png", alt: "Uno Mars" },
+  ],
+};
+
 /** Split text into two lines with balanced word count. */
 function splitIntoTwoLines(text: string): [string, string] {
   const words = (text || "").trim().split(/\s+/).filter(Boolean);
@@ -90,8 +104,8 @@ export default function HeroSection() {
         className="relative z-10 w-full max-w-7xl mx-auto pt-24 sm:pt-20 lg:pt-24 pb-6 sm:pb-4 lg:pb-6 text-center box-border overflow-visible pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pl-6 sm:pr-6"
       >
         <div className="w-full min-w-0 max-w-4xl mx-auto px-4 sm:px-0">
-        {/* Texte du haut : Système d'acquisition... (petit) */}
-        <h2 className="text-[11px] sm:text-xs md:text-sm text-gray-400 mb-2 max-w-4xl mx-auto leading-relaxed font-medium w-full">
+        {/* Texte du haut : Système d'acquisition... (mobile: plus petit pour tenir en une ligne) */}
+        <h2 className="text-[10px] sm:text-xs md:text-sm text-gray-400 mb-2 max-w-4xl mx-auto leading-tight font-medium w-full whitespace-nowrap sm:whitespace-normal">
           {t("descriptionLine2")}
         </h2>
 
@@ -144,12 +158,52 @@ export default function HeroSection() {
         </div>
 
         {/* Partenaires – tous les logos visibles en une ligne (taille réduite pour tenir dans l’écran) */}
-        <div className="mt-3 sm:mt-4 lg:mt-5 pt-3 sm:pt-4 w-full max-w-5xl mx-auto px-1 sm:px-0">
-          <div className="scrollbar-hide flex flex-nowrap items-center justify-center gap-3 sm:gap-4 md:gap-5 overflow-x-auto w-full py-1.5">
+        <div className="mt-8 pt-6 sm:mt-4 sm:pt-4 lg:mt-5 w-full max-w-5xl mx-auto px-1 sm:px-0">
+          {/* Mobile: 2 rows of 3, logos plus bas sous le CTA */}
+          <div className="md:hidden flex flex-col items-center gap-4 py-1.5">
+            <div className="flex items-center justify-center gap-4 sm:gap-6 w-full">
+              {PARTNER_LOGOS_MOBILE_ROWS.row1.map((logo, i) => (
+                <div
+                  key={`r1-${i}`}
+                  className="flex shrink-0 items-center justify-center h-10 sm:h-12 w-20 sm:w-24 opacity-90"
+                  style={{ filter: "brightness(0) invert(1)" }}
+                >
+                  <Image
+                    src={encodeURI(logo.src)}
+                    alt={logo.alt}
+                    width={96}
+                    height={48}
+                    className="object-contain max-h-full w-auto"
+                    unoptimized={logo.src.includes(" ") ? true : undefined}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-center gap-4 sm:gap-6 w-full">
+              {PARTNER_LOGOS_MOBILE_ROWS.row2.map((logo, i) => (
+                <div
+                  key={`r2-${i}`}
+                  className="flex shrink-0 items-center justify-center h-10 sm:h-12 w-20 sm:w-24 opacity-90"
+                  style={{ filter: "brightness(0) invert(1)" }}
+                >
+                  <Image
+                    src={encodeURI(logo.src)}
+                    alt={logo.alt}
+                    width={96}
+                    height={48}
+                    className="object-contain max-h-full w-auto"
+                    unoptimized={logo.src.includes(" ") ? true : undefined}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Desktop: une ligne scroll */}
+          <div className="hidden md:flex scrollbar-hide flex-nowrap items-center justify-center gap-4 lg:gap-5 overflow-x-auto w-full py-1.5">
             {PARTNER_LOGOS.map((logo, i) => (
               <div
                 key={i}
-                className="flex shrink-0 items-center justify-center h-12 sm:h-14 md:h-16 w-24 sm:w-28 md:w-32 opacity-90"
+                className="flex shrink-0 items-center justify-center h-14 lg:h-16 w-28 lg:w-32 opacity-90"
                 style={{ filter: "brightness(0) invert(1)" }}
               >
                 <Image
