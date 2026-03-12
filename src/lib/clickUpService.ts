@@ -85,15 +85,20 @@ Objective: ${payload.objective || "-"}`;
   }
   console.log("[ClickUp] task created:", taskId);
 
-  const extraFields = [
+  // Source = dropdown → option index 6 = "Website" (FIELD_011 exige index, pas UUID)
+  const SOURCE_FIELD_ID = "ce16924f-be03-463f-a368-93d6051004b8";
+  const SOURCE_OPTION_INDEX_WEBSITE = 6;
+
+  const extraFields: { id: string; value: string | number }[] = [
     { id: "9f4f7b73-9475-46fe-85a0-b990096cb1d9", value: payload.phone || "" },
     { id: "2564654e-3169-4816-b521-4cf8a9791b84", value: payload.city || "" },
     { id: "c74b47d5-6b1a-4c7d-b237-39b7b6542b6d", value: payload.budget || "" },
-    { id: "f4dc469d-dbda-4ceb-b477-c596d13369a7", value: payload.objective || "" },
+    { id: "f4c4e69d-dbde-4ceb-b477-c596d13363a7", value: payload.objective || "" },
+    { id: SOURCE_FIELD_ID, value: SOURCE_OPTION_INDEX_WEBSITE },
   ];
 
   for (const field of extraFields) {
-    if (!field.value) continue;
+    if (field.value === "" || (typeof field.value === "number" && field.value < 0)) continue;
     try {
       const r = await fetch(`${BASE_URL}/task/${taskId}/field/${field.id}`, {
         method: "POST",
