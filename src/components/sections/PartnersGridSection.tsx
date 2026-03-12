@@ -11,32 +11,29 @@ const PARTNER_LOGOS = [
   { name: "Partenaire 5", logo: "/images/partners/partner-logos/Partenaire5.png" },
   { name: "Partenaire 6", logo: "/images/partners/partner-logos/partenaire6.png" },
   { name: "Partenaire 7", logo: "/images/partners/partner-logos/partenaire7.png" },
-  { name: "Partenaire 8", logo: "/images/partners/partner-logos/partenaire8.jpg" },
-  { name: "Partenaire 9", logo: "/images/partners/partner-logos/partenaire9.jpg" },
+  { name: "La Villette International School", logo: "/images/partners/partner-logos/image1copy.png" },
+  { name: "Afriquia", logo: "/images/partners/partner-logos/Afriquia.png" },
   { name: "Partenaire 10", logo: "/images/partners/partner-logos/partenaire10.jpg" },
   { name: "Partenaire 11", logo: "/images/partners/partner-logos/partenaire11.jpg" },
-  { name: "Partenaire 12", logo: "/images/partners/partner-logos/partenaire12.jpg" },
-  { name: "Partenaire 13", logo: "/images/partners/partner-logos/partenaire13.jpg" },
-  { name: "Partenaire 14", logo: "/images/partners/partner-logos/partenaire14.jpg" },
+  { name: "Jules Renard International School", logo: "/images/partners/partner-logos/image2copy.png" },
+  { name: "ScolaritéPlus", logo: "/images/partners/partner-logos/image%20copy.png" },
+  { name: "DELTA ACADEMY", logo: "/images/partners/partner-logos/imagecopy2.png" },
   { name: "Partenaire 15", logo: "/images/partners/partner-logos/partenaire15.jpg" },
-  { name: "Partenaire 16", logo: "/images/partners/partner-logos/partenaire16.jpg" },
+  { name: "Manar Assanaoubar Groupe Scolaire", logo: "/images/partners/partner-logos/image3copy%202.png" },
   { name: "Partenaire 17", logo: "/images/partners/partner-logos/partenaire17.png" },
   { name: "Partenaire 18", logo: "/images/partners/partner-logos/partenaire18.png" },
   { name: "Partenaire 19", logo: "/images/partners/partner-logos/partenaire19.jpg" },
-  { name: "Partenaire MGT", logo: "/images/partners/partner-logos/MGT-PNG.PNG" },
+  { name: "MGT", logo: "/images/partners/partner-logos/image-copy.png" },
   { name: "Partenaire Logo", logo: "/images/partners/partner-logos/logo.png" },
   { name: "Partenaire Logo 02", logo: "/images/partners/partner-logos/logo02cadre.png" },
-  { name: "Partenaire Logoo", logo: "/images/partners/partner-logos/logoo.jpg" },
-  { name: "Partenaire Social Media", logo: "/images/partners/partner-logos/logo-social-media.png" },
+  { name: "EducAtlas", logo: "/images/partners/partner-logos/image.png" },
+  { name: "Madariss Achbal Al Atlas", logo: "/images/partners/partner-logos/imagecopy.png" },
   { name: "Partenaire LOGO PNG", logo: "/images/partners/partner-logos/LOGO PNG-01.png" },
   { name: "London Academy", logo: "/images/partners/partner-logos/londonacademio.png" },
 ];
 
 export default function PartnersGridSection() {
   const t = useTranslations("partners");
-
-  // Repeat logos to fill a grid (~6 rows x 10 cols = 60 items)
-  const gridLogos = Array.from({ length: 60 }, (_, i) => PARTNER_LOGOS[i % PARTNER_LOGOS.length]);
 
   return (
     <section className="relative py-6 sm:py-12 bg-neutral-100 overflow-hidden">
@@ -46,11 +43,11 @@ export default function PartnersGridSection() {
           {t("titleLine1")} {t("titleLine2")}
         </h2>
 
-        {/* Logos grid - couleurs d'origine, pas de hover */}
+        {/* Logos grid — chaque logo affiché une seule fois */}
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-3 sm:gap-4 items-center justify-items-center">
-          {gridLogos.map((partner, index) => (
+          {PARTNER_LOGOS.map((partner, index) => (
             <div
-              key={index}
+              key={`${partner.name}-${index}`}
               className="flex items-center justify-center w-full aspect-[2/1] max-w-[120px]"
             >
               <Image
