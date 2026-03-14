@@ -6,7 +6,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import fr from "@/../messages/fr.json";
 import en from "@/../messages/en.json";
 
-const BASE_URL = "https://63agency.ma";
+const BASE_URL = "https://63agency.com";
 
 type Props = { params: { locale: string } };
 

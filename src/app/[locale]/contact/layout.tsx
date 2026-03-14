@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = isEn
     ? "Ready to grow? Book a free 30-min strategy call with 63 Agency today."
     : "Prêt à développer votre business ? Réservez un appel stratégique de 30 minutes.";
-  const baseUrl = "https://63agency.ma";
+  const baseUrl = "https://63agency.com";
   return {
     title,
     description,

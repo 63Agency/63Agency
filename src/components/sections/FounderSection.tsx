@@ -12,8 +12,9 @@ export default function FounderSection() {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <section className="py-6 sm:py-12 bg-white" id="founder">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <section className="founder-grid-wrapper py-6 sm:py-12" id="founder">
+      <div className="founder-grid-background" aria-hidden />
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
         {/* Titre principal + point vert – mobile: wrap naturel sur plusieurs lignes */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-8 sm:mb-12 text-left leading-tight max-w-xl">
           {t("headline")}
@@ -60,7 +61,7 @@ export default function FounderSection() {
         {/* Bouton CTA – mobile: rectangle arrondi, pleine largeur, flèche à gauche (design image) */}
         <Link
           href={`/${locale}#contact`}
-          className="coolBeansNav inline-flex items-center justify-center gap-3 w-full sm:w-auto px-6 py-4 sm:py-3.5 rounded-xl sm:rounded-[3rem] border-2 border-white bg-black text-white font-semibold text-[15px] no-underline"
+          className="coolBeansNav inline-flex items-center justify-center gap-3 w-full sm:w-auto px-6 py-4 sm:py-3.5 rounded-xl sm:rounded-[3rem] border-2 border-black bg-black text-white font-semibold text-[15px] no-underline"
         >
           <svg className="w-5 h-5 shrink-0 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

@@ -12,7 +12,7 @@ import PartnersGridSection from "@/components/sections/PartnersGridSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import JsonLd from "@/components/seo/JsonLd";
 
-const BASE_URL = "https://63agency.ma";
+const BASE_URL = "https://63agency.com";
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

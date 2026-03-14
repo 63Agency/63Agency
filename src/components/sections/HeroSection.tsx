@@ -12,16 +12,16 @@ const PARTNER_LOGOS = [
   { src: "/images/partners/partner-logos/partener1.png", alt: "Partner" },
   { src: "/images/partners/partner-logos/CommonsLogo.png", alt: "Commons" },
   { src: "/images/partners/partner-logos/Afriquia.png", alt: "Afriquia" },
+  { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
   { src: "/images/partners/partner-logos/Unit-Education .png", alt: "Unit Education" },
   { src: "/images/partners/partner-logos/partenaire18.png", alt: "Partner" },
-  { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
 ];
 
-/** Responsive: 2 rows of 3 logos (row1: London Academy, Afriquia, Commons | row2: Unit Education, Algorithme, Uno Mars) */
+/** Responsive: 2 rows of 3 logos (row1: Afriquia, London Academy, Commons | row2: Unit Education, Algorithme, Uno Mars) */
 const PARTNER_LOGOS_MOBILE_ROWS: { row1: typeof PARTNER_LOGOS; row2: typeof PARTNER_LOGOS } = {
   row1: [
-    { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
     { src: "/images/partners/partner-logos/Afriquia.png", alt: "Afriquia" },
+    { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
     { src: "/images/partners/partner-logos/CommonsLogo.png", alt: "Commons" },
   ],
   row2: [
@@ -165,14 +165,14 @@ export default function HeroSection() {
               {PARTNER_LOGOS_MOBILE_ROWS.row1.map((logo, i) => (
                 <div
                   key={`r1-${i}`}
-                  className="flex shrink-0 items-center justify-center h-10 sm:h-12 w-20 sm:w-24 opacity-90"
+                  className={`flex shrink-0 items-center justify-center opacity-90 ${i === 0 ? "h-14 sm:h-16 w-28 sm:w-32" : "h-12 sm:h-14 w-24 sm:w-28"}`}
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
                     src={encodeURI(logo.src)}
                     alt={logo.alt}
-                    width={96}
-                    height={48}
+                    width={112}
+                    height={56}
                     className="object-contain max-h-full w-auto"
                     unoptimized={logo.src.includes(" ") ? true : undefined}
                   />
@@ -183,14 +183,14 @@ export default function HeroSection() {
               {PARTNER_LOGOS_MOBILE_ROWS.row2.map((logo, i) => (
                 <div
                   key={`r2-${i}`}
-                  className="flex shrink-0 items-center justify-center h-10 sm:h-12 w-20 sm:w-24 opacity-90"
+                  className="flex shrink-0 items-center justify-center h-12 sm:h-14 w-24 sm:w-28 opacity-90"
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
                     src={encodeURI(logo.src)}
                     alt={logo.alt}
-                    width={96}
-                    height={48}
+                    width={112}
+                    height={56}
                     className="object-contain max-h-full w-auto"
                     unoptimized={logo.src.includes(" ") ? true : undefined}
                   />
@@ -203,14 +203,14 @@ export default function HeroSection() {
             {PARTNER_LOGOS.map((logo, i) => (
               <div
                 key={i}
-                className="flex shrink-0 items-center justify-center h-14 lg:h-16 w-28 lg:w-32 opacity-90"
+                className={`flex shrink-0 items-center justify-center opacity-90 ${i === 0 ? "h-20 lg:h-24 w-36 lg:w-44" : "h-14 lg:h-16 w-28 lg:w-32"}`}
                 style={{ filter: "brightness(0) invert(1)" }}
               >
                 <Image
                   src={encodeURI(logo.src)}
                   alt={logo.alt}
-                  width={144}
-                  height={64}
+                  width={160}
+                  height={80}
                   className="object-contain max-h-full w-auto"
                   unoptimized={logo.src.includes(" ") ? true : undefined}
                 />

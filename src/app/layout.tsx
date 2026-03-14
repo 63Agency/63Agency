@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://63agency.ma"),
+  metadataBase: new URL("https://63agency.com"),
 };
 
 export default function RootLayout({

@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import JsonLd from "@/components/seo/JsonLd";
 
-const SITE_URL = "https://63agency.ma";
+const SITE_URL = "https://63agency.com";
 
 const organizationSchema = {
   "@context": "https://schema.org",
