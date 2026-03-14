@@ -10,7 +10,7 @@ const PARTNER_LOGOS = [
   { name: "Partenaire 4", logo: "/images/partners/partner-logos/partenaire4.png" },
   { name: "Partenaire 5", logo: "/images/partners/partner-logos/Partenaire5.png" },
   { name: "Partenaire 6", logo: "/images/partners/partner-logos/partenaire6.png" },
-  { name: "Partenaire 7", logo: "/images/partners/partner-logos/partenaire7.png" },
+  { name: "Commons", logo: "/images/partners/partner-logos/imagecopy6.png" },
   { name: "La Villette International School", logo: "/images/partners/partner-logos/image1copy.png" },
   { name: "Afriquia", logo: "/images/partners/partner-logos/Afriquia.png" },
   { name: "Partenaire 10", logo: "/images/partners/partner-logos/partenaire10.jpg" },

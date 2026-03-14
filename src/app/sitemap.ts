@@ -1,25 +1,30 @@
-import { MetadataRoute } from "next";
-import { locales } from "@/i18n/config";
-
-const BASE_URL = "https://63agency.ma";
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [];
-
-  for (const locale of locales) {
-    entries.push({
-      url: `${BASE_URL}/${locale}`,
+  return [
+    {
+      url: 'https://63agency.com',
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
-    });
-    entries.push({
-      url: `${BASE_URL}/${locale}/about`,
+      changeFrequency: 'monthly',
+      priority: 1,
+    },
+    {
+      url: 'https://63agency.com/en',
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-  }
-
-  return entries;
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://63agency.com/fr',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://63agency.com/ar',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+  ]
 }

@@ -13,7 +13,7 @@ export default function PartnersSection() {
     { name: "Partenaire 4", logo: "/images/partners/partner-logos/partenaire4.png" },
     { name: "Partenaire 5", logo: "/images/partners/partner-logos/Partenaire5.png" },
     { name: "Partenaire 6", logo: "/images/partners/partner-logos/partenaire6.png" },
-    { name: "Partenaire 7", logo: "/images/partners/partner-logos/partenaire7.png" },
+    { name: "Commons", logo: "/images/partners/partner-logos/imagecopy6.png" },
   ];
 
   // Duplicate partners for seamless loop
