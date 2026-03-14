@@ -43,25 +43,22 @@ html {
   width: 100%;
 }
 
-/* Hero CTA button (Réservez un appel) – style .btn + effet ripple .animation */
-@keyframes ripple {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.08), 0 0 0 20px rgba(0, 0, 0, 0.06), 0 0 0 40px rgba(0, 0, 0, 0.04), 0 0 0 60px rgba(0, 0, 0, 0.02);
-  }
-  100% {
-    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.06), 0 0 0 40px rgba(0, 0, 0, 0.04), 0 0 0 60px rgba(0, 0, 0, 0.02), 0 0 0 80px rgba(0, 0, 0, 0);
-  }
+/* Hero CTA button (Réservez un appel) – effet shine qui attire l'attention */
+@keyframes shine-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
 }
 
 .hero-cta-btn {
   outline: 0;
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: #ffffff;
   min-width: 200px;
   border: 2px solid #000000;
-  border-radius: 4px;
+  border-radius: 9999px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   padding: 16px 20px;
@@ -75,16 +72,31 @@ html {
   text-decoration: none;
 }
 
+.hero-cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 30%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.6) 70%,
+    transparent 100%
+  );
+  animation: shine-sweep 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
 .hero-cta-btn:hover {
   opacity: 0.95;
 }
 
 .hero-cta-btn .animation {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-radius: 100%;
-  animation: ripple 0.6s linear infinite;
+  display: none;
 }
 
 /* Cool Beans Button Effect (utilisé dans le header et ailleurs) */
