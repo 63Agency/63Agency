@@ -14,7 +14,7 @@ const PARTNER_LOGOS = [
   { name: "La Villette International School", logo: "/images/partners/partner-logos/image1copy.png" },
   { name: "Afriquia", logo: "/images/partners/partner-logos/Afriquia.png" },
   { name: "Partenaire 10", logo: "/images/partners/partner-logos/partenaire10.jpg" },
-  { name: "Partenaire 11", logo: "/images/partners/partner-logos/partenaire11.jpg" },
+  { name: "EasyPower", logo: "/images/partners/partner-logos/EasyPower(1)(2).png" },
   { name: "Jules Renard International School", logo: "/images/partners/partner-logos/image2copy.png" },
   { name: "ScolaritéPlus", logo: "/images/partners/partner-logos/image%20copy.png" },
   { name: "DELTA ACADEMY", logo: "/images/partners/partner-logos/imagecopy2.png" },
@@ -44,7 +44,7 @@ export default function PartnersGridSection() {
         </h2>
 
         {/* Logos grid — chaque logo affiché une seule fois */}
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-3 sm:gap-4 items-center justify-items-center">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 items-center justify-items-center">
           {PARTNER_LOGOS.map((partner, index) => (
             <div
               key={`${partner.name}-${index}`}
