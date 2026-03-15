@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useState, useEffect, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import StaggeredMenu from "@/components/StaggeredMenu";
+
+const StaggeredMenu = dynamic(() => import("@/components/StaggeredMenu"), { ssr: false });
 
 const GREEN_ACCENT = "#22c55e";
 const EXPERTISES_IMAGE_SRC = "/images/hero/expertigelogo.png";
@@ -110,9 +112,11 @@ export default function Header() {
               <Image
                 src="/images/hero/63AgencyTextwhit.png"
                 alt="63 Agency"
-                width={160}
+                width={180}
                 height={48}
                 className="object-contain h-9 lg:h-10 xl:h-11 w-auto max-h-12"
+                loading="lazy"
+                sizes="(max-width: 1024px) 160px, 180px"
               />
             </Link>
           </div>

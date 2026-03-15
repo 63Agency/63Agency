@@ -3,10 +3,12 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/config';
+import dynamic from "next/dynamic";
 import CardNavHeader from "@/components/CardNavHeader";
-import Footer from "../components/Footer";
-import ScrollToTop from "../components/ScrollToTop";
 import JsonLd from "@/components/seo/JsonLd";
+
+const Footer = dynamic(() => import("../components/Footer").then((m) => m.default), { ssr: true });
+const ScrollToTop = dynamic(() => import("../components/ScrollToTop").then((m) => m.default), { ssr: false });
 
 const SITE_URL = "https://63agency.com";
 

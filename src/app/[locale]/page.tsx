@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { locales } from "@/i18n/config";
 import HeroSection from "@/components/sections/HeroSection";
-import OurSystemSection from "@/components/sections/OurSystemSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import JsonLd from "@/components/seo/JsonLd";
 
+const OurSystemSection = dynamic(() => import("@/components/sections/OurSystemSection"), { ssr: true });
 const FounderSection = dynamic(() => import("@/components/sections/FounderSection"), { ssr: true });
 const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"), { ssr: true });
 const ResultsSection = dynamic(() => import("@/components/sections/ResultsSection"), { ssr: true });
