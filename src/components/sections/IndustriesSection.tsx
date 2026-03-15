@@ -13,17 +13,17 @@ export default function IndustriesSection() {
     {
       name: t('privateSchools.name'),
       description: t('privateSchools.description'),
-      image: "/images/Ecolepreve.png",
+      image: "/images/Ecolepreve.webp",
     },
     {
       name: t('b2bServices.name'),
       description: t('b2bServices.description'),
-      image: "/images/Entreprise.png",
+      image: "/images/Entreprise.webp",
     },
     {
       name: t('realEstate.name'),
       description: t('realEstate.description'),
-      image: "/images/Immobilier.png",
+      image: "/images/Immobilier.webp",
     },
   ];
 

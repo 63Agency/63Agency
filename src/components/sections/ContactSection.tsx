@@ -8,9 +8,9 @@ import ContactFormThreeSteps from "@/components/ContactFormThreeSteps";
 const Grainient = dynamic(() => import("@/components/Grainient"), { ssr: false });
 
 const REVIEW_AVATARS = [
-  "/images/review/Tarik.png",
-  "/images/review/kenza.png",
-  "/images/review/Samir.png",
+  "/images/review/Tarik.webp",
+  "/images/review/kenza.webp",
+  "/images/review/Samir.webp",
 ];
 
 export default function ContactSection() {

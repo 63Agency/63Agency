@@ -6,9 +6,9 @@ import { useTranslations } from "next-intl";
 const testimonialKeys = ["t3", "t2", "t1", "t4"] as const; /* Samir, Kenza, Tarik, Leila */
 
 const REVIEW_IMAGES: Record<string, string> = {
-  t1: "/images/review/Tarik.png",
-  t2: "/images/review/kenza.png",
-  t3: "/images/review/Samir.png",
+  t1: "/images/review/Tarik.webp",
+  t2: "/images/review/kenza.webp",
+  t3: "/images/review/Samir.webp",
   // t4 Leila: pas d'image, fallback initial
 };
 

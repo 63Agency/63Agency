@@ -5,7 +5,8 @@ const withNextIntl = require('next-intl/plugin')(
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // next/image serves WebP/AVIF automatically when browser supports it; no need to convert source files
+  // Compression: Vercel and most hosts enable gzip/Brotli automatically. For Node (next start), use a reverse proxy or compression middleware.
+  compress: true,
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
@@ -13,6 +14,12 @@ const nextConfig = {
   },
   async headers() {
     return [
+      {
+        source: '/images/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
       {
         source: '/:all*(svg|jpg|jpeg|png|webp|avif|ico)',
         headers: [

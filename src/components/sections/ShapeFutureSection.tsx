@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { ExternalLink } from "lucide-react";
 
 export default function ShapeFutureSection() {
   const t = useTranslations("shapeFuture");
@@ -38,7 +39,7 @@ export default function ShapeFutureSection() {
           <div className="flex flex-col">
             <div className="flex items-start gap-3 mb-3">
               <span className="text-white shrink-0 mt-1">
-                <i className="fa-solid fa-up-right-from-square text-lg" aria-hidden />
+                <ExternalLink className="w-5 h-5 shrink-0" aria-hidden />
               </span>
               <h3 className="text-lg font-bold text-white">{t("col1Title")}</h3>
             </div>
@@ -50,7 +51,7 @@ export default function ShapeFutureSection() {
           <div className="flex flex-col md:border-x border-white/10 md:px-8">
             <div className="flex items-start gap-3 mb-3">
               <span className="text-white shrink-0 mt-1">
-                <i className="fa-solid fa-up-right-from-square text-lg" aria-hidden />
+                <ExternalLink className="w-5 h-5 shrink-0" aria-hidden />
               </span>
               <h3 className="text-lg font-bold text-white">{t("col2Title")}</h3>
             </div>
@@ -62,7 +63,7 @@ export default function ShapeFutureSection() {
           <div className="flex flex-col">
             <div className="flex items-start gap-3 mb-3">
               <span className="text-white shrink-0 mt-1">
-                <i className="fa-solid fa-up-right-from-square text-lg" aria-hidden />
+                <ExternalLink className="w-5 h-5 shrink-0" aria-hidden />
               </span>
               <h3 className="text-lg font-bold text-white">{t("col3Title")}</h3>
             </div>

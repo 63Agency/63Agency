@@ -7,13 +7,13 @@ export default function PartnersSection() {
   const t = useTranslations('partners');
 
   const partners = [
-    { name: "Partenaire 1", logo: "/images/partners/partner-logos/partener1.png" },
-    { name: "Partenaire 2", logo: "/images/partners/partner-logos/partener2.png" },
-    { name: "Partenaire 3", logo: "/images/partners/partner-logos/partener3.png" },
-    { name: "Partenaire 4", logo: "/images/partners/partner-logos/partenaire4.png" },
-    { name: "Partenaire 5", logo: "/images/partners/partner-logos/Partenaire5.png" },
-    { name: "Partenaire 6", logo: "/images/partners/partner-logos/partenaire6.png" },
-    { name: "Commons", logo: "/images/partners/partner-logos/imagecopy6.png" },
+    { name: "Partenaire 1", logo: "/images/partners/partner-logos/partener1.webp" },
+    { name: "Partenaire 2", logo: "/images/partners/partner-logos/partener2.webp" },
+    { name: "Partenaire 3", logo: "/images/partners/partner-logos/partener3.webp" },
+    { name: "Partenaire 4", logo: "/images/partners/partner-logos/partenaire4.webp" },
+    { name: "Partenaire 5", logo: "/images/partners/partner-logos/Partenaire5.webp" },
+    { name: "Partenaire 6", logo: "/images/partners/partner-logos/partenaire6.webp" },
+    { name: "Commons", logo: "/images/partners/partner-logos/imagecopy6.webp" },
   ];
 
   // Duplicate partners for seamless loop

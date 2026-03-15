@@ -7,12 +7,12 @@ import Link from "next/link";
 
 // Images par solution (public/images/services)
 const SOLUTION_IMAGES: Record<number, string> = {
-  1: "/images/services/leadgeneration.jpg",
-  2: "/images/services/Media.png",
-  3: "/images/services/CreationSiteWeb.jpg",
-  4: "/images/services/Media.png",
-  5: "/images/services/leadgeneration.jpg",
-  6: "/images/services/Graphiquedesigne.jpg",
+  1: "/images/services/leadgeneration.webp",
+  2: "/images/services/Media.webp",
+  3: "/images/services/CreationSiteWeb.webp",
+  4: "/images/services/Media.webp",
+  5: "/images/services/leadgeneration.webp",
+  6: "/images/services/Graphiquedesigne.webp",
 };
 
 const SOLUTION_ICONS = [

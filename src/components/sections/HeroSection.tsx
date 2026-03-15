@@ -9,25 +9,25 @@ import { useTranslations, useLocale } from "next-intl";
 const Grainient = dynamic(() => import("@/components/Grainient"), { ssr: false });
 
 const PARTNER_LOGOS = [
-  { src: "/images/partners/partner-logos/partener1.png", alt: "Partner" },
-  { src: "/images/partners/partner-logos/CommonsLogo.png", alt: "Commons" },
-  { src: "/images/partners/partner-logos/Afriquia.png", alt: "Afriquia" },
-  { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
-  { src: "/images/partners/partner-logos/Unit-Education .png", alt: "Unit Education" },
-  { src: "/images/partners/partner-logos/partenaire18.png", alt: "Partner" },
+  { src: "/images/partners/partner-logos/partener1.webp", alt: "Partner" },
+  { src: "/images/partners/partner-logos/CommonsLogo.webp", alt: "Commons" },
+  { src: "/images/partners/partner-logos/Afriquia.webp", alt: "Afriquia" },
+  { src: "/images/partners/partner-logos/londonacademio.webp", alt: "London Academy" },
+  { src: "/images/partners/partner-logos/Unit-Education .webp", alt: "Unit Education" },
+  { src: "/images/partners/partner-logos/partenaire18.webp", alt: "Partner" },
 ];
 
 /** Responsive: 2 rows of 3 logos (row1: Afriquia, London Academy, Commons | row2: Unit Education, Algorithme, Uno Mars) */
 const PARTNER_LOGOS_MOBILE_ROWS: { row1: typeof PARTNER_LOGOS; row2: typeof PARTNER_LOGOS } = {
   row1: [
-    { src: "/images/partners/partner-logos/Afriquia.png", alt: "Afriquia" },
-    { src: "/images/partners/partner-logos/londonacademio.png", alt: "London Academy" },
-    { src: "/images/partners/partner-logos/CommonsLogo.png", alt: "Commons" },
+    { src: "/images/partners/partner-logos/Afriquia.webp", alt: "Afriquia" },
+    { src: "/images/partners/partner-logos/londonacademio.webp", alt: "London Academy" },
+    { src: "/images/partners/partner-logos/CommonsLogo.webp", alt: "Commons" },
   ],
   row2: [
-    { src: "/images/partners/partner-logos/Unit-Education .png", alt: "Unit Education" },
-    { src: "/images/partners/partner-logos/partenaire18.png", alt: "Algorithme" },
-    { src: "/images/partners/partner-logos/partenaire17.png", alt: "Uno Mars" },
+    { src: "/images/partners/partner-logos/Unit-Education .webp", alt: "Unit Education" },
+    { src: "/images/partners/partner-logos/partenaire18.webp", alt: "Algorithme" },
+    { src: "/images/partners/partner-logos/partenaire17.webp", alt: "Uno Mars" },
   ],
 };
 
@@ -158,70 +158,72 @@ export default function HeroSection() {
         </div>
 
         {/* Partenaires – tous les logos visibles en une ligne (taille réduite pour tenir dans l’écran) */}
-        <div className="mt-8 pt-6 sm:mt-4 sm:pt-4 lg:mt-5 w-full max-w-5xl mx-auto px-1 sm:px-0">
+        <div className="mt-8 pt-6 sm:mt-4 sm:pt-4 lg:mt-5 w-full max-w-5xl mx-auto px-1 sm:px-0 overflow-visible">
           {/* Mobile: 2 rows of 3, logos plus bas sous le CTA */}
-          <div className="md:hidden flex flex-col items-center gap-4 py-1.5">
-            <div className="flex items-center justify-center gap-4 sm:gap-6 w-full">
+          <div className="md:hidden flex flex-col items-center gap-1 py-1.5 px-2">
+            <div className="flex items-center justify-center gap-1 w-full overflow-x-auto scrollbar-hide pr-2">
               {PARTNER_LOGOS_MOBILE_ROWS.row1.map((logo, i) => (
                 <div
                   key={`r1-${i}`}
-                  className={`flex shrink-0 items-center justify-center opacity-90 ${i === 0 ? "h-14 sm:h-16 w-28 sm:w-32" : "h-12 sm:h-14 w-24 sm:w-28"}`}
+                  className={`flex shrink-0 items-center justify-center opacity-90 ${i === 0 ? "h-16 sm:h-20 w-32 sm:w-40" : "h-14 sm:h-16 w-28 sm:w-32"}`}
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
                     src={encodeURI(logo.src)}
                     alt={logo.alt}
-                    width={112}
-                    height={56}
+                    width={128}
+                    height={64}
                     className="object-contain max-h-full w-auto"
                     unoptimized={logo.src.includes(" ") ? true : undefined}
                     loading="lazy"
-                    sizes="(max-width: 640px) 28vw, 128px"
+                    sizes="(max-width: 640px) 32vw, 160px"
                   />
                 </div>
               ))}
             </div>
-            <div className="flex items-center justify-center gap-4 sm:gap-6 w-full">
+            <div className="flex items-center justify-center gap-1 w-full min-w-0 overflow-x-auto scrollbar-hide pr-2">
               {PARTNER_LOGOS_MOBILE_ROWS.row2.map((logo, i) => (
                 <div
                   key={`r2-${i}`}
-                  className="flex shrink-0 items-center justify-center h-12 sm:h-14 w-24 sm:w-28 opacity-90"
+                  className="flex shrink-0 items-center justify-center h-14 sm:h-16 w-28 sm:w-32 opacity-90"
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
                     src={encodeURI(logo.src)}
                     alt={logo.alt}
-                    width={112}
-                    height={56}
+                    width={128}
+                    height={64}
                     className="object-contain max-h-full w-auto"
                     unoptimized={logo.src.includes(" ") ? true : undefined}
                     loading="lazy"
-                    sizes="(max-width: 640px) 28vw, 128px"
+                    sizes="(max-width: 640px) 32vw, 160px"
                   />
                 </div>
               ))}
             </div>
           </div>
-          {/* Desktop: une ligne scroll */}
-          <div className="hidden md:flex scrollbar-hide flex-nowrap items-center justify-center gap-4 lg:gap-5 overflow-x-auto w-full py-1.5">
-            {PARTNER_LOGOS.map((logo, i) => (
-              <div
-                key={i}
-                className={`flex shrink-0 items-center justify-center opacity-90 ${i === 0 ? "h-20 lg:h-24 w-36 lg:w-44" : "h-14 lg:h-16 w-28 lg:w-32"}`}
-                style={{ filter: "brightness(0) invert(1)" }}
-              >
-                <Image
-                  src={encodeURI(logo.src)}
-                  alt={logo.alt}
-                  width={160}
-                  height={80}
-                  className="object-contain max-h-full w-auto"
-                  unoptimized={logo.src.includes(" ") ? true : undefined}
-                  loading="lazy"
-                  sizes="(max-width: 1024px) 176px, 192px"
-                />
-              </div>
-            ))}
+          {/* Desktop: une ligne scroll — padding gauche/droite pour que le premier et dernier logo ne soient pas coupés */}
+          <div className="hidden md:flex scrollbar-hide flex-nowrap items-center justify-center gap-1 overflow-x-auto w-full py-1.5 px-4 lg:px-6">
+            <div className="flex shrink-0 items-center gap-1 flex-nowrap">
+              {PARTNER_LOGOS.map((logo, i) => (
+                <div
+                  key={i}
+                  className={`flex shrink-0 items-center justify-center opacity-90 ${i === 0 ? "h-24 lg:h-28 w-44 lg:w-52" : "h-16 lg:h-20 w-32 lg:w-40"}`}
+                  style={{ filter: "brightness(0) invert(1)" }}
+                >
+                  <Image
+                    src={encodeURI(logo.src)}
+                    alt={logo.alt}
+                    width={208}
+                    height={104}
+                    className="object-contain max-h-full w-auto"
+                    unoptimized={logo.src.includes(" ") ? true : undefined}
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 220px, 256px"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         </div>

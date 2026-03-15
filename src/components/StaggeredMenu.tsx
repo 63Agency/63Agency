@@ -428,7 +428,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         >
           <div className="sm-logo flex items-center select-none pointer-events-auto shrink-0" aria-label="Logo">
             <Image
-              src={logoUrl || '/images/hero/63AgencyTextwhit.png'}
+              src={logoUrl || '/images/hero/63AgencyTextwhit.webp'}
               alt="Logo"
               width={180}
               height={48}

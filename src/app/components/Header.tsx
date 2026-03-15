@@ -10,7 +10,7 @@ import { usePathname, useRouter } from "next/navigation";
 const StaggeredMenu = dynamic(() => import("@/components/StaggeredMenu"), { ssr: false });
 
 const GREEN_ACCENT = "#22c55e";
-const EXPERTISES_IMAGE_SRC = "/images/hero/expertigelogo.png";
+const EXPERTISES_IMAGE_SRC = "/images/hero/expertigelogo.webp";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -110,7 +110,7 @@ export default function Header() {
               className="flex items-center hover:opacity-85 transition-opacity"
             >
               <Image
-                src="/images/hero/63AgencyTextwhit.png"
+                src="/images/hero/63AgencyTextwhit.webp"
                 alt="63 Agency"
                 width={180}
                 height={48}
@@ -307,7 +307,7 @@ export default function Header() {
           isFixed={true}
           position="right"
           items={staggeredMenuItems}
-          logoUrl="/images/hero/63AgencyTextwhit.png"
+          logoUrl="/images/hero/63AgencyTextwhit.webp"
           colors={["#ffffff", "#f5f5f5"]}
           menuButtonColor="#000"
           openMenuButtonColor="#000"

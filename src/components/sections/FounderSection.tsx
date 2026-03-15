@@ -27,7 +27,7 @@ export default function FounderSection() {
             <div className="relative w-12 h-12 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-gray-300 ring-2 ring-gray-200">
               {!imgError ? (
                 <Image
-                  src="/images/ceofunder/image.png"
+                  src="/images/ceofunder/image.webp"
                   alt={t("name")}
                   fill
                   className="object-cover object-top"

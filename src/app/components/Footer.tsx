@@ -4,11 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { Instagram, Linkedin, Facebook } from "lucide-react";
 
-const SOCIAL_LINKS = [
-  { label: "Instagram", href: "https://www.instagram.com/63agency.ma?igsh=MXVkZ3B2Znp6cnRzeA==", icon: "fa-brands fa-instagram" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/63-agency/", icon: "fa-brands fa-linkedin-in" },
-  { label: "Facebook", href: "https://www.facebook.com/63agency", icon: "fa-brands fa-facebook-f" },
+const SOCIAL_LINKS: { label: string; href: string; Icon: typeof Instagram }[] = [
+  { label: "Instagram", href: "https://www.instagram.com/63agency.ma?igsh=MXVkZ3B2Znp6cnRzeA==", Icon: Instagram },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/63-agency/", Icon: Linkedin },
+  { label: "Facebook", href: "https://www.facebook.com/63agency", Icon: Facebook },
 ];
 
 const FOOTER_SERVICES = [
@@ -32,7 +33,7 @@ export default function Footer() {
           <div className="footer-col-1 min-w-0">
             <Link href={`/${locale}`} className="footer-logo inline-block" aria-label="63 Agency">
               <Image
-                src="/images/hero/63.png"
+                src="/images/hero/63.webp"
                 alt="63 Agency"
                 width={140}
                 height={45}
@@ -127,7 +128,7 @@ export default function Footer() {
                     className="w-10 h-10 flex items-center justify-center bg-white text-black rounded hover:bg-white/90 transition-opacity shrink-0"
                     aria-label={s.label}
                   >
-                    <i className={`${s.icon} text-lg`} aria-hidden />
+                    <s.Icon className="w-5 h-5 shrink-0" aria-hidden />
                   </a>
                 ))}
               </div>

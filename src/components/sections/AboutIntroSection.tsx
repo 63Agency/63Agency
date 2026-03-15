@@ -25,7 +25,7 @@ export default function AboutIntroSection() {
             </div>
             <div className="mt-8 pt-6 border-t border-white/20 flex items-center">
               <Image
-                src="/images/hero/63AgencyTextwhit.png"
+                src="/images/hero/63AgencyTextwhit.webp"
                 alt="63 Agency"
                 width={180}
                 height={48}

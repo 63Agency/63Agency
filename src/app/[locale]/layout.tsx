@@ -17,7 +17,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "63 Agency",
   url: SITE_URL,
-  logo: `${SITE_URL}/images/hero/63.png`,
+  logo: `${SITE_URL}/images/hero/63.webp`,
   description: "Agence spécialisée en génération de leads et marketing performance au Maroc et en Europe.",
   address: {
     "@type": "PostalAddress",
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
   description:
     "Lead generation & performance marketing agency in Morocco & Europe.",
   icons: {
-    icon: "/images/hero/63.png",
-    apple: "/images/hero/63.png",
+    icon: "/images/hero/63.webp",
+    apple: "/images/hero/63.webp",
   },
   verification: {
     google: "PLACEHOLDER_GOOGLE_SEARCH_CONSOLE_TAG",
@@ -86,16 +86,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir="ltr">
       <head>
-        <link rel="preload" href="/images/hero/63AgencyTextwhit.png" as="image" />
+        <link rel="preload" href="/images/hero/63AgencyTextwhit.webp" as="image" />
         <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NMBD3585');` }} />
         <JsonLd data={[organizationSchema, websiteSchema]} />
-        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
       </head>
       <body className="bg-black text-white m-0 p-0">
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMBD3585" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }} />

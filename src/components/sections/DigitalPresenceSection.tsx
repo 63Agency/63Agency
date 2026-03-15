@@ -5,12 +5,12 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 
 const META_IMAGE_BY_LOCALE: Record<string, string> = {
-  en: "/images/Feceboock/Meta-EN-(1).png",
-  fr: "/images/Feceboock/Meta-Fr-(3).png",
+  en: "/images/Feceboock/Meta-EN-(1).webp",
+  fr: "/images/Feceboock/Meta-Fr-(3).webp",
 };
 const GOOGLE_ADS_IMAGE_BY_LOCALE: Record<string, string> = {
-  en: "/images/Feceboock/GoogleAds-EN-(3).png",
-  fr: "/images/Feceboock/Google-Ads-Fr-(2).png",
+  en: "/images/Feceboock/GoogleAds-EN-(3).webp",
+  fr: "/images/Feceboock/Google-Ads-Fr-(2).webp",
 };
 
 export default function DigitalPresenceSection() {
