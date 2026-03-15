@@ -30,6 +30,8 @@ export default function AboutIntroSection() {
                 width={180}
                 height={48}
                 className="h-8 w-auto object-contain object-left"
+                loading="lazy"
+                sizes="180px"
               />
             </div>
           </div>

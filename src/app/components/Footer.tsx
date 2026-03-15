@@ -37,6 +37,8 @@ export default function Footer() {
                 width={140}
                 height={45}
                 className="object-contain h-10 sm:h-12 w-auto max-w-full"
+                loading="lazy"
+                sizes="140px"
               />
             </Link>
             <p className="footer-tagline-intro text-sm text-white/80 leading-snug">{tFooter("taglineIntro")}</p>

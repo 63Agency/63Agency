@@ -74,7 +74,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[100dvh] min-h-screen flex items-start sm:items-center justify-center bg-black">
+    <section className="relative min-h-[100dvh] flex items-start sm:items-center justify-center bg-black">
       {/* Grainient background — gris et noir, animé */}
       <div className="absolute inset-0 z-0 min-h-screen w-full bg-black">
         <div className="absolute inset-0 min-h-full w-full">
@@ -175,6 +175,8 @@ export default function HeroSection() {
                     height={56}
                     className="object-contain max-h-full w-auto"
                     unoptimized={logo.src.includes(" ") ? true : undefined}
+                    loading="lazy"
+                    sizes="(max-width: 640px) 28vw, 128px"
                   />
                 </div>
               ))}
@@ -193,6 +195,8 @@ export default function HeroSection() {
                     height={56}
                     className="object-contain max-h-full w-auto"
                     unoptimized={logo.src.includes(" ") ? true : undefined}
+                    loading="lazy"
+                    sizes="(max-width: 640px) 28vw, 128px"
                   />
                 </div>
               ))}
@@ -213,6 +217,8 @@ export default function HeroSection() {
                   height={80}
                   className="object-contain max-h-full w-auto"
                   unoptimized={logo.src.includes(" ") ? true : undefined}
+                  loading="lazy"
+                  sizes="(max-width: 1024px) 176px, 192px"
                 />
               </div>
             ))}

@@ -63,6 +63,7 @@ export default function TestimonialsSection() {
                         fill
                         className="object-cover object-top"
                         sizes="64px"
+                        loading="lazy"
                       />
                     ) : (
                       <span className="absolute inset-0 flex items-center justify-center text-black font-bold text-lg">

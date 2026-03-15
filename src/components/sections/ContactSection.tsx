@@ -88,6 +88,7 @@ export default function ContactSection() {
                               fill
                               className="object-cover object-top"
                               sizes="36px"
+                              loading="lazy"
                             />
                           </div>
                         ))}

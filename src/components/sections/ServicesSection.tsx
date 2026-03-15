@@ -148,6 +148,7 @@ export default function ServicesSection() {
                     fill
                     className={`object-cover transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
                     sizes="(max-width: 1024px) 100vw, 672px"
+                    loading="lazy"
                     onLoad={() => setImageLoaded(true)}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;

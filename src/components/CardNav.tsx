@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 export type CardNavBarLink = {
   label: string;
@@ -67,7 +68,7 @@ const CardNav: React.FC<CardNavProps> = ({
         >
           <div className="card-nav-top absolute inset-x-0 top-0 h-[56px] sm:h-[72px] flex items-center justify-between gap-2 sm:gap-4 p-2 sm:p-3 pl-2 sm:pl-[1.1rem] pr-3 sm:pr-5 z-[2]">
             <a href={logoHref} className="logo-container flex items-center shrink-0 -mt-2 sm:-mt-3 order-first -ml-0.5 md:ml-0" aria-label={logoAlt}>
-              <img src={logo} alt={logoAlt} className="logo h-[24px] sm:h-[32px] md:h-[40px] w-auto object-contain max-h-10 md:max-h-12" style={{ filter: 'none' }} />
+              <Image src={logo} alt={logoAlt} width={160} height={40} className="logo h-[24px] sm:h-[32px] md:h-[40px] w-auto object-contain max-h-10 md:max-h-12" style={{ filter: 'none' }} priority />
             </a>
 
             {/* Desktop: links + trailing + CTA */}

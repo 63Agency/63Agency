@@ -55,6 +55,8 @@ export default function PartnersSection() {
                     height={60}
                     className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                     style={{ maxWidth: '120px', maxHeight: '60px' }}
+                    loading="lazy"
+                    sizes="120px"
                   />
                 </div>
               ))}

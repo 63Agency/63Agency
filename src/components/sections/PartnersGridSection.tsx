@@ -56,6 +56,8 @@ export default function PartnersGridSection() {
                 width={100}
                 height={50}
                 className="object-contain w-full h-full"
+                loading="lazy"
+                sizes="(max-width: 640px) 33vw, 120px"
               />
             </div>
           ))}

@@ -43,6 +43,7 @@ export default function DigitalPresenceSection() {
                 height={200}
                 className="relative z-10 w-full h-auto block rounded-xl max-h-[380px] sm:max-h-[480px] object-contain object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
               />
               <div className="relative z-10 px-4 sm:px-5 pt-2 pb-5 sm:pt-3 sm:pb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-black">
@@ -97,6 +98,7 @@ export default function DigitalPresenceSection() {
                 height={500}
                 className="relative z-10 w-full h-auto block rounded-xl max-h-[380px] sm:max-h-[480px] object-contain object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
               />
               <div className="relative z-10 px-4 sm:px-5 pt-2 pb-5 sm:pt-3 sm:pb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-black">

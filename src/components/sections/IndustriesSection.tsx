@@ -63,6 +63,8 @@ export default function IndustriesSection() {
                   fill
                   className="object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
                   unoptimized
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';

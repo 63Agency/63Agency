@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { locales } from "@/i18n/config";
 import HeroSection from "@/components/sections/HeroSection";
-import FounderSection from "@/components/sections/FounderSection";
 import OurSystemSection from "@/components/sections/OurSystemSection";
-import ResultsSection from "@/components/sections/ResultsSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import IndustriesSection from "@/components/sections/IndustriesSection";
-import ContactSection from "@/components/sections/ContactSection";
-import DigitalPresenceSection from "@/components/sections/DigitalPresenceSection";
-import PartnersGridSection from "@/components/sections/PartnersGridSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import JsonLd from "@/components/seo/JsonLd";
+
+const FounderSection = dynamic(() => import("@/components/sections/FounderSection"), { ssr: true });
+const TestimonialsSection = dynamic(() => import("@/components/sections/TestimonialsSection"), { ssr: true });
+const ResultsSection = dynamic(() => import("@/components/sections/ResultsSection"), { ssr: true });
+const IndustriesSection = dynamic(() => import("@/components/sections/IndustriesSection"), { ssr: true });
+const DigitalPresenceSection = dynamic(() => import("@/components/sections/DigitalPresenceSection"), { ssr: true });
+const ContactSection = dynamic(() => import("@/components/sections/ContactSection"), { ssr: true });
+const PartnersGridSection = dynamic(() => import("@/components/sections/PartnersGridSection"), { ssr: true });
 
 const BASE_URL = "https://63agency.com";
 

@@ -19,6 +19,7 @@ html {
   src: url("https://mdn.github.io/shared-assets/fonts/variable-fonts/AmstelvarAlpha-VF.ttf");
   font-family: "AmstelvarAlpha";
   font-style: normal;
+  font-display: swap;
 }
 
 /* Remove underline from navigation links */
