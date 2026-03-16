@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: 'https://63agency.com/en',
+      url: `${SITE_URL}/en`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
