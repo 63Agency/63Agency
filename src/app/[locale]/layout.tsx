@@ -16,7 +16,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "63 Agency",
   url: SITE_URL,
-  logo: `${SITE_URL}/images/hero/63.webp`,
+  logo: `${SITE_URL}/images/hero/logoDuSite.png`,
   description: "Agence spécialisée en génération de leads et marketing performance au Maroc et en Europe.",
   address: {
     "@type": "PostalAddress",
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
   description:
     "Lead generation & performance marketing agency in Morocco & Europe.",
   icons: {
-    icon: "/images/hero/63.webp",
-    apple: "/images/hero/63.webp",
+    icon: "/images/hero/logoDuSite.png",
+    apple: "/images/hero/logoDuSite.png",
   },
   verification: {
     google: "PLACEHOLDER_GOOGLE_SEARCH_CONSOLE_TAG",
