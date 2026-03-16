@@ -3,10 +3,9 @@ import AboutIntroSection from "@/components/sections/AboutIntroSection";
 import AboutServicesSection from "@/components/sections/AboutServicesSection";
 import ShapeFutureSection from "@/components/sections/ShapeFutureSection";
 import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/config/site";
 import fr from "@/../messages/fr.json";
 import en from "@/../messages/en.json";
-
-const BASE_URL = "https://63agency.com";
 
 type Props = { params: { locale: string } };
 
@@ -26,17 +25,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       title,
       description,
-      url: `${BASE_URL}/${locale}/about`,
+      url: `${SITE_URL}/${locale}/about`,
       siteName: "63 Agency",
       locale: isEn ? "en_US" : "fr_FR",
       alternateLocale: isEn ? "fr_FR" : "en_US",
     },
     alternates: {
-      canonical: `${BASE_URL}/${locale}/about`,
+      canonical: `${SITE_URL}/${locale}/about`,
       languages: {
-        en: `${BASE_URL}/en/about`,
-        fr: `${BASE_URL}/fr/about`,
-        "x-default": `${BASE_URL}/fr/about`,
+        en: `${SITE_URL}/en/about`,
+        fr: `${SITE_URL}/fr/about`,
+        "x-default": `${SITE_URL}/fr/about`,
       },
     },
     robots: { index: true, follow: true },
@@ -73,8 +72,8 @@ function getBreadcrumbSchema(locale: string) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: isEn ? "Home" : "Accueil", item: `${BASE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: isEn ? "About Us" : "À Propos", item: `${BASE_URL}/${locale}/about` },
+      { "@type": "ListItem", position: 1, name: isEn ? "Home" : "Accueil", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: isEn ? "About Us" : "À Propos", item: `${SITE_URL}/${locale}/about` },
     ],
   };
 }

@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
-
-const BASE_URL = "https://63agency.com";
+import { SITE_URL } from "@/config/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/fr/contact/thank-you", "/en/contact/thank-you"],
     },
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL } from '@/config/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://63agency.com',
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
@@ -15,13 +16,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: 'https://63agency.com/fr',
+      url: `${SITE_URL}/fr`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: 'https://63agency.com/ar',
+      url: `${SITE_URL}/ar`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,

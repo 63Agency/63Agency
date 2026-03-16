@@ -6,11 +6,10 @@ import { locales } from '@/i18n/config';
 import dynamic from "next/dynamic";
 import CardNavHeader from "@/components/CardNavHeader";
 import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/config/site";
 
 const Footer = dynamic(() => import("../components/Footer").then((m) => m.default), { ssr: true });
 const ScrollToTop = dynamic(() => import("../components/ScrollToTop").then((m) => m.default), { ssr: false });
-
-const SITE_URL = "https://63agency.com";
 
 const organizationSchema = {
   "@context": "https://schema.org",

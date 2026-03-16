@@ -4,6 +4,7 @@ import { locales } from "@/i18n/config";
 import HeroSection from "@/components/sections/HeroSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/config/site";
 
 const OurSystemSection = dynamic(() => import("@/components/sections/OurSystemSection"), { ssr: true });
 const FounderSection = dynamic(() => import("@/components/sections/FounderSection"), { ssr: true });
@@ -13,8 +14,6 @@ const IndustriesSection = dynamic(() => import("@/components/sections/Industries
 const DigitalPresenceSection = dynamic(() => import("@/components/sections/DigitalPresenceSection"), { ssr: true });
 const ContactSection = dynamic(() => import("@/components/sections/ContactSection"), { ssr: true });
 const PartnersGridSection = dynamic(() => import("@/components/sections/PartnersGridSection"), { ssr: true });
-
-const BASE_URL = "https://63agency.com";
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -42,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       title,
       description,
-      url: `${BASE_URL}/${locale}`,
+      url: `${SITE_URL}/${locale}`,
       siteName: "63 Agency",
       images: [
         { url: "/images/og-63agency.jpg", width: 1200, height: 630, alt: "63 Agency" },
@@ -56,11 +55,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: `${BASE_URL}/${locale}`,
+      canonical: `${SITE_URL}/${locale}`,
       languages: {
-        en: `${BASE_URL}/en`,
-        fr: `${BASE_URL}/fr`,
-        "x-default": `${BASE_URL}/fr`,
+        en: `${SITE_URL}/en`,
+        fr: `${SITE_URL}/fr`,
+        "x-default": `${SITE_URL}/fr`,
       },
     },
     robots: {
@@ -76,7 +75,7 @@ function getProfessionalServiceSchema(locale: string) {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "63 Agency",
-    url: BASE_URL,
+    url: SITE_URL,
     serviceType: isEn
       ? "Lead Generation & Performance Marketing"
       : "Génération de Leads & Marketing Performance",
