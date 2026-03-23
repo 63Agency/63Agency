@@ -10,7 +10,6 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_IMAGES = join(__dirname, '..', 'public', 'images');
-const PARTNER_LOGOS_DIR = join(PUBLIC_IMAGES, 'partners', 'partner-logos');
 const ALLOWED_EXT = /\.(png|jpe?g|jpg)$/i;
 const MAX_PARTNER_WIDTH = 200;
 const MAX_PARTNER_HEIGHT = 100;
@@ -44,6 +43,8 @@ async function run() {
       let pipeline = sharp(file);
       if (isPartnerLogo(file)) {
         pipeline = pipeline
+          // Removes extra transparent/solid padding around logos (helps perceived spacing)
+          .trim()
           .resize(MAX_PARTNER_WIDTH, MAX_PARTNER_HEIGHT, { fit: 'inside', withoutEnlargement: true });
       }
       await pipeline

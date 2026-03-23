@@ -165,7 +165,7 @@ export default function HeroSection() {
               {PARTNER_LOGOS_MOBILE_ROWS.row1.map((logo, i) => (
                 <div
                   key={`r1-${i}`}
-                  className={`flex shrink-0 items-center justify-center opacity-90 ${i === 0 ? "h-16 sm:h-20 w-32 sm:w-40" : "h-14 sm:h-16 w-28 sm:w-32"}`}
+                  className="flex shrink-0 items-center justify-center opacity-90 h-14 sm:h-16 w-28 sm:w-32"
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
@@ -208,7 +208,7 @@ export default function HeroSection() {
               {PARTNER_LOGOS.map((logo, i) => (
                 <div
                   key={i}
-                  className={`flex shrink-0 items-center justify-center opacity-90 ${i === 0 ? "h-24 lg:h-28 w-44 lg:w-52" : "h-16 lg:h-20 w-32 lg:w-40"}`}
+                  className="flex shrink-0 items-center justify-center opacity-90 h-16 lg:h-20 w-32 lg:w-40"
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
