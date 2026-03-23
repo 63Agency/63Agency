@@ -1,11 +1,22 @@
 import nodemailer from "nodemailer";
 
-const SMTP_HOST = process.env.SMTP_HOST ?? "smtp.titan.email";
-const SMTP_PORT = Number(process.env.SMTP_PORT) || 465;
-const SMTP_USER = process.env.SMTP_USER ?? "";
-const SMTP_PASS = process.env.SMTP_PASS ?? "";
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? process.env.SMTP_USER ?? "";
-const FROM_NAME = process.env.FROM_NAME ?? "63 Agency";
+// Supports SMTP_* (recommended) or EMAIL_* aliases from .env
+// trim() avoids auth failures when .env has accidental trailing spaces
+function envTrim(v: string | undefined): string {
+  return (v ?? "").trim();
+}
+const SMTP_HOST =
+  envTrim(process.env.SMTP_HOST) ||
+  envTrim(process.env.EMAIL_HOST) ||
+  "smtp.titan.email";
+const SMTP_PORT = Number(envTrim(process.env.SMTP_PORT) || envTrim(process.env.EMAIL_PORT)) || 465;
+const SMTP_USER = envTrim(process.env.SMTP_USER) || envTrim(process.env.EMAIL_USER);
+const SMTP_PASS = envTrim(process.env.SMTP_PASS) || envTrim(process.env.EMAIL_PASS);
+const ADMIN_EMAIL =
+  envTrim(process.env.ADMIN_EMAIL) ||
+  envTrim(process.env.SMTP_USER) ||
+  envTrim(process.env.EMAIL_USER);
+const FROM_NAME = envTrim(process.env.FROM_NAME) || "63 Agency";
 
 /** Keys from page contact form + CTA (accueil) form — all can appear in admin email */
 export type ContactFormPayload = {
