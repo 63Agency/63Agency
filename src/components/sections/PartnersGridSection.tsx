@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { AFRIQUIA_LOGO_SRC } from "@/config/partnerAssets";
 
 const PARTNER_LOGOS = [
   { name: "Partenaire 1", logo: "/images/partners/partner-logos/partener1.webp" },
@@ -12,7 +13,7 @@ const PARTNER_LOGOS = [
   { name: "Partenaire 6", logo: "/images/partners/partner-logos/partenaire6.webp" },
   { name: "Commons", logo: "/images/partners/partner-logos/imagecopy6.webp" },
   { name: "La Villette International School", logo: "/images/partners/partner-logos/image1copy.webp" },
-  { name: "Afriquia", logo: "/images/partners/partner-logos/Afriquia.webp" },
+  { name: "Afriquia", logo: AFRIQUIA_LOGO_SRC },
   { name: "Partenaire 10", logo: "/images/partners/partner-logos/partenaire10.webp" },
   { name: "EasyPower", logo: "/images/partners/partner-logos/EasyPower(1)(2).webp" },
   { name: "Jules Renard International School", logo: "/images/partners/partner-logos/image2copy.webp" },

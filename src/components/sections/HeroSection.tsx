@@ -5,12 +5,13 @@ import Image from "next/image";
 import React from "react";
 import dynamic from "next/dynamic";
 import { useTranslations, useLocale } from "next-intl";
+import { AFRIQUIA_LOGO_SRC } from "@/config/partnerAssets";
 
 const Grainient = dynamic(() => import("@/components/Grainient"), { ssr: false });
 
 const PARTNER_LOGOS = [
   { src: "/images/partners/partner-logos/CommonsLogo.webp", alt: "Commons" },
-  { src: "/images/partners/partner-logos/Afriquia.webp", alt: "Afriquia" },
+  { src: AFRIQUIA_LOGO_SRC, alt: "Afriquia" },
   { src: "/images/partners/partner-logos/londonacademio.webp", alt: "London Academy" },
   { src: "/images/partners/partner-logos/Unit-Education .webp", alt: "Unit Education" },
   { src: "/images/hero/Algorithmics.png", alt: "Algorithmics" },
@@ -20,7 +21,7 @@ const PARTNER_LOGOS = [
 const PARTNER_LOGOS_MOBILE_ROWS: { row1: typeof PARTNER_LOGOS; row2: typeof PARTNER_LOGOS } = {
   row1: [
     { src: "/images/partners/partner-logos/CommonsLogo.webp", alt: "Commons" },
-    { src: "/images/partners/partner-logos/Afriquia.webp", alt: "Afriquia" },
+    { src: AFRIQUIA_LOGO_SRC, alt: "Afriquia" },
     { src: "/images/partners/partner-logos/londonacademio.webp", alt: "London Academy" },
   ],
   row2: [
@@ -159,11 +160,11 @@ export default function HeroSection() {
         <div className="mt-8 pt-6 sm:mt-4 sm:pt-4 lg:mt-5 w-full max-w-6xl mx-auto px-1 sm:px-0 overflow-visible">
           <div className="md:hidden flex flex-col items-stretch gap-5 py-1.5 px-2 w-full max-w-xl mx-auto">
             {/* Grille 3 colonnes = ~33% largeur chacune ; boîte haute fixe pour que object-contain remplisse vraiment */}
-            <div className="grid w-full grid-cols-3 gap-x-2 gap-y-0 items-center min-h-[5.5rem] sm:min-h-[9rem]">
+            <div className="grid w-full grid-cols-3 gap-x-2 gap-y-0 items-center min-h-[3.5rem] sm:min-h-[6rem]">
               {PARTNER_LOGOS_MOBILE_ROWS.row1.map((logo, i) => (
                 <div
                   key={`r1-${i}`}
-                  className="flex h-[5rem] sm:h-36 w-full min-w-0 items-center justify-center opacity-90 px-0.5"
+                  className="flex h-[3rem] sm:h-24 w-full min-w-0 items-center justify-center opacity-90 px-0.5"
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
@@ -201,7 +202,7 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="hidden md:block w-full overflow-x-auto scrollbar-hide py-1.5 px-2 lg:px-6">
-            <div className="grid w-full min-w-[640px] max-w-6xl mx-auto grid-cols-5 items-center gap-3 lg:gap-5 min-h-[6rem] lg:min-h-[8.5rem]">
+            <div className="grid w-full min-w-[640px] max-w-6xl mx-auto grid-cols-5 items-center gap-3 lg:gap-5 min-h-[4.25rem] lg:min-h-[6rem]">
               {PARTNER_LOGOS.map((logo, i) => {
                 const isLastTwo = i >= 3;
                 return (
@@ -210,7 +211,7 @@ export default function HeroSection() {
                     className={
                       isLastTwo
                         ? "flex min-h-[3.5rem] lg:min-h-[4rem] items-center justify-center opacity-90 px-1"
-                        : "flex h-[4.75rem] md:h-[5.25rem] lg:h-[6.5rem] xl:h-[7.25rem] w-full min-w-0 items-center justify-center opacity-90 px-1"
+                        : "flex h-[3rem] md:h-[3.5rem] lg:h-[4.5rem] xl:h-[5rem] w-full min-w-0 items-center justify-center opacity-90 px-1"
                     }
                     style={{ filter: "brightness(0) invert(1)" }}
                   >
