@@ -158,22 +158,23 @@ export default function HeroSection() {
         {/* Partenaires — justify-evenly = espacement visuel égal entre logos (largeurs différentes) */}
         <div className="mt-8 pt-6 sm:mt-4 sm:pt-4 lg:mt-5 w-full max-w-6xl mx-auto px-1 sm:px-0 overflow-visible">
           <div className="md:hidden flex flex-col items-stretch gap-5 py-1.5 px-2 w-full max-w-xl mx-auto">
-            <div className="flex w-full flex-nowrap items-center justify-evenly gap-0 min-h-[5.25rem] sm:min-h-36">
+            {/* Grille 3 colonnes = ~33% largeur chacune ; boîte haute fixe pour que object-contain remplisse vraiment */}
+            <div className="grid w-full grid-cols-3 gap-x-2 gap-y-0 items-center min-h-[5.5rem] sm:min-h-[9rem]">
               {PARTNER_LOGOS_MOBILE_ROWS.row1.map((logo, i) => (
                 <div
                   key={`r1-${i}`}
-                  className="flex shrink-0 items-center justify-center opacity-90 px-0.5"
+                  className="flex h-[5rem] sm:h-36 w-full min-w-0 items-center justify-center opacity-90 px-0.5"
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
                     src={encodeURI(logo.src)}
                     alt={logo.alt}
-                    width={128}
-                    height={64}
-                    className="object-contain max-h-32 sm:max-h-36 w-auto max-w-[46vw] sm:max-w-[230px]"
+                    width={400}
+                    height={200}
+                    className="object-contain h-full w-full max-h-full max-w-full"
                     unoptimized={logo.src.includes(" ") ? true : undefined}
                     loading="lazy"
-                    sizes="(max-width: 640px) 46vw, 230px"
+                    sizes="(max-width: 640px) 33vw, 280px"
                   />
                 </div>
               ))}
@@ -200,28 +201,32 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="hidden md:block w-full overflow-x-auto scrollbar-hide py-1.5 px-2 lg:px-6">
-            <div className="flex w-full min-w-[640px] max-w-6xl mx-auto flex-nowrap items-center justify-evenly gap-0 min-h-[7rem] lg:min-h-[9.5rem]">
+            <div className="grid w-full min-w-[640px] max-w-6xl mx-auto grid-cols-5 items-center gap-3 lg:gap-5 min-h-[6rem] lg:min-h-[8.5rem]">
               {PARTNER_LOGOS.map((logo, i) => {
                 const isLastTwo = i >= 3;
                 return (
                   <div
                     key={i}
-                    className="flex shrink-0 items-center justify-center opacity-90 px-1"
+                    className={
+                      isLastTwo
+                        ? "flex min-h-[3.5rem] lg:min-h-[4rem] items-center justify-center opacity-90 px-1"
+                        : "flex h-[4.75rem] md:h-[5.25rem] lg:h-[6.5rem] xl:h-[7.25rem] w-full min-w-0 items-center justify-center opacity-90 px-1"
+                    }
                     style={{ filter: "brightness(0) invert(1)" }}
                   >
                     <Image
                       src={encodeURI(logo.src)}
                       alt={logo.alt}
-                      width={208}
-                      height={104}
+                      width={isLastTwo ? 208 : 400}
+                      height={isLastTwo ? 104 : 200}
                       className={
                         isLastTwo
                           ? "object-contain max-h-12 lg:max-h-14 w-auto max-w-[6.5rem] sm:max-w-[7.5rem] lg:max-w-[9rem]"
-                          : "object-contain max-h-32 lg:max-h-36 w-auto max-w-[min(28vw,17rem)] lg:max-w-[22rem]"
+                          : "object-contain h-full w-full max-h-full max-w-full"
                       }
                       unoptimized={logo.src.includes(" ") ? true : undefined}
                       loading="lazy"
-                      sizes={isLastTwo ? "(max-width: 1280px) 9rem, 144px" : "(max-width: 1280px) 28vw, 352px"}
+                      sizes={isLastTwo ? "(max-width: 1280px) 9rem, 144px" : "(max-width: 1280px) 18vw, 400px"}
                     />
                   </div>
                 );
