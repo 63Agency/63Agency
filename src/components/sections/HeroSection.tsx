@@ -160,11 +160,11 @@ export default function HeroSection() {
         <div className="mt-8 pt-6 sm:mt-4 sm:pt-4 lg:mt-5 w-full max-w-6xl mx-auto px-1 sm:px-0 overflow-visible">
           <div className="md:hidden flex flex-col items-stretch gap-5 py-1.5 px-2 w-full max-w-xl mx-auto">
             {/* Grille 3 colonnes = ~33% largeur chacune ; boîte haute fixe pour que object-contain remplisse vraiment */}
-            <div className="grid w-full grid-cols-3 gap-x-2 gap-y-0 items-center min-h-[3.5rem] sm:min-h-[6rem]">
+            <div className="grid w-full grid-cols-3 gap-x-2 gap-y-0 items-center min-h-[3rem] sm:min-h-[5rem]">
               {PARTNER_LOGOS_MOBILE_ROWS.row1.map((logo, i) => (
                 <div
                   key={`r1-${i}`}
-                  className="flex h-[3rem] sm:h-24 w-full min-w-0 items-center justify-center opacity-90 px-0.5"
+                  className="flex h-[2.5rem] sm:h-20 w-full min-w-0 items-center justify-center opacity-90 px-0.5"
                   style={{ filter: "brightness(0) invert(1)" }}
                 >
                   <Image
@@ -202,7 +202,7 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="hidden md:block w-full overflow-x-auto scrollbar-hide py-1.5 px-2 lg:px-6">
-            <div className="grid w-full min-w-[640px] max-w-6xl mx-auto grid-cols-5 items-center gap-3 lg:gap-5 min-h-[4.25rem] lg:min-h-[6rem]">
+            <div className="grid w-full min-w-[640px] max-w-6xl mx-auto grid-cols-5 items-center gap-3 lg:gap-5 min-h-[3.75rem] lg:min-h-[5.5rem]">
               {PARTNER_LOGOS.map((logo, i) => {
                 const isLastTwo = i >= 3;
                 return (
@@ -211,7 +211,7 @@ export default function HeroSection() {
                     className={
                       isLastTwo
                         ? "flex min-h-[3.5rem] lg:min-h-[4rem] items-center justify-center opacity-90 px-1"
-                        : "flex h-[3rem] md:h-[3.5rem] lg:h-[4.5rem] xl:h-[5rem] w-full min-w-0 items-center justify-center opacity-90 px-1"
+                        : "flex h-[2.5rem] md:h-[3rem] lg:h-[4rem] xl:h-[4.5rem] w-full min-w-0 items-center justify-center opacity-90 px-1"
                     }
                     style={{ filter: "brightness(0) invert(1)" }}
                   >
