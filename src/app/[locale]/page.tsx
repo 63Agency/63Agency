@@ -24,6 +24,7 @@ type Props = { params: { locale: string } };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;
   const isEn = locale === "en";
+  const pageUrl = isEn ? SITE_URL : `${SITE_URL}/${locale}`;
   const title = isEn
     ? "63 Agency | Lead Generation & Performance Marketing Agency in Morocco"
     : "63 Agency | Agence de Génération de Leads & Marketing Performance au Maroc";
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       title,
       description,
-      url: `${SITE_URL}/${locale}`,
+      url: pageUrl,
       siteName: "63 Agency",
       images: [
         { url: "/images/og-63agency.jpg", width: 1200, height: 630, alt: "63 Agency" },
@@ -55,11 +56,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: `${SITE_URL}/${locale}`,
+      canonical: pageUrl,
       languages: {
-        en: `${SITE_URL}/en`,
+        en: SITE_URL,
         fr: `${SITE_URL}/fr`,
-        "x-default": `${SITE_URL}/fr`,
+        "x-default": SITE_URL,
       },
     },
     robots: {
