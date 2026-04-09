@@ -104,17 +104,17 @@ export default function HeroSection() {
       >
         <div className="w-full min-w-0 max-w-4xl mx-auto px-1 sm:px-4 md:px-0">
         {/* Texte du haut : mobile = très petit + une seule ligne */}
-        <h2 className="text-[8px] sm:text-xs md:text-sm text-gray-400 mb-2 max-w-4xl mx-auto leading-none font-medium w-full whitespace-nowrap sm:whitespace-normal tracking-tight sm:tracking-normal overflow-x-auto sm:overflow-visible text-center scrollbar-hide min-w-0" style={{ WebkitTextSizeAdjust: 'none' }}>
+        <h2 className="text-xs sm:text-xs md:text-sm text-gray-400 mb-2 max-w-4xl mx-auto leading-snug font-medium w-full whitespace-normal sm:whitespace-normal tracking-tight sm:tracking-normal text-center px-0.5 min-w-0" style={{ WebkitTextSizeAdjust: 'none' }}>
           {t("descriptionLine2")}
         </h2>
 
-        {/* Secondary Headline – centré, wrap propre sur mobile */}
-        <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto w-full min-w-0">
+        {/* Secondary Headline – mobile plus lisible (était trop petit) */}
+        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-3 sm:mb-4 flex flex-col items-center max-w-4xl mx-auto w-full min-w-0 leading-tight">
           <span className="inline-flex flex-col items-center w-full">
             <span className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 w-full">
-              <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
+              <span className="w-2.5 h-2.5 sm:w-2 sm:h-2 rounded-full bg-green-500 shrink-0" aria-hidden />
               <span
-                className="bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] text-center break-words"
+                className="text-2xl leading-[1.15] sm:text-2xl sm:leading-tight md:text-3xl lg:text-4xl xl:text-5xl bg-clip-text text-transparent tracking-tight sm:tracking-[-0.02em] text-center break-words"
                 style={{
                   backgroundImage: "linear-gradient(to bottom, #E2E8F0 0%, #C5D1DE 18%, #A8B8C8 38%, #94A5B8 55%, #B8C5D2 72%, #D1DCE8 88%, #E8EEF5 100%)",
                   WebkitBackgroundClip: "text",
@@ -128,14 +128,14 @@ export default function HeroSection() {
                 {line1Content}
               </span>
             </span>
-            <span className="block mt-1.5 sm:mt-2 font-bold tracking-tight text-center text-white break-words w-full">
+            <span className="block mt-2 sm:mt-2 text-2xl leading-[1.2] sm:text-2xl sm:leading-tight md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-center text-white break-words w-full px-0.5">
               {line2Content}
             </span>
           </span>
         </h1>
 
         {/* Descriptive Text : Selon la capacité... puis Spécialisés... (texte plus petit) */}
-        <p className="text-[11px] sm:text-sm md:text-base text-gray-400 mb-4 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
+        <p className="text-sm sm:text-sm md:text-base text-gray-400 mb-4 sm:mb-4 max-w-4xl mx-auto leading-relaxed px-2 sm:px-4 font-medium">
           <span className="block">{t("primaryHeadline")}</span>
           <span className="block mt-1 sm:mt-1">{t("descriptionLine1")}</span>
         </p>
