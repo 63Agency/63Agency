@@ -139,11 +139,14 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-x-6 sm:gap-y-2 text-sm text-white/60">
           <LanguageSwitcher variant="footer" className="shrink-0" />
           <span className="text-center sm:text-left">{tFooter("copyright", { year })}</span>
+          {/* Listaaj: kept in markup, hidden from UI (not deleted) */}
           <a
             href="https://listaaj.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/60 hover:text-white/90 underline-offset-2 hover:underline transition-colors"
+            className="hidden"
+            aria-hidden="true"
+            tabIndex={-1}
           >
             Listaaj
           </a>

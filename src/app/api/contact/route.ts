@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
     console.error("[api/contact]", error);
     console.error("[api/contact] message:", msg);
     return NextResponse.json(
-      { error: "Failed to process contact form" },
+      { error: "Failed to process contact form", message: msg },
       { status: 500 }
     );
   }
