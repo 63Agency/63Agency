@@ -39,6 +39,13 @@ export type ContactFormPayload = {
 };
 
 function getTransporter() {
+  console.log("[emailService] SMTP config at runtime:", {
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_PORT === 465,
+    user: SMTP_USER,
+    passLength: SMTP_PASS?.length ?? 0,
+  });
   return nodemailer.createTransport({
     host: SMTP_HOST,
     port: SMTP_PORT,
