@@ -141,6 +141,7 @@ export default function ContactFormThreeSteps() {
           availability: (data.get("availability") as string) ?? "",
         });
       }
+      window.fbq?.("track", "Lead");
       form.reset();
       setPersonalInfo({ name: "", email: "", phone: "", city: "", company: "", employees: "" });
       setQualification({ role: "", objective: "", campaigns: "", sector: "", establishment: "" });
