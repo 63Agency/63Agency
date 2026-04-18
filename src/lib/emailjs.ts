@@ -15,7 +15,7 @@ export type ContactFormData = {
   employees?: string;
   role: string;
   objective: string;
-  timing: string;
+  timing?: string;
   campaigns: string;
   sector: string;
   establishment: string;
@@ -48,7 +48,7 @@ export async function sendContactEmails(data: ContactFormData): Promise<void> {
     employees: data.employees ?? "",
     role: data.role,
     objective: data.objective,
-    timing: data.timing,
+    timing: data.timing ?? "",
     campaigns: data.campaigns,
     sector: data.sector,
     establishment: data.establishment,

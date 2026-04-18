@@ -64,7 +64,7 @@ export default function ContactFormThreeSteps() {
     name: "", email: "", phone: "", city: "", company: "", employees: "",
   });
   const [qualification, setQualification] = useState({
-    role: "", objective: "", timing: "", campaigns: "", sector: "", establishment: "",
+    role: "", objective: "", campaigns: "", sector: "", establishment: "",
   });
   const [extraFields, setExtraFields] = useState({
     budget: "", availability: "",
@@ -85,7 +85,6 @@ export default function ContactFormThreeSteps() {
     const nextErrors: Record<string, string> = {};
     if (!qualification.role) nextErrors.role = t("validationRequired");
     if (!qualification.objective) nextErrors.objective = t("validationRequired");
-    if (!qualification.timing) nextErrors.timing = t("validationRequired");
     if (!qualification.campaigns) nextErrors.campaigns = t("validationRequired");
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
@@ -134,7 +133,6 @@ export default function ContactFormThreeSteps() {
           name, email, phone, city, company, employees,
           role: qualification.role,
           objective: qualification.objective,
-          timing: qualification.timing,
           campaigns: qualification.campaigns,
           sector: qualification.sector,
           establishment: qualification.establishment,
@@ -145,7 +143,7 @@ export default function ContactFormThreeSteps() {
       }
       form.reset();
       setPersonalInfo({ name: "", email: "", phone: "", city: "", company: "", employees: "" });
-      setQualification({ role: "", objective: "", timing: "", campaigns: "", sector: "", establishment: "" });
+      setQualification({ role: "", objective: "", campaigns: "", sector: "", establishment: "" });
       setStep(1);
       router.push(`/${locale}/contact/thank-you`);
     } catch {
@@ -155,7 +153,6 @@ export default function ContactFormThreeSteps() {
 
   const q1Options = [t("q1_1"), t("q1_2"), t("q1_3"), t("q1_4"), t("q1_5")];
   const q2Options = [t("q2_1"), t("q2_2"), t("q2_3"), t("q2_4")];
-  const q3Options = [t("q3_1"), t("q3_2"), t("q3_3"), t("q3_4"), t("q3_5")];
   const q4Options = [t("q4_1"), t("q4_2"), t("q4_3")];
   const q5Options = [t("q5_1"), t("q5_2"), t("q5_3"), t("q5_6")];
   const budgetOptions = [t("budget_0"), t("budget_1"), t("budget_2"), t("budget_3"), t("budget_4"), t("budget_5"), t("budget_6")];
@@ -256,14 +253,6 @@ export default function ContactFormThreeSteps() {
               {errors.objective && <p className="mt-1.5 text-sm text-red-600" role="alert">{errors.objective}</p>}
             </div>
             <div>
-              <label htmlFor="cta-timing" className={formLabelClass}>{t("q3Label")}</label>
-              <select id="cta-timing" className={formSelectClass} value={qualification.timing} onChange={(e) => setQualification((p) => ({ ...p, timing: e.target.value }))} required>
-                <option value="">{t("selectPlaceholder")}</option>
-                {q3Options.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
-              </select>
-              {errors.timing && <p className="mt-1.5 text-sm text-red-400" role="alert">{errors.timing}</p>}
-            </div>
-            <div>
               <label htmlFor="cta-campaigns" className={formLabelClass}>{t("q4Label")}</label>
               <select id="cta-campaigns" className={formSelectClass} value={qualification.campaigns} onChange={(e) => setQualification((p) => ({ ...p, campaigns: e.target.value }))} required>
                 <option value="">{t("selectPlaceholder")}</option>
@@ -297,7 +286,6 @@ export default function ContactFormThreeSteps() {
             <input type="hidden" name="employees" value={personalInfo.employees} />
             <input type="hidden" name="role" value={qualification.role} />
             <input type="hidden" name="objective" value={qualification.objective} />
-            <input type="hidden" name="timing" value={qualification.timing} />
             <input type="hidden" name="campaigns" value={qualification.campaigns} />
             <input type="hidden" name="sector" value={qualification.sector} />
             <input type="hidden" name="establishment" value={qualification.establishment} />
