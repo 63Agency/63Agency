@@ -1,6 +1,6 @@
 export {};
 
-/** Meta (Facebook) Pixel — loaded by inline script in `app/layout.tsx` */
+/** Meta (Facebook) Pixel — loaded by `<Script>` in `app/[locale]/layout.tsx` */
 declare global {
   interface Window {
     /** Meta Pixel queue function (same as global `fbq` in the browser). */
